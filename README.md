@@ -1,3 +1,2 @@
 # devcodes
-simple website for developers, Q / A site. interaction among devs.
-Easy to use.
+It is a simple website for developers. Has a Q / A page.Allows interaction among devs.Best of all easy to use.
