@@ -1,7 +1,8 @@
 .profile {
   display: block;
   margin: 0px auto;
-  width: 50vw;
+  width: max-content;
+  margin-top: 10px;
 }
 
 .profile >img {
@@ -14,7 +15,7 @@
 
 table {
   margin: 0px auto;
-  margin-top: 3vw;
+  margin-top: 20px;
 }
 input {
   border: 0px;
@@ -28,3 +29,29 @@ label  {
 input[type = "file"] {
   border: none;
 }
+.details{
+  width: max-content;
+  margin-left: 10px;
+}
+.main-window .main-frame-details{
+  margin:0px auto;
+  width: max-content;
+  border-style: solid;
+  border-color: coral;
+  border-radius: 10px;
+}
+.nav-bar{
+  margin-bottom: 30px;
+  text-align: right;
+  background: grey;
+    padding-right: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* .details form fieldset table tbody tr td.updateButton{
+  text-align: center;
+} */
+/* .btn btn-info{
+  text-align: center;
+} */
