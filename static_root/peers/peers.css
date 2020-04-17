@@ -1,0 +1,60 @@
+.header {
+  background-color: #633f3f;
+  min-height: 8vh;
+}
+
+
+.header > nav {
+  display: inline-block;
+  padding: 10px;
+}
+
+.header > nav>a {
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+}
+
+
+.header > .myprofile {
+  float: right;
+  display: inline-block;
+  margin:10px 10px 0px 0px;
+}
+
+.myprofile > a > img {
+    width: 50px;
+    height: 50px;
+    border-radius:50%;
+ }
+
+
+ .main {
+   margin-top: 10px;
+   width: 70%;
+   background-color: #e8eaec;
+   margin-left: auto;
+   margin-right: auto;
+   border-radius: 30px;
+   margin-bottom: 30px;
+}
+
+.user-infor {
+  display: flex;
+}
+
+.detail-user {
+  flex: 6;
+}
+.profile {
+  flex: 1;
+  box-sizing: border-box;
+}
+
+
+.profile img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin: 10px;
+}

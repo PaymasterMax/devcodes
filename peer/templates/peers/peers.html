@@ -13,5 +13,52 @@
   </head>
   <body>
 
+    <!-- header section -->
+    <div class="header">
+        <nav>
+          <a href="{% url 'home:home' %}">Home</a> |
+          <a href="{% url 'questions:questions' %}">Questions</a>
+          <!-- <a href="{% url 'peers:peers' %}"></a> -->
+        </nav>
+
+        <!-- profile photo -->
+        <div class="myprofile">
+          <a href="{% url 'profile:profile' %}">
+            <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
+          </a>
+        </div>
+
+    </div>
+
+    <!-- main page -->
+    <div class="main">
+      <div class="user-infor">
+        <div class="profile">
+          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
+          <p>Username</p>
+        </div>
+
+        <div class="detail-user">
+            <p>
+              Username
+            </p>
+            <p>
+              Python
+            </p>
+            <p>
+              chat
+            </p>
+            <p>
+              location
+            </p>
+        </div>
+      </div>
+    </div>
+    <!-- footer  -->
+
+    <div class="footer">
+
+    </div>
+
   </body>
 </html>
