@@ -130,9 +130,15 @@ input[type = "file"] {
   border: none;
 }
 .details{
+
   width: max-content;
   margin-left: 10px;
+    font-weight: 700;
+    color: #01094a;
+    letter-spacing: 1px;
+    text-shadow: 0px 1px 7px #8c8888;
 }
+<<<<<<< HEAD
 
 
 
@@ -144,6 +150,36 @@ input[type = "file"] {
   border-radius: 10px;
   background-color: #fff;
 } */
+=======
+.main-window .main-frame-details{
+  margin:auto auto;
+  width: max-content;
+  border-style: solid;
+  border-color: #18b8b9;
+    border-radius: 10px;
+  background: #f5f2f261;
+}
+.nav-bar{
+  margin-bottom: 30px;
+  text-align: right;
+  background: grey;
+    padding-right: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+.nav-bar a{
+  color: rgb(229, 226, 226);
+}
+.nav-profile{
+  border-radius: 50%;
+  text-align: left;
+  height: 40px;
+  width: 40px;
+  float: left;
+  margin-left: 20px;
+}
+>>>>>>> 5c2ec31... background image to profile
 
 /* .details form fieldset table tbody tr td.updateButton{
   text-align: center;
@@ -151,6 +187,7 @@ input[type = "file"] {
 /* .btn btn-info{
   text-align: center;
 } */
+<<<<<<< HEAD
 
 
 .profile {
@@ -258,4 +295,14 @@ font-size: 18px;
   }
 
 /* end of navbar */
+=======
+body{
+  height:100vh;
+  width:100%;
+  background-image: url("../uprofile/images/flat-screen-lte.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-color: #1d2252;
+>>>>>>> 5c2ec31... background image to profile
 }

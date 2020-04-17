@@ -53,6 +53,12 @@ input[type = "file"] {
     padding-right: 25px;
     padding-top: 5px;
     padding-bottom: 5px;
+<<<<<<< HEAD
+=======
+}
+.nav-bar{
+  color:black;
+>>>>>>> 5c2ec31... background image to profile
 }
 
 /* .details form fieldset table tbody tr td.updateButton{
@@ -61,6 +67,7 @@ input[type = "file"] {
 /* .btn btn-info{
   text-align: center;
 } */
+<<<<<<< HEAD
 
 
 .profile {
@@ -93,3 +100,14 @@ label  {
 input[type = "file"] {
   border: none;
 }
+=======
+body{
+  height:100vh;
+  width:100%;
+  background-image: url("/uprofile/static/uprofile/images/flat-screen.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #1d2252;
+}
+>>>>>>> 5c2ec31... background image to profile
