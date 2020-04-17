@@ -1,0 +1,248 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Dev Code | Answers</title>
+    <link rel="stylesheet" href="{% static 'questions/answers.css' %}">
+  </head>
+  <body>
+
+    <div class="header">
+
+      <nav>
+        <a href="{% url 'home:home' %}">Home</a> |
+        <a href="{% url 'questions:questions' %}">Questions</a> |
+        <a href="{% url 'peers:peers' %}">peers</a>
+      </nav>
+
+      <!-- profile photo -->
+      <div class="profile myprofile">
+        <a href="{% url 'profile:profile' %}" title="{{userdetails.username}}">
+          <img src="/media/{{userdetails.profilepic}}" alt="profile">
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="main">
+      <h4>Question</h4>
+      <hr style="width:100px;margin: 0px auto;">
+      <div class="question">
+
+        <div class="profile queryprofile">
+          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
+          <p>Paminus</p>
+        </div>
+
+        <div class="question-content">
+          <div class="question-main-content">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+
+          <p class="ft">
+            Python
+          </p>
+          <p class="ft">
+            Posted: 23:45hrs
+          </p>
+        </div>
+      </div>
+
+
+      <!-- Start of answers -->
+        <h4>Answers</h4>
+        <hr style="width:100px;margin: 0px auto;">
+      <div class="answers">
+
+        <div class="profile queryprofile">
+          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
+          <p>Duncan</p>
+        </div>
+
+        <div class="answers-content">
+          <div class="answers-main-content">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+
+          <p class="ft">
+            Python
+          </p>
+          <p class="ft">
+            Posted: 23:45hrs
+          </p>
+        </div>
+      </div>
+      <!-- end of answers -->
+      <!-- start of dummy answers -->
+      <div class="answers">
+
+        <div class="profile queryprofile">
+          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
+          <p>Maxwell</p>
+        </div>
+
+        <div class="answers-content">
+          <div class="answers-main-content">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+
+          <p class="ft">
+            Python
+          </p>
+          <p class="ft">
+            Posted: 23:45hrs
+          </p>
+        </div>
+      </div>
+      <div class="answers">
+
+        <div class="profile queryprofile">
+          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
+          <p>Kevin</p>
+        </div>
+
+        <div class="answers-content">
+          <div class="answers-main-content">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+
+          <p class="ft">
+            Python
+          </p>
+          <p class="ft">
+            Posted: 23:45hrs
+          </p>
+        </div>
+      </div>
+      <div class="answers">
+
+        <div class="profile queryprofile">
+          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
+          <p>Chris</p>
+        </div>
+
+        <div class="answers-content">
+          <div class="answers-main-content">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+
+          <p class="ft">
+            Python
+          </p>
+          <p class="ft">
+            Posted: 23:45hrs
+          </p>
+        </div>
+      </div>
+      <div class="answers">
+
+        <div class="profile queryprofile">
+          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
+          <p>Yatchy</p>
+        </div>
+
+        <div class="answers-content">
+          <div class="answers-main-content">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+
+          <p class="ft">
+            Python
+          </p>
+          <p class="ft">
+            Posted: 23:45hrs
+          </p>
+        </div>
+      </div>
+      <div class="answers">
+
+        <div class="profile queryprofile">
+          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
+          <p>Philip</p>
+        </div>
+
+        <div class="answers-content">
+          <div class="answers-main-content">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+
+          <p class="ft">
+            Python
+          </p>
+          <p class="ft">
+            Posted: 23:45hrs
+          </p>
+        </div>
+      </div>
+      <div class="answers">
+
+        <div class="profile queryprofile">
+          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
+          <p>Patrick</p>
+        </div>
+
+        <div class="answers-content">
+          <div class="answers-main-content">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+
+          <p class="ft">
+            Python
+          </p>
+          <p class="ft">
+            Posted: 23:45hrs
+          </p>
+        </div>
+      </div>
+      <div class="answers">
+
+        <div class="profile queryprofile">
+          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
+          <p>Paulo</p>
+        </div>
+
+        <div class="answers-content">
+          <div class="answers-main-content">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+
+          <p class="ft">
+            Python
+          </p>
+          <p class="ft">
+            Posted: 23:45hrs
+          </p>
+        </div>
+      </div>
+
+
+
+<!-- end of dummy answers -->
+
+      <!-- <div class="answers">
+        <p class="profile">
+          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
+        </p>
+
+        <p class="question-content">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <p>
+          Language
+        </p>
+      </div> -->
+    </div>
+
+    <div class="footer">
+
+    </div>
+
+  </body>
+</html>
