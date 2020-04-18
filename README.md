@@ -1,2 +1,2 @@
 # devcodes
-simple website for developers, Q | A site. interaction among devs. Probelem solving.
+A simple website for developers, Q/ A site, interaction among devs, probelem solving.
