@@ -62,10 +62,8 @@
                  </div>
              {% else %}
                  <div class="like">
-                   <a href="#"  onclick="submitlike()">
-                       <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 30px;">
+                       <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 30px;" onclick="submitlike()">
                        {{question.question_liked.count}}
-                   </a>
                  </div>
 
              {% endif %}
@@ -147,12 +145,14 @@
   }
   }
 
-  function submitlike(Qid) {
+  function submitlike() {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function(){
-      if(this.readyState == 4 && this.status == 200)
-      alert(this.responseText);
+
+      if(this.readyState == 4 && this.status == 200){
+        alert(this.responseText);
+      }
     };
 
     xhttp.open("POST" , "{% url 'questions:updatelikes' %}");
