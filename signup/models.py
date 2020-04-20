@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class signup(models.Model):
+class Signup(models.Model):
     uid = models.AutoField(primary_key=True)
     email = models.EmailField(max_length = 60 , unique = True)
     username = models.CharField(max_length = 30 , unique = True)

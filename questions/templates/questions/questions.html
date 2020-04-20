@@ -12,6 +12,14 @@
     <link rel="stylesheet" href="{% static 'questions/questions.css' %}">
   </head>
   <body>
+      {% for question in Questions %}
+          <div class="">
+              {{question.question}}
+              <span>{{question.no_of_answers}}</span>
+          </div>
+      {% endfor %}
 
+
+      <a href="{% url 'questions:askquestions' 1 %}">Add question</a>
   </body>
 </html>

@@ -1,12 +1,12 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 # Create your views here.
-from signup.models import signup
+from signup.models import Signup
 
 def profileview(request):
     if request.method == "GET":
         try:
-            mydetails = signup.objects.get(username = request.session['username'])
+            mydetails = Signup.objects.get(username = request.session['username'])
 
         except Exception as e:
             return redirect("/login/")
@@ -23,7 +23,7 @@ def update_profile(request):
     print(request.POST["username"])
     if request.method == "POST":
         try:
-            edit_user_details = signup.objects.get(username = request.session['username'])
+            edit_user_details = Signup.objects.get(username = request.session['username'])
             edit_user_details.username = request.POST["username"]
             edit_user_details.pnumber = request.POST["phone"]
             edit_user_details.email = request.POST["email"]

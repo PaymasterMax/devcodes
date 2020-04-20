@@ -12,4 +12,5 @@ urlpatterns = [
     url("codesnippet/" , include("codesnippet.urls")),
     url("questions/" , include("questions.urls")),
     url("peers/" , include("peer.urls")),
+    url("chatroom/" , include("chatroom.urls")),
 ]+static(settings.MEDIA_URL , document_root = settings.MEDIA_ROOT)

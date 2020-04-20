@@ -13,7 +13,7 @@ SECRET_KEY = 'ghr%=q!3afx83t+1dojl%j15mta%6!v@bpx2l5p+ki2i!)zqs3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'questions.apps.QuestionsConfig',
     'codesnippet.apps.CodesnippetConfig',
     "peer.apps.PeerConfig",
+    'chatroom.apps.ChatroomConfig',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +58,7 @@ TEMPLATES = [
                 os.path.join(BASE_DIR , "questions/templates"),
                 os.path.join(BASE_DIR , "codesnippet/templates"),
                 os.path.join(BASE_DIR , "peer/templates"),
+                os.path.join(BASE_DIR , "chatroom/templates"),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -78,9 +80,13 @@ WSGI_APPLICATION = 'devcodes.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': "devcode",
-        
+        "HOST":"127.0.0.1",
+        "PORT":3306,
+        "USER":"root",
+        "PASSWORD":"",
+
     }
 }
 
@@ -131,6 +137,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR , "codesnippet/static"),
     os.path.join(BASE_DIR , "questions/static"),
     os.path.join(BASE_DIR , "peer/static"),
+    os.path.join(BASE_DIR , "chatroom/static"),
 ]
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR , "media_root")
