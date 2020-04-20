@@ -80,12 +80,12 @@ WSGI_APPLICATION = 'devcodes.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': "devcode",
-        "HOST":"127.0.0.1",
-        "PORT":3306,
-        "USER":"root",
-        "PASSWORD":"",
+        # "HOST":"127.0.0.1",
+        # "PORT":3306,
+        # "USER":"root",
+        # "PASSWORD":"",
 
     }
 }
