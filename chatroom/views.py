@@ -20,14 +20,17 @@ def chatrm(request , chat_user):
 
 
 def updatechats(request):
-    try:
-        receiver = int(request.POST["re"])
-        message = request.POST["message"]
-        id = signmod.objects.get(username = request.session["username"]).uid
+    if request.method == "POST":
+        try:
+            receiver = int(request.POST["re"])
+            msg = request.POST["msg"]
+            id = signmod.objects.get(username = request.session["username"]).uid
 
-    except Exception as e:
-        return redirect("/chatroom/{}/".format(receiver))
+        except Exception as e:
+            return redirect("/chatroom/{}/".format(receiver))
 
+        else:
+            chatmod.objects.create(text_message = msg , r1uid_id = id, r2uid_id = receiver)
+            return redirect("/chatroom/{}/".format(receiver))
     else:
-        chatmod.objects.create(text_message = message , r1uid_id = id, r2uid_id = receiver)
-        return redirect("/chatroom/{}/".format(receiver))
+        pass

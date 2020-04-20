@@ -26,6 +26,7 @@
           <img src="/media/{{mydetails.profilepic}}" alt="profile">
         </p>
         <div class="details">
+          
           <!-- update form -->
           <form class="" action="{% url 'profile:update' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -96,7 +97,7 @@
                 </td>
 
                 <td>
-                  <input type="file" name="profile" value="">
+                  <input type="file" name="profile" value="{{mydetails.profilepic}}">
                 </td>
               </tr>
 

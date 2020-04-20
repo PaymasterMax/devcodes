@@ -55,6 +55,7 @@
             <div class="message-content">
               {{data.text_message}}
               <p><span class="second-time">{{data.text_time|timemodifier }}</span></p>
+
             </div>
 
             <p class="profile">
@@ -74,9 +75,9 @@
           <form class="" action="{% url 'chatroom:updatechats' %}" method="post">
             {% csrf_token %}
             <!-- <input type="text" name="message"> -->
-            <textarea name="message" rows="3" cols="40" id="large"></textarea>
+            <textarea name="msg" rows="3" cols="40" id="large"></textarea>
 
-            <textarea name="message" rows="3" cols="25" id="small"></textarea>
+            <!-- <textarea name="msg" rows="3" cols="25" id="small"></textarea> -->
 
             <input type="hidden" name="re" value="{{receiver}}">
 

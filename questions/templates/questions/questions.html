@@ -1,5 +1,6 @@
-
 {% load static %}
+{% load like %}
+{% load timemod %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -10,7 +11,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <title>Dev Code | Questions</title>
-    <link rel="stylesheet" href="{% static 'questions/questions.css' %}">
+    <link rel="stylesheet" href="{% static 'questions/question.css' %}">
   </head>
   <body>
     <div class="nav-bar">
@@ -30,7 +31,7 @@
           </a>
       </div>
   </div>
-  <div class="page-title">Questions page</div>
+  <div class="page-title"><h3>Questions page</h3><hr width=200 color="#000"> </div>
   <div class="main-window">
   <div class="person-holder">
     {% for question in Questions %}
@@ -44,7 +45,7 @@
             <div class="user-details-first-row">
 
               {{question.quid.username}} @
-              {{question.time_posted}}
+              {{question.time_posted | timemodifier}}
             </div>
             <div class="question-content">
               {{question.question}}
@@ -53,10 +54,17 @@
               </div>
             </div>
             <div class="reply-section">
+             {% if mydetails.uid|likey:question %}
              <div class="like">
-             <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 30px;">
-             15
+                  <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 30px;">
+                  {{question.question_liked.count}}
              </div>
+              {% else %}
+              <div class="like" onclick="submitlike()">
+                   <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 30px;">
+                   {{question.question_liked.count}}
+              </div>
+             {% endif %}
              <div class="message">
              <img src="{% static 'questions/images/message.svg' %}" alt="message icon">
              {{question.no_of_answers}}
@@ -126,6 +134,21 @@
   else{
       up.classList.remove('hide');
   }
+  }
+
+
+
+  function submitlike() {
+  var xhttp = new XMLHttpRequest();
+
+  xhttp.onreadystatechange = function(){
+      if(this.readyState == 4 && this.status == 200)
+      alert("Hellow");
+  };
+
+    xhttp.open("POST" , "{% url 'questions:updatelikes' %}");
+    xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+    xhttp.send();
   }
 </script>
   </body>

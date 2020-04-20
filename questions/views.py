@@ -4,12 +4,17 @@ from .forms import anserform
 from django.db.models import Count
 
 
-from .models import Questions , Answers
+from .models import Questions , Answers , QuestionLike as qlike
 
 def questionsview(request):
-    userdetails = Signup.objects.get(username = request.session["username"])
-    all_questions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer"))
-    return render(request , "questions/questions.html" , context = {"Questions":all_questions , "mydetails":userdetails})
+    try:
+        userdetails = Signup.objects.get(username = request.session["username"])
+    except Exception as e:
+        return redirect("/login/")
+
+    else:
+        all_questions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted")
+        return render(request , "questions/questions.html" , context = {"Questions":all_questions , "mydetails":userdetails})
 
 
 def answersview(request , Qid):
@@ -60,3 +65,16 @@ def update_answers(request , Qid):
 
     else:
         questionsview(request)
+
+
+
+# update likes
+def updatelikes(request):
+    try:
+        userdetails = Signup.objects.get(username = request.session['username'])
+    except Exception as e:
+        return redirect("/login/")
+
+    else:
+        qlike.objects.create(Qid_id = 1 , luid_id = userdetails.uid)
+        return redirect("/questions/answers/{}".format(1))

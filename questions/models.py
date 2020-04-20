@@ -9,7 +9,7 @@ class Questions(models.Model):
     question = models.CharField(max_length = 1025)
     time_posted = models.DateTimeField(auto_now_add = True)
     language = models.CharField(max_length = 15 , default = "Python")
-    likes = models.ManyToManyField(Signup ,related_name = "likes")
+
     class Meta:
         db_table = "Questions"
 
@@ -24,3 +24,13 @@ class Answers(models.Model):
 
     class Meta:
         db_table = "Answers"
+
+
+class QuestionLike(models.Model):
+    lid = models.AutoField(primary_key = True , serialize = True)
+    Qid = models.ForeignKey(Questions , related_name = "question_liked" , on_delete = models.CASCADE)
+    luid = models.ForeignKey(Signup , related_name = "Qliker" , on_delete = models.CASCADE)
+
+
+    class Meta:
+        db_table = "likes"
