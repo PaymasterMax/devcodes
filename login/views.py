@@ -1,6 +1,6 @@
 from django.shortcuts import render , redirect
 from django.http import HttpResponse
-from signup.models import signup
+from signup.models import Signup
 import smtplib,string,random
 # import validate_email as v
 from django.contrib.auth.hashers import check_password,make_password
@@ -14,7 +14,7 @@ def login(request):
         password = request.POST['password']
 
         try:
-            userinfo = signup.objects.get(username = username)
+            userinfo = Signup.objects.get(username = username)
             username = userinfo.username
 
         except Exception as e:
@@ -58,9 +58,9 @@ def forgotcredetials(request):
 
         else:
             try:
-                userdata = signup.objects.get(email = lostuser)
+                userdata = Signup.objects.get(email = lostuser)
 
-            except signup.DoesNotExist as e:
+            except Signup.DoesNotExist as e:
                 bug_hunter.append("Email not registered with us")
                 return render(request , "login/forgot.html" , context = {"error":bug_hunter})
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import signup
+from .models import Signup
 # Register your models here.
 
 
@@ -7,7 +7,7 @@ from .models import signup
 
 class admininterface(admin.ModelAdmin):
 
-    model = signup
+    model = Signup
     list_display = ("email" , "username" , "pnumber" , "location" , "hobby" , "profilepic" , "password")
 
-admin.site.register(signup, admininterface)
+admin.site.register(Signup, admininterface)

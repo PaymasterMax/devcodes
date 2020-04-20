@@ -1,98 +1,81 @@
-* {
-  color: #000;
-}
-
-
-.header{
-  background-image: url('./images/other/bcode.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 74vh;
+.logo {
+  width: 120px;
+  height: 100px;
   margin: 0px auto;
-    background-color: #4e3641;
-}
-
-
-#ico {
-  margin-left: 0px;
-  color:#e83e8c;
-    margin-left: 10px;
-  font-weight: bold;
-  font-size: 30px;
-  display: inline;
-  background-color: #4e3641;
-}
-
-
-
-.header>p {
-  position: absolute;
-  font-size: 30px;
-  font-weight: bold;
+  margin-top: 5%;
+  padding-top: 26px;
+  border-radius: 50%;
+  background-color: #1f304a;
   color: #fff;
-  text-shadow: 4px 4px 2px #00f;
   text-align: center;
-  top: 50%;
-  left: 40%;
-  opacity: .7;
-  background-color: none;
-  margin-top: auto;
-  margin-bottom: auto;
+  font-size: 20px;
 }
 
-.ppad {
+.mid-window {
+  display: flex;
+  margin-top: 4%;
+}
+
+.mid-window > .questions {
+  text-align: center;
+  padding: 10px;
+  flex: 1;
+  margin: 2px;
+  border-radius: 30px;
+  background-color: #25283a;
+  color: #fff;
+}
+.mid-window > .profile {
+  text-align: center;
+  padding: 10px;
+  flex: 1;
+  margin: 2px;
+  border-radius: 30px;
+  background-color: #25283a;
+  color: #fff;
+}
+
+.mid-window > .peers {
+  text-align: center;
+  padding: 10px;
+  flex:1;
+  margin: 2px;
+  border-radius: 30px;
+  background-color: #25283a;
+  color: #fff;
+}
+
+
+.mainlinks {
   text-decoration: none;
-  display: inline;
-  background-color: green;
-  margin-left: 0px;
-  color:#e83e8c;
-    margin-left: 10px;
-  font-weight: bold;
-  font-size: 30px;
-  display: inline-block;
-  background-color: #4e3641;
 }
 
-
-.profile {
-  display: inline-block;
-  background-color: green;
+.mainlinks:hover {
   text-decoration: none;
-  display: inline;
-  background-color: green;
-  margin-left: 0px;
-  color:#e83e8c;
-    /* margin-left: 100px; */
-  font-weight: bold;
-  font-size: 30px;
-  display: inline;
-  background-color: #4e3641;
 }
 
 
-.nav {
-    background-color: #4e3641;
-}
 .footer {
   display: flex;
-    background-color: #4e3641;
-}
-.footer>div {
-    background-color: #4e3641;
-  flex:1;
-  padding: 10px;
+    background-color: #25283a;
+    padding-bottom: 30px;
+    color: #fff;
 }
 
-.all {
-    background-color: #4e3641;
-  border-bottom: 1px solid #000;
+.footer-header {
+  border-bottom: 2px solid red;
   text-align: center;
+  font-style: italic;
+  font-weight: bold;
 }
 
 
-.logo {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+.botttom-link {
+  text-align: center;
+  padding: 10px;
+  flex:1;
+  margin: 2px;
+  border-radius: 30px;
+  background-color: #25283a;
+  color: #fff;
 }

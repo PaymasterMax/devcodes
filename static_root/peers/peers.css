@@ -1,6 +1,10 @@
+body {
+  background-color: #070f54;
+}
 .header {
   background-color: #633f3f;
   min-height: 8vh;
+  width: 100%;
 }
 
 
@@ -19,7 +23,7 @@
 .header > .myprofile {
   float: right;
   display: inline-block;
-  margin:10px 10px 0px 0px;
+  margin:7px 7px 0px 0px;
 }
 
 .myprofile > a > img {
@@ -31,21 +35,33 @@
 
  .main {
    margin-top: 10px;
-   width: 70%;
+   width: 50%;
    background-color: #e8eaec;
    margin-left: auto;
    margin-right: auto;
    border-radius: 30px;
    margin-bottom: 30px;
+   min-height: 80vh;
 }
 
 .user-infor {
   display: flex;
+  width: 70%;
+  border-bottom: .5px solid #000;
+  margin: 0px auto;
+
 }
+
 
 .detail-user {
   flex: 6;
+  margin-top: 10px;
 }
+
+.user-infor:last-child {
+  border: 0px;
+}
+
 .profile {
   flex: 1;
   box-sizing: border-box;
@@ -57,4 +73,44 @@
   height: 70px;
   border-radius: 50%;
   margin: 10px;
+}
+
+
+.profile > p {
+  margin-left: 6px;
+}
+
+.detail-user > p {
+  text-align: center;
+}
+
+
+.lower-user {
+  display: inline-block;
+  float: right;
+  margin: 10px;
+}
+
+
+.lower-user > a {
+  text-decoration: none;
+  color: #2c3a4a;
+}
+
+
+@media screen and (max-width:800px) {
+  .main {
+    width: 96%;
+  }
+
+
+  .user-infor {
+    width: 100%;
+    font-size: 12px;
+  }
+
+.header {
+  min-height: 10vh;
+}
+
 }

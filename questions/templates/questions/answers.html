@@ -37,20 +37,20 @@
       <div class="question">
 
         <div class="profile queryprofile">
-          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
-          <p>Paminus</p>
+          <img src="/media/{{question_info.quid.profilepic}}" alt="{{question_info.quid.username}}" title="{{question_info.quid.username}}">
+          <p>{{question_info.quid.username}}</p>
         </div>
 
         <div class="question-content">
           <div class="question-main-content">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            {{question_info.question}}
           </div>
 
           <p class="ft">
-            Python
+            {{question_info.quid.hobby}}
           </p>
           <p class="ft">
-            Posted: 23:45hrs
+            {{question_info.time_posted}}
           </p>
         </div>
       </div>
@@ -59,190 +59,72 @@
       <!-- Start of answers -->
         <h4>Answers</h4>
         <hr style="width:100px;margin: 0px auto;">
+        {% for answer in allanswers %}
       <div class="answers">
 
         <div class="profile queryprofile">
-          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
-          <p>Duncan</p>
+          <img src="/media/{{answer.auid.profilepic}}" alt="profile" title="{{answer.auid.username}}">
+          <p>{{answer.auid.username}}</p>
         </div>
 
         <div class="answers-content">
           <div class="answers-main-content">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            {{answer.answer}}
           </div>
 
           <p class="ft">
-            Python
+            {{answer.auid.hobby}}
           </p>
           <p class="ft">
-            Posted: 23:45hrs
+            {{answer.time_posted}}
           </p>
         </div>
       </div>
+      {% endfor %}
       <!-- end of answers -->
-      <!-- start of dummy answers -->
-      <div class="answers">
 
-        <div class="profile queryprofile">
-          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
-          <p>Maxwell</p>
-        </div>
+<!-- Start of submit answer -->
+<div class="answers">
+  <div class="answer-form">
 
-        <div class="answers-content">
-          <div class="answers-main-content">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </div>
+    <form class="" action="{% url 'questions:updateanswers' Qid %}" method="post">
+      {% csrf_token %}
+        {{answers_form.as_p}}
+        <textarea name="message" rows="3" cols="25" id="small" placeholder="your answer"></textarea>
 
-          <p class="ft">
-            Python
-          </p>
-          <p class="ft">
-            Posted: 23:45hrs
-          </p>
-        </div>
-      </div>
-      <div class="answers">
+      <button type="submit" name="submit" value="submit" class="btn btn-info">Send</button>
+    </form>
 
-        <div class="profile queryprofile">
-          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
-          <p>Kevin</p>
-        </div>
+    <p class="ft">
+      Python
+    </p>
+  </div>
+</div>
 
-        <div class="answers-content">
-          <div class="answers-main-content">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </div>
+<!-- end of submit answers -->
 
-          <p class="ft">
-            Python
-          </p>
-          <p class="ft">
-            Posted: 23:45hrs
-          </p>
-        </div>
-      </div>
-      <div class="answers">
-
-        <div class="profile queryprofile">
-          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
-          <p>Chris</p>
-        </div>
-
-        <div class="answers-content">
-          <div class="answers-main-content">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </div>
-
-          <p class="ft">
-            Python
-          </p>
-          <p class="ft">
-            Posted: 23:45hrs
-          </p>
-        </div>
-      </div>
-      <div class="answers">
-
-        <div class="profile queryprofile">
-          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
-          <p>Yatchy</p>
-        </div>
-
-        <div class="answers-content">
-          <div class="answers-main-content">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </div>
-
-          <p class="ft">
-            Python
-          </p>
-          <p class="ft">
-            Posted: 23:45hrs
-          </p>
-        </div>
-      </div>
-      <div class="answers">
-
-        <div class="profile queryprofile">
-          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
-          <p>Philip</p>
-        </div>
-
-        <div class="answers-content">
-          <div class="answers-main-content">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </div>
-
-          <p class="ft">
-            Python
-          </p>
-          <p class="ft">
-            Posted: 23:45hrs
-          </p>
-        </div>
-      </div>
-      <div class="answers">
-
-        <div class="profile queryprofile">
-          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
-          <p>Patrick</p>
-        </div>
-
-        <div class="answers-content">
-          <div class="answers-main-content">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </div>
-
-          <p class="ft">
-            Python
-          </p>
-          <p class="ft">
-            Posted: 23:45hrs
-          </p>
-        </div>
-      </div>
-      <div class="answers">
-
-        <div class="profile queryprofile">
-          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
-          <p>Paulo</p>
-        </div>
-
-        <div class="answers-content">
-          <div class="answers-main-content">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </div>
-
-          <p class="ft">
-            Python
-          </p>
-          <p class="ft">
-            Posted: 23:45hrs
-          </p>
-        </div>
-      </div>
-
-
-
-<!-- end of dummy answers -->
-
-      <!-- <div class="answers">
-        <p class="profile">
-          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="profile">
-        </p>
-
-        <p class="question-content">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <p>
-          Language
-        </p>
-      </div> -->
     </div>
 
     <div class="footer">
 
     </div>
+
+    <script type="text/javascript">
+
+        function submitanswer() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function(){
+            if(this.status == 200 &&  this.readyState == 4) {
+              alert(this.responseText());
+            }
+          };
+          xhttp.setheader("X-CSRFToken" , {{csrf_token}});
+          xhttp.open("post" , "{% url 'questions:questions' %}");
+          xhttp.send();
+
+        }
+
+    </script>
 
   </body>
 </html>

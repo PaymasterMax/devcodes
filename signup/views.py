@@ -1,9 +1,9 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 # Create your views here.
-from .models import signup as signmodel
+from .models import Signup as signmodel
 from django.contrib.auth.hashers import make_password
-import validate_email as v
+# import validate_email as v
 
 
 
