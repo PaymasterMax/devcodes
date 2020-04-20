@@ -18,7 +18,7 @@
           <a href="{% url 'home:home' %}">home</a> |
           <a href="{% url 'questions:questions' %}">Questions</a> |
           <a href="{% url 'peers:peers' %}">peers</a> |
-          <a href="{% url 'chatroom:chatroom' 1 %}">Chat</a>
+          <a href="{% url 'home:home' %}">Chat</a>
       </div>
       <div class="main-frame-details">
         <!-- profile pic -->
@@ -70,11 +70,9 @@
               </tr>
 
               <!-- <tr>
-
                 <td>
                   <label>password</label>
                 </td>
-
                 <td>
                   <input type="text" name="password" value="">
                 </td>
@@ -104,7 +102,7 @@
 
               <tr>
 
-                <td colspan="2" class="updateButton" style="text-align: center;">
+                <td colspan="2">
                   <button type="submit" name="submit" class="btn btn-info" onclick="auth()">Update</button>
                 </td>
               </tr>

@@ -7,8 +7,9 @@ from django.db.models import Count
 from .models import Questions , Answers
 
 def questionsview(request):
+    userdetails = Signup.objects.get(username = request.session["username"])
     all_questions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer"))
-    return render(request , "questions/questions.html" , context = {"Questions":all_questions})
+    return render(request , "questions/questions.html" , context = {"Questions":all_questions , "mydetails":userdetails})
 
 
 def answersview(request , Qid):
@@ -26,19 +27,20 @@ def answersview(request , Qid):
         return render(request , "questions/answers.html" , context = {"userdetails":userdetails , "answers_form":answers_form , "Qid":Qid , "allanswers":allanswers , "question_info":question_info })
 
 
-def askquestionsview(request , Qid):
+def askquestionsview(request):
     if request.method == "POST":
         try:
             userdetails = Signup.objects.get(username = request.session["username"])
+            questionlang = request.POST["language"]
             question = request.POST["question"]
         except Exception as e:
             return redirect("/login/")
 
         else:
-            Questions.objects.create(quid_id = userdetails.uid, question = question)
-            return render(request , "questions/questions.html")
+            Questions.objects.create(quid_id = userdetails.uid, question = question , language = questionlang)
+            return redirect("/questions/")
     else:
-        return render(request , "questions/questions.html")
+        return redirect("/questions/")
 
 
 def update_answers(request , Qid):

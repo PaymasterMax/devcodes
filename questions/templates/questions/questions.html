@@ -1,3 +1,4 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -12,14 +13,120 @@
     <link rel="stylesheet" href="{% static 'questions/questions.css' %}">
   </head>
   <body>
-      {% for question in Questions %}
-          <div class="">
-              {{question.question}}
-              <span>{{question.no_of_answers}}</span>
+    <div class="nav-bar">
+      <div class="links">
+
+        <a href="{% url 'peers:peers' %}">Peers</a> |
+        <a href="{% url 'chatroom:chatroom' 1 %}">Chat</a>
+        <a href="{% url 'home:home' %}"><div class="btn btn-info">Home</div></a>
+        </div>
+        <div class="logo" id="upPart">
+        DevCodes/>
+        </div>
+
+        <div class="user-profile">
+          <a href="{% url 'profile:profile' %}">
+            <img src="/media/{{mydetails.profilepic}}" alt="profile" style="width:40px; height:40px; border-radius:50%;">
+          </a>
+      </div>
+  </div>
+  <div class="page-title">Questions page</div>
+  <div class="main-window">
+  <div class="person-holder">
+    {% for question in Questions %}
+
+    <div class="oneQuestion">
+          <div class="profile-pic">
+          <img src = "/media/{{question.quid.profilepic}}" alt="profile">
           </div>
-      {% endfor %}
+
+          <div class="question-container">
+            <div class="user-details-first-row">
+
+              {{question.quid.username}} @
+              {{question.time_posted}}
+            </div>
+            <div class="question-content">
+              {{question.question}}
+            <div class="languages-tagged">
+              {{question.language}}
+              </div>
+            </div>
+            <div class="reply-section">
+             <div class="like">
+             <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 30px;">
+             15
+             </div>
+             <div class="message">
+             <img src="{% static 'questions/images/message.svg' %}" alt="message icon">
+             {{question.no_of_answers}}
+             </div>
+             <div class="Click">
+            <a href="{% url 'questions:answers' question.qid %}"> Click to view replies</a>
+             </div>
+            </div>
+          </div>
+    </div>
 
 
-      <a href="{% url 'questions:askquestions' 1 %}">Add question</a>
+    {% endfor %}
+  </div>
+
+  <div class = "main-question">
+    <form class="" action="{% url 'questions:askquestions' %}" method="post">
+      {% csrf_token %}
+    <div class="pose">
+        Pose a Question
+    </div>
+    <div class="question">
+
+          <input type="text" name="question" placeholder="Type question.." required id="question" size="55" style="
+          height: 150px;
+          width:300px;
+          background: antiquewhite;
+          border-radius: 5px;
+          border-style: solid;
+          border-color: #0a4b4b">
+    </div>
+
+    <!-- <div class="Add-img">
+         Put an image icon
+        <button>Add image</button>
+    </div> -->
+
+    <div class="languages">
+        <input type="text" maxlength="15" name="language" required placeholder="Mention programming language(s).." id="question" size="30"
+        style="
+        border-radius: 5px;
+        background: antiquewhite;
+        border-style: solid;
+        border-color: #0b5858;
+        ">
+
+    </div>
+    <div class="question-btns">
+        <button type="submit" class="post">Post</button>
+        <button class="cancel">Cancel</button>
+      </form>
+    </div>
+</div>
+</div>
+
+  <a href="#upPart"><img src="{% static 'questions/images/up.svg' %}" alt="up_key" style="width: 50px; height:50px; border-radius: 50%;
+    position: fixed; bottom:3%; right:1.2%;" id="up">
+    </a>
+
+<script>
+  var up=document.getElementById('up');
+  window.onscroll=function(){
+  var scrollPos=window.pageYOffset;
+  if(scrollPos<100){
+      up.classList.add('hide');
+  }
+  else{
+      up.classList.remove('hide');
+  }
+  }
+</script>
   </body>
 </html>

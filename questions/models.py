@@ -8,6 +8,7 @@ class Questions(models.Model):
     quid = models.ForeignKey(Signup , related_name = "question_asker" , on_delete = models.CASCADE)
     question = models.CharField(max_length = 1025)
     time_posted = models.DateTimeField(auto_now_add = True)
+    language = models.CharField(max_length = 15 , default = "Python")
 
     class Meta:
         db_table = "Questions"

@@ -55,3 +55,35 @@ input[type = "file"] {
 /* .btn btn-info{
   text-align: center;
 } */
+
+
+.profile {
+  display: block;
+  margin: 0px auto;
+  width: 50vw;
+}
+
+.profile >img {
+  display: block;
+  width: 150px;
+  height: 150px;
+  margin: 0px auto;
+  border-radius: 50%;
+}
+
+table {
+  margin: 0px auto;
+  margin-top: 3vw;
+}
+input {
+  border: 0px;
+  border-bottom: 1px solid #000;
+  text-align: center;
+  padding: 5px;
+}
+label  {
+    padding: 5px;
+}
+input[type = "file"] {
+  border: none;
+}

@@ -6,5 +6,5 @@ urlpatterns = [
     url("^$" , views.questionsview , name = "questions"),
     url("^updateanswers/(?P<Qid>[\d]+)/$" , views.update_answers , name = "updateanswers"),
     url("^answers/(?P<Qid>[\d]+)/$" , views.answersview , name = "answers"),
-    url("^updatequestions/(?P<Qid>[\d]+)/$" , views.askquestionsview , name = "askquestions"),
+    url("^updatequestions/$" , views.askquestionsview , name = "askquestions"),
 ]
