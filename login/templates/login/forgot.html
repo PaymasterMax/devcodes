@@ -8,10 +8,9 @@
 </head>
 
 <body>
-	<p>
-		<img src="{% static 'home/images/logo.jpg' %}" alt="image" id="photo" vibes>
+	
+		<img src="{% static 'home/images/logo/logo.jpg' %}" alt="image" id="photo" vibes>
 
-	</p>
 	<div class="bon">
 		<div class="bony">
 
@@ -34,14 +33,14 @@
 			</p>
 		<input type="submit" value="Recover" class="input">
 
-		<div class=""  id="forgot">
+		<div class="forgot"  id="forgot">
 			<a href="{% url 'login:login' %}">
-					<b>Login instead?</b>
+					Login instead?
 			</a>
 		</div>
 
 		<p style="text-align:center">
-			<span>New member?</span>
+			<span class="new">New member?</span>
 
 			<a class="link" href="{% url 'signup:signup' %}">
 				<b>Signup</b>

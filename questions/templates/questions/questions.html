@@ -12,6 +12,250 @@
     <link rel="stylesheet" href="{% static 'questions/questions.css' %}">
   </head>
   <body>
+    <div class="nav-bar">
+      <div class="links">
+     
+        <a href="{% url 'peers:peers' %}">Peers</a> |
+        <a href="{% url 'home:home' %}">Chat</a>
+        <a href="{% url 'home:home' %}"><div class="btn btn-info">Home</div></a> 
+        </div>
+        <div class="logo" id="upPart">
+        DevCodes/>
+        </div>
 
+        <div class="user-profile">
+      <img src="/media/{{mydetails.profilepic}}" alt="profile" style="width:40px; height:40px; border-radius:50%;">
+      </div>
+  </div>
+  <div class="page-title">Questions page</div>
+  <div class="main-window">
+  <div class="person-holder">
+          <div class="oneQuestion">
+                <div class="profile-pic">
+                <img src = "/media/{{mydetails.profilepic}}" alt="profile">
+                </div>
+
+                <div class="question-container">
+                  <div class="user-details-first-row">
+                  
+                    John Doe @ 
+                    4hrs ago
+                  </div>
+                  <div class="question-content">
+                    I’ve been writing HTML.
+                    Correspondingly, the tools to seek answers to existential questions vary as much
+as the approaches that have been used—from sacred texts to deep meditation,
+from philosophical arguments to scientific experiments
+                  <div class="languages-tagged">
+                    HTML,CSS
+                    </div>
+                  </div>
+                  <div class="reply-section">
+                   <div class="like">
+                   <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 30px;">
+                   15
+                   </div>
+                   <div class="message">
+                   <img src="{% static 'questions/images/message.svg' %}" alt="message icon">
+                   20
+                   </div>
+                   <div class="Click">
+                  <a href="{% url 'home:home' %}"> Click to view replies</a>
+                   </div>
+                  </div>
+                </div>
+          </div>
+  
+    <div class="oneQuestion">
+    <div class="profile-pic">
+    <img src = "/media/{{mydetails.profilepic}}" alt="profile">
+    </div>
+
+    <div class="question-container">
+      <div class="user-details-first-row">
+      
+        John Doe @ 
+        4hrs ago
+      </div>
+      <div class="question-content">
+         HTML used
+        to be something you could just hack away at until things looked okay on screen.
+      <div class="languages-tagged">
+        HTML,CSS
+        </div>
+      </div>
+      <div class="reply-section">
+       <div class="like">
+       <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 30px;">
+       15
+       </div>
+       <div class="message">
+       <img src="{% static 'questions/images/message.svg' %}" alt="message icon">
+       20
+       </div>
+       <div class="Click">
+        <a href="#"> Click to view replies</a>
+      </div>
+      </div>
+    </div>
+</div>
+
+    <div class="oneQuestion">
+    <div class="profile-pic">
+    <img src = "/media/{{mydetails.profilepic}}" alt="profile">
+    </div>
+
+    <div class="question-container">
+      <div class="user-details-first-row">
+      
+        J Doe @ 
+        4hrs ago
+      </div>
+      <div class="question-content">
+        I’ve been writing HTML and CSS for 10 years now, and what used to be a long trial-anderror 
+        learning process has now been reduced neatly into an engaging paperback. 
+      <div class="languages-tagged">
+        HTML,CSS
+        </div>
+      </div>
+      <div class="reply-section">
+       <div class="like">
+       <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 30px;">
+       15
+       </div>
+       <div class="message">
+       <img src="{% static 'questions/images/message.svg' %}" alt="message icon">
+       20
+       </div>
+       <div class="Click">
+       <a href="#">Click to view replies</a>
+       </div>
+      </div>
+    </div>
+</div>
+<div class="oneQuestion">
+  <div class="profile-pic">
+  <img src = "/media/{{mydetails.profilepic}}" alt="profile">
+  </div>
+
+  <div class="question-container">
+    <div class="user-details-first-row">
+    
+      Jane Doe @ 
+      4hrs ago
+    </div>
+    <div class="question-content">
+      I’ve been writing HTML and CSS for 10 years now, and what used to be a long trial-anderror 
+      learning process has now been reduced neatly into an engaging paperback. HTML used
+      to be something you could just hack away at until things looked okay on screen.
+    <div class="languages-tagged">
+      HTML,CSS
+      </div>
+    </div>
+    <div class="reply-section">
+     <div class="like">
+     <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 30px;">
+     15
+     </div>
+     <div class="message">
+     <img src="{% static 'questions/images/message.svg' %}" alt="message icon">
+     20
+     </div>
+     <div class="Click">
+     <a href="#">Click to view replies</a>
+     </div>
+    </div>
+  </div>
+</div>
+
+<div class="oneQuestion">
+  <div class="profile-pic">
+  <img src = "/media/{{mydetails.profilepic}}" alt="profile">
+  </div>
+
+  <div class="question-container">
+    <div class="user-details-first-row">
+    
+      Josef Doe @ 
+      4hrs ago
+    </div>
+    <div class="question-content">
+      I’ve been writing HTML and CSS for 10 years now, and what used to be a long trial-anderror 
+      learning process has now been reduced neatly into an engaging paperback. HTML used
+      to be something you could just hack away at until things looked okay on screen.
+    <div class="languages-tagged">
+      HTML,CSS
+      </div>
+    </div>
+    <div class="reply-section">
+     <div class="like">
+     <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 30px;">
+     15
+     </div>
+     <div class="message">
+     <img src="{% static 'questions/images/message.svg' %}" alt="message icon">
+     20
+     </div>
+     <div class="Click">
+     <a href="#">Click to view replies</a>
+     </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+  <div class = "main-question">
+    <div class="pose">
+        Pose a Question
+    </div>
+    <div class="question">
+        <input type="text" placeholder="Type question.." id="question" size="55" style="
+        height: 150px;
+        width:300px;
+        background: antiquewhite;
+        border-radius: 5px;
+        border-style: solid;
+        border-color: #0a4b4b">
+    </div>
+
+    <!-- <div class="Add-img">
+         Put an image icon 
+        <button>Add image</button>
+    </div> -->
+
+    <div class="languages">
+        <input type="text" placeholder="Mention programming language(s).." id="question" size="30" 
+        style="
+        border-radius: 5px;
+        background: antiquewhite;
+        border-style: solid;
+        border-color: #0b5858;
+        ">
+
+    </div>
+    <div class="question-btns">
+        <button class="post">Post</button>
+        <button class="cancel">Cancel</button>
+    </div>
+</div>
+</div>
+
+  <a href="#upPart"><img src="{% static 'questions/images/up.svg' %}" alt="up_key" style="width: 50px; height:50px; border-radius: 50%;
+    position: fixed; bottom:3%; right:1.2%;" id="up">
+    </a>
+
+<script>
+  var up=document.getElementById('up');
+  window.onscroll=function(){
+  var scrollPos=window.pageYOffset;
+  if(scrollPos<100){
+      up.classList.add('hide');
+  }
+  else{
+      up.classList.remove('hide');
+  }
+  }
+</script>
   </body>
 </html>

@@ -1,12 +1,26 @@
 *{
 	padding:0px;
 	margin:0px;
-	font-family:arial;
+	font-family:arial,-apple-system, BlinkMacSystemFont, 
+	'Segoe UI', Oxygen, Ubuntu,
+	 Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	box-sizing:border-box;
 }
 
 body{
 	background-color: #fff;
+	background-image: url("images/city.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	display:flex;
+	background-position: bottom;
+	background-attachment: fixed;
+flex-direction:column;
+/* min-width:350px; */
+width:100%;
+height:100vh;
+justify-content:center;
+align-items:center;
 }
 
 a{
@@ -17,7 +31,12 @@ a{
 
 
 .link{
-	color:#3b5998;
+	color:rgb(15, 166, 216);
+	font-weight: 600;
+	font-size: 20px;
+}
+.link:hover{
+	color: rgb(166, 240, 29);
 }
 
 p{
@@ -27,28 +46,50 @@ p{
 #forgot{
 	text-align: center;
 }
+.forgot a{
+	color:rgb(15, 166, 216);
+	font-weight: 400;
+
+}
+.forgot a:hover{
+	color: rgb(166, 240, 29);
+}
 form{
 	margin-top: 2%;
 }
 
 
 .bon{
-height:50vh;
-width:50%;
-margin: 2% auto;
-background-color: #4e3641;
-border: 1px solid #c0c0c0;
-padding-top:10px;
-
+	background-color: rgba(7, 7, 68, 0.833);
+	border: 1px solid #c0c0c0;
+	padding: 6px;
+	padding-bottom: 2px;
+	width: 330px;
+	border-radius: 9px;
+	flex-grow: 0.2;
+	flex-shrink: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+ }
+ .prof-pic{
+	 margin: 4px auto;
+	 margin-bottom: 20px;
+    text-align: center;
  }
 
 .bony{
 	padding:5px 20px 20px;
 }
-
+.bony h3{
+	color: white;
+	margin-bottom: 10px;
+}
 .bony>h3:first-child
 {
 	margin-top: 20%;
+	/* color: white; */
 }
 
 .bony>h1,h2,h3,h4,h5,h6{
@@ -58,18 +99,18 @@ padding-top:10px;
 
 
 .input{
-	width: 40%;
-	padding: 10px ;
+	/* width: 40%; */
+	padding: 8px;
 	margin: 10px auto;
 	border: 1px solid #c0c0c0;
 	display: block;
 	text-align: center;
+	border-radius: 5px;
 
 }
 .inputlabel
 {
 	display: block;
-	width: 100%;
 	padding: 10px ;
 	margin: 10px auto;
 	color: #f00;
@@ -79,23 +120,31 @@ padding-top:10px;
 
 .keepme
 {
-	width: 100%;
 	text-align: center;
+	color: rgb(166, 240, 29);
+	margin: 5px auto;
+	margin-top: 20px;
+}
+.new{
+	color: white;
 }
 
-
 input[type="submit"]{
-	border: 2px solid #3b5998;
-	background-color:#3b5998;
-	color:white;
+	border: 1px solid #969699;
+	background-color:#0f118a;
+	color:white;	
+
 	font-size: 19px;
 	font-weight: bold;
 	cursor: pointer;
 }
 
+input[type="submit"]:hover{
+	background-color: #1c6792;
+	border: none;
+}
 
 .dropbtn {
-	background-color:;
 	border-style: none;
 	position: relative;
 	float: right;
@@ -220,12 +269,9 @@ nav{
 #photo{
 	width: 100px;
 	height: 100px;
-	border-radius:300px;
-	background: green;
-	position:center;
-	margin-top:50px;
-	margin-left:45%;
-	border: 2px solid #3399ff;
+	border-radius:50%;
+	margin-bottom: 10px;
+	border: 1px solid rgba(51, 153, 255, 0.884);
 }
 #profile{
 	width: 200px;
@@ -233,8 +279,7 @@ nav{
 }
 
 .welcome{
-	background:;
-	color:  #3399ff;
+	color:#3399ff;
 	text-align:center;
 	display: block;
 	text-orientation:center;

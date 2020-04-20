@@ -5,14 +5,16 @@
 	<meta lang="en" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
 	<title>Vibes | Login</title>
 	<link rel="stylesheet" href="{% static 'login/styles.css' %}"/>
+	
 </head>
 
 <body>
-	<p>
-		<img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="image" id="photo" vibes>
-
-	</p>
 	<div class="bon">
+		<div class="prof-pic">
+		<img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="image" id="photo" vibes>
+		</div>
+	
+	
 		<div class="bony">
 
 	<form action="{% url 'login:login' %}" method="POST" class="form-hander">
@@ -24,9 +26,9 @@
 			{{error}}
 		</label>
 		{% endfor %}
-		<input type="text" placeholder="username" name = "username" id="username" required class="input">
+		<input type="text" placeholder="Username" name = "username" id="username" required class="input">
 
-		<input type="password" placeholder="password" name = "password" id="password" required class="input">
+		<input type="password" placeholder="Password" name = "password" id="password" required class="input">
 		<p>
 				<div class="keepme">
 					<input type="checkbox" id="keepme">
@@ -36,17 +38,17 @@
 			</p>
 		<input type="submit" value="login" class="input">
 
-		<div class=""  id="forgot">
+		<div class="forgot"  id="forgot">
 			<a href="{% url 'login:forgot' %}">
-					<b>forgot password?</b>
+					forgot password?
 			</a>
 		</div>
 
 		<p style="text-align:center">
-			<span>New member?</span>
+			<span class="new">New member?</span>
 
 			<a class="link" href="{% url 'signup:signup' %}">
-				<b>Signup</b>
+				Signup
 			</a>
 
 		</p>
