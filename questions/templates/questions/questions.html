@@ -43,11 +43,11 @@
           <div class="question-container">
             <div class="user-details-first-row">
 
-              {{question.quid.username}} @
+              {{question.quid.username}}   @   
               {{question.time_posted}}
             </div>
             <div class="question-content">
-              {{question.question}}
+              <div class="question-text">{{question.question}}</div>
             <div class="languages-tagged">
               {{question.language}}
               </div>
@@ -76,16 +76,16 @@
     <form class="" action="{% url 'questions:askquestions' %}" method="post">
       {% csrf_token %}
     <div class="pose">
-        Pose a Question
+        Ask a Question
     </div>
     <div class="question">
 
           <input type="text" name="question" placeholder="Type question.." required id="question" size="55" style="
           height: 150px;
           width:300px;
-          background: antiquewhite;
-          border-radius: 5px;
-          border-style: solid;
+          background:white;
+          border-radius: 3px;
+          border-style: none;
           border-color: #0a4b4b">
     </div>
 
@@ -95,11 +95,12 @@
     </div> -->
 
     <div class="languages">
-        <input type="text" maxlength="15" name="language" required placeholder="Mention programming language(s).." id="question" size="30"
+        <input type="text" maxlength="15" name="language" required placeholder="Mention programming language(s).." id="question" size="33"
         style="
-        border-radius: 5px;
-        background: antiquewhite;
-        border-style: solid;
+
+        border-radius: 3px;
+        background: white;
+        border-style: none;
         border-color: #0b5858;
         ">
 
