@@ -24,7 +24,7 @@ body{
     color: rgb(253, 253, 255);
 }
 .btn .btn-info{
-margin-left:10px;
+margin-left:15px;
 }
 .nav-bar a:active{
     color:darkblue;
@@ -43,6 +43,7 @@ margin-left:10px;
 }
 .oneQuestion{
 display:flex;
+overflow-wrap: break-word;
 }
 .user-profile{
 height: 40px;
@@ -52,7 +53,6 @@ margin-right: 5px;
 }
 .question-container{
     border-radius: 8px;
-    background: rgb(245, 210, 144);
     padding: 5px;
     margin: 8px;
     margin-top: 15px;
@@ -65,11 +65,17 @@ margin-right: 5px;
 }
 .user-details-first-row{
     width:max-content;
+    color: #fff;
 }
 .reply-section{
     display: flex;
     justify-content: space-around;
     align-items:center;
+    background: rgb(196, 196, 196);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding-bottom: 3px;
+
 }
 .reply-section .like,.message img{
 width:30px;
@@ -88,24 +94,30 @@ margin-right:3px;
     font-weight: 500;
 }
 .question-content{
-    background-color: rgba(250, 248, 245, 0.753);
+    background: rgb(196, 196, 196);
     padding:5px;
-    border-radius: 3px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.question-text{
+    max-width: 65vw;
+
 }
 .main-question{
     margin-right:5px;
     width: max-content;
     height:max-content;
-    border-style: solid;
-  border-color: #16d2d2;
+    border-style: none;
+ 
     border-radius: 10px;
-  background: #f5f2f261;
-    padding: 10px;
-    box-shadow: 1px 2px 9px 3px black;
+    background: #c4c4c4;
+        padding: 10px;
+    box-shadow: 1px 2px 9px 2px black;
 
 }
 .languages-tagged{
-    border-top: 1px solid rgb(94, 91, 91);
+    border-bottom: 1px solid rgb(94, 91, 91);
+    font-weight: 700;
 }
 .page-title{
     text-align: center;
@@ -115,6 +127,7 @@ margin-right:3px;
 }
 .pose{
     text-align: center;
+    border-bottom: 1px solid #919192;
 margin-top: 10px;
 margin-bottom: 18px;
 font-weight: 600;
@@ -127,15 +140,16 @@ color: black;
 .question-btns{
     margin: 15px auto;
     text-align: center;
+    margin-bottom:0px;
 }
 .question-btns .post{
-    background: #16d250;
+    background: #17a2b8;
     border-radius: 4px;
     border-style: none;
     color: white;
-    font-weight: 600;
+    font-weight: 550;
     letter-spacing: 1px;
-    text-shadow: 1px 3px 7px black;
+    padding:5px 8px;
 }
 .question-btns .cancel{
     background: #f55151;
@@ -144,6 +158,7 @@ color: black;
     color: black;
     margin-left: 10px;
     font-weight: 500;
+    display:none;
 }
 .cancel:hover,.post:hover{
 box-shadow: 3px 3px 9px 0px black;
