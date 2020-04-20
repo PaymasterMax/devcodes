@@ -1,6 +1,7 @@
 {% load static %}
 {% load like %}
 {% load timemod %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -31,7 +32,7 @@
           </a>
       </div>
   </div>
-  <div class="page-title"><h3>Questions page</h3><hr width=200 color="#000"> </div>
+  <div class="page-title">Questions page</div>
   <div class="main-window">
   <div class="person-holder">
     {% for question in Questions %}
@@ -44,7 +45,7 @@
           <div class="question-container">
             <div class="user-details-first-row">
 
-              {{question.quid.username}} @
+              {{question.quid.username}}   @
               {{question.time_posted | timemodifier}}
             </div>
             <div class="question-content">
@@ -54,17 +55,10 @@
               </div>
             </div>
             <div class="reply-section">
-             {% if mydetails.uid|likey:question %}
              <div class="like">
-                  <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 30px;">
-                  {{question.question_liked.count}}
+             <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 30px;">
+             {{15}}
              </div>
-              {% else %}
-              <div class="like" onclick="submitlike()">
-                   <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 30px;">
-                   {{question.question_liked.count}}
-              </div>
-             {% endif %}
              <div class="message">
              <img src="{% static 'questions/images/message.svg' %}" alt="message icon">
              {{question.no_of_answers}}
@@ -105,7 +99,6 @@
     <div class="languages">
         <input type="text" maxlength="15" name="language" required placeholder="Mention programming language(s).." id="question" size="33"
         style="
-
         border-radius: 3px;
         background: white;
         border-style: none;
@@ -116,8 +109,8 @@
     <div class="question-btns">
         <button type="submit" class="post">Post</button>
         <button class="cancel">Cancel</button>
-    </div>
-  </form>
+      </div>
+    </form>
     </div>
 </div>
 
@@ -137,15 +130,13 @@
   }
   }
 
-
-
   function submitlike() {
-  var xhttp = new XMLHttpRequest();
+    var xhttp = new XMLHttpRequest();
 
-  xhttp.onreadystatechange = function(){
+    xhttp.onreadystatechange = function(){
       if(this.readyState == 4 && this.status == 200)
       alert("Hellow");
-  };
+    };
 
     xhttp.open("POST" , "{% url 'questions:updatelikes' %}");
     xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
