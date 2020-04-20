@@ -55,10 +55,19 @@
               </div>
             </div>
             <div class="reply-section">
-             <div class="like">
-             <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 30px;">
-             {{15}}
-             </div>
+             {% if mydetails.uid|likey:question %}
+                 <div class="like">
+                 <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 30px;">
+                 {{question.question_liked.count}}
+                 </div>
+             {% else %}
+                 <div class="like">
+                 <a href="#"  onclick="submitlike()">
+                   <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 30px;">
+                   {{question.question_liked.count}}
+                 </a>
+                 </div>
+             {% endif %}
              <div class="message">
              <img src="{% static 'questions/images/message.svg' %}" alt="message icon">
              {{question.no_of_answers}}
