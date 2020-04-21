@@ -19,6 +19,7 @@
           <a href="{% url 'questions:questions' %}">Questions</a> |
           <a href="{% url 'peers:peers' %}">peers</a> |
           <a href="{% url 'home:home' %}">Chat</a>
+          <a href="{% url 'chatroom:chatroom' 1 %}" class="fa fa-bell"> {{newmessage}}</a>
       </div>
       <div class="main-frame-details">
         <!-- profile pic -->
@@ -26,7 +27,7 @@
           <img src="/media/{{mydetails.profilepic}}" alt="profile">
         </p>
         <div class="details">
-          
+
           <!-- update form -->
           <form class="" action="{% url 'profile:update' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}

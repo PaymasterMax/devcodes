@@ -9,8 +9,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <title>Dev Code | Questions</title>
     <link rel="stylesheet" href="{% static 'questions/question.css' %}">
   </head>
@@ -19,8 +20,9 @@
       <div class="links">
 
         <a href="{% url 'peers:peers' %}">Peers</a> |
-        <a href="{% url 'chatroom:chatroom' 1 %}">Chat</a>
-        <a href="{% url 'home:home' %}"><div class="btn btn-info">Home</div></a>
+        <a href="{% url 'chatroom:chatroom' 1 %}">Chat</a> | 
+        <a href="{% url 'home:home' %}">Home</a>
+        <a href="{% url 'chatroom:chatroom' 1 %}" class="fa fa-bell"> {{newmessage}}</a>
         </div>
         <div class="logo" id="upPart">
         DevCodes/>
@@ -28,7 +30,7 @@
 
         <div class="user-profile">
           <a href="{% url 'profile:profile' %}">
-            <img src="/media/{{mydetails.profilepic}}" alt="profile" style="width:40px; height:40px; border-radius:50%;">
+            <img src="/media/{{mydetails.profilepic}}" alt="profile" title="{{mydetails.username}}" style="width:40px; height:40px; border-radius:50%;">
           </a>
       </div>
   </div>
@@ -39,7 +41,7 @@
 
     <div class="oneQuestion">
           <div class="profile-pic">
-          <img src = "/media/{{question.quid.profilepic}}" alt="profile">
+          <img src = "/media/{{question.quid.profilepic}}" alt="profile" title="{{question.quid.username}}">
           </div>
 
           <div class="question-container">
@@ -62,7 +64,7 @@
                  </div>
              {% else %}
                  <div class="like">
-                       <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 30px;" onclick="submitlike()">
+                       <img src="{% static 'questions/images/like.svg' %}" class="ls" alt="like icon" style="width: 30px; height: 30px;" onclick="submitlike()">
                        {{question.question_liked.count}}
                  </div>
 
@@ -132,6 +134,7 @@
   <a href="#upPart"><img src="{% static 'questions/images/up.svg' %}" alt="up_key" style="width: 50px; height:50px; border-radius: 50%;
     position: fixed; bottom:3%; right:1.2%;" id="up">
     </a>
+  </body>
 
 <script>
   var up=document.getElementById('up');
@@ -146,19 +149,17 @@
   }
 
   function submitlike() {
-    var xhttp = new XMLHttpRequest();
+      var xhttp = new XMLHttpRequest();
 
-    xhttp.onreadystatechange = function(){
+      xhttp.onreadystatechange = function(){
 
-      if(this.readyState == 4 && this.status == 200){
-        alert(this.responseText);
-      }
-    };
-
-    xhttp.open("POST" , "{% url 'questions:updatelikes' %}");
-    xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
-    xhttp.send();
+        if(this.readyState == 4 && this.status == 200){
+          alert(this.responseText);
+        }
+      };
+      xhttp.open("POST" , "{% url 'questions:updatelikes' %}");
+      xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+      xhttp.send("Qid="+3);
   }
 </script>
-  </body>
 </html>

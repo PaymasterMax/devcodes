@@ -177,10 +177,6 @@ textarea {
 }
 
 
-#small {
-  display: none;
-}
-
 
 @media screen and (max-width:700px) {
 
@@ -243,14 +239,4 @@ textarea {
     padding: 5px;
     background-color: #000000;
   }
-
-#small {
-  display: block;
-}
-
-#large {
-  display: none;
-}
-
-
 }

@@ -2,14 +2,14 @@ from django.shortcuts import render,redirect
 from signup.models import Signup as signmod
 from .models import ChatModel as chatmod
 from django.db.models import Q
-# from django.db.models import aggregate
 
 
 def chatrm(request , chat_user):
     try:
         userdetails = signmod.objects.get(username = request.session["username"])
-        chats = chatmod.objects.filter(Q(r1uid_id = userdetails.uid , r2uid_id = chat_user) | Q(r1uid_id = chat_user , r2uid_id = userdetails.uid))
-        # annotate(time_lapse = aggregate(text_time-1000))
+        chats = chatmod.objects.filter(Q(r1uid_id = userdetails.uid , r2uid_id = chat_user) | Q(r1uid_id = chat_user , r2uid_id = userdetails.uid)).order_by("text_time")
+        check_bell = chatmod.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False)
+        check_bell.update(bell_seen = True)
 
     except Exception as e:
         print(e)
@@ -19,6 +19,7 @@ def chatrm(request , chat_user):
         return render(request , "chatroom/messages.html" , context = {"userdetails":userdetails , "chats":chats , "receiver":chat_user})
 
 
+# update chats
 def updatechats(request):
     if request.method == "POST":
         try:
@@ -27,10 +28,10 @@ def updatechats(request):
             id = signmod.objects.get(username = request.session["username"]).uid
 
         except Exception as e:
-            return redirect("/chatroom/{}/".format(receiver))
+            return redirect("/chatroom/{}/#frm".format(receiver))
 
         else:
-            chatmod.objects.create(text_message = msg , r1uid_id = id, r2uid_id = receiver)
-            return redirect("/chatroom/{}/".format(receiver))
+            chatmod.objects.create(text_message = msg , r1uid_id = id, r2uid_id = receiver , bell_seen = False)
+            return redirect("/chatroom/{}/#frm".format(receiver))
     else:
         pass

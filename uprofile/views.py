@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-
+from chatroom.models import ChatModel as chtb
 
 from signup.models import Signup
 
@@ -8,12 +8,13 @@ def profileview(request):
     if request.method == "GET":
         try:
             mydetails = Signup.objects.get(username = request.session['username'])
+            newmessage = chtb.objects.filter(r2uid_id =  mydetails.uid, bell_seen = False).count()
 
         except Exception as e:
             return redirect("/login/")
 
         else:
-            return render(request , "uprofile/uprofile.html" , context = {"mydetails":mydetails })
+            return render(request , "uprofile/uprofile.html" , context = {"mydetails":mydetails , "newmessage":newmessage})
 
     else:
         pass

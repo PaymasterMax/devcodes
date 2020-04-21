@@ -2,19 +2,18 @@ from django.shortcuts import render , redirect
 from signup.models import Signup
 from .forms import anserform
 from django.db.models import Count
-
-
 from .models import Questions , Answers , QuestionLike as qlike
-
+from chatroom.models import ChatModel as chtb
 def questionsview(request):
     try:
         userdetails = Signup.objects.get(username = request.session["username"])
+        newmessage = chtb.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False).count()
     except Exception as e:
         return redirect("/login/")
 
     else:
         all_questions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted")
-        return render(request , "questions/questions.html" , context = {"Questions":all_questions , "mydetails":userdetails})
+        return render(request , "questions/questions.html" , context = {"Questions":all_questions , "mydetails":userdetails , "newmessage":newmessage})
 
 
 def answersview(request , Qid):
@@ -76,5 +75,7 @@ def updatelikes(request):
         return redirect("/login/")
 
     else:
-        qlike.objects.create(Qid_id = 3 , luid_id = userdetails.uid)
+        print("Hello\n\n\n\n\n")
+        Qid = 3
+        qlike.objects.create(Qid_id = Qid , luid_id = userdetails.uid)
         return redirect("/questions/answers/{}".format(1))
