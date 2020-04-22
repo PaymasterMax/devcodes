@@ -1,0 +1,94 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Dev Code | Questions</title>
+    <link rel="stylesheet" href="{% static 'questions/myQuestions.css' %}">
+  </head>
+  <body>
+    <div class="nav-bar" id="upPart">
+      <div class="links">
+        <a href="{%url 'questions:questions' %}">Questions</a> |
+        <a href="{% url 'peers:peers' %}">Peers</a> |
+        <a href="{% url 'chatroom:chatroom' 1 %}">Chat</a>
+        <a href="{% url 'home:home' %}"><div class="btn btn-info">Home</div></a>
+        </div>
+        <div class="logo">
+        DevCodes/>
+        </div>
+
+        <div class="user-profile">
+          <a href="{% url 'profile:profile' %}">
+            <img src="/media/{{mydetails.profilepic}}" alt="profile" style="width:40px; height:40px; border-radius:50%;">
+          </a>
+      </div>
+  </div>
+  <div class="page-title">My Questions page</div>
+  <div class="main-window">
+        <div class="person-holder">
+    {% for question in Questions %}
+
+    <div class="oneQuestion">
+          <!-- <div class="profile-pic">
+          <img src = "/media/{{question.quid.profilepic}}" alt="profile">
+          </div> -->
+
+          <div class="question-container">
+            <div class="user-details-first-row">
+
+                @   
+              {{question.time_posted}}
+            </div>
+            <div class="question-content">
+              <div class="question-text">{{question.question}}</div>
+            <div class="languages-tagged">
+              {{question.language}}
+              </div>
+            </div>
+            <div class="reply-section">
+             <div class="like">
+               <a href="{% url 'home:home' %}">
+             <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;"></a>
+             15
+             </div>
+             <div class="message">
+             <img src="{% static 'questions/images/message.svg' %}" alt="message icon">
+             {{question.no_of_answers}}
+             </div>
+             <div class="Click">
+            <a href="{% url 'questions:answers' question.qid %}"> Click to view replies</a>
+             </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+    {% endfor %}
+  </div>
+
+  <a href="#upPart"><img src="{% static 'questions/images/up.svg' %}" alt="up_key" class="up-icon"  id="up">
+  </a>
+
+
+<script>
+  var up=document.getElementById('up');
+  window.onscroll=function(){
+  var scrollPos=window.pageYOffset;
+  if(scrollPos<100){
+      up.classList.add('hide');
+  } 
+  else{
+      up.classList.remove('hide');
+  }
+  }
+
+</script>
+</body>
+</html>

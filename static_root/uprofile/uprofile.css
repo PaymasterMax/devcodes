@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 body {
     background-color: #070f54;
+=======
+
+body{
+  height: 100vh;
+  width: 100%;
+>>>>>>> origin/pami
 }
 .profile {
   display: block;
@@ -64,7 +71,6 @@ input[type = "file"] {
 .profile {
   display: block;
   margin: 0px auto;
-  width: 50vw;
 }
 
 .profile >img {
@@ -78,6 +84,7 @@ input[type = "file"] {
 table {
   margin: 0px auto;
   margin-top: 3vw;
+  text-align: center;
 }
 input {
   border: 0px;

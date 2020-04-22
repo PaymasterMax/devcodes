@@ -1,5 +1,5 @@
 *{
-    font-size: 18px;
+    font-size: 16px;
 }
 body{
     background: #070F54;
@@ -45,16 +45,12 @@ margin-left:15px;
 display:flex;
 overflow-wrap: break-word;
 }
-
-
 .user-profile{
 height: 40px;
 width:40px;
 border-radius: 50%;
 margin-right: 5px;
 }
-
-
 .question-container{
     border-radius: 8px;
     padding: 5px;
@@ -131,8 +127,11 @@ margin-right:3px;
     font-family: arial,cursive;
 }
 .pose{
-    text-align: center;
-    border-bottom: 1px solid #919192;
+
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-bottom: 1px solid #919192;
 margin-top: 10px;
 margin-bottom: 18px;
 font-weight: 600;
@@ -179,14 +178,45 @@ box-shadow: 3px 3px 9px 0px black;
     width: 50px; height:50px; border-radius: 50%;
     position: fixed; bottom:2%; right:1.2%;
 }
+.close-button{
 
+    cursor: pointer;
+        border: none;
+        background: none;
+        font-size: 1.25rem;
+        font-weight: bold;
+}
+.question{
+    width:300px;
+}
+.close-button{
+    display: none;
+}
 /* Making it responsive */
 @media only screen and (max-width: 700px) {
     *{
         font-size: 14px;
     }
-    .main-question{
-        display: none;
+
+
+    .modal.active,.main-question.active {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    .question{
+        width:220px;
+    }
+    .close-button{
+        cursor: pointer;
+        border: none;
+        background: none;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .pose{
+      margin-top: 0px;
+       margin-bottom: 10px;
+    padding-left: 20px;
 
     }
     .logo{
@@ -199,14 +229,23 @@ box-shadow: 3px 3px 9px 0px black;
         height: 50px;
         width: 50px;
     }
-    .question-icon{
+    .openButton{
         display: block;
         width: 40px;
          height:40px;
-          /* border-radius: 50%; */
-  position: fixed;
-   bottom:7%;
-   right:1.2%;
+         border-radius: 50%;
+          background-color: #e60c8f;
+         border-style: none;
+    /* font-weight: 600; */
+    color: white;
+    font-size: 15px;
+    box-shadow: 1px 2px 5px black;
+    position: fixed;
+     bottom:7%;
+     right:1.2%;
+    }
+    .openButton:focus{
+        background-color: #e6480c;
     }
     .up-icon{
         bottom: 1%;
@@ -218,5 +257,31 @@ box-shadow: 3px 3px 9px 0px black;
         margin:0;
         min-width: 0px;
     }
+    #overlay{
+        position: fixed;
+        opacity: 0;
+        top:0;
+        transition: 200ms ease-in-out;
 
+        bottom: 0;
+        left: 0;
+        right: 0;
+        pointer-events: none;
+        background-color: rgba(0,0,0,0.6);
+    }
+    #overlay.active{
+        opacity: 1;
+        pointer-events:all;
+    }
+    .modal,.main-question{
+        /* display: none;  */
+        position: fixed;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        z-index: 4;
+        transition: 200ms ease-in-out;
+        min-width: 200px;
+
+    }
 }
