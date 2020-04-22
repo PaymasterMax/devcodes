@@ -13,16 +13,14 @@ def inbox(request):
         return redirect("/login/")
 
     else:
-        all_messages = chatmod.objects.filter(r2uid_id = userdetails.uid)
-        # print(all_messages)
-        # print(dir(all_messages))
+        all_messages = chatmod.objects.filter(r2uid_id = userdetails.uid).order_by("-text_time")
         return render(request , "chatroom/inbox.html" , context = {"all_messages":all_messages , "userdetails":userdetails , "newmessage":newmessage})
 
 
 def chatrm(request , chat_user):
     try:
         userdetails = signmod.objects.get(username = request.session["username"])
-        chats = chatmod.objects.filter(Q(r1uid_id = userdetails.uid , r2uid_id = chat_user) | Q(r1uid_id = chat_user , r2uid_id = userdetails.uid)).order_by("-text_time")
+        chats = chatmod.objects.filter(Q(r1uid_id = userdetails.uid , r2uid_id = chat_user) | Q(r1uid_id = chat_user , r2uid_id = userdetails.uid)).order_by("text_time")
         check_bell = chatmod.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False)
         check_bell.update(bell_seen = True)
 

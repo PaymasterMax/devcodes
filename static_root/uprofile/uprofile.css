@@ -1,3 +1,6 @@
+body {
+    background-color: #070f54;
+}
 .profile {
   display: block;
   margin: 0px auto;
@@ -39,6 +42,7 @@ input[type = "file"] {
   border-style: solid;
   border-color: coral;
   border-radius: 10px;
+  background-color: #fff;
 }
 .nav-bar{
   margin-bottom: 30px;

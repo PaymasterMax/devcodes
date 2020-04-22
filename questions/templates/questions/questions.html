@@ -96,7 +96,7 @@
   </div>
 
   <div class = "main-question">
-    <form class="" action="{% url 'questions:askquestions' %}" method="post">
+    <form action="{% url 'questions:askquestions' %}" method="post">
       {% csrf_token %}
     <div class="pose">
         Ask a Question

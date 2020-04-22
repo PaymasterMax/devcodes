@@ -31,17 +31,22 @@ def locatepeers(request):
 
         if criteria=="username":
             indexed_peers = sp.objects.filter(username__icontains = searchterm).exclude(uid= current_user.uid)
+            no_of_results = indexed_peers.count()
 
         elif criteria=="language":
             indexed_peers = sp.objects.filter(hobby__icontains = searchterm).exclude(uid= current_user.uid)
+            no_of_results = indexed_peers.count()
 
         elif criteria=="email":
             indexed_peers = sp.objects.filter(email__icontains = searchterm).exclude(uid= current_user.uid)
+            no_of_results = indexed_peers.count()
 
         elif criteria=="location":
             indexed_peers = sp.objects.filter(location__icontains = searchterm).exclude(uid= current_user.uid)
+            no_of_results = indexed_peers.count()
 
         else:
             indexed_peers = sp.objects.filter(pnumber__icontains = searchterm).exclude(uid= current_user.uid)
+            no_of_results = indexed_peers.count()
 
-        return render(request , "peers/peers.html" , context = {"users":indexed_peers , "user":current_user})
+        return render(request , "peers/peers.html" , context = {"users":indexed_peers , "user":current_user , "rlsearch":"Related search" ,"small":"search results " , "query":searchterm , "no_of_results" : no_of_results})

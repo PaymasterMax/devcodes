@@ -40,7 +40,7 @@
           <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="">
         </p>
           <form class="search-form" action="{% url 'peers:locatepeers' %}" method="get">
-            <input type="search" name="peer" placeholder="Search" required autocomplete="language">
+            <input type="search" name="peer" placeholder="Search" required autocomplete="language" value="{{query}}">
             <button type="submit" name="button" class="btn btn-info">search</button>
             <br>
               <select class="slen" name="critrion" size="1">
@@ -52,6 +52,8 @@
               </select>
           </form>
       </div>
+          <h5 id="relsearch">{{rlsearch}}</h5>
+          <small id="resultscount"> {{small}} {{no_of_results}}</small>
       <hr>
       {% for usr in users %}
 

@@ -1,12 +1,24 @@
 body {
-  /* background-color: #070f54; */
-  background-color: #242721;
-  background-color: red;
+  background-color: #070f54;
+  /* background-color: #242721; */
+}
+
+#relsearch {
+  text-align: center;
+  margin: 12px;
+}
+
+#resultscount {
+  display: block;
+  text-align: center;
+  width: 100%;
 }
 
 hr {
   width: 80%;
 }
+
+
 .header {
   background-color: #633f3f;
   min-height: 8vh;
@@ -175,11 +187,30 @@ hr {
   margin-right: auto;
   padding-top: 30px;
 }
+  .logo {
+    display: none;
+  }
 
-.logo > img {
-  width: 70px;
-  height: 70px;
-  margin: 0px 0px 0px 30px;
-}
+  .logo > img {
+    width: 70px;
+    height: 70px;
+    margin: 0px 0px 0px 30px;
+  }
 
+
+  .search-form {
+    display: block;
+    width: 80%;
+    margin:0px auto;
+    margin: 0px 10px 10px 10px;
+    border-radius: 20px;
+    text-align: center;
+  }
+
+
+  .search-form>input[type="search"]{
+    margin: 20px 0px 20px 20px;
+    border-radius: 20px;
+    text-align: center;
+  }
 }

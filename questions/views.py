@@ -26,11 +26,12 @@ def answersview(request , Qid):
 
     try:
         userdetails = Signup.objects.get(username = request.session["username"])
-        newmessage = chtb.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False).count()
+        print("\n\n\n\nhello world")
     except Exception as e:
-        return render(request , "questions/answers.html" , context = {"userdetails":"userdetails" , "answers_form":answers_form , "Qid":Qid , "allanswers":allanswers , "question_info":question_info , "newmessage":newmessage})
+        return render(request , "questions/answers.html" , context = {"userdetails":"userdetails" , "answers_form":answers_form , "Qid":Qid , "allanswers":allanswers , "question_info":question_info , "newmessage":0})
 
     else:
+        newmessage = chtb.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False).count()
         return render(request , "questions/answers.html" , context = {"userdetails":userdetails , "answers_form":answers_form , "Qid":Qid , "allanswers":allanswers , "question_info":question_info , "newmessage":newmessage})
 
 
@@ -63,7 +64,7 @@ def update_answers(request , Qid):
 
         else:
             Answers.objects.create(auid_id = userdetails.uid , question_to_answer_id = Qid , answer = answerquery)
-            return redirect("/questions/answers/{}".format(Qid))
+            return redirect("/questions/answers/{}/".format(Qid))
 
     else:
         questionsview(request)
