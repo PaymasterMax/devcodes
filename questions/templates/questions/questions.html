@@ -1,5 +1,6 @@
 {% load timemod %}
 {% load static %}
+{% load like %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -19,7 +20,7 @@
         <a href="{% url 'peers:peers' %}">Peers</a> |
         <a href="{% url 'chatroom:inbox' %}">inbox</a>
         <a href="{% url 'home:home' %}"><div class="btn btn-info">Home</div></a>
-        <a href="#">
+        <a href="{% url 'chatroom:inbox' %}">
           <i class="fa fa-envelope"> {{newmessage}}</i>
         </a>
         </div>
@@ -56,11 +57,19 @@
               </div>
             </div>
             <div class="reply-section">
-             <div class="like">
-               <a href="{% url 'home:home' %}">
-             <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;"></a>
-             15
-             </div>
+             {% if mydetails.uid|likey:question %}
+                   <div class="like">
+                     <a href="{% url 'home:home' %}">
+                   <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;"></a>
+                   {{question.question_liked.count}}
+                   </div>
+             {% else %}
+                 <div class="like">
+                   <a href="{% url 'home:home' %}">
+                 <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;"></a>
+                 {{question.question_liked.count}}
+                 </div>
+             {% endif %}
              <div class="message">
              <img src="{% static 'questions/images/message.svg' %}" alt="message icon">
              {{question.no_of_answers}}
