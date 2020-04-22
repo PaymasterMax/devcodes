@@ -18,6 +18,18 @@ def questionsview(request):
         return render(request , "questions/questions.html" , context = {"Questions":all_questions , "mydetails":userdetails , "newmessage":newmessage})
 
 
+def myquestions(request):
+    try:
+        userdetails = Signup.objects.get(username = request.session["username"])
+        newmessage = chtb.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False).count()
+    except Exception as e:
+        return redirect("/login/")
+
+    else:
+        all_questions = Questions.objects.filter(quid_id = userdetails.uid).annotate(no_of_answers = Count("question_to_answer"))
+        return render(request , "questions/personal.html" , context = {"Questions":all_questions , "mydetails":userdetails , "newmessage":newmessage})
+
+
 def answersview(request , Qid):
     answers_form = anserform()
 

@@ -15,10 +15,13 @@
   <body>
     <div class="nav-bar" id="upPart">
       <div class="links">
+        <a href="{% url 'home:home' %}">home</a> |
         <a href="{%url 'questions:questions' %}">Questions</a> |
         <a href="{% url 'peers:peers' %}">Peers</a> |
-        <a href="{% url 'chatroom:chatroom' 1 %}">Chat</a>
-        <a href="{% url 'home:home' %}"><div class="btn btn-info">Home</div></a>
+        <a href="{% url 'chatroom:inbox' %}">inbox</a>
+        <a href="#">
+          <i class="fa fa-envelope"> {{newmessage}}</i>
+        </a>
         </div>
         <div class="logo">
         DevCodes/>
@@ -43,7 +46,7 @@
           <div class="question-container">
             <div class="user-details-first-row">
 
-                @   
+                @
               {{question.time_posted}}
             </div>
             <div class="question-content">
@@ -56,7 +59,7 @@
              <div class="like">
                <a href="{% url 'home:home' %}">
              <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;"></a>
-             15
+             {{question.no_of_answers}}
              </div>
              <div class="message">
              <img src="{% static 'questions/images/message.svg' %}" alt="message icon">
@@ -83,7 +86,7 @@
   var scrollPos=window.pageYOffset;
   if(scrollPos<100){
       up.classList.add('hide');
-  } 
+  }
   else{
       up.classList.remove('hide');
   }
