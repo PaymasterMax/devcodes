@@ -58,18 +58,21 @@
               </div>
             </div>
             <div class="reply-section">
-             {% if mydetails.uid|likey:question %}
-                 <div class="like">
-                 <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 30px;">
-                 {{question.question_liked.count}}
-                 </div>
-             {% else %}
-                 <div class="like">
-                       <img src="{% static 'questions/images/like.svg' %}" class="ls" alt="like icon" style="width: 30px; height: 30px;" onclick="submitlike()">
-                       {{question.question_liked.count}}
-                 </div>
 
-             {% endif %}
+              {% if mydetails.uid|likey:question %}
+                  <div class="like">
+                  <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 30px;">
+                  {{question.question_liked.count}}
+                  </div>
+              {% else %}
+                  <div class="like">
+                        <img src="{% static 'questions/images/like.svg' %}" class="ls" alt="like icon" style="width: 30px; height: 30px;" onclick="submitlike()">
+                        {{question.question_liked.count}}
+                  </div>
+
+              {% endif %}
+
+
              <div class="message">
 
                  <img src="{% static 'questions/images/message.svg' %}" alt="message icon">
@@ -131,11 +134,14 @@
     </form>
     </div>
 </div>
+</div>
 
-  <a href="#upPart"><img src="{% static 'questions/images/up.svg' %}" alt="up_key" style="width: 50px; height:50px; border-radius: 50%;
-    position: fixed; bottom:3%; right:1.2%;" id="up">
+   <a href=""><img src="{% static 'questions/images/questionMark.svg' %}" alt="question" class="question-icon" id="quz">
+  </a>
+  <a href="#upPart"><img src="{% static 'questions/images/up.svg' %}" alt="up_key" class="up-icon"  id="up">
     </a>
   </body>
+
 
 <script>
   var up=document.getElementById('up');
