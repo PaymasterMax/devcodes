@@ -4,6 +4,8 @@ from .forms import anserform
 from django.db.models import Count
 from .models import Questions , Answers , QuestionLike as qlike
 from chatroom.models import ChatModel as chtb
+
+
 def questionsview(request):
     try:
         userdetails = Signup.objects.get(username = request.session["username"])
@@ -24,11 +26,12 @@ def answersview(request , Qid):
 
     try:
         userdetails = Signup.objects.get(username = request.session["username"])
+        newmessage = chtb.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False).count()
     except Exception as e:
-        return render(request , "questions/answers.html" , context = {"userdetails":"userdetails" , "answers_form":answers_form , "Qid":Qid , "allanswers":allanswers , "question_info":question_info })
+        return render(request , "questions/answers.html" , context = {"userdetails":"userdetails" , "answers_form":answers_form , "Qid":Qid , "allanswers":allanswers , "question_info":question_info , "newmessage":newmessage})
 
     else:
-        return render(request , "questions/answers.html" , context = {"userdetails":userdetails , "answers_form":answers_form , "Qid":Qid , "allanswers":allanswers , "question_info":question_info })
+        return render(request , "questions/answers.html" , context = {"userdetails":userdetails , "answers_form":answers_form , "Qid":Qid , "allanswers":allanswers , "question_info":question_info , "newmessage":newmessage})
 
 
 def askquestionsview(request):

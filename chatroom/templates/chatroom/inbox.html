@@ -35,99 +35,42 @@
     </div>
 
     <div class="main">
-      <h4>Question</h4>
-      <hr style="width:100px;margin: 0px auto;">
-      <div class="question">
-
-        <div class="profile queryprofile">
-          <img src="/media/{{question_info.quid.profilepic}}" alt="{{question_info.quid.username}}" title="{{question_info.quid.username}}">
-          <p>{{question_info.quid.username}}</p>
-        </div>
-
-        <div class="question-content">
-          <div class="question-main-content">
-            {{question_info.question}}
-          </div>
-
-          <p class="ft">
-            {{question_info.quid.hobby}}
-          </p>
-          <p class="ft">
-            {{question_info.time_posted | timemodifier}}
-          </p>
-        </div>
-      </div>
-
 
       <!-- Start of answers -->
-        <h4>Answers</h4>
+        <h4>Messages</h4>
         <hr style="width:100px;margin: 0px auto;">
-        {% for answer in allanswers %}
+        {% for msg in all_messages %}
       <div class="answers">
 
         <div class="profile queryprofile">
-          <img src="/media/{{answer.auid.profilepic}}" alt="profile" title="{{answer.auid.username}}">
-          <p>{{answer.auid.username}}</p>
+          <img src="/media/{{msg.r1uid.profilepic}}" alt="profile" title="{{answer.auid.username}}">
+          <p>{{msg.r1uid.username}}</p>
         </div>
 
         <div class="answers-content">
           <div class="answers-main-content">
-            {{answer.answer}}
+            {{msg.text_message}}
           </div>
 
           <p class="ft">
-            {{answer.auid.hobby}}
+            <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">Open</a>
+          </p>
+
+          <p class="ft">
+            {{msg.r1uid.hobby}}
           </p>
           <p class="ft">
-            {{answer.time_posted | timemodifier}}
+            {{msg.text_time | timemodifier}}
           </p>
         </div>
       </div>
       {% endfor %}
-      <!-- end of answers -->
 
-<!-- Start of submit answer -->
-<div class="answers">
-  <div class="answer-form">
-
-    <form class="" action="{% url 'questions:updateanswers' Qid %}" method="post">
-      {% csrf_token %}
-        {{answers_form.as_p}}
-        <textarea name="message" rows="3" cols="25" id="small" placeholder="your answer"></textarea>
-
-      <button type="submit" name="submit" value="submit" class="btn btn-info">Send</button>
-    </form>
-
-    <p class="ft">
-      Python
-    </p>
-  </div>
 </div>
-
-<!-- end of submit answers -->
-
-    </div>
 
     <div class="footer">
 
     </div>
-
-    <script type="text/javascript">
-
-        function submitanswer() {
-          var xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function(){
-            if(this.status == 200 &&  this.readyState == 4) {
-              alert(this.responseText());
-            }
-          };
-          xhttp.setheader("X-CSRFToken" , {{csrf_token}});
-          xhttp.open("post" , "{% url 'questions:questions' %}");
-          xhttp.send();
-
-        }
-
-    </script>
 
   </body>
 </html>
