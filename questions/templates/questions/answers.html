@@ -118,11 +118,11 @@
               alert(this.responseText());
             }
           };
-          xhttp.setheader("X-CSRFToken" , {{csrf_token}});
+          xhttp.setheader("X-CSRFToken" , {csrf_token});
           xhttp.open("post" , "{% url 'questions:questions' %}");
           xhttp.send();
-
         }
+        
 
     </script>
 

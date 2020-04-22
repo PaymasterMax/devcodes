@@ -10,16 +10,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <title>Dev Code | Questions</title>
-    <link rel="stylesheet" href="{% static 'questions/questions.css' %}">
+    <link rel="stylesheet" href="{% static 'questions/myQuestions.css' %}">
   </head>
   <body>
-    <div class="nav-bar">
+    <div class="nav-bar" id="upPart">
       <div class="links">
+        <a href="{%url 'questions:questions' %}">Questions</a> |
         <a href="{% url 'peers:peers' %}">Peers</a> |
         <a href="{% url 'chatroom:chatroom' 1 %}">Chat</a>
         <a href="{% url 'home:home' %}"><div class="btn btn-info">Home</div></a>
         </div>
-        <div class="logo" id="upPart">
+        <div class="logo">
         DevCodes/>
         </div>
 
@@ -29,20 +30,20 @@
           </a>
       </div>
   </div>
-  <div class="page-title">Questions page</div>
+  <div class="page-title">My Questions page</div>
   <div class="main-window">
-  <div class="person-holder">
+        <div class="person-holder">
     {% for question in Questions %}
 
     <div class="oneQuestion">
-          <div class="profile-pic">
+          <!-- <div class="profile-pic">
           <img src = "/media/{{question.quid.profilepic}}" alt="profile">
-          </div>
+          </div> -->
 
           <div class="question-container">
             <div class="user-details-first-row">
 
-              {{question.quid.username}}   @   
+                @   
               {{question.time_posted}}
             </div>
             <div class="question-content">
@@ -66,62 +67,14 @@
              </div>
             </div>
           </div>
-    </div>
+        </div>
 
-
+        </div>
     {% endfor %}
   </div>
 
-  <div class = "main-question" class="modal"  id="modal">
-    
-    <div class="pose">
-      Ask a Question
-      <button data-close-button class="close-button">&times;</button>
-  </div>
-    <form class="" action="{% url 'questions:askquestions' %}" method="post">
-      {% csrf_token %}
-    
-    <div class="question">
-
-          <input type="text" name="question" placeholder="Type question.." required id="question" size="55" style="
-          height: 150px;
-          width:inherit;
-          background:white;
-          border-radius: 3px;
-          border-style: none;
-          border-color: #0a4b4b">
-    </div>
-
-    <!-- <div class="Add-img">
-         Put an image icon
-        <button>Add image</button>
-    </div> -->
-
-    <div class="languages">
-        <input type="text" maxlength="15" name="language" required placeholder="Mention programming language(s).." id="question" size="33"
-        style="
-
-        border-radius: 3px;
-        background: white;
-        border-style: none;
-        border-color: #0b5858;
-        ">
-
-    </div>
-    <div class="question-btns">
-        <button type="submit" class="post">Post</button>
-        <button class="cancel">Cancel</button>
-      </form>
-    </div>
-</div>
-</div>
-  <div id="overlay"></div>
-   <button data-modal-target="#modal" class="openButton">
-    Ask
-  
-  </button>
   <a href="#upPart"><img src="{% static 'questions/images/up.svg' %}" alt="up_key" class="up-icon"  id="up">
-    </a>
+  </a>
 
 
 <script>
@@ -136,50 +89,6 @@
   }
   }
 
-  const openModalButtons = document.querySelectorAll('[data-modal-target]')
-  const closeModalButtons = document.querySelectorAll('[data-close-button]')
-  const overlay = document.getElementById('overlay') 
-
-  openModalButtons.forEach(button =>{ 
-    button.addEventListener('click', () => {
-      const modal = document.querySelector(button.dataset.modalTarget)
-      openModal(modal)
-    })
-  })
- 
-
-  overlay.addEventListener('click', () => {
-    const modals = document.querySelectorAll('.modal.active')
-    modals.forEach(modal =>{
-      closeModal(modal)
-    })
-  
-  })
-
-  closeModalButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const modal = button.closest('.modal')
-      closeModal(modal)
-    })
-  })
-
-
-  function openModal(modal){
-    if(modal == null) {return}
-    else{
-    modal.classList.add('active')
-    overlay.classList.add('active')
-    }
-  }
-  function closeModal(modal){
-    if(modal == null) {return}
-    else{
-    modal.classList.remove('active')
-    overlay.classList.remove('active')
-    }
-  }
-
-
 </script>
-  </body>
+</body>
 </html>
