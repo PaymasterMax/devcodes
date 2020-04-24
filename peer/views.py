@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from signup.models import Signup as sp
 from chatroom.models import ChatModel as chtb
 from django.http import HttpResponse
@@ -11,7 +11,8 @@ def peers(request):
         newmessage = chtb.objects.filter(r2uid_id =  current_user.uid, bell_seen = False).count()
 
     except Exception as e:
-        pass
+        return redirect("/login/")
+
     else:
         pass
 
@@ -49,4 +50,5 @@ def locatepeers(request):
             indexed_peers = sp.objects.filter(pnumber__icontains = searchterm).exclude(uid= current_user.uid)
             no_of_results = indexed_peers.count()
 
-        return render(request , "peers/peers.html" , context = {"users":indexed_peers , "user":current_user , "rlsearch":"Related search" ,"small":"search results " , "query":searchterm , "no_of_results" : no_of_results})
+        newmessage = chtb.objects.filter(r2uid_id =  current_user.uid, bell_seen = False).count()
+        return render(request , "peers/peers.html" , context = {"users":indexed_peers , "user":current_user , "rlsearch":"Related search" ,"small":"search results " , "query":searchterm , "no_of_results" : no_of_results , "newmessage":newmessage})

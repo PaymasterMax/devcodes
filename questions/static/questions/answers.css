@@ -166,6 +166,10 @@ button[type = "submit"] {
 }
 
 
+.notif {
+  color: green;
+}
+
 
 @media screen and (max-width:700px) {
   .main {

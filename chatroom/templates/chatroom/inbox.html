@@ -26,6 +26,11 @@
 
       <!-- profile photo -->
       <div class="profile myprofile">
+
+        <a href="{% url 'questions:questions' %}">
+          <i class="fa fa-bell notif"> {{newmessage}}</i>
+        </a>
+
         <a href="{% url 'profile:profile' %}" title="{{userdetails.username}}">
           <img src="/media/{{userdetails.profilepic}}" alt="profile">
         </a>
@@ -67,31 +72,35 @@
             </div>
             {% else %}
 
-                <div class="answers">
+                <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}" class="messageref">
 
-                  <div class="profile queryprofile">
-                    <img src="/media/{{msg.r1uid.profilepic}}" alt="profile" title="{{answer.auid.username}}">
-                    <p>{{msg.r1uid.username}}</p>
-                  </div>
+                  <div class="answers unseen">
 
-                  <div class="answers-content">
-                    <div class="answers-main-content">
-                      {{msg.text_message}}
+                    <div class="profile queryprofile">
+                      <img src="/media/{{msg.r1uid.profilepic}}" alt="profile" title="{{answer.auid.username}}">
+                      <p>{{msg.r1uid.username}}</p>
                     </div>
 
-                    <p class="ft">
-                      <i class="fa fa-envelope seen"> {{newmessage}}</i>
-                      <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">Open</a>
-                    </p>
+                    <div class="answers-content">
+                      <div class="answers-main-content">
+                        {{msg.text_message}}
+                      </div>
 
-                    <p class="ft">
-                      {{msg.r1uid.hobby}}
-                    </p>
-                    <p class="ft">
-                      {{msg.text_time | timemodifier}}
-                    </p>
+                      <p class="ft">
+                        <i class="fa fa-envelope seen"> {{newmessage}}</i>
+                        <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">Open</a>
+                      </p>
+
+                      <p class="ft">
+                        {{msg.r1uid.hobby}}
+                      </p>
+                      <p class="ft">
+                        {{msg.text_time | timemodifier}}
+                      </p>
+                    </div>
                   </div>
-                </div>
+
+                </a>
 
             {% endif %}
         {% endfor %}

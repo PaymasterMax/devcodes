@@ -38,7 +38,7 @@ def answersview(request , Qid):
 
     try:
         userdetails = Signup.objects.get(username = request.session["username"])
-        print("\n\n\n\nhello world")
+    
     except Exception as e:
         return render(request , "questions/answers.html" , context = {"userdetails":"userdetails" , "answers_form":answers_form , "Qid":Qid , "allanswers":allanswers , "question_info":question_info , "newmessage":0})
 

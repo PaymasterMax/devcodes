@@ -110,7 +110,7 @@ margin-right:3px;
     width: max-content;
     height:max-content;
     border-style: none;
- 
+
     border-radius: 10px;
     background: #c4c4c4;
         padding: 10px;
@@ -129,7 +129,7 @@ margin-right:3px;
 }
 .pose{
 
-display: flex;    
+display: flex;
 justify-content: space-between;
 align-items: center;
 border-bottom: 1px solid #919192;
@@ -180,7 +180,7 @@ box-shadow: 3px 3px 9px 0px black;
     position: fixed; bottom:2%; right:1.2%;
 }
 .close-button{
-    
+
     cursor: pointer;
         border: none;
         background: none;
@@ -193,13 +193,19 @@ box-shadow: 3px 3px 9px 0px black;
 .close-button{
     display: none;
 }
+
+.openButton {
+  display: none;
+}
+
+
 /* Making it responsive */
-@media only screen and (max-width: 700px) { 
+@media only screen and (max-width: 700px) {
     *{
         font-size: 14px;
     }
-    
-    
+
+
     .modal.active,.main-question.active {
         transform: translate(-50%, -50%) scale(1);
     }
@@ -238,14 +244,14 @@ box-shadow: 3px 3px 9px 0px black;
          height:40px;
           /* border-radius: 50%; */
   position: fixed;
-   bottom:7%; 
+   bottom:7%;
    right:1.2%;
     }
     .up-icon{
         bottom: 1%;
         width:30px;
         height: 30px;
-    
+
     }
     .question-container{
         margin:0;
@@ -259,10 +265,10 @@ box-shadow: 3px 3px 9px 0px black;
 
         bottom: 0;
         left: 0;
-        right: 0; 
+        right: 0;
         pointer-events: none;
         background-color: rgba(0,0,0,0.6);
-    } 
+    }
     #overlay.active{
         opacity: 1;
         pointer-events:all;
@@ -276,6 +282,6 @@ box-shadow: 3px 3px 9px 0px black;
         z-index: 4;
         transition: 200ms ease-in-out;
         min-width: 200px;
-        
+
     }
 }

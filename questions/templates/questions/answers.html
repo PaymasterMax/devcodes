@@ -26,6 +26,7 @@
 
       <!-- profile photo -->
       <div class="profile myprofile">
+        <i class="fa fa-bell notif"> {{newmessage}}</i>
         <a href="{% url 'profile:profile' %}" title="{{userdetails.username}}">
           <img src="/media/{{userdetails.profilepic}}" alt="profile">
         </a>
@@ -125,7 +126,7 @@
           xhttp.open("post" , "{% url 'questions:questions' %}");
           xhttp.send();
         }
-        
+
 
     </script>
 

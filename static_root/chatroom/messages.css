@@ -22,6 +22,7 @@ a {
   text-decoration: none;
 }
 
+
 a:hover {
   text-decoration: none;
   color: #fff;
@@ -32,7 +33,8 @@ a:hover {
   float: right;
   display: inline-block;
   margin-top: auto;
-  margin-right: auto;
+  margin-right: 40px;
+  display: flex;
 }
 
 
@@ -42,9 +44,16 @@ a:hover {
   display: block;
   border-radius: 50%;
   margin-top: auto;
-  /* margin-right: auto; */
 }
 
+.current-profile >a {
+  flex: 1;
+}
+
+
+.bell {
+  padding: 10px;
+}
 
 .profile {
   width: 60px;
@@ -148,6 +157,10 @@ a:hover {
 }
 
 
+#frm {
+  margin-top: 50px;
+}
+
 .answer-form>form {
   margin-left: auto;
   margin-right: auto;
@@ -175,6 +188,36 @@ textarea {
 }
 
 
+.unseen {
+  background-color: red;
+}
+
+
+.personchat {
+  display: block;
+  margin: 0px auto;
+  padding: 10px;
+}
+
+.personchat >img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: block;
+  margin: 10px auto;
+}
+
+
+.personchat>p {
+  text-align: center;
+  font-weight: bold;
+}
+
+
+.messageref {
+  color: #000;
+  text-decoration: none;
+}
 @media screen and (max-width:700px) {
 
   .main {
@@ -235,5 +278,9 @@ textarea {
     margin-right: 4px;
     padding: 5px;
     background-color: #000000;
+  }
+
+  .current-profile {
+    display: none;
   }
 }

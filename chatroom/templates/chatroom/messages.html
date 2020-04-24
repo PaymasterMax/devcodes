@@ -19,11 +19,15 @@
       <nav>
           <a href="{% url 'home:home' %}">Home</a> |
           <a href="{% url 'questions:questions' %}">Questions</a> |
-          <a href="{% url 'chatroom:inbox' %}">Inbox</a> | 
+          <a href="{% url 'chatroom:inbox' %}">Inbox</a> |
           <a href="{% url 'peers:peers' %}">Peers</a>
       </nav>
 
       <div class="profile current-profile">
+        <a href="{% url 'questions:questions' %}" class="bell">
+          <i class="fa fa-bell notif"> {{newmessage}}</i>
+        </a>
+
         <a href="{% url 'profile:profile' %}">
           <img src="/media/{{userdetails.profilepic}}" alt="profile" title="{{userdetails.username}}">
         </a>
@@ -32,6 +36,10 @@
     </div>
 
     <div class="main">
+        <div class="personchat">
+          <img src="/media/{{receiver.profilepic}}" alt="{{receiver.username}}" title="{{receiver.username}}">
+          <p>{{receiver.username}}</p>
+        </div>
 
       <!-- single message -->
       {% for data in chats %}
@@ -78,7 +86,7 @@
             <!-- <input type="text" name="message"> -->
             <textarea name="msg" rows="3" cols="30"></textarea>
 
-            <input type="hidden" name="re" value="{{receiver}}">
+            <input type="hidden" name="re" value="{{receiver.uid}}">
 
             <button type="submit" name="submit" value="submit" class="btn btn-info">Send</button>
           </form>

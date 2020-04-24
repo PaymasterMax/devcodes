@@ -23,13 +23,14 @@ def chatrm(request , chat_user):
         chats = chatmod.objects.filter(Q(r1uid_id = userdetails.uid , r2uid_id = chat_user) | Q(r1uid_id = chat_user , r2uid_id = userdetails.uid)).order_by("text_time")
         check_bell = chatmod.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False)
         check_bell.update(bell_seen = True)
+        ch_user = signmod.objects.get(uid = chat_user)
 
     except Exception as e:
         print(e)
         return redirect("/login/")
 
     else:
-        return render(request , "chatroom/messages.html" , context = {"userdetails":userdetails , "chats":chats , "receiver":chat_user})
+        return render(request , "chatroom/messages.html" , context = {"userdetails":userdetails , "chats":chats , "receiver":ch_user})
 
 
 # update chats
@@ -41,6 +42,8 @@ def updatechats(request):
             id = signmod.objects.get(username = request.session["username"]).uid
 
         except Exception as e:
+            print(e)
+            print("\n\n\n")
             return redirect("/chatroom/{}/#frm".format(receiver))
 
         else:
