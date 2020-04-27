@@ -10,7 +10,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Dev Code | Home</title>
+    <title>DevCodes | Home</title>
     <link rel="stylesheet" href="{% static 'home/home.css' %}">
   </head>
   <body>
@@ -36,16 +36,26 @@
 
         {% if userlog %}
         <div class="user-profile">
-          <!-- <a href="{% url 'login:logout' %}">logout</a> -->
           <a> <i class="fa fa-bell">{{notifs}}</i> </a>
           <a href="{% url 'profile:profile' %}">
-            <img src="/media/{{userinfo.profilepic}}" alt="profile" style="width:40px; height:40px; border-radius:50%;">
+            <img src="/media/{{userinfo.profilepic}}" alt="profile"
+             style="width:40px; height:40px; border-radius:50%;">
+             <div class="user-dropdown">
+               <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
+                 Edit profile
+               </a>
+               <a href="{% url 'login:login' %}">
+                 Log out
+               </a>
+             </div>
           </a>
       </div>
         {% else %}
         <div class="user-profile">
-            <img src="{% static 'home/images/icon.jpg' %}" alt="profile" style="width:40px; height:40px; border-radius:50%;">
-        </div>
+            <img src="{% static 'home/images/icon.jpg' %}" alt="profile" 
+            style="width:40px; height:40px; border-radius:50%;">
+
+      </div>
         {% endif %}
   </div>
 
@@ -172,12 +182,15 @@
         <p class="footer-header">About us</p>
 
         <p>
-          The website was created for the purpose of serving as a  Q | A site,
-          If you have any suggestions, comments please feel free to get in touch with us through twitter and email.
+          <a href="#">Hello world</a>
         </p>
 
         <p>
-          <a href="#">Privacy</a> | <a href="#">Policies</a>
+          <a href="#">Hello world</a>
+        </p>
+
+        <p>
+          <a href="#">Hello world</a>
         </p>
       </div>
 
@@ -185,15 +198,15 @@
       <div class="social botttom-link">
         <p class="footer-header">Social Links</p>
         <p>
-         <i class="fa fa-group"></i>  <a href="mailto:devcodesv1@gmail.com?subject=feedback" target="_parent">Support</a>
+          <a href="mailto:anornymous99@gmail.com?subject=feedback">Support</a>
         </p>
 
         <p>
-           <i class="fa fa-youtube"></i> <a href="https://youtube.com/channel/UCWhXGuHblviSA78EVlrvgXQ" target="_blank">Youtube</a>
+          <a href="#"> <i class="fa fa-youtube"></i> Youtube</a>
         </p>
 
         <p>
-           <i class="fa fa-twitter"></i> <a href="https://twitter.com/OriPaminus" target="_blank">twitter</a>
+          <a href="#"> <i class="fa fa-twitter"></i> twitter</a>
         </p>
 
 
@@ -211,16 +224,76 @@
 
 
           <p>
-            Follow dev on <a href="https://twitter.com/OriPaminus"><i class="fa fa-twitter"></i> twitter</a>
+            Follow dev on <a href="#"><i class="fa fa-twitter"></i> twitter</a>
           </p>
 
           <p>
             Email:
-            <a href="mailto:devcodesv1@gmail.com">Developer</a>
+            <a href="mailto:anornymous99@gmail.com?subject=feedback">Developer</a>
           </p>
         </p>
-      </div>
+     
+
+      <button class="feed-btn" id="btn">
+        Give us feedback
+    </button>
+  </div>
+    <div class="feedback" class="modal"  id="feed-class">
+        <div class="feed-hld">
+            <span class="top">
+            Leave us a message <t> </t>
+            <button data-close-button="#modal" class="close-button" id="closer">&times;</button>
+            </span>
+            <div class="email-sect">
+                <input type="email" class="detail" required autocomplete id="email" name="email">
+                <label class="lbl">
+                    <span class="placeValue">
+                        Email
+                    </span>
+                   
+                </label>
+            </div>
+            <div class="message-sect">
+                <!-- <input type="text" class="detail" required autocomplete="off" id="message" name="message"> -->
+                <textarea rows="7" cols="38"  placeholder="Type a question.." name="question"  id="question"
+                required style="
+                 background: rgba(255, 255, 255, 0.912);
+        border-radius: 3px;
+        border-style: none;
+        resize: none;
+        width: 100%;
+        border: 1px solid #525151;
+        margin: 10px 0px;
+                   "></textarea>       
+                    </div>
+    <div class="submit">
+        <button class="send-btn">
+            Send
+        </button>
+    
     </div>
+        </div>
+    </div>
+  </div>
 </footer>
+
+    <script>
+    
+    const turn = document.getElementById("btn");
+    const content = document.getElementById('feed-class');
+        const closer = document.getElementById('closer');
+    
+    turn.addEventListener('click',function(){    
+        content.classList.add('addme');
+        }); 
+        
+          
+    closer.addEventListener('click',function(){
+        const content = document.getElementById('feed-class');
+        content.classList.remove('addme');
+    }
+    );    
+    </script>
+    
 </body>
 </html>

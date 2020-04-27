@@ -80,6 +80,7 @@ WSGI_APPLICATION = 'devcodes.wsgi.application'
 
 DATABASES = {
     'default': {
+
          'ENGINE': 'django.db.backends.sqlite3',
          'NAME': "devcodes.sqlite3",
         #'ENGINE': 'django.db.backends.mysql',
@@ -88,6 +89,11 @@ DATABASES = {
         #"HOST":"127.0.0.1",
         #"USER":"root",
         #"PASSWORD":"",
+
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': "devcodes.db",
+        
+
 
     }
 }

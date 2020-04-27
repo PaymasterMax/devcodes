@@ -11,30 +11,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <title>Dev Code | Questions</title>
+    <title>DevCodes | Questions</title>
     <link rel="stylesheet" href="{% static 'questions/questions.css' %}">
+   
   </head>
   <body>
     <div class="nav-bar">
       <div class="links">
         <a href="{% url 'home:home' %}" >Home</a> |
         <a href="{% url 'peers:peers' %}">Peers</a> |
-        <a href="{% url 'questions:myquestions' %}">My Questions</a> |
-        <a href="{% url 'chatroom:inbox' %}"> Inbox
+        <a href="{% url 'chatroom:inbox' %}">Inbox</a>
+        <a href="{% url 'chatroom:inbox' %}">
           <i class="fa fa-envelope"> {{newmessage}}</i>
-        </a>
+        </a> |
+        <a href="{% url 'questions:myquestions' %}">My Questions</a>
         </div>
-        <div class="logo" id="upPart">
+        <div class="logo">
         DevCodes/>
         </div>
 
         <div class="user-profile">
+          <a> <i class="fa fa-bell">5</i> </a>
           <a href="{% url 'profile:profile' %}">
             <img src="/media/{{mydetails.profilepic}}" alt="profile" style="width:40px; height:40px; border-radius:50%;">
           </a>
       </div>
   </div>
-  <div class="page-title">Questions page</div>
+  <div class="page-title"  id="upPart">Questions page</div>
   <div class="main-window">
   <div class="person-holder">
     {% for question in Questions %}
@@ -64,7 +67,8 @@
                    </div>
              {% else %}
                  <div class="like">
-                 <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;" onclick="updatemonster({{question.qid}});">
+                 <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;" 
+                 onclick="updatemonster({question,qid});">
                       {{question.question_liked.count}}
                  </div>
              {% endif %}
@@ -88,20 +92,19 @@
 
     <div class="pose">
       Ask a Question
-      <button data-close-button class="close-button">&times;</button>
+      
+     <button data-close-button id="x-btn" class="close-button">&times;</button> 
   </div>
     <form class="" action="{% url 'questions:askquestions' %}" method="post">
       {% csrf_token %}
 
     <div class="question">
 
-          <input type="text" name="question" placeholder="Type question.." required id="question" size="55" style="
-          height: 150px;
-          width:inherit;
-          background:white;
-          border-radius: 3px;
-          border-style: none;
-          border-color: #0a4b4b">
+          <textarea rows="7" cols="38"  placeholder="Type a question.." name="question"  id="question"  required style="
+          background:rgba(255, 255, 255, 0.912);
+               border-radius: 3px;
+               border-style: none;
+               "></textarea>
     </div>
 
     <!-- <div class="Add-img">
@@ -110,7 +113,8 @@
     </div> -->
 
     <div class="languages">
-        <input type="text" maxlength="15" name="language" required placeholder="Mention programming language(s).." id="question" size="33"
+        <input type="text" maxlength="15" name="language" required placeholder="Mention programming language(s).." 
+        id="question-lang" size="33"
         style="
 
         border-radius: 3px;
@@ -140,17 +144,33 @@
   var up=document.getElementById('up');
   window.onscroll=function(){
   var scrollPos=window.pageYOffset;
-  if(scrollPos<100){
-      up.classList.add('hide');
+  if(scrollPos>100){
+      up.classList.add('showUp');
   }
   else{
-      up.classList.remove('hide');
+      up.classList.remove('showUp');
   }
   }
 
-  const openModalButtons = document.querySelectorAll('[data-modal-target]')
-  const closeModalButtons = document.querySelectorAll('[data-close-button]')
-  const overlay = document.getElementById('overlay')
+  const openModalButtons = document.querySelectorAll('[data-modal-target]');
+  const closeModalButtons = document.querySelectorAll('[data-close-button]');
+  const overlay = document.getElementById('overlay');
+  const Xbtn = document.getElementById('x-btn');
+  const quiz = document.getElementById('question');
+
+  Xbtn.addEventListener('click', function(){
+
+//Attempting to use the x button to clear content. - failed
+// console.log(quiz.innerHTML);
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+
+  });
+
+  overlay.addEventListener('click',function(){
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+  });
 
   openModalButtons.forEach(button =>{
     button.addEventListener('click', () => {
@@ -160,20 +180,20 @@
   })
 
 
-  overlay.addEventListener('click', () => {
-    const modals = document.querySelectorAll('.modal.active')
-    modals.forEach(modal =>{
-      closeModal(modal)
-    })
+//   overlay.addEventListener('click', () => {
+//     const modals = document.querySelectorAll('.modal.active')
+//     modals.forEach(modal =>{
+// //closeModal(modal)
+//     })
 
-  })
+//   });
 
-  closeModalButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const modal = button.closest('.modal')
-      closeModal(modal)
-    })
-  })
+  // closeModalButtons.forEach(button => {
+  //   button.addEventListener('click', () => {
+  //     const modal = button.closest('.modal')
+  //    // closeModal(modal)
+  //   })
+  // })
 
 
   function openModal(modal){
@@ -183,13 +203,15 @@
     overlay.classList.add('active')
     }
   }
-  function closeModal(modal){
-    if(modal == null) {return}
-    else{
-    modal.classList.remove('active')
-    overlay.classList.remove('active')
-    }
-  }
+  // function closeModal(modal){
+  //   if(modal == null) {return}
+  //   else{
+  //   modal.classList.remove('active')
+  //   overlay.classList.remove('active')
+  //   }
+  // }
+
+
 
   function updatemonster(qid) {
     try {
