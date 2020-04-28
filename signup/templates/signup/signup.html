@@ -215,9 +215,10 @@ else if(document.getElementById("hobby").value == "")
 					}
 			}
 		};
-		xhttp.open("GET" ,'/signup/userauthentication/?username='+user , true);
-		xhttp.send();
-
+		xhttp.open("POST" , "{% url 'signup:userauthentication' %}" , true);
+		xhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+		xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+		xhttp.send("username="+user);
 	}
 
 
@@ -250,8 +251,11 @@ else if(document.getElementById("hobby").value == "")
 			}
 		};
 		// xhttp.responseType = "json";
-		xhttp.open("GET" , "/signup/emailauthentication/?email="+email , true);
-		xhttp.send();
+
+		xhttp.open("POST" , "{% url 'signup:emailauthentication' %}" , true);
+		xhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+		xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+		xhttp.send("email="+email);
 	}
 
 </script>

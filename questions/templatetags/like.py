@@ -14,5 +14,5 @@ def liked(curuid , qidobj):
         if curuid == x.luid_id:
             controller = True
             break
-            
+
     return controller

@@ -94,7 +94,7 @@ def updatelikes(request):
         return redirect("/login/")
 
     else:
-        print("Hello\n\n\n\n\n")
-        Qid = 3
+        Qid = request.POST["qid"]
+        print(Qid)
         qlike.objects.create(Qid_id = Qid , luid_id = userdetails.uid)
-        return redirect("/questions/answers/{}".format(1))
+        return redirect("/questions/")

@@ -59,14 +59,12 @@
             <div class="reply-section">
              {% if mydetails.uid|likey:question %}
                    <div class="like">
-                     <a href="{% url 'home:home' %}">
-                   <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;"></a>
+                   <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;">
                     {{question.question_liked.count}}
                    </div>
              {% else %}
                  <div class="like">
-                   <a href="{% url 'home:home' %}">
-                 <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;"></a>
+                 <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;" onclick="updatemonster({{question.qid}});">
                       {{question.question_liked.count}}
                  </div>
              {% endif %}
@@ -190,6 +188,27 @@
     else{
     modal.classList.remove('active')
     overlay.classList.remove('active')
+    }
+  }
+
+  function updatemonster(qid) {
+    try {
+        var xmlhttp = new XMLHttpRequest();
+    } catch (e) {
+      var xmlhttp = new ActiveXObject();
+    }
+    finally {
+      xmlhttp.open("POST" , "{% url 'questions:updatelikes' %}" , true);
+      xmlhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+      xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+
+      xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status ==200) {
+          alert(this.responseText);
+        }
+      }
+
+      xmlhttp.send("qid="  + qid);
     }
   }
 
