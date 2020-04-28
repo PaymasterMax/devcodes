@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{% static 'questions/myQuestions.css' %}">
   </head>
   <body>
-    <div class="nav-bar" id="upPart">
+    <!-- <div class="nav-bar" id="upPart">
       <div class="links">
         <a href="{% url 'home:home' %}">home</a> |
         <a href="{%url 'questions:questions' %}">Questions</a> |
@@ -34,8 +34,58 @@
             <img src="/media/{{mydetails.profilepic}}" alt="profile" style="width:40px; height:40px; border-radius:50%;">
           </a>
       </div>
-  </div>
-  <div class="page-title">My Questions page</div>
+  </div> -->
+  
+  <div class="nav-bar">
+    <div class="links">
+      <a href="{% url 'home:home' %}">Home</a> |
+
+
+      <a href="{% url 'peers:peers' %}">Peers</a> |
+      
+      <a href="{% url 'questions:questions' %}">Questions</a> |
+        <!-- dropdowm for questions -->
+      <!-- <div class="dropdown">
+     <div class="dropbtn"> <a href="{% url 'questions:questions' %}">Questions<i class="fa fa-caret-down"></i></a>  </div>
+      <div class="dropdown-content">   <a href="{% url 'questions:myquestions' %}">My Questions</a>  </div>
+   </div> -->
+
+    
+      <a href="{% url 'chatroom:inbox' %}">Inbox</a>
+      <a href="{% url 'chatroom:inbox' %}">
+        <i class="fa fa-envelope"> {{newmessage}}</i>
+      </a>
+      </div>
+      <div class="logoN">
+      DevCodes/>
+      </div>
+
+      {% if userlog %}
+      <div class="user-profile">
+        <a> <i class="fa fa-bell">{{notifs}}</i> </a>
+        
+          <img src="/media/{{userinfo.profilepic}}" alt="profile"
+           style="width:40px; height:40px; border-radius:50%;">
+           <div class="user-dropdown">
+             <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
+               Edit profile
+             </a>
+             <a href="{% url 'login:login' %}">
+               Log out
+             </a>
+           </div>
+        
+    </div>
+      {% else %}
+      <div class="user-profile">
+          <img src="{% static 'home/images/icon.jpg' %}" alt="profile" 
+          style="width:40px; height:40px; border-radius:50%;">
+
+    </div>
+      {% endif %}
+</div>
+  
+  <div class="page-title" id="upPart">My Questions page</div>
   <div class="main-window">
         <div class="person-holder">
     {% for question in Questions %}

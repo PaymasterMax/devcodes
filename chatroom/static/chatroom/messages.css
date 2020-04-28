@@ -3,8 +3,110 @@ body {
   /* background-color: #242721; */
 }
 
+/* nav-bar beginning */
+.nav-bar{
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  height:max-content;
+  padding: 4px 10px;
+    background: #303d5c;
+    color: #17a2b8;
+}
+.nav-bar a{
+  font-weight: 400;
+  color: #fff;
+  text-decoration: none;
+}
 
-.header {
+.nav-bar a:active{
+  color:darkblue;
+}
+.nav-bar a:hover{
+  text-decoration: none;
+  color: rgb(128, 181, 241);
+
+}
+.links{
+  display: inline-flex;
+}
+.links a{
+  padding-left: 6px;
+  padding-right: 6px;
+  color:#fff;
+}
+
+/* Start of dropdown */
+
+
+.dropdown .dropbtn {
+    background-color: inherit;
+   margin: 0;
+}
+
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #303d5c;
+  z-index: 1;
+  width: max-content;
+}
+
+.dropdown-content a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  color: rgb(128, 181, 241);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+/* End of dropdown */
+.user-profile img{
+  height: 40px;
+  width:40px;
+  border-radius: 50%;
+  margin-right: 5px;
+  position: relative;
+  }
+  .user-profile{
+    color:rgb(255, 255, 255);
+    position: relative;
+  }
+  .user-dropdown{
+    position: absolute;
+    background-color: #303d5c;
+    z-index: 1;
+    padding: 3px;
+    padding-top: 5px;
+    width: max-content;
+    padding-right: 5px;
+    display: none;
+  }
+  .user-profile:hover .user-dropdown{
+    display: grid;
+  }
+  .user-profile:focus .user-dropdown{
+    display: grid;
+  }
+  
+
+  .logoN{
+    font-size:22px;
+    font-family:cursive,-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* end of navbar */
+
+/* .header {
   min-height: 6vh;
   background-color: #633f3f;
   width: 100%;
@@ -26,11 +128,10 @@ a {
 a:hover {
   text-decoration: none;
   color: #fff;
-}
+} */
 
 
 .current-profile {
-  float: right;
   display: inline-block;
   margin-top: auto;
   margin-right: 40px;
@@ -240,7 +341,7 @@ textarea {
 
 
   .one-message  > .profile {
-    margin-right: 1.3px:
+    margin-right: 1.3px;
   }
 
 

@@ -15,7 +15,7 @@
   </head>
   <body>
 
-    <div class="header">
+    <!-- <div class="header">
 
       <nav>
         <a href="{% url 'home:home' %}">Home</a> |
@@ -24,7 +24,7 @@
         <a href="{% url 'chatroom:inbox'%}" class="fa fa-envelope"> {{newmessage}}</a>
       </nav>
 
-      <!-- profile photo -->
+      profile photo
       <div class="profile myprofile">
         <i class="fa fa-bell notif"> {{newmessage}}</i>
         <a href="{% url 'profile:profile' %}" title="{{userdetails.username}}">
@@ -33,10 +33,55 @@
 
       </div>
 
-    </div>
+    </div> -->
+
+    <div class="nav-bar">
+      <div class="links">
+        <a href="{% url 'peers:peers' %}">Peers</a> |
+
+          <!-- dropdowm for questions -->
+        <div class="dropdown">
+       <div class="dropbtn"> <a href="{% url 'questions:questions' %}">Questions<i class="fa fa-caret-down"></i></a>  </div>
+        <div class="dropdown-content">   <a href="{% url 'questions:myquestions' %}">My Questions</a>  </div>
+     </div>
+
+        |
+        <a href="{% url 'chatroom:inbox' %}">Inbox</a>
+        <a href="{% url 'chatroom:inbox' %}">
+          <i class="fa fa-envelope"> {{newmessage}}</i>
+        </a>
+        </div>
+        <div class="logoN">
+        DevCodes/>
+        </div>
+
+        {% if userlog %}
+        <div class="user-profile">
+          <a> <i class="fa fa-bell">{{notifs}}</i> </a>
+          
+            <img src="/media/{{userinfo.profilepic}}" alt="profile"
+             style="width:40px; height:40px; border-radius:50%;">
+             <div class="user-dropdown">
+               <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
+                 Edit profile
+               </a>
+               <a href="{% url 'login:login' %}">
+                 Log out
+               </a>
+             </div>
+          
+      </div>
+        {% else %}
+        <div class="user-profile">
+            <img src="{% static 'home/images/icon.jpg' %}" alt="profile" 
+            style="width:40px; height:40px; border-radius:50%;">
+
+      </div>
+        {% endif %}
+  </div>
 
     <div class="main">
-      <h4>Question</h4>
+      <h4 id="upPart">Question</h4>
       <hr style="width:100px;margin: 0px auto;">
       <div class="question">
 
@@ -93,9 +138,23 @@
 
     <form class="" action="{% url 'questions:updateanswers' Qid %}" method="post">
       {% csrf_token %}
+<<<<<<< HEAD
         {{answers_form.as_p}}
         <textarea name="message" rows="3" cols="25" id="small" placeholder="your answer" resizeblae = "none"></textarea>
 
+=======
+      <!-- {{answers_form.as_p}} -->
+         <!-- 
+      <textarea name="message" class="answer-input" rows="3" cols="25" id="small" placeholder="your answer">
+
+        </textarea> -->
+        <textarea rows="3" cols="25" placeholder="your answer" name="answer"
+        style="width: 80%;
+        resize: none;
+        margin-bottom: 10px;">
+        
+      </textarea>
+>>>>>>> 0e9770e... responsiveness
       <button type="submit" name="submit" value="submit" class="btn btn-info">Send</button>
     </form>
 

@@ -13,46 +13,94 @@
   </head>
   <body>
 
-      <div class="nav-bar">
+      <!-- <div class="nav-bar">
           <a href="{% url 'home:home' %}">Home</a> |
           <a href="{% url 'questions:questions' %}">Questions</a> |
           <a href="{% url 'peers:peers' %}">Peers</a> |
           <a href="{% url 'home:home' %}">Chat</a>
           <a href="{% url 'chatroom:chatroom' 1 %}" class="fa fa-bell"> {{newmessage}}</a>
+      </div> -->
+     
+     <!-- new nav-bar -->
+     <div class="nav-bar">
+      <div class="links">
+        <a href="{% url 'home:home' %}">Home</a> |
+
+        <a href="{% url 'peers:peers' %}">Peers</a> |
+
+          <!-- dropdowm for questions -->
+        <div class="dropdown">
+       <div class="dropbtn"> <a href="{% url 'questions:questions' %}">Questions<i class="fa fa-caret-down"></i></a>  </div>
+        <div class="dropdown-content">   <a href="{% url 'questions:myquestions' %}">My Questions</a>  </div>
+     </div>
+
+        |
+        <a href="{% url 'chatroom:inbox' %}">Inbox</a>
+        <a href="{% url 'chatroom:inbox' %}">
+          <i class="fa fa-envelope"> {{newmessage}}</i>
+        </a>
+        </div>
+        <div class="logoN" id="upPart">
+        DevCodes/>
+        </div>
+
+        {% if userlog %}
+        <div class="user-profile">
+          <a> <i class="fa fa-bell">{{notifs}}</i> </a>
+          
+            <img src="/media/{{userinfo.profilepic}}" alt="profile"
+             style="width:40px; height:40px; border-radius:50%;">
+             <div class="user-dropdown">
+               <!-- <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
+                 Edit profile
+               </a> -->
+               <a href="{% url 'login:login' %}">
+                 Log out
+               </a>
+             </div>
+          
       </div>
-      <div class="main-window">
+        {% else %}
+        <div class="user-profile">
+            <img src="{% static 'home/images/icon.jpg' %}" alt="profile" 
+            style="width:40px; height:40px; border-radius:50%;">
+            <div class="user-dropdown">
+              <!-- <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
+                Edit profile
+              </a> -->
+              <a href="{% url 'login:login' %}">
+                Log out
+              </a>
+            </div>
 
-      <div class="main-frame-details">
+
+      </div>
+        {% endif %}
+  </div>
+      <div class="main-container">
+
+      <div class="main-details">
         <!-- profile pic -->
-        <p class="profile">
-          <img src="/media/{{mydetails.profilepic}}" alt="profile">
-        </p>
-        <div class="details">
-
+      
+          <img src="/media/{{mydetails.profilepic}}" class="profile-image" alt="profile">
+       
+        
+         
           <!-- update form -->
           <form class="" action="{% url 'profile:update' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
           <fieldset>
-            <table cellpadding = 5>
-              <th>
-                <td>Your details</td>
-              </th>
-              <tr>
-
-                <td>
+           
+            <div class="info">
+               <div class="Your"> Your details</div>
+                  <div class="sect">
                   <label class="labels">Username</label>
-                </td>
-
-                <td>
-                  <input type="text" name="username" value="{{mydetails.username}}" id="username">
-                </td>
-              </tr>
-
-
-              <tr>
-
-                <td>
+                
+                  <input type="text" class="entry" name="username" value="{{mydetails.username}}" id="username">
+              </div>
+                    <div class="sect">
                   <label class="labels">Phone</label>
+<<<<<<< HEAD
                 </td>
 
                 <td>
@@ -60,56 +108,62 @@
                 </td>
               </tr>
 
+=======
+               
+>>>>>>> 0e9770e... responsiveness
 
-              <tr>
+               
+                  <input type="text" class="entry" name="phone" value="{{mydetails.pnumber}}" id="phone">
+               </div>
 
-                <td>
+               <div class="sect">
+              
                   <label class="labels">Email</label>
-                </td>
+                
+                  <input type="text" class="entry" name="email" value="{{mydetails.email}}" id="email">
+               </div>
 
-                <td>
-                  <input type="text" name="email" value="{{mydetails.email}}" id="email">
-                </td>
-              </tr>
-
+<<<<<<< HEAD
               <tr>
 
                 <td>
+=======
+              <!-- <tr>
+                <td>
+                  <label>password</label>
+                </td>
+                <td>
+                  <input type="text" name="password" value="">
+                </td>
+              </tr> -->
+                <div class="sect">
+              
+>>>>>>> 0e9770e... responsiveness
                   <label class="labels">Language</label>
-                </td>
+                
+                  <input type="text" class="entry" name="language" value="{{mydetails.hobby}}" id="language">
+                </div>
 
-                <td>
-                  <input type="text" name="language" value="{{mydetails.hobby}}" id="language">
-                </td>
-              </tr>
-
-              <tr>
-
-                <td>
+                <div class="sect">
                   <label class="labels">Profile</label>
-                </td>
+                
+                  <input type="file" class="entry" name="profile" value="{{mydetails.profilepic}}">
+                </div>
 
-                <td>
-                  <input type="file" name="profile" value="{{mydetails.profilepic}}">
-                </td>
-              </tr>
-
-              <tr>
-
-                <td colspan="2">
                   <button type="submit" name="submit" class="btn btn-info" onclick="auth()">Update</button>
-                </td>
-              </tr>
-
-            </table>
+                </div>
           </fieldset>
           </form>
+<<<<<<< HEAD
 
 
+=======
+          
+>>>>>>> 0e9770e... responsiveness
         </div>
       </div>
 
-    </div>
+   
 
   </body>
   <script type="text/javascript">
