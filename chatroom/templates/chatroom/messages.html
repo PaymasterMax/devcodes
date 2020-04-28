@@ -44,7 +44,7 @@
       <!-- single message -->
       {% for data in chats %}
         {% if userdetails.uid == data.r1uid_id %}
-        <hr>
+        <!-- <hr> -->
             <div class="one-message first">
               <p class="profile">
                 <img src="/media/{{data.r1uid.profilepic}}" alt="profile" title="{{data.r1uid.username}}">
@@ -58,7 +58,7 @@
 
       <!-- end of single message -->
         {% else %}
-          <hr>
+          <!-- <hr> -->
           <!-- other message -->
           <div class="one-message second">
             <div class="message-content">

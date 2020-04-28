@@ -30,17 +30,30 @@ def login(request):
                 request.session['items'] = list()
                 request.session["loginstatus"] = True
 
-                # set the sessions expiry date
-                request.session.set_expiry(0)
-                # redirect user to home page
-                return redirect("/")
+                try:
+                    red_req = request.session["redirect"]
+                    del request.session["redirect"]
+                except Exception as e:
+                    # set the sessions expiry date
+                    request.session.set_expiry(0)
+                    # redirect user to home page
+                    return redirect("/")
+                else:
+                    return redirect("{}".format(red_req))
+
             else:
                 error_log.append("Wrong credentials")
                 return render(request , "login/login.html" , context = {"error_log" : error_log})
 
 
     else:
-        return render(request , "login/login.html")
+        try:
+            request.session["username"]
+        except Exception as e:
+            return render(request , "login/login.html")
+
+        else:
+            return redirect("/")
 
 
 

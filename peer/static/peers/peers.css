@@ -1,5 +1,5 @@
 body {
-  background-color: #070f54;
+  background-color: #0a1d2f;
   /* background-color: #242721; */
 }
 
@@ -106,9 +106,9 @@ hr {
    background-color: #e8eaec;
    margin-left: auto;
    margin-right: auto;
-   border-radius: 30px;
+   border-radius: 15px;
    margin-bottom: 30px;
-   min-height: 80vh;
+   min-height: 96vh;
 }
 
 .user-infor {
@@ -168,7 +168,9 @@ hr {
 @media screen and (max-width:800px) {
   .main {
     width: 96%;
-    margin: 20px;
+    display: block;
+    margin: 0px auto;
+    margin-top: 10px;
   }
 
 
@@ -213,5 +215,50 @@ hr {
     margin: 20px 0px 20px 20px;
     border-radius: 20px;
     text-align: center;
+  }
+}
+
+
+@media screen and (max-width:500px) {
+  .main {
+    width: 96%;
+    display: block;
+    margin: 0px auto;
+    margin-top: 10px;
+
+  }
+
+
+  .user-infor {
+    width: 100%;
+    font-size: 12px;
+  }
+
+.header {
+  min-height: 10vh;
+}
+
+.search {
+  display: flex;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 30px;
+}
+
+
+  .logo {
+    display: none;
+  }
+
+  .logo > img {
+    width: 70px;
+    height: 70px;
+    margin: 0px 0px 0px 30px;
+  }
+
+
+  .header > .myprofile {
+    display: none;
   }
 }

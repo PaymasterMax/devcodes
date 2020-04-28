@@ -94,13 +94,12 @@
     <form class="" action="{% url 'questions:updateanswers' Qid %}" method="post">
       {% csrf_token %}
         {{answers_form.as_p}}
-        <textarea name="message" rows="3" cols="25" id="small" placeholder="your answer"></textarea>
+        <textarea name="message" rows="3" cols="25" id="small" placeholder="your answer" resizeblae = "none"></textarea>
 
       <button type="submit" name="submit" value="submit" class="btn btn-info">Send</button>
     </form>
 
     <p class="ft">
-      Python
     </p>
   </div>
 </div>

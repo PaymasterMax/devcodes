@@ -7,7 +7,7 @@ class anserform(ModelForm):
         fields = ("answer",)
 
         widgets = {
-        "answer":Textarea(attrs = {"cols":40 , "rows":3 , "Placeholder":"Your answer" , "id":"large"}),
+        "answer":Textarea(attrs = {"cols":40 , "rows":3 , "Placeholder":"Your answer" , "id":"large" , "maxlength":1025}),
         }
 
 

@@ -14,58 +14,155 @@
     <link rel="stylesheet" href="{% static 'home/home.css' %}">
   </head>
   <body>
+    <div class="nav-bar">
+      <div class="links">
+        <a href="{% url 'peers:peers' %}">Peers</a> |
+
+          <!-- dropdowm for questions -->
+        <div class="dropdown">
+       <div class="dropbtn"> <a href="{% url 'questions:questions' %}">Questions<i class="fa fa-caret-down"></i></a>  </div>
+        <div class="dropdown-content">   <a href="{% url 'questions:myquestions' %}">My Questions</a>  </div>
+     </div>
+
+        |
+        <a href="{% url 'chatroom:inbox' %}">Inbox</a>
+        <a href="{% url 'chatroom:inbox' %}">
+          <i class="fa fa-envelope"> {{newmessage}}</i>
+        </a>
+        </div>
+        <div class="logoN" id="upPart">
+        DevCodes/>
+        </div>
+
+        {% if userlog %}
+        <div class="user-profile">
+          <!-- <a href="{% url 'login:logout' %}">logout</a> -->
+          <a> <i class="fa fa-bell">{{notifs}}</i> </a>
+          <a href="{% url 'profile:profile' %}">
+            <img src="/media/{{userinfo.profilepic}}" alt="profile" style="width:40px; height:40px; border-radius:50%;">
+          </a>
+      </div>
+        {% else %}
+        <div class="user-profile">
+            <img src="{% static 'home/images/icon.jpg' %}" alt="profile" style="width:40px; height:40px; border-radius:50%;">
+        </div>
+        {% endif %}
+  </div>
 
     <div class="main-window">
 
-      <!-- header section -->
-      <div class="header">
 
-      <!-- logo -->
-      <p class="logo">
-        DevCodes
-     </p>
-
-      <!-- search box -->
-      <!-- <p>
-        <input type="search" name="userquery" placeholder="Search">
-      </p> -->
-
-    </div>
+      <!-- carosel -->
 
 
+      <div class="carol">
+        <div class="carousel slide start-carol" data-ride="carousel" id="mycarousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="d-block w-100 text-center p4">
+
+                  <div class="inner-class">
+                    <p class="peerprof">
+                      <img src="{% static 'home/images/other/bcode.jpg' %}" alt="">
+                    </p>
+                    <div class="recentq">
+                      <p>
+                          Learn more about your interests by accessing questions asked and answered by your peers.
+                      </p>
+                      <a href="{% url 'questions:questions' %}" class="mainlinks">
+                        <button type="button" name="button" class="btn btn-info">View Questions</button>
+                      </a>
+                    </div>
+                  </div>
 
 
-    <!-- mid window -->
-    <div class="mid-window">
+                  </div>
+              </div>
+
+                {% for q in allq %}
+                <div class="carousel-item">
+                  <div class="d-block w-100 text-center p4">
+
+                    <div class="inner-class">
+                      <p class="peerprof">
+                        <img src="/media/{{q.quid.profilepic}}" alt="{{q.quid.question_asker.username}}">
+                        <br>{{q.quid.username}}
+                      </p>
+                      <p class="recentq">
+                        {{q.question}}
+                        <br>
+                        <br>
+                        <a href="{% url 'questions:answers' q.qid %}" class="mainlinks">
+                          <button type="button" name="button" class="btn btn-info">View answers</button>
+                        </a>
+                      </p>
+                    </div>
+
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+
+            <a href="#mycarousel" class="carousel-control-prev" data-slide="prev" role="button">
+              <span class="carousel-control-prev-icon"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+
+            <a href="#mycarousel" class="carousel-control-next"  data-slide="next"role="button">
+              <span class="carousel-control-next-icon"></span>
+              <span class="sr-only">Next</span>
+            </a>
+        </div>
+      </div>
+
+
+
+      <!-- end of carosel -->
+
 
       <!-- Questions -->
-      <div class="questions">
+      <div class="flex-holder">
+        <img src="{% static 'home/images/svgimages/questions1.svg' %}" alt="Questions vector image" class="vector">
+        <div class="text">
           <p>
-            Access questions asked and answered by peers.
+              Learn more about your interests by accessing questions asked and answered by your peers.
           </p>
-          <a href="{% url 'questions:questions' %}" class="mainlinks"><button type="button" name="button" class="btn btn-info">Take me there</button></a>
+          <a href="{% url 'questions:questions' %}" class="mainlinks">
+            <button type="button" name="button" class="btn btn-info">View Questions</button></a>
+      </div>
       </div>
 
+     <!-- Meet peers  -->
+      <div class="flex-holder">
+        <img src="{% static 'home/images/svgimages/peers2.svg' %}" alt="Meet peers vector" class="vector-res">
 
-      <!-- profile section -->
-      <div class="profile">
+        <div class="text">
         <p>
-          View your profile, edit and update your profile info
+          Meet peers learning the same programming language(s) as you are. Interract with them and nurture your skills.
         </p>
-        <a href="{% url 'profile:profile' %}" class="mainlinks"> <button type="button" name="button" class="btn btn-info"> Take me there</button></a>
+         <a href="{% url 'peers:peers' %}" class="mainlinks">
+           <button type="button" name="button" class="btn btn-info">Meet peers</button></a>
+           </div>
+           <img src="{% static 'home/images/svgimages/peers1.svg' %}" alt="Meet peers vector" class="vector-r">
+
       </div>
 
-      <!-- peers section -->
-      <div class="peers">
-        <p>
-          Meet peers undertaking the same language(s) you are undertaking
-        </p>
-         <a href="{% url 'peers:peers' %}" class="mainlinks"><button type="button" name="button" class="btn btn-info">Take me there</button></a>
+      <!--Inbox section-->
+      <div class="flex-holder">
+
+        <img src="{% static 'home/images/svgimages/inbox.svg' %}" alt="inbox" class="vector">
+        <div class="text">
+<p>
+  Access your inbox and easily talk with your peers through our messaging feature. </p>
+  <a href="{% url 'chatroom:inbox' %}" class="mainlinks"><button type="button" name="button" class="btn btn-info">Inbox</button></a>
+      </div>
       </div>
 
     </div>
 
-  </body>
+
 <footer>
     <!-- footer section -->
     <div class="footer">
@@ -75,15 +172,12 @@
         <p class="footer-header">About us</p>
 
         <p>
-          <a href="#">Hello world</a>
+          The website was created for the purpose of serving as a  Q | A site,
+          If you have any suggestions, comments please feel free to get in touch with us through twitter and email.
         </p>
 
         <p>
-          <a href="#">Hello world</a>
-        </p>
-
-        <p>
-          <a href="#">Hello world</a>
+          <a href="#">Privacy</a> | <a href="#">Policies</a>
         </p>
       </div>
 
@@ -91,15 +185,15 @@
       <div class="social botttom-link">
         <p class="footer-header">Social Links</p>
         <p>
-          <a href="mailto:anornymous99@gmail.com?subject=feedback">Support</a>
+         <i class="fa fa-group"></i>  <a href="mailto:devcodesv1@gmail.com?subject=feedback" target="_parent">Support</a>
         </p>
 
         <p>
-          <a href="#"> <i class="fa fa-youtube"></i> Youtube</a>
+           <i class="fa fa-youtube"></i> <a href="https://youtube.com/channel/UCWhXGuHblviSA78EVlrvgXQ" target="_blank">Youtube</a>
         </p>
 
         <p>
-          <a href="#"> <i class="fa fa-twitter"></i> twitter</a>
+           <i class="fa fa-twitter"></i> <a href="https://twitter.com/OriPaminus" target="_blank">twitter</a>
         </p>
 
 
@@ -117,15 +211,16 @@
 
 
           <p>
-            Follow dev on <a href="#"><i class="fa fa-twitter"></i> twitter</a>
+            Follow dev on <a href="https://twitter.com/OriPaminus"><i class="fa fa-twitter"></i> twitter</a>
           </p>
 
           <p>
             Email:
-            <a href="mailto:anornymous99@gmail.com?subject=feedback">Developer</a>
+            <a href="mailto:devcodesv1@gmail.com">Developer</a>
           </p>
         </p>
       </div>
     </div>
 </footer>
+</body>
 </html>

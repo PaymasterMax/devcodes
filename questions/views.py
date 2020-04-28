@@ -11,6 +11,7 @@ def questionsview(request):
         userdetails = Signup.objects.get(username = request.session["username"])
         newmessage = chtb.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False).count()
     except Exception as e:
+        request.session["redirect"] = "/questions/"
         return redirect("/login/")
 
     else:
@@ -23,6 +24,7 @@ def myquestions(request):
         userdetails = Signup.objects.get(username = request.session["username"])
         newmessage = chtb.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False).count()
     except Exception as e:
+        request.session["redirect"] = "/questions/myquestions/"
         return redirect("/login/")
 
     else:
@@ -38,7 +40,7 @@ def answersview(request , Qid):
 
     try:
         userdetails = Signup.objects.get(username = request.session["username"])
-    
+
     except Exception as e:
         return render(request , "questions/answers.html" , context = {"userdetails":"userdetails" , "answers_form":answers_form , "Qid":Qid , "allanswers":allanswers , "question_info":question_info , "newmessage":0})
 
@@ -54,6 +56,7 @@ def askquestionsview(request):
             questionlang = request.POST["language"]
             question = request.POST["question"]
         except Exception as e:
+            request.session["redirect"] = "/questions/updatequestions/"
             return redirect("/login/")
 
         else:
@@ -71,7 +74,7 @@ def update_answers(request , Qid):
             answerquery = request.POST["answer"]
 
         except Exception as e:
-            print("\n\n\n\n{}".format(e))
+            request.session["redirect"] = "/questions/updateanswers/{}/".format(Qid)
             return redirect("/login/")
 
         else:

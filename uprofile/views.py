@@ -7,12 +7,11 @@ from signup.models import Signup as sp
 def profileview(request):
     if request.method == "GET":
         try:
-            print(request.session['username'])
             mydetails = sp.objects.get(username = request.session['username'])
             newmessage = chtb.objects.filter(r2uid_id =  mydetails.uid, bell_seen = False).count()
 
         except Exception as e:
-            print("\n\n\n\n{}".format(e))
+            request.session["redirect"] = "/profile/"
             return redirect("/login/")
 
         else:
@@ -28,7 +27,11 @@ def update_profile(request):
         try:
             edit_user_details = sp.objects.get(username = request.session['username'])
 
-            edit_user_details.profilepic=request.FILES["profile"]
+            try:
+                edit_user_details.profilepic=request.FILES["profile"]
+            except Exception as e:
+                pass
+                
             edit_user_details.email = request.POST["email"]
             edit_user_details.username = request.POST["username"]
             edit_user_details.pnumber = request.POST["phone"]
@@ -47,7 +50,3 @@ def update_profile(request):
 
     else:
         return redirect("/profile/")
-
-
-def peerview(request):
-    return render(request , "uprofile/peers.html")

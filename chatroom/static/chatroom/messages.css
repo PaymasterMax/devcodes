@@ -1,5 +1,5 @@
 body {
-  background-color: #070f54;
+  background-color: #0a1d2f;
   /* background-color: #242721; */
 }
 
@@ -218,6 +218,8 @@ textarea {
   color: #000;
   text-decoration: none;
 }
+
+
 @media screen and (max-width:700px) {
 
   .main {

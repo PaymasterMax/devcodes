@@ -1,14 +1,19 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from signup.models import Signup
+from chatroom.models import ChatModel as chbt
+from questions.models import Questions as qa
 
 def homeview(request):
+    all_questions = qa.objects.all()
     try:
         userlog = request.session["username"]
         userinfo = Signup.objects.get(username = userlog)
+        notifs = chbt.objects.filter(r2uid_id = userinfo.uid , bell_seen = False).count()
     except Exception as e:
-        return redirect("/login/")
+        userlog = False
+        return render(request , "home/home.html" , context = {"allq": all_questions , "userlog":userlog})
 
     else:
         userlog = True
-        return render(request , "home/home.html" , context = {"userinfo":userinfo , "userlog":userlog})
+        return render(request , "home/home.html" , context = {"userinfo":userinfo , "notifs":notifs , "allq": all_questions , "userlog":userlog})

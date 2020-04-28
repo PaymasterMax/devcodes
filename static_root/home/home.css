@@ -1,3 +1,109 @@
+*{
+  font-family:arial,-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.nav-bar{
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  height:max-content;
+  padding: 4px 10px;
+    background: #303d5c;
+    color: #17a2b8;
+}
+.nav-bar a{
+  font-weight: 400;
+  color: black;
+  text-decoration: none;
+}
+
+.nav-bar a:active{
+  color:darkblue;
+}
+.nav-bar a:hover{
+  text-decoration: none;
+  color: rgb(128, 181, 241);
+
+}
+.links{
+  display: inline-flex;
+}
+.links a{
+  padding-left: 6px;
+  padding-right: 6px;
+  color:#fff;
+}
+/* .dropbtn{
+    margin: 0;
+    padding-left: 2px;
+    padding-right: 4px;
+}
+.dropdown{
+  position: relative;
+  overflow: hidden;
+}
+.dropdown:hover .dropdown-content{
+  display: block;
+}
+
+.dropdown-content{
+  display: none;
+  position: absolute;
+    background: #303d5c;
+    padding: 4px;
+    padding-left: 2px;
+    padding-right: 0;
+    transform: translateX(-4px);
+    z-index: 2;
+} */
+/* Start of dropdown */
+
+
+.dropdown .dropbtn {
+    background-color: inherit;
+   margin: 0;
+}
+
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #303d5c;
+  z-index: 1;
+  width: max-content;
+}
+
+.dropdown-content a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  color: rgb(128, 181, 241);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+/* End of dropdown */
+.user-profile img{
+  height: 40px;
+  width:40px;
+  border-radius: 50%;
+  margin-right: 5px;
+  }
+  .user-profile{
+    color:#fff;
+  }
+  .logoN{
+    font-size:22px;
+    font-family:cursive,-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
 .logo {
   width: 120px;
   height: 100px;
@@ -35,17 +141,14 @@
   color: #fff;
 }
 
-.mid-window > .peers {
-  text-align: center;
-  padding: 10px;
-  flex:1;
-  margin: 2px;
-  border-radius: 30px;
-  background-color: #25283a;
-  color: #fff;
+.main-window{
+  background: linear-gradient(51deg, #1de81acf, #d9e01291);
+  background: -webkit-linear-gradient(51deg, #1de81acf, #d9e01291);
+  background: -moz-linear-gradient(51deg, #1de81acf, #d9e01291);
+  background: -o-linear-gradient(51deg, #1de81acf, #d9e01291);
+  padding: 15px;
+  /* background-color: #54df52; */
 }
-
-
 .mainlinks {
   text-decoration: none;
 }
@@ -78,4 +181,154 @@
   border-radius: 30px;
   background-color: #25283a;
   color: #fff;
+}
+.flex-holder{
+  display: flex;
+  align-items: center;
+  padding:0px 15px;
+}
+.flex-holder .text{
+  text-align: center;
+
+}
+.text{
+  padding:10px 15px;
+}
+.text p{
+  font-size: 2em;
+
+}
+.vector, .vector-r{
+  width:38%;
+  height: 350px;
+}
+.vector-res{
+  width:500px;
+  height: 350px;
+  display: none;
+}
+
+
+/* carousel */
+.carol {
+  width: 100%;
+  min-height: 30vh;
+  background-image: url('./images/tech.jpg');
+  margin: 0px auto;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+
+.start-carol {
+  width: 60%;
+  margin: 0vh auto;
+  min-height: 30vh;
+  box-sizing: border-box;
+}
+
+.inner-class {
+  display: flex;
+  color: #fff;
+  margin: 4vh 0vh;
+}
+
+
+.inner-class>.peerprof >img{
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  flex: 1;
+  color: #fff;
+}
+
+.inner-class > .recentq {
+  flex: 8;
+  margin-left: 20px;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+}
+/* end of carousel */
+
+
+@media only screen and (max-width:1200px){
+  .vector, .vector-r{
+    width: 300px;
+    height: inherit;
+  }
+  .text p{
+    font-size: 1.2em;
+  }
+  .text{
+    padding:0;
+  }
+  .flex-holder{
+    padding: 20px 17px;
+  }
+  .carol {
+    width: 100vw;
+  }
+  .start-carol {
+    width: 100%;
+  }
+}
+
+
+@media only screen and (max-width:600px){
+  .logoN{
+    display: none;
+  }
+  .nav-bar{
+    padding: 0px;
+  }
+  .flex-holder{
+    flex-direction: column;
+    padding: 10px 10px;
+  }
+  .vector, .vector-res{
+    width:80%;
+    height: 200px;
+  }
+  .vector-res{
+    display: block;
+
+  }
+  .vector-r{
+    display: none;
+  }
+  .text p{
+    font-size: 1em;
+
+  }
+  /* a .fa .fa-caret-down{
+    display: none;
+  }
+  .arrow{
+    display: none;
+  } */
+  .dropbtn i{
+    display: none;
+  }
+
+  /* .carol {
+    display: none;
+  } */
+
+
+  .carol {
+    width: 100vw;
+  }
+  .start-carol {
+    width: 100%;
+  }
+
+
+  .botttom-link {
+    display: block;
+  }
+
+  .footer {
+    display: block;
+  }
 }

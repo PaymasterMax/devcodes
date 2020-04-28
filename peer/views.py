@@ -11,12 +11,11 @@ def peers(request):
         newmessage = chtb.objects.filter(r2uid_id =  current_user.uid, bell_seen = False).count()
 
     except Exception as e:
+        request.session["redirect"] = "/peers/"
         return redirect("/login/")
 
     else:
-        pass
-
-    return render(request , "peers/peers.html" , context = {"users":all_users , "user":current_user , "newmessage":newmessage})
+        return render(request , "peers/peers.html" , context = {"users":all_users , "user":current_user , "newmessage":newmessage})
 
 
 def locatepeers(request):

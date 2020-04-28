@@ -10,10 +10,15 @@ def inbox(request):
         newmessage = chatmod.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False).count()
 
     except Exception as e:
+        request.session["redirect"] = "/chatroom/"
         return redirect("/login/")
 
     else:
         all_messages = chatmod.objects.filter(r2uid_id = userdetails.uid).order_by("-text_time")
+
+        # test = chatmod.objects.filter(r2uid_id = )
+        test = chatmod.objects.filter(r2uid_id = userdetails.uid).values("r1uid_id").distinct()
+        print(test)
         return render(request , "chatroom/inbox.html" , context = {"all_messages":all_messages , "userdetails":userdetails , "newmessage":newmessage})
 
 
@@ -27,6 +32,7 @@ def chatrm(request , chat_user):
 
     except Exception as e:
         print(e)
+        request.session["redirect"] = "/chatroom/{}/".format(chat_user)
         return redirect("/login/")
 
     else:
@@ -42,8 +48,7 @@ def updatechats(request):
             id = signmod.objects.get(username = request.session["username"]).uid
 
         except Exception as e:
-            print(e)
-            print("\n\n\n")
+            # request.session["redirect"] = "/chatroom/updatechats/"
             return redirect("/chatroom/{}/#frm".format(receiver))
 
         else:
