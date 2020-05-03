@@ -87,7 +87,29 @@
                   </div>
               </div>
 
-          
+                {% for q in allq %}
+                <div class="carousel-item">
+                  <div class="d-block w-100 text-center p4">
+
+                    <div class="inner-class">
+                      <p class="peerprof">
+                        <img src="/media/{{q.quid.profilepic}}" alt="{{q.quid.question_asker.username}}">
+                        <br>{{q.quid.username}}
+                      </p>
+                      <p class="recentq">
+                        {{q.question}}
+                        <br>
+                        <br>
+                        <a href="{% url 'questions:answers' q.qid %}" class="mainlinks">
+                          <button type="button" name="button" class="btn btn-info">View answers</button>
+                        </a>
+                      </p>
+                    </div>
+
+
+                    </div>
+                </div>
+                {% endfor %}
             </div>
 
 
