@@ -31,7 +31,6 @@ def signup(request):
 
         if passwordflag:
             password = make_password(request.POST['pass1'])
-            print("Hello\n\n\n\n")
             if v.validate_email(email):
                 try:
                     signmodel.objects.get(email = email)
@@ -99,10 +98,8 @@ def emailauthentication(request):
 
         except Exception as e:
             if v.validate_email(email):
-                print(v.validate_email(email))
                 return HttpResponse("false")
             else:
-                print(v.validate_email(email))
                 return HttpResponse("Email not found")
 
         else:

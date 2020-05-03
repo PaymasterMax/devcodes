@@ -17,7 +17,7 @@
 		<div class="bony">
 			<form action="{% url 'signup:signup' %}" method="post" enctype="multipart/form-data" onabort="cancel()">
 
-				<h2>Signup to vibes</h2>
+				<h2>Join DevCodes</h2>
 					{% for error in error_log %}
 					<label class="inputlabel">
 						{{error}}
@@ -60,7 +60,17 @@
     </footer>
 </body>
 <script type="text/javascript">
+ // Prepare the body tag by adding a "js-loading" class
+ document.body.className += " js-loading";
+      // document.body.className += "js-anima";
 
+      // Listen for when everything has loaded
+      window.addEventListener("load", showPage, false);
+
+      function showPage() {
+        // Remove the "js-paused" class
+        document.body.className = document.body.className.replace("js-loading","");
+      }
 function cancel(){
 	alert("Hello world");
 	document.getElementById("spin").setAttribute("class" , "");
@@ -69,11 +79,14 @@ function cancel(){
 function spinnermanager()
 {
 
-	if(document.getElementById("uname").value != "" && document.getElementById("phone").value != "" && document.getElementById("ema").value != "" && document.getElementById("pass1").value != "" &&  document.getElementById("pass2").value != "" &&
+	if(document.getElementById("uname").value != "" && document.getElementById("phone").value != "" &&
+	 document.getElementById("ema").value != "" &&
+	document.getElementById("pass1").value != "" &&  document.getElementById("pass2").value != "" &&
 	 document.getElementById("pass2").value !="" && document.getElementById("profile").value != "")
 	{
 
-		document.getElementById("spin").setAttribute("class" , "fa fa-spinner fa-spin fa-1x");
+		document.getElementById("spin").setAttribute
+		("class" , "fa fa-spinner fa-spin fa-1x");
 	}
 
 
@@ -185,41 +198,35 @@ else if(document.getElementById("hobby").value == "")
 			}
 	}
 
-
-
-
-
-
-
-
 // Verifcation
-	function userauthentication(uid)
+function userauthentication(uid)
+{
+	var xhttp = new XMLHttpRequest();
+	var user = document.getElementById("uname").value;
+	xhttp.onreadystatechange = function()
 	{
-		var xhttp = new XMLHttpRequest();
-		var user = document.getElementById("uname").value;
-		xhttp.onreadystatechange = function()
+		if(this.readyState == 4 && this.status == 200)
 		{
-			if(this.readyState == 4 && this.status == 200)
-			{
-				if(this.responseText == "true")
-					{
-						document.getElementById("usernamevalid").innerHTML = "username taken";
-						document.getElementById("usernamevalid").style.color = "#f00";
-						// document.getElementById("submit").disabled=true;
-					}
+			if(this.responseText == "true")
+				{
+					document.getElementById("usernamevalid").innerHTML = "username taken";
+					document.getElementById("usernamevalid").style.color = "#f00";
+					// document.getElementById("submit").disabled=true;
+				}
 
-					else {
-						document.getElementById("usernamevalid").innerHTML = "username available";
-						document.getElementById("usernamevalid").style.color = "#7fa";
-						// document.getElementById("submit").enabled=true;
-					}
-			}
-		};
-		xhttp.open("POST" , "{% url 'signup:userauthentication' %}" , true);
-		xhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
-		xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
-		xhttp.send("username="+user);
-	}
+				else {
+					document.getElementById("usernamevalid").innerHTML = "username available";
+					document.getElementById("usernamevalid").style.color = "#7fa";
+					// document.getElementById("submit").enabled=true;
+				}
+		}
+	};
+	xhttp.open("POST" , "{% url 'signup:userauthentication' %}" , true);
+	xhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+	xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+	xhttp.send("username="+user);
+}
+
 
 
 
