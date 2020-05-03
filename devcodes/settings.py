@@ -1,9 +1,10 @@
 import os
-# import django_heroku
+import django_heroku , dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+prod_db  =  dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(prod_db)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -14,7 +15,7 @@ SECRET_KEY = 'ghr%=q!3afx83t+1dojl%j15mta%6!v@bpx2l5p+ki2i!)zqs3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com']
 
 
 # Application definition
@@ -33,10 +34,13 @@ INSTALLED_APPS = [
     'questions.apps.QuestionsConfig',
     "peer.apps.PeerConfig",
     'chatroom.apps.ChatroomConfig',
-    'social_django',
+    # 'whitenoise.runserver_nostatic',
+    # 'django.contrib.staticfiles',
+    # 'social_django',
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -44,7 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'social_django.middleware.SocialAuthExceptionMiddleware',
+    # 'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'devcodes.urls'
@@ -70,8 +74,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
+                # 'social_django.context_processors.backends',
+                # 'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -79,9 +83,9 @@ TEMPLATES = [
 
 
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.github.GithubOAuth2',
-    'social_core.backends.twitter.TwitterOAuth',
-    'social_core.backends.facebook.FacebookOAuth2',
+    # 'social_core.backends.github.GithubOAuth2',
+    # 'social_core.backends.twitter.TwitterOAuth',
+    # 'social_core.backends.facebook.FacebookOAuth2',
 
     'django.contrib.auth.backends.ModelBackend',
 )
@@ -95,14 +99,14 @@ WSGI_APPLICATION = 'devcodes.wsgi.application'
 
 DATABASES = {
     'default': {
-         # 'ENGINE': 'django.db.backends.sqlite3',
-         # 'NAME': "devcodes.sqlite3",
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': "devcodes",
-        "PORT":3306,
-        "HOST":"127.0.0.1",
-        "USER":"root",
-        "PASSWORD":"",
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': "devcodes.sqlite3",
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': "devcodes",
+        # "PORT":3306,
+        # "HOST":"127.0.0.1",
+        # "USER":"root",
+        # "PASSWORD":"",
 
     }
 }
@@ -168,6 +172,9 @@ LOGIN_REDIRECT_URL = 'http://localhost:8000/'
 
 
 
-SOCIAL_AUTH_GITHUB_KEY = '400c9120d85c04fe1d27'
-SOCIAL_AUTH_GITHUB_SECRET = 'b5062525aedc28521c3df0f1c878e61ac4ecb52d'
-# django_heroku.settings(locals())
+# SOCIAL_AUTH_GITHUB_KEY = '400c9120d85c04fe1d27'
+# SOCIAL_AUTH_GITHUB_SECRET = 'b5062525aedc28521c3df0f1c878e61ac4ecb52d'
+
+django_heroku.settings(locals())
+PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
