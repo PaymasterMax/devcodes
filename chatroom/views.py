@@ -1,25 +1,29 @@
 from django.shortcuts import render,redirect
 from signup.models import Signup as signmod
 from .models import ChatModel as chatmod
-from django.db.models import Q
+from django.db.models import Q,Max
 
+
+def db_unique(uid , db):
+    pass
 
 def inbox(request):
     try:
         userdetails = signmod.objects.get(username = request.session["username"])
         newmessage = chatmod.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False).count()
-
+        userlog = True
     except Exception as e:
+        userlog = False
         request.session["redirect"] = "/chatroom/"
         return redirect("/login/")
 
     else:
-        all_messages = chatmod.objects.filter(r2uid_id = userdetails.uid).order_by("-text_time")
-
-        # test = chatmod.objects.filter(r2uid_id = )
-        test = chatmod.objects.filter(r2uid_id = userdetails.uid).values("r1uid_id").distinct()
-        print(test)
-        return render(request , "chatroom/inbox.html" , context = {"all_messages":all_messages , "userdetails":userdetails , "newmessage":newmessage})
+        all_messages = chatmod.objects.filter(Q(r2uid_id = userdetails.uid) | Q(r1uid_id = userdetails.uid)).order_by("-text_time")
+        dat = chatmod.objects.filter(r2uid_id = userdetails.uid).values("r1uid_id").annotate(recentm = Max("text_time"))
+        print(dat)
+        # all_messages = chatmod.objects.filter(r2uid_id = userdetails.uid).latest()
+        # print(all_messages)
+        return render(request , "chatroom/inbox.html" , context = {"all_messages":all_messages , "userdetails":userdetails , "newmessage":newmessage , "userlog":userlog})
 
 
 def chatrm(request , chat_user):
@@ -29,15 +33,14 @@ def chatrm(request , chat_user):
         check_bell = chatmod.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False)
         check_bell.update(bell_seen = True)
         ch_user = signmod.objects.get(uid = chat_user)
-
+        userlog = True
     except Exception as e:
-        print(e)
+        userlog = True
         request.session["redirect"] = "/chatroom/{}/".format(chat_user)
         return redirect("/login/")
 
     else:
-        return render(request , "chatroom/messages.html" , context = {"userdetails":userdetails , "chats":chats , "receiver":ch_user})
-
+        return render(request , "chatroom/messages.html" , context = {"userdetails":userdetails , "chats":chats , "receiver":ch_user , "userlog":userlog})
 
 # update chats
 def updatechats(request):
@@ -49,6 +52,7 @@ def updatechats(request):
 
         except Exception as e:
             # request.session["redirect"] = "/chatroom/updatechats/"
+            receiver = int(request.POST["re"])
             return redirect("/chatroom/{}/#frm".format(receiver))
 
         else:

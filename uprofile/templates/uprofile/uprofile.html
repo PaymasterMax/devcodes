@@ -8,107 +8,112 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <title>Dev Code | profile</title>
+    <title>DevCodes | profile</title>
     <link rel="stylesheet" href="{% static 'uprofile/uprofile.css' %}">
   </head>
   <body>
+     <!-- new nav-bar -->
+     <div class="nav-bar">
+      <div class="links">
+        <a href="{% url 'home:home' %}">Home</a> |
 
-    <div class="main-window">
-      <div class="nav-bar">
-          <a href="{% url 'home:home' %}">home</a> |
-          <a href="{% url 'questions:questions' %}">Questions</a> |
-          <a href="{% url 'peers:peers' %}">peers</a> |
-          <a href="{% url 'home:home' %}">Chat</a>
-          <a href="{% url 'chatroom:chatroom' 1 %}" class="fa fa-bell"> {{newmessage}}</a>
+        <a href="{% url 'peers:peers' %}">Peers</a> |
+
+          <!-- dropdowm for questions -->
+        <div class="dropdown">
+       <div class="dropbtn"> <a href="{% url 'questions:questions' %}">Questions<i class="fa fa-caret-down"></i></a>  </div>
+        <div class="dropdown-content">   <a href="{% url 'questions:myquestions' %}">My Questions</a>  </div>
+     </div>
+
+        |
+        <a href="{% url 'chatroom:inbox' %}">Inbox</a>
+        <a href="{% url 'chatroom:inbox' %}">
+          <i class="fa fa-envelope"> {{newmessage}}</i>
+        </a>
+        </div>
+        <div class="logoN" id="upPart">
+        DevCodes/>
+        </div>
+
+        <div class="user-profile">
+          <a> <i class="fa fa-bell">{{notifs}}</i> </a>
+
+            <img src="/media/{{mydetails.profilepic}}" alt="profile"
+             style="width:40px; height:40px; border-radius:50%;">
+             <div class="user-dropdown">
+               <a href="{% url 'login:logout' %}">
+                 Log out
+               </a>
+             </div>
+
       </div>
-      <div class="main-frame-details">
+  </div>
+      <div class="main-container">
+
+      <div class="main-details">
         <!-- profile pic -->
-        <p class="profile">
-          <img src="/media/{{mydetails.profilepic}}" alt="profile">
-        </p>
-        <div class="details">
+
+          <img src="/media/{{mydetails.profilepic}}" class="profile-image" alt="profile">
+
+
 
           <!-- update form -->
           <form class="" action="{% url 'profile:update' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
           <fieldset>
-            <table cellpadding = 5>
-              <th>
-                <td>Your details</td>
-              </th>
-              <tr>
 
-                <td>
+            <div class="info">
+               <div class="Your"> Your details</div>
+                  <div class="sect">
                   <label class="labels">Username</label>
-                </td>
 
-                <td>
-                  <input type="text" name="username" value="{{mydetails.username}}" id="username">
-                </td>
-              </tr>
-
-
-              <tr>
-
-                <td>
+                  <input type="text" class="entry" name="username" value="{{mydetails.username}}" id="username">
+              </div>
+                    <div class="sect">
                   <label class="labels">Phone</label>
-                </td>
-
-                <td>
-                  <input type="tel" name="phone" value="{{mydetails.pnumber}}" id="phone">
-                </td>
-              </tr>
 
 
-              <tr>
 
-                <td>
+                  <input type="text" class="entry" name="phone" value="{{mydetails.pnumber}}" id="phone">
+               </div>
+
+               <div class="sect">
+
                   <label class="labels">Email</label>
-                </td>
 
+                  <input type="text" class="entry" name="email" value="{{mydetails.email}}" id="email">
+               </div>
+
+              <!-- <tr>
                 <td>
-                  <input type="text" name="email" value="{{mydetails.email}}" id="email">
+                  <label>password</label>
                 </td>
-              </tr>
-
-              <tr>
-
                 <td>
+                  <input type="text" name="password" value="">
+                </td>
+              </tr> -->
+                <div class="sect">
+
                   <label class="labels">Language</label>
-                </td>
 
-                <td>
-                  <input type="text" name="language" value="{{mydetails.hobby}}" id="language">
-                </td>
-              </tr>
+                  <input type="text" class="entry" name="language" value="{{mydetails.hobby}}" id="language">
+                </div>
 
-              <tr>
-
-                <td>
+                <div class="sect">
                   <label class="labels">Profile</label>
-                </td>
 
-                <td>
-                  <input type="file" name="profile" value="{{mydetails.profilepic}}">
-                </td>
-              </tr>
+                  <input type="file" class="entry" name="profile" value="{{mydetails.profilepic}}">
+                </div>
 
-              <tr>
-
-                <td colspan="2">
                   <button type="submit" name="submit" class="btn btn-info" onclick="auth()">Update</button>
-                </td>
-              </tr>
-
-            </table>
+                </div>
           </fieldset>
           </form>
-
 
         </div>
       </div>
 
-    </div>
+
 
   </body>
   <script type="text/javascript">
@@ -126,5 +131,52 @@
       xml.open("POST" , "{% url 'profile:update' %}");
       xml.send();
     }
+
+
+
+    function validation() {
+
+        var xml = new XMLHttpRequest();
+
+        xml.onreadystatechange = function() {
+          if(this.readyState == 4 && this.status == 200){
+
+            alert(this.responseText);
+          }
+        }
+        var data = JSON.stringify({"username":"duncan"});
+        xml.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+        xml.setRequestHeader("X-CSRFToken" , "{{ csrf_token }}");
+        xml.open("POST" , "{% url 'profile:update' %}");
+        xml.send();
+      }
+
+
+
+      function bughunter(){
+        var username = document.getElementById('username').value;
+        var phone = document.getElementById('phone').value;
+        var email = document.getElementById('email').value;
+        var language = document.getElementById('language').value;
+
+
+        try {
+          xhttp = new XMLHttpRequest();
+        } catch (e) {
+              xhttp = new ActiveXObject();
+        } finally {
+            xhttp.onreadystatechange = function() {
+              if(this.readyState == 4 && this.status == 200){
+
+                alert(this.responseText);
+              }
+            }
+            }
+            xhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+            xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+            xhttp.open("POST" , "{% url 'login:login' %}");
+            xhttp.send("email="+email);
+        }
+      }
   </script>
 </html>

@@ -17,3 +17,7 @@ def homeview(request):
     else:
         userlog = True
         return render(request , "home/home.html" , context = {"userinfo":userinfo , "notifs":notifs , "allq": all_questions , "userlog":userlog})
+
+
+def Policies(request):
+    return render(request , "home/privacy.html")

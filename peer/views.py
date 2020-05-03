@@ -36,17 +36,9 @@ def locatepeers(request):
         elif criteria=="language":
             indexed_peers = sp.objects.filter(hobby__icontains = searchterm).exclude(uid= current_user.uid)
             no_of_results = indexed_peers.count()
-
-        elif criteria=="email":
-            indexed_peers = sp.objects.filter(email__icontains = searchterm).exclude(uid= current_user.uid)
-            no_of_results = indexed_peers.count()
-
+            
         elif criteria=="location":
             indexed_peers = sp.objects.filter(location__icontains = searchterm).exclude(uid= current_user.uid)
-            no_of_results = indexed_peers.count()
-
-        else:
-            indexed_peers = sp.objects.filter(pnumber__icontains = searchterm).exclude(uid= current_user.uid)
             no_of_results = indexed_peers.count()
 
         newmessage = chtb.objects.filter(r2uid_id =  current_user.uid, bell_seen = False).count()

@@ -3,7 +3,7 @@ from django.http import HttpResponse
 # Create your views here.
 from .models import Signup as signmodel
 from django.contrib.auth.hashers import make_password
-import validate_email as v
+# import validate_email as v
 
 
 
@@ -31,30 +31,30 @@ def signup(request):
 
         if passwordflag:
             password = make_password(request.POST['pass1'])
-            if v.validate_email(email):
-                try:
-                    signmodel.objects.get(email = email)
-                except Exception as e:
-                    try:
-                        signmodel.objects.get(username = username)
-
-                    except Exception as e:
-                        signmodel.objects.create(username = username , pnumber = pnumber , email = email , password = password ,
-                        hobby = hobby , profilepic = profilepic)
-                        return redirect("/login/")
-
-                    else:
-                        error_log.append("User exists")
-                        print("\n\n\n\n\n{}".format(error_log))
-                        return render(request , "signup/signup.html" , context = {"error_log":error_log})
-
-                else:
-                    error_log.append("User exists")
-                    print("\n\n\n\n\n{}".format(error_log))
-                    return render(request , "signup/signup.html" , context = {"error_log":error_log})
-            else:
-                error_log.append("Email does not exists")
-                return render(request , "signup/signup.html" , context = {"error_log":error_log})
+            # if v.validate_email(email):
+            #     try:
+            #         signmodel.objects.get(email = email)
+            #     except Exception as e:
+            #         try:
+            #             signmodel.objects.get(username = username)
+            #
+            #         except Exception as e:
+            #             signmodel.objects.create(username = username , pnumber = pnumber , email = email , password = password ,
+            #             hobby = hobby , profilepic = profilepic)
+            #             return redirect("/login/")
+            #
+            #         else:
+            #             error_log.append("User exists")
+            #             print("\n\n\n\n\n{}".format(error_log))
+            #             return render(request , "signup/signup.html" , context = {"error_log":error_log})
+            #
+            #     else:
+            #         error_log.append("User exists")
+            #         print("\n\n\n\n\n{}".format(error_log))
+            #         return render(request , "signup/signup.html" , context = {"error_log":error_log})
+            # else:
+            #     error_log.append("Email does not exists")
+            #     return render(request , "signup/signup.html" , context = {"error_log":error_log})
 
         else:
             error_log.append("Password not correct")

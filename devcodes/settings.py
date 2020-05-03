@@ -1,4 +1,5 @@
 import os
+# import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -30,9 +31,9 @@ INSTALLED_APPS = [
     'signup.apps.SignupConfig',
     'uprofile.apps.UprofileConfig',
     'questions.apps.QuestionsConfig',
-    'codesnippet.apps.CodesnippetConfig',
     "peer.apps.PeerConfig",
     'chatroom.apps.ChatroomConfig',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -43,6 +44,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'devcodes.urls'
@@ -56,9 +58,9 @@ TEMPLATES = [
                 os.path.join(BASE_DIR , "signup/templates"),
                 os.path.join(BASE_DIR , "uprofile/templates"),
                 os.path.join(BASE_DIR , "questions/templates"),
-                os.path.join(BASE_DIR , "codesnippet/templates"),
                 os.path.join(BASE_DIR , "peer/templates"),
                 os.path.join(BASE_DIR , "chatroom/templates"),
+                os.path.join(BASE_DIR , "bugtemplates")
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -67,10 +69,23 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
+
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 
 WSGI_APPLICATION = 'devcodes.wsgi.application'
 
@@ -80,14 +95,14 @@ WSGI_APPLICATION = 'devcodes.wsgi.application'
 
 DATABASES = {
     'default': {
-         'ENGINE': 'django.db.backends.sqlite3',
-         'NAME': "devcodes.sqlite3",
-        #'ENGINE': 'django.db.backends.mysql',
-        #'NAME': "devcodes",
-        #"PORT":3306,
-        #"HOST":"127.0.0.1",
-        #"USER":"root",
-        #"PASSWORD":"",
+         # 'ENGINE': 'django.db.backends.sqlite3',
+         # 'NAME': "devcodes.sqlite3",
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': "devcodes",
+        "PORT":3306,
+        "HOST":"127.0.0.1",
+        "USER":"root",
+        "PASSWORD":"",
 
     }
 }
@@ -136,7 +151,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR , "login/static"),
     os.path.join(BASE_DIR , "signup/static"),
     os.path.join(BASE_DIR , "uprofile/static"),
-    os.path.join(BASE_DIR , "codesnippet/static"),
     os.path.join(BASE_DIR , "questions/static"),
     os.path.join(BASE_DIR , "peer/static"),
     os.path.join(BASE_DIR , "chatroom/static"),
@@ -144,3 +158,16 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR , "media_root")
+
+
+
+
+LOGIN_URL = "login"
+LOGOUT_URL = "logout"
+LOGIN_REDIRECT_URL = 'http://localhost:8000/'
+
+
+
+SOCIAL_AUTH_GITHUB_KEY = '400c9120d85c04fe1d27'
+SOCIAL_AUTH_GITHUB_SECRET = 'b5062525aedc28521c3df0f1c878e61ac4ecb52d'
+# django_heroku.settings(locals())

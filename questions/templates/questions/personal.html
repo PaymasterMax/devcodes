@@ -1,5 +1,6 @@
 {% load timemod %}
 {% load static %}
+{% load like %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -11,76 +12,92 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <title>Dev Code | Questions</title>
-    <link rel="stylesheet" href="{% static 'questions/myQuestions.css' %}">
+    <link rel="stylesheet" href="{% static 'questions/questions.css' %}">
   </head>
   <body>
-    <div class="nav-bar" id="upPart">
-      <div class="links">
-        <a href="{% url 'home:home' %}">home</a> |
-        <a href="{%url 'questions:questions' %}">Questions</a> |
-        <a href="{% url 'peers:peers' %}">Peers</a> |
-        <a href="{% url 'chatroom:inbox' %}">inbox</a>
-
-          <i class="fa fa-envelope"> {{newmessage}}</i>
-
-        </div>
-        <div class="logo">
-        DevCodes/>
-        </div>
-
+  <div class="nav-bar">
+    <div class="links">
+      <a href="{% url 'home:home' %}">Home</a> |
+      <a href="{% url 'peers:peers' %}">Peers</a> |
+      <a href="{% url 'questions:questions' %}">Questions</a> |
+      <a href="{% url 'chatroom:inbox' %}" class="personalize">Inbox
+        <i class="fa fa-envelope"> {{newmessage}}</i>
+      </a>
+    </div>
+    <div class="logoN">
+      DevCodes/>
+    </div>
+      {% if userlog %}
         <div class="user-profile">
-          <a href="{% url 'profile:profile' %}">
-            <img src="/media/{{mydetails.profilepic}}" alt="profile" style="width:40px; height:40px; border-radius:50%;">
-          </a>
+          <a> <i class="fa fa-bell">{{notifs}}</i> </a>
+            <img src="/media/{{mydetails.profilepic}}" alt="profile"
+             style="width:40px; height:40px; border-radius:50%;">
+             <div class="user-dropdown">
+               <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
+                 Edit profile
+               </a>
+               <a href="{% url 'questions:myquestions' %}" class="small-personalize">
+                 My Questions
+               </a>
+               <a href="{% url 'chatroom:inbox' %}" class="small-personalize">
+                 Inbox
+               </a>
+               <a href="{% url 'login:login' %}">
+                 Log out
+               </a>
+             </div>
       </div>
-  </div>
-  <div class="page-title">My Questions page</div>
-  <div class="main-window">
+      {% else %}
+        <div class="user-profile">
+            <img src="{% static 'home/images/icon.jpg' %}" alt="profile"
+            style="width:40px; height:40px; border-radius:50%;">
+      </div>
+      {% endif %}
+</div>
+  <div class="page-title" id="upPart">My Questions page</div>
+    <div class="main-window">
         <div class="person-holder">
-    {% for question in Questions %}
+          {% for question in Questions %}
+            <div class="oneQuestion">
+              <div class="question-container">
+                <div class="user-details-first-row">
 
-    <div class="oneQuestion">
-          <!-- <div class="profile-pic">
-          <img src = "/media/{{question.quid.profilepic}}" alt="profile">
-          </div> -->
-
-          <div class="question-container">
-            <div class="user-details-first-row">
-
-              {{mydetails.username}}  @
-              {{question.time_posted | timemodifier}}
-            </div>
-            <div class="question-content">
-              <div class="question-text">{{question.question}}</div>
-            <div class="languages-tagged">
-              {{question.language}}
+                  {{mydetails.username}}  @
+                  {{question.time_posted | timemodifier}}
+                </div>
+                <div class="question-content">
+                    <div class="question-text">{{question.question}}</div>
+                    <div class="languages-tagged">
+                      {{question.language}}
+                    </div>
+                  </div>
+                <div class="reply-section">
+                  {% if mydetails.uid|likey:question %}
+                         <div class="like">
+                         <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;">
+                          {{question.question_liked.count}}
+                         </div>
+                   {% else %}
+                       <div class="like">
+                       <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;" onclick="updatemonster({{question.qid}});">
+                            {{question.question_liked.count}}
+                       </div>
+                   {% endif %}
+                  <div class="message">
+                    <img src="{% static 'questions/images/message.svg' %}" alt="message icon">
+                    {{question.no_of_answers}}
+                  </div>
+                  <div class="Click">
+                    <a href="{% url 'questions:answers' question.qid %}"> Click to view replies</a>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="reply-section">
-             <div class="like">
-               <a href="{% url 'home:home' %}">
-             <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;"></a>
-             {{question.no_of_answers}}
-             </div>
-             <div class="message">
-             <img src="{% static 'questions/images/message.svg' %}" alt="message icon">
-             {{question.no_of_answers}}
-             </div>
-             <div class="Click">
-            <a href="{% url 'questions:answers' question.qid %}"> Click to view replies</a>
-             </div>
-            </div>
-          </div>
+          {% endfor %}
         </div>
-
-        </div>
-    {% endfor %}
-  </div>
-
-  <a href="#upPart"><img src="{% static 'questions/images/up.svg' %}" alt="up_key" class="up-icon"  id="up">
+    </div>
+    <a href="#upPart"><img src="{% static 'questions/images/up.svg' %}" alt="up_key" class="up-icon"  id="up">
   </a>
-
-
 <script>
   var up=document.getElementById('up');
   window.onscroll=function(){
@@ -92,7 +109,24 @@
       up.classList.remove('hide');
   }
   }
-
+  function updatemonster(qid) {
+    try {
+        var xmlhttp = new XMLHttpRequest();
+    } catch (e) {
+      var xmlhttp = new ActiveXObject();
+    }
+    finally {
+      xmlhttp.open("POST" , "{% url 'questions:updatelikes' %}" , true);
+      xmlhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+      xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+      xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status ==200) {
+          alert(this.responseText);
+        }
+      }
+      xmlhttp.send("qid="  + qid);
+    }
+  }
 </script>
 </body>
 </html>
