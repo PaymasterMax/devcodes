@@ -31,3 +31,10 @@ def cont(timeobj):
 
     else:
         return timeobj
+
+@register.filter("umodifier")
+def umod(send_id , my_id):
+    if send_id==my_id:
+        return True
+    else:
+        return False

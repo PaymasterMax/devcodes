@@ -14,41 +14,21 @@
     <link rel="stylesheet" href="{% static 'peers/peers.css' %}">
   </head>
   <body>
-
-    <!-- header section -->
-    <!-- <div class="header">
-        <nav>
-          <a href="{% url 'home:home' %}">Home</a> |
-          <a href="{% url 'questions:questions' %}">Questions</a> |
-          <a href="{% url 'chatroom:inbox'%}">Inbox <i class="fa fa-envelope"></i> {{newmessage}}</a>
-        </nav>
-
-        profile photo
-        <div class="myprofile">
-          <a href="{% url 'questions:myquestions' %}">
-            <i class="fa fa-bell notif"> {{newmessage}}</i>
-          </a>
-          <a href="{% url 'profile:profile' %}">
-            <img src="/media/{{user.profilepic}}" alt="profile" title="{{user.username}}">
-          </a>
-        </div>
-
-    </div> -->
     <div class="nav-bar">
       <div class="links">
         <a href="{% url 'home:home' %}">Home</a> |
-        
+
           <!-- A dropdown for questions -->
         <div class="dropdown">
        <div class="dropbtn"> <a href="{% url 'questions:questions' %}">Questions<i class="fa fa-caret-down"></i></a>  </div>
         <div class="dropdown-content">   <a href="{% url 'questions:myquestions' %}">My Questions</a>  </div>
      </div>
-        
+
         |
         <a href="{% url 'chatroom:inbox' %}">Inbox</a>
         <a href="{% url 'chatroom:inbox' %}">
           <i class="fa fa-envelope"> {{newmessage}}</i>
-        </a> 
+        </a>
         </div>
         <div class="logoN">
         DevCodes/>
@@ -57,7 +37,7 @@
         <div class="user-profile">
           <a> <i class="fa fa-bell">5</i> </a>
           <a href="{% url 'profile:profile' %}">
-            <img src="/media/{{mydetails.profilepic}}" alt="profile" style="width:40px; height:40px; border-radius:50%;">
+            <img src="/media/{{user.profilepic}}" alt="profile" style="width:40px; height:40px; border-radius:50%;">
           </a>
       </div>
   </div>

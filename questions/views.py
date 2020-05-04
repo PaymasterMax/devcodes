@@ -4,32 +4,37 @@ from .forms import anserform
 from django.db.models import Count
 from .models import Questions , Answers , QuestionLike as qlike
 from chatroom.models import ChatModel as chtb
-
+from home.models import FeedBack as fd
+from django.http import JsonResponse , HttpResponse
 
 def questionsview(request):
     try:
         userdetails = Signup.objects.get(username = request.session["username"])
         newmessage = chtb.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False).count()
+        userlog = True
     except Exception as e:
+        userlog = False
         request.session["redirect"] = "/questions/"
         return redirect("/login/")
 
     else:
         all_questions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted")
-        return render(request , "questions/questions.html" , context = {"Questions":all_questions , "mydetails":userdetails , "newmessage":newmessage})
+        return render(request , "questions/questions.html" , context = {"Questions":all_questions , "mydetails":userdetails , "newmessage":newmessage , "userlog":userlog})
 
 
 def myquestions(request):
     try:
         userdetails = Signup.objects.get(username = request.session["username"])
         newmessage = chtb.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False).count()
+        userlog = True
     except Exception as e:
+        userlog = False
         request.session["redirect"] = "/questions/myquestions/"
         return redirect("/login/")
 
     else:
         all_questions = Questions.objects.filter(quid_id = userdetails.uid).annotate(no_of_answers = Count("question_to_answer"))
-        return render(request , "questions/personal.html" , context = {"Questions":all_questions , "mydetails":userdetails , "newmessage":newmessage})
+        return render(request , "questions/personal.html" , context = {"Questions":all_questions , "mydetails":userdetails , "newmessage":newmessage , "userlog":userlog})
 
 
 def answersview(request , Qid):
@@ -40,13 +45,14 @@ def answersview(request , Qid):
 
     try:
         userdetails = Signup.objects.get(username = request.session["username"])
-
+        userlog = True
     except Exception as e:
+        userlog = False
         return render(request , "questions/answers.html" , context = {"userdetails":"userdetails" , "answers_form":answers_form , "Qid":Qid , "allanswers":allanswers , "question_info":question_info , "newmessage":0})
 
     else:
         newmessage = chtb.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False).count()
-        return render(request , "questions/answers.html" , context = {"userdetails":userdetails , "answers_form":answers_form , "Qid":Qid , "allanswers":allanswers , "question_info":question_info , "newmessage":newmessage})
+        return render(request , "questions/answers.html" , context = {"userdetails":userdetails , "answers_form":answers_form , "Qid":Qid , "allanswers":allanswers , "question_info":question_info , "newmessage":newmessage , "userlog":userlog})
 
 
 def askquestionsview(request):
@@ -97,4 +103,11 @@ def updatelikes(request):
         Qid = request.POST["qid"]
         print(Qid)
         qlike.objects.create(Qid_id = Qid , luid_id = userdetails.uid)
-        return redirect("/questions/")
+        return HttpResponse("Like saved")
+
+
+def feed(request):
+    user_mail = request.POST["email"]
+    feed = request.POST["feedback"]
+    fd.objects.create(feedback_sender = user_mail, feedback = feed)
+    return JsonResponse({"feedback":True})

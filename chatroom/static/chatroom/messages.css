@@ -96,7 +96,7 @@ body {
   .user-profile:focus .user-dropdown{
     display: grid;
   }
-  
+
 
   .logoN{
     font-size:22px;

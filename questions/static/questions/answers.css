@@ -7,10 +7,7 @@
 
 body {
   /* background-color: #242721; */
-<<<<<<< HEAD
   /* background-color: #070f54; */
-=======
->>>>>>> 0e9770e... responsiveness
   background-color: #0a1d2f;
 }
 
@@ -108,7 +105,7 @@ body {
   .user-profile:focus .user-dropdown{
     display: grid;
   }
-  
+
 
   .logoN{
     font-size:22px;
@@ -255,14 +252,8 @@ textarea {
   margin: 0px auto;
   border-radius: 10px;
   text-align: center;
-<<<<<<< HEAD
-  width: 80%;
-  resize: none;
 
-=======
-  
  border: 1px solid gray;
->>>>>>> 0e9770e... responsiveness
 }
 
 

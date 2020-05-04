@@ -68,7 +68,7 @@ def signup(request):
 # username is in use?
 def userauthentication(request):
     try:
-        uname = request.GET['username']
+        uname = request.POST['username']
 
     except Exception as e:
         pass
@@ -88,8 +88,7 @@ def userauthentication(request):
 # email is in use?
 def emailauthentication(request):
     try:
-        email = request.GET['email']
-
+        email = request.POST['email']
     except Exception as e:
         pass
 
@@ -99,10 +98,8 @@ def emailauthentication(request):
 
         except Exception as e:
             if v.validate_email(email):
-                print(v.validate_email(email))
                 return HttpResponse("false")
             else:
-                print(v.validate_email(email))
                 return HttpResponse("Email not found")
 
         else:

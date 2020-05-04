@@ -12,3 +12,4 @@ class ChatModel(models.Model):
 
     class Meta:
         db_table = "Chats"
+        get_latest_by = "text_time"

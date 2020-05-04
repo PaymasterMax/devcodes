@@ -119,7 +119,7 @@
   .user-profile:focus .user-dropdown{
     display: grid;
   }
-  
+
 
   .logoN{
     font-size:22px;
@@ -158,7 +158,7 @@
   background: -webkit-linear-gradient(51deg, #1de81acf, #d9e01291);
   background: -moz-linear-gradient(51deg, #1de81acf, #d9e01291);
   background: -o-linear-gradient(51deg, #1de81acf, #d9e01291);
-  
+
   padding: 15px;
   /* background-color: #54df52; */
 }
@@ -415,7 +415,7 @@ color: white;
   .flex-holder{
     padding: 20px 17px;
   }
-  
+
   .start-carol {
     width: 100%;
   }
