@@ -4,7 +4,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,inital-scale=1.0,userscalble=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -17,38 +17,33 @@
     <div class="nav-bar">
       <div class="links">
         <a href="{% url 'home:home' %}">Home</a> |
+
           <!-- A dropdown for questions -->
         <div class="dropdown">
        <div class="dropbtn"> <a href="{% url 'questions:questions' %}">Questions<i class="fa fa-caret-down"></i></a>  </div>
-        <div class="dropdown-content">   <a href="{% url 'questions:myquestions' %}" class="personalize">My Questions</a>  </div>
+        <div class="dropdown-content">   <a href="{% url 'questions:myquestions' %}">My Questions</a>  </div>
      </div>
+
         |
-        <a href="{% url 'chatroom:inbox' %}" class="personalize">Inbox
+        <a href="{% url 'chatroom:inbox' %}">Inbox</a>
+        <a href="{% url 'chatroom:inbox' %}">
           <i class="fa fa-envelope"> {{newmessage}}</i>
-          </a>
+        </a>
         </div>
         <div class="logoN">
         DevCodes/>
         </div>
+
         <div class="user-profile">
-          <a> <i class="fa fa-bell">{{newmessage}}</i> </a>
+          <a> <i class="fa fa-bell">5</i> </a>
           <a href="{% url 'profile:profile' %}">
             <img src="/media/{{user.profilepic}}" alt="profile" style="width:40px; height:40px; border-radius:50%;">
           </a>
-
-          <div class="user-dropdown">
-            <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
-              Edit profile
-            </a>
-
-            <a href="{% url 'questions:myquestions' %}" class="small-personalize">My Questions</a>
-            <a href="{% url 'chatroom:inbox' %}" class="small-personalize">Inbox</a>
-            <a href="{% url 'login:logout' %}">
-              Log out
-            </a>
-          </div>
       </div>
   </div>
+
+
+
     <!-- main page -->
     <div class="main">
       <div class="search" id="upPart">
@@ -62,7 +57,9 @@
               <select class="slen" name="critrion" size="1">
                 <option value="language" selected>language</option>
                 <option value="username">username</option>
+                <option value="email">email</option>
                 <option value="location">location</option>
+                <option value="phone">phone</option>
               </select>
           </form>
       </div>
@@ -75,6 +72,7 @@
         <div class="profile">
           <img src="/media/{{usr.profilepic}}" alt="profile" title="{{usr.username}}">
         </div>
+
         <div class="detail-user">
             <p>
               username - {{usr.username}}
@@ -82,9 +80,11 @@
             <p class="">
                <i class="fa fa-heart"></i> Language - {{usr.hobby}}
             </p>
+
             <p class="lower-user">
               <i class="fa fa-map-marker"> {{usr.location}}</i>
             </p>
+
             <p class="lower-user">
               <a href="{% url 'chatroom:chatroom' usr.uid %}">
                 Chat <i class="fa fa-envelope">  {{ usr | messenger:user }}</i>
@@ -92,10 +92,14 @@
             </p>
         </div>
       </div>
+
       {% endfor %}
     </div>
     <!-- footer  -->
+
     <div class="footer">
+
     </div>
+
   </body>
 </html>

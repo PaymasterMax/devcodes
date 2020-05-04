@@ -17,6 +17,7 @@ SECRET_KEY = 'ghr%=q!3afx83t+1dojl%j15mta%6!v@bpx2l5p+ki2i!)zqs3'
 DEBUG = True
 
 ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -163,9 +164,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR , "peer/static"),
     os.path.join(BASE_DIR , "chatroom/static"),
 ]
-django_heroku.settings(locals())
-PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# django_heroku.settings(locals())
+# PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR , "media_root")
@@ -181,4 +182,4 @@ LOGIN_REDIRECT_URL = 'http://localhost:8000/'
 
 # SOCIAL_AUTH_GITHUB_KEY = '400c9120d85c04fe1d27'
 # SOCIAL_AUTH_GITHUB_SECRET = 'b5062525aedc28521c3df0f1c878e61ac4ecb52d'
-del DATABASES['default']['OPTIONS']['sslmode']
+# del DATABASES['default']['OPTIONS']['sslmode']

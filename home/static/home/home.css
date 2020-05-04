@@ -106,7 +106,7 @@
   .user-dropdown{
     position: absolute;
     background-color: #303d5c;
-    z-index: 4;
+    z-index: 1;
     padding: 3px;
     padding-top: 5px;
     width: max-content;
@@ -452,6 +452,12 @@ color: white;
     font-size: 1em;
 
   }
+  /* a .fa .fa-caret-down{
+    display: none;
+  }
+  .arrow{
+    display: none;
+  } */
   .dropbtn i{
     display: none;
   }
@@ -459,13 +465,5 @@ color: white;
 
   .start-carol {
     width: 100%;
-  }
-
-  .botttom-link {
-    display: block;
-  }
-
-  .footer {
-    display: block;
   }
 }

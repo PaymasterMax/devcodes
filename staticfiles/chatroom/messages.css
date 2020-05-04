@@ -37,6 +37,8 @@ body {
 }
 
 /* Start of dropdown */
+
+
 .dropdown .dropbtn {
     background-color: inherit;
    margin: 0;
@@ -122,6 +124,7 @@ a {
   text-decoration: none;
 }
 
+
 a:hover {
   text-decoration: none;
   color: #fff;
@@ -131,7 +134,8 @@ a:hover {
 .current-profile {
   display: inline-block;
   margin-top: auto;
-  margin-right: auto;
+  margin-right: 40px;
+  display: flex;
 }
 
 
@@ -141,9 +145,16 @@ a:hover {
   display: block;
   border-radius: 50%;
   margin-top: auto;
-  /* margin-right: auto; */
 }
 
+.current-profile >a {
+  flex: 1;
+}
+
+
+.bell {
+  padding: 10px;
+}
 
 .profile {
   width: 60px;
@@ -163,7 +174,6 @@ a:hover {
   margin-top: 30px;
   background-color: #e8eaec;
   border-radius: 30px;
-  margin-top: 30px;
 }
 
 
@@ -248,6 +258,10 @@ a:hover {
 }
 
 
+#frm {
+  margin-top: 50px;
+}
+
 .answer-form>form {
   margin-left: auto;
   margin-right: auto;
@@ -273,9 +287,39 @@ textarea {
   border-radius: 30px;
   text-align: center;
 }
-.small-personalize {
-  display: none;
+
+
+.unseen {
+  background-color: red;
 }
+
+
+.personchat {
+  display: block;
+  margin: 0px auto;
+  padding: 10px;
+}
+
+.personchat >img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: block;
+  margin: 10px auto;
+}
+
+
+.personchat>p {
+  text-align: center;
+  font-weight: bold;
+}
+
+
+.messageref {
+  color: #000;
+  text-decoration: none;
+}
+
 
 @media screen and (max-width:700px) {
 
@@ -290,13 +334,7 @@ textarea {
     width: 90%;
   }
 
-  .personalize{
-    display: none;
-  }
 
-  .small-personalize {
-    display: block;
-  }
   .one-message  > .profile > img  {
     margin: 1.3px;
   }
@@ -343,5 +381,9 @@ textarea {
     margin-right: 4px;
     padding: 5px;
     background-color: #000000;
+  }
+
+  .current-profile {
+    display: none;
   }
 }
