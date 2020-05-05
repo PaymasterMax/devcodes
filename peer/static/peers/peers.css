@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 body {
   background-color: #0a1d2f;
 }
@@ -279,10 +278,8 @@ hr {
 .personalize {
   display: none;
 }
-=======
 body {
   background-color: #0a1d2f;
-  /* background-color: #242721; */
 }
 /* nav-bar beginning */
 .nav-bar{
@@ -377,7 +374,7 @@ body {
   .user-profile:focus .user-dropdown{
     display: grid;
   }
-  
+
 
   .logoN{
     font-size:22px;
@@ -611,7 +608,7 @@ hr {
   a .fa .fa-caret-down{
     display: none;
   }
- 
+
   .dropbtn i{
     display: none;
   }

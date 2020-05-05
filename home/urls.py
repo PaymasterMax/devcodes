@@ -4,5 +4,5 @@ app_name = "home"
 
 urlpatterns = [
     url("^$" , views.homeview , name = "home"),
-    url("^Policies/" , views.Policies , name = "Policies"),
+    url("^adminpanel/" , views.adminpanel , name = "adminpanel"),
 ]

@@ -1,0 +1,85 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevCodes | Admin Page</title>
+    <link rel="stylesheet" href="{% static 'home/admin.css' %}">
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="links">
+          <a href="{% url 'home:home' %}" >Home</a> |
+          
+          <a href="{% url 'peers:peers' %}">Peers</a> |
+
+          <a href="{% url 'questions:myquestions' %}">My Questions</a>
+
+          |
+          <a href="{% url 'chatroom:inbox' %}">Inbox</a>
+          <a href="{% url 'chatroom:inbox' %}">
+            <i class="fa fa-envelope"> {{newmessage}}</i>
+          </a>
+          </div>
+          <div class="logoN">
+          DevCodes/>
+          </div>
+
+          {% if userlog %}
+          <div class="user-profile">
+            <a> <i class="fa fa-bell">{{notifs}}</i> </a>
+
+              <img src="/media/{{userinfo.profilepic}}" alt="profile"
+               style="width:40px; height:40px; border-radius:50%;">
+               <div class="user-dropdown">
+                 <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
+                   Edit profile
+                 </a>
+                 <a href="{% url 'login:login' %}">
+                   Log out
+                 </a>
+               </div>
+
+        </div>
+          {% else %}
+          <div class="user-profile">
+              <img src="{% static 'home/images/icon.jpg' %}" alt="profile"
+              style="width:40px; height:40px; border-radius:50%;">
+              <div class="user-dropdown">
+                <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
+                  Edit profile
+                </a>
+                <a href="{% url 'login:login' %}">
+                  Log out
+                </a>
+              </div>
+        </div>
+          {% endif %}
+    </div>
+    <div class="feedback">
+      {% for onefeed in feeds %}
+        <!-- end of one oneMessage -->
+
+          <!-- start of on oneMessage -->
+            <div class="oneMessage">
+            <div class="emailTime">
+                {{onefeed.feedback_sender}}
+                <!-- email -->
+            </div>
+            <div class="email-content">
+                <!-- content -->
+                {{onefeed.feedback}}
+            </div>
+            <p id="time">@{{onefeed.post_time}}</p>
+
+            <div class="respond">
+                <button class="resBtn">
+                  <a href="{% url 'chatroom:chatroom' 1 %} ">respond</a>
+                </button>
+            </div>
+
+          </div>
+      {% endfor %}
+    </div>
+</body>
+</html>

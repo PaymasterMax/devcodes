@@ -105,16 +105,23 @@ WSGI_APPLICATION = 'devcodes.wsgi.application'
 
 
 
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+# DATABASES = {}
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 
-# DATABASES = {
-#     'default': {
-#          'ENGINE': 'django.db.backends.sqlite3',
-#          'NAME': "devcodes.sqlite3",
-#     }
-# }
+DATABASES = {
+    'default': {
+         # 'ENGINE': 'django.db.backends.sqlite3',
+         # 'NAME': "devcodes.sqlite3",
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': "devcodes",
+         "HOST":"127.0.0.1",
+         "PORT":3306,
+         "USER":"root",
+         "PASSWORD":"",
+
+    }
+}
 
 
 # Password validation
@@ -154,7 +161,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR , "static_root")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR , "home/static"),
     os.path.join(BASE_DIR , "login/static"),
@@ -183,3 +189,5 @@ LOGIN_REDIRECT_URL = 'http://localhost:8000/'
 # SOCIAL_AUTH_GITHUB_KEY = '400c9120d85c04fe1d27'
 # SOCIAL_AUTH_GITHUB_SECRET = 'b5062525aedc28521c3df0f1c878e61ac4ecb52d'
 # del DATABASES['default']['OPTIONS']['sslmode']
+
+STATIC_ROOT = os.path.join(BASE_DIR , "static_root")

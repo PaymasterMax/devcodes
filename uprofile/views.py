@@ -21,7 +21,6 @@ def profileview(request):
         pass
 
 
-
 def update_profile(request):
     if request.method == "POST":
         try:
@@ -31,7 +30,7 @@ def update_profile(request):
                 edit_user_details.profilepic=request.FILES["profile"]
             except Exception as e:
                 pass
-                
+
             edit_user_details.email = request.POST["email"]
             edit_user_details.username = request.POST["username"]
             edit_user_details.pnumber = request.POST["phone"]

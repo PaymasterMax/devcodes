@@ -4,6 +4,8 @@ from signup.models import Signup
 from chatroom.models import ChatModel as chbt
 from questions.models import Questions as qa
 
+from .models import FeedBack as fd
+
 def homeview(request):
     all_questions = qa.objects.all()
     try:
@@ -21,3 +23,9 @@ def homeview(request):
 
 def Policies(request):
     return render(request , "home/privacy.html")
+
+
+
+def adminpanel(request):
+    feeds = fd.objects.all()
+    return render(request , "home/admin.html" , context = {"feeds":feeds})
