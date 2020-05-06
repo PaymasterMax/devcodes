@@ -20,7 +20,7 @@ def inbox(request):
     else:
         all_messages = chatmod.objects.filter(Q(r2uid_id = userdetails.uid) | Q(r1uid_id = userdetails.uid)).order_by("-text_time")
         dat = chatmod.objects.filter(r2uid_id = userdetails.uid).values("r1uid_id").annotate(recentm = Max("text_time"))
-        print(dat)
+        # print(dat)
         # all_messages = chatmod.objects.filter(r2uid_id = userdetails.uid).latest()
         # print(all_messages)
         return render(request , "chatroom/inbox.html" , context = {"all_messages":all_messages , "userdetails":userdetails , "newmessage":newmessage , "userlog":userlog})

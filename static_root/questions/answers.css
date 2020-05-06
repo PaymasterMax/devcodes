@@ -6,8 +6,6 @@
 
 
 body {
-  /* background-color: #242721; */
-  /* background-color: #070f54; */
   background-color: #0a1d2f;
 }
 
@@ -52,8 +50,6 @@ body {
     background-color: inherit;
    margin: 0;
 }
-
-
 
 .dropdown-content {
   display: none;
@@ -158,6 +154,7 @@ body {
   margin-right: auto;
   border-radius: 30px;
   margin-bottom: 30px;
+  margin-top: 15px;
 }
 
 
