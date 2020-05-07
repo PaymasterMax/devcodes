@@ -1,8 +1,7 @@
 from django.shortcuts import render,redirect
 from signup.models import Signup as signmod
-from .models import ChatModel as chatmod
+from .models import ChatModel as chatmod , FeedBack as fd
 from django.db.models import Q,Max
-
 
 def db_unique(uid , db):
     pass
@@ -60,3 +59,17 @@ def updatechats(request):
             return redirect("/chatroom/{}/#frm".format(receiver))
     else:
         pass
+
+
+
+def adminpanel(request):
+    try:
+        userinfo = signmod.objects.get(username = request.session["username"])
+    except Exception as e:
+        return redirect("/login/")
+    else:
+        if userinfo.is_admin:
+            feeds = fd.objects.all()
+            return render(request , "home/admin.html" , context = {"feeds":feeds , "userinfo":userinfo})
+        else:
+            return redirect("/chatroom/")

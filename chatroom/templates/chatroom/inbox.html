@@ -26,11 +26,6 @@
         <div class="dropdown-content">   <a href="{% url 'questions:myquestions' %}">My Questions</a>  </div>
      </div>
 
-
-        <!-- <a href="{% url 'chatroom:inbox' %}">Inbox</a> -->
-        <a href="{% url 'chatroom:inbox' %}">
-          <i class="fa fa-envelope"> {{newmessage}}</i>
-        </a>
         </div>
         <div class="logoN">
         DevCodes/>
@@ -53,7 +48,7 @@
                <a href="{% url 'questions:myquestions' %}" class="small-personalize">
                  My Questions
                </a>
-               <a href="{% url 'login:login' %}">
+               <a href="{% url 'login:logout' %}">
                  Log out
                </a>
              </div>

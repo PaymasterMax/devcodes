@@ -10,6 +10,7 @@ class Signup(models.Model):
     hobby = models.CharField(max_length = 30)
     profilepic = models.FileField()
     password = models.CharField(max_length = 255)
+    is_admin = models.BooleanField(default = False)
 
     class Meta:
         db_table = "signup"

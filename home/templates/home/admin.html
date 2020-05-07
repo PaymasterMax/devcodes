@@ -10,7 +10,7 @@
     <div class="nav-bar">
         <div class="links">
           <a href="{% url 'home:home' %}" >Home</a> |
-          
+
           <a href="{% url 'peers:peers' %}">Peers</a> |
 
           <a href="{% url 'questions:myquestions' %}">My Questions</a>
@@ -22,40 +22,22 @@
           </a>
           </div>
           <div class="logoN">
-          DevCodes/>
+            DevCodes/>
           </div>
-
-          {% if userlog %}
           <div class="user-profile">
-            <a> <i class="fa fa-bell">{{notifs}}</i> </a>
-
               <img src="/media/{{userinfo.profilepic}}" alt="profile"
-               style="width:40px; height:40px; border-radius:50%;">
-               <div class="user-dropdown">
-                 <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
-                   Edit profile
-                 </a>
-                 <a href="{% url 'login:login' %}">
-                   Log out
-                 </a>
-               </div>
-
-        </div>
-          {% else %}
-          <div class="user-profile">
-              <img src="{% static 'home/images/icon.jpg' %}" alt="profile"
               style="width:40px; height:40px; border-radius:50%;">
               <div class="user-dropdown">
                 <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
                   Edit profile
                 </a>
-                <a href="{% url 'login:login' %}">
+                <a href="{% url 'login:logout' %}">
                   Log out
                 </a>
               </div>
         </div>
-          {% endif %}
     </div>
+    <!-- end of navbar -->
     <div class="feedback">
       {% for onefeed in feeds %}
         <!-- end of one oneMessage -->

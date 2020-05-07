@@ -4,7 +4,7 @@ from .forms import anserform
 from django.db.models import Count
 from .models import Questions , Answers , QuestionLike as qlike
 from chatroom.models import ChatModel as chtb
-from home.models import FeedBack as fd
+from chatroom.models import FeedBack as fd
 from django.http import JsonResponse , HttpResponse
 
 def questionsview(request):
@@ -88,7 +88,7 @@ def update_answers(request , Qid):
             return redirect("/questions/answers/{}/".format(Qid))
 
     else:
-        questionsview(request)
+        return redirect("/questions/answers/{}/".format(Qid))
 
 
 
