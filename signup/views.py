@@ -40,7 +40,7 @@ def signup(request):
 
                     except Exception as e:
                         signmodel.objects.create(username = username , pnumber = pnumber , email = email , password = password ,
-                        hobby = hobby , profilepic = profilepic)
+                        hobby = hobby , profilepic = profilepic , is_admin = False)
                         return redirect("/login/")
 
                     else:
