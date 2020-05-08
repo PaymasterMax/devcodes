@@ -40,8 +40,6 @@ def update_profile(request):
             request.session["username"] = request.POST["username"]
 
         except Exception as e:
-            print(e)
-            print("\n\n\n\n")
             return redirect("/profile/")
 
         else:

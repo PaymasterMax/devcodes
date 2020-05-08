@@ -4,7 +4,7 @@
 <head>
 	<meta lang="en" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-	<title>Vibes | signup</title>
+	<title>DevCodes | signup</title>
 	<link rel="stylesheet" href="{% static 'signup/styles.css' %}"/>
 </head>
 <body>
@@ -124,44 +124,36 @@ function spinnermanager()
 
 function form_manager()
 {
-	var flag = false;
-
-	if(document.getElementById("uname").value == "")
-	{
+	if(document.getElementById("uname").value == ""){
 
 		alert("Username blank");
 	}
 
-	else if(document.getElementById("phone").value == "")
-	{
+	else if(document.getElementById("phone").value == ""){
 
 		alert("phone blank");
 	}
-	else if(document.getElementById("ema").value == "")
-	{
+	else if(document.getElementById("ema").value == ""){
 
 		alert("email blank");
 	}
-	else if(document.getElementById("pass1").value == "" || document.getElementById("pass2").value == "")
-	{
+	else if(document.getElementById("pass1").value == "" || document.getElementById("pass2").value == ""){
 
 		alert("pass1 blank");
 	}
 
-else if(document.getElementById("hobby").value == "")
-	{
+else if(document.getElementById("hobby").value == ""){
 
 		alert("hobby blank");
 	}
-	else if(document.getElementById("profile").value == "")
-	{
+	else if(document.getElementById("profile").value == ""){
 
 		alert("profile blank");
 	}
 	else {
 
-	}
 	spinnermanager();
+	}
 }
 
 
@@ -242,7 +234,7 @@ function userauthentication(uid)
 				{
 					document.getElementById("emailvalid").innerHTML = "Email in use by another account";
 					document.getElementById("emailvalid").style.color = "#f00";
-					// document.getElementById("submit").disabled=true;
+					document.getElementById("submit").disabled=true
 				}
 
 				else if(this.responseText == "false"){

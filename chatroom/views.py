@@ -3,8 +3,26 @@ from signup.models import Signup as signmod
 from .models import ChatModel as chatmod , FeedBack as fd
 from django.db.models import Q,Max
 
-def db_unique(uid , db):
-    pass
+def db_unique(db_obj):
+    unique_chat = list()
+    for x in db_obj:
+        x1 , x2 = x.r1uid_id , x.r2uid_id
+        if x.r1uid_id in [value.r1uid_id for value in unique_chat]:
+            if x.r2uid_id==x2:
+                pass
+            else:
+                unique_chat.append(x)
+        else:
+            if x.r2uid_id in [value.r2uid_id for value in unique_chat]:
+                if x.r1uid_id==x1:
+                    unique_chat.append(x)
+                else:
+                    pass
+            else:
+                unique_chat.append(x)
+
+    # print(unique_chat)
+    return (unique_chat)
 
 def inbox(request):
     try:
@@ -19,9 +37,11 @@ def inbox(request):
     else:
         all_messages = chatmod.objects.filter(Q(r2uid_id = userdetails.uid) | Q(r1uid_id = userdetails.uid)).order_by("-text_time")
         dat = chatmod.objects.filter(r2uid_id = userdetails.uid).values("r1uid_id").annotate(recentm = Max("text_time"))
-        # print(dat)
-        # all_messages = chatmod.objects.filter(r2uid_id = userdetails.uid).latest()
         # print(all_messages)
+        # all_message = chatmod.objects.filter(Q(r2uid_id = userdetails.uid) | Q(r1uid_id = userdetails.uid)).latest()
+        # print(all_message)
+
+        all_messages = db_unique(all_messages)
         return render(request , "chatroom/inbox.html" , context = {"all_messages":all_messages , "userdetails":userdetails , "newmessage":newmessage , "userlog":userlog})
 
 

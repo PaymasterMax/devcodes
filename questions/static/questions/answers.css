@@ -111,30 +111,6 @@ body {
      Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-/* end of navbar */
-
-
-
-/* .header {
-  min-height: 10vh;
-  margin-bottom: 4vh;
-  background-color: #633f3f;
-}
-
-.header>nav {
-  display: inline-block;
-  width: 70%;
-  padding: 20px;
-  background-color: red;
-}
-
-.header>nav>a{
-  text-decoration: none;
-  color: #fff;
-  margin: 0px 10px;
-
-} */
-
 .myprofile {
   display: inline-block;
   /* float: right; */
@@ -278,6 +254,10 @@ button[type = "submit"] {
 
 .question-main-content {
   font-size: 16px;
+}
+
+.queryprofile>p {
+  margin-left: 0px;
 }
 
 

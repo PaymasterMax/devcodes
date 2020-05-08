@@ -35,7 +35,7 @@ def login(request):
                     del request.session["redirect"]
                 except Exception as e:
                     # set the sessions expiry date
-                    request.session.set_expiry(0)
+                    request.session.set_expiry(10)
                     # redirect user to home page
                     return redirect("/")
                 else:

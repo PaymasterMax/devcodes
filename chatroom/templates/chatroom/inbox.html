@@ -65,43 +65,12 @@
 
     <div class="main">
 
-      <!-- Start of answers -->
+      <!-- Start of messages -->
         <h4 id="upPart">Inbox</h4>
         <hr style="width:100px;margin: 0px auto;">
         {% for msg in all_messages %}
-            {% if msg.bell_seen %}
-            <div class="answers">
-
-              <div class="profile queryprofile">
-                <img src="/media/{{msg.r1uid.profilepic}}" alt="profile" title="{{answer.auid.username}}">
-                <p>{{msg.r1uid.username}}</p>
-              </div>
-
-              <div class="answers-content">
-                <div class="answers-main-content">
-                  {{msg.text_message}}
-                </div>
-
-                <p class="ft">
-                  <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">Open</a>
-                </p>
-
-                <p class="ft">
-                  {{msg.r1uid.hobby}}
-                </p>
-                <p class="ft">
-                  {{msg.text_time | timemodifier}}
-                </p>
-
-                <p class="ft">
-                  Seen
-                </p>
-              </div>
-            </div>
-            {% else %}
-
-                <div class="answers">
-                  {% if msg.r1uid_id|umodifier:userdetails.uid %}
+        <div class="answers">
+          {% if msg.r1uid_id|umodifier:userdetails.uid %}
                   <div class="profile queryprofile">
                     <img src="/media/{{msg.r2uid.profilepic}}" alt="profile" title="{{msg.r2uid.username}}">
                     <p>{{msg.r2uid.username}}</p>
@@ -113,7 +82,6 @@
                     </div>
 
                     <p class="ft">
-                      <i class="fa fa-envelope seen"> {{newmessage}}</i>
                       <a href="{% url 'chatroom:chatroom' msg.r2uid_id %}">Open</a>
                     </p>
 
@@ -123,8 +91,15 @@
                     <p class="ft">
                       {{msg.text_time | timemodifier}}
                     </p>
+                    <p class="ft">
+                      {% if msg.bell_seen %}
+                      Seen
+
+                      {% else %}
+                      {% endif %}
+                    </p>
                   </div>
-                  {% else %}
+            {% else %}
                   <div class="profile queryprofile">
                     <img src="/media/{{msg.r1uid.profilepic}}" alt="profile" title="{{msg.r1uid.username}}">
                     <p>{{msg.r1uid.username}}</p>
@@ -136,7 +111,12 @@
                     </div>
 
                     <p class="ft">
-                      <i class="fa fa-envelope seen"> {{newmessage}}</i>
+                      <p class="ft">
+                        {% if msg.bell_seen %}
+                        {% else %}
+                        <i class="fa fa-envelope seen"> {{newmessage}}</i>
+                        {% endif %}
+                      </p>
                       <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">Open</a>
                     </p>
 
@@ -146,11 +126,18 @@
                     <p class="ft">
                       {{msg.text_time | timemodifier}}
                     </p>
+
+                    <p class="ft">
+                      {% if msg.bell_seen %}
+                      Seen
+
+                      {% else %}
+
+                      {% endif %}
+                    </p>
                   </div>
                   {% endif %}
                 </div>
-
-            {% endif %}
         {% endfor %}
 
 </div>
