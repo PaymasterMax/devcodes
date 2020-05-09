@@ -67,7 +67,7 @@ TEMPLATES = [
                 os.path.join(BASE_DIR , "questions/templates"),
                 os.path.join(BASE_DIR , "peer/templates"),
                 os.path.join(BASE_DIR , "chatroom/templates"),
-                os.path.join(BASE_DIR , "bugtemplates")
+                os.path.join(BASE_DIR , "bugs/templates"),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -171,6 +171,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR , "questions/static"),
     os.path.join(BASE_DIR , "peer/static"),
     os.path.join(BASE_DIR , "chatroom/static"),
+    os.path.join(BASE_DIR , "bugs/static"),
 ]
 django_heroku.settings(locals())
 PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))

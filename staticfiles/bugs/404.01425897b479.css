@@ -1,0 +1,33 @@
+html {
+  background-image: url("./images/404.b7584702f768.jpg");
+}
+
+
+.main-div {
+  width: 80%;
+  margin: 0px auto;
+  background-color:#034;
+  opacity: .5;
+}
+
+
+.Message {
+  margin: 0px auto;
+  color: #222;
+  font-size: 1.4em;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+
+.links {
+  color: #fff;
+}
+
+.links > a{
+  display: block;
+  text-decoration: none;
+  font-size: 1.3em;
+
+  color: #fff;
+}

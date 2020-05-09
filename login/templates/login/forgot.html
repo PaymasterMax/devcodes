@@ -9,6 +9,13 @@
 
 <body>
 
+<!-- Begining of spinner -->
+<div class="loader-wrapper" id="ld">
+	<span class="loader"><span class="loader-inner"></span></span>
+		</div>
+		<!-- End of spinner -->
+
+
 		<img src="{% static 'home/images/logo/logo.jpg' %}" alt="image" id="photo">
 
 	<div class="bon">
@@ -50,6 +57,13 @@
 	</form>
 	</div>
 </div>
-
+<script>
+	 // Listen for when everything has loaded
+     window.addEventListener("load", removePage, false);
+        const loader = document.getElementById('ld');        
+        function removePage(){
+          loader.classList.add('shrink');
+        } 
+</script>
 </body>
 </html>

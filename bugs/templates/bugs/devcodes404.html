@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>DevCodes  | Error 404</title>
+    <link rel="stylesheet" href="{% static 'bugs/404.css' %}">
+  </head>
+  <body>
+    <div class="main-div">
+
+      <div class="Message">
+          Oops, seems you touched the wrong button.
+          <a href="{% url 'home:home' %}">home</a>
+      </div>
+
+
+      <div class="links">
+        <!-- <a href="{% url 'home:home' %}">home</a>
+        <a href="{% url 'peers:peers' %}">peers</a>
+        <a href="{% url 'questions:questions' %}">questions</a>
+        <a href="{% url 'chatroom:inbox' %}">inbox</a> -->
+      </div>
+
+    </div>
+
+  </body>
+</html>

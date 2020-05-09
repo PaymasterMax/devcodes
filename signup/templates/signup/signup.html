@@ -5,9 +5,17 @@
 	<meta lang="en" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<title>DevCodes | signup</title>
+	<link rel="stylesheet" href="{% static 'home/spinner.css' %}">
+
 	<link rel="stylesheet" href="{% static 'signup/styles.css' %}"/>
 </head>
 <body>
+	<!-- Begining of spinner -->
+	<div class="loader-wrapper" id="ld">
+		<span class="loader"><span class="loader-inner"></span></span>
+			</div>
+			<!-- End of spinner -->
+
 	<p>
 		<img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="image" id="photo">
 
@@ -60,17 +68,14 @@
     </footer>
 </body>
 <script type="text/javascript">
- // Prepare the body tag by adding a "js-loading" class
- document.body.className += " js-loading";
-      // document.body.className += "js-anima";
 
-      // Listen for when everything has loaded
-      window.addEventListener("load", showPage, false);
+ // Listen for when everything has loaded
+ window.addEventListener("load", removePage, false);
+        const loader = document.getElementById('ld');        
+        function removePage(){
+          loader.classList.add('shrink');
+        } 
 
-      function showPage() {
-        // Remove the "js-paused" class
-        document.body.className = document.body.className.replace("js-loading","");
-      }
 function cancel(){
 	alert("Hello world");
 	document.getElementById("spin").setAttribute("class" , "");
@@ -124,36 +129,44 @@ function spinnermanager()
 
 function form_manager()
 {
-	if(document.getElementById("uname").value == ""){
+	var flag = false;
+
+	if(document.getElementById("uname").value == "")
+	{
 
 		alert("Username blank");
 	}
 
-	else if(document.getElementById("phone").value == ""){
+	else if(document.getElementById("phone").value == "")
+	{
 
 		alert("phone blank");
 	}
-	else if(document.getElementById("ema").value == ""){
+	else if(document.getElementById("ema").value == "")
+	{
 
 		alert("email blank");
 	}
-	else if(document.getElementById("pass1").value == "" || document.getElementById("pass2").value == ""){
+	else if(document.getElementById("pass1").value == "" || document.getElementById("pass2").value == "")
+	{
 
 		alert("pass1 blank");
 	}
 
-else if(document.getElementById("hobby").value == ""){
+else if(document.getElementById("hobby").value == "")
+	{
 
 		alert("hobby blank");
 	}
-	else if(document.getElementById("profile").value == ""){
+	else if(document.getElementById("profile").value == "")
+	{
 
 		alert("profile blank");
 	}
 	else {
 
-	spinnermanager();
 	}
+	spinnermanager();
 }
 
 
@@ -234,7 +247,7 @@ function userauthentication(uid)
 				{
 					document.getElementById("emailvalid").innerHTML = "Email in use by another account";
 					document.getElementById("emailvalid").style.color = "#f00";
-					document.getElementById("submit").disabled=true
+					// document.getElementById("submit").disabled=true;
 				}
 
 				else if(this.responseText == "false"){
