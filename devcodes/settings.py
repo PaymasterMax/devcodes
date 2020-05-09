@@ -14,10 +14,11 @@ prod_db  =  dj_database_url.config(conn_max_age=500)
 SECRET_KEY = 'ghr%=q!3afx83t+1dojl%j15mta%6!v@bpx2l5p+ki2i!)zqs3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com']
-# ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -111,14 +112,14 @@ DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 DATABASES = {
     'default': {
-         'ENGINE': 'django.db.backends.sqlite3',
-         'NAME': "devcodes.sqlite3",
-         # 'ENGINE': 'django.db.backends.mysql',
-         # 'NAME': "devcodes",
-         # "HOST":"127.0.0.1",
-         # "PORT":3306,
-         # "USER":"root",
-         # "PASSWORD":"",
+         # 'ENGINE': 'django.db.backends.sqlite3',
+         # 'NAME': "devcodes.sqlite3",
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': "devcodes",
+         "HOST":"127.0.0.1",
+         "PORT":3306,
+         "USER":"root",
+         "PASSWORD":"",
 
     }
 }
