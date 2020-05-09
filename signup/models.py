@@ -1,5 +1,5 @@
 from django.db import models
-
+from cloudinary.models import CloudinaryField
 # Create your models here.
 class Signup(models.Model):
     uid = models.AutoField(primary_key=True)
@@ -8,7 +8,7 @@ class Signup(models.Model):
     pnumber = models.IntegerField()
     location = models.CharField(max_length = 30  , default = "Nairobi/Kenya")
     hobby = models.CharField(max_length = 30)
-    profilepic = models.FileField()
+    profilepic = CloudinaryField()
     password = models.CharField(max_length = 255)
     is_admin = models.BooleanField(default = False)
 

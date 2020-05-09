@@ -1,6 +1,7 @@
 import os
 import django_heroku , dj_database_url
 import dotenv
+import cloudinary
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -40,7 +41,16 @@ INSTALLED_APPS = [
     # 'whitenoise.runserver_nostatic',
     # 'django.contrib.staticfiles',
     # 'social_django',
+    "cloudinary",
 ]
+
+
+cloudinary.config(
+  cloud_name = os.environ.get('hti2kicdw'),
+  api_key = os.environ.get('744951147868868'),
+  api_secret = os.environ.get('R4355opHqPb1UxeGgFR1aABDUyI'),
+  secure = True
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
