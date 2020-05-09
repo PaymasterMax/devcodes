@@ -9,7 +9,6 @@ def profileview(request):
         try:
             mydetails = sp.objects.get(username = request.session['username'])
             newmessage = chtb.objects.filter(r2uid_id =  mydetails.uid, bell_seen = False).count()
-
         except Exception as e:
             request.session["redirect"] = "/profile/"
             return redirect("/login/")

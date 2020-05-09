@@ -67,7 +67,7 @@
               <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
                 Edit profile
               </a>
-              <a href="{% url 'login:login' %}">
+              <a href="{% url 'login:logout' %}">
                 Log out
               </a>
             </div>
@@ -90,7 +90,7 @@
 
                   <div class="inner-class">
                     <p class="peerprof">
-                      <img src="{% static 'home/images/other/bcode.jpg' %}" alt="">
+                      <img src="{% static 'home/images/other/bcode.jpg' %}" alt="Devcodes">
                     </p>
                     <div class="recentq">
                       <p>
@@ -297,10 +297,10 @@
     </footer>
 
         <script>
-          
+
            // Listen for when everything has loaded
         window.addEventListener("load", removePage, false);
-        const loader = document.getElementById('ld');        
+        const loader = document.getElementById('ld');
         function removePage(){
           loader.classList.add('shrink');
         }

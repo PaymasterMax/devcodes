@@ -30,8 +30,6 @@
         <div class="logoN">
         DevCodes/>
         </div>
-
-        {% if userlog %}
         <div class="user-profile">
           <a> <i class="fa fa-bell">{{notifs}}</i> </a>
 
@@ -54,13 +52,6 @@
              </div>
 
       </div>
-        {% else %}
-        <div class="user-profile">
-            <img src="{% static 'home/images/icon.jpg' %}" alt="profile"
-            style="width:40px; height:40px; border-radius:50%;">
-
-      </div>
-        {% endif %}
   </div>
 
     <div class="main">
