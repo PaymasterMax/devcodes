@@ -22,7 +22,7 @@
       <!-- End of spinner -->
 
 
-     
+
      <!-- new nav-bar -->
      <div class="nav-bar">
       <div class="links">
@@ -49,7 +49,7 @@
         {% if userlog %}
         <div class="user-profile">
           <a> <i class="fa fa-bell">{{notifs}}</i> </a>
-          
+
             <img src="/media/{{userinfo.profilepic}}" alt="profile"
              style="width:40px; height:40px; border-radius:50%;">
              <div class="user-dropdown">
@@ -61,7 +61,7 @@
                </a>
              </div>
 
-        
+
           <a href="{% url 'questions:questions' %}">Questions</a> |
           <a href="{% url 'peers:peers' %}">Peers</a> |
           <a href="{% url 'home:home' %}">Chat</a>
@@ -73,7 +73,7 @@
       </div>
         {% else %}
         <div class="user-profile">
-            <img src="{% static 'home/images/icon.jpg' %}" alt="profile" 
+            <img src="/media/{{mydetails.profilepic}}" alt="profile" 
             style="width:40px; height:40px; border-radius:50%;">
             <div class="user-dropdown">
               <!-- <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
@@ -92,36 +92,36 @@
 
       <div class="main-details">
         <!-- profile pic -->
-      
+
           <img src="/media/{{mydetails.profilepic}}" class="profile-image" alt="profile">
-       
-        
-         
+
+
+
           <!-- update form -->
           <form class="" action="{% url 'profile:update' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
           <fieldset>
-           
+
             <div class="info">
                <div class="Your"> Your details</div>
                   <div class="sect">
                   <label class="labels">Username</label>
-                
+
                   <input type="text" class="entry" name="username" value="{{mydetails.username}}" placeholder="Enter username"
                   id="username">
               </div>
                     <div class="sect">
                   <label class="labels">Phone</label>
-               
 
-               
+
+
                   <input type="text" class="entry" name="phone" value="{{mydetails.pnumber}}" placeholder="Phone number" id="phone">
                </div>
 
                <div class="sect">
-              
+
                   <label class="labels">Email</label>
-                
+
                   <input type="text" class="entry" name="email" value="{{mydetails.email}}" placeholder="Enter email" id="email">
                </div>
 
@@ -134,28 +134,28 @@
                 </td>
               </tr> -->
                 <div class="sect">
-              
+
                   <label class="labels">Language</label>
-                
+
                   <input type="text" class="entry" name="language" value="{{mydetails.hobby}}" placeholder="Coding languages" id="language">
                 </div>
 
                 <div class="sect">
                   <label class="labels">Profile</label>
-                
+
                   <input type="file" class="entry" name="profile" value="{{mydetails.profilepic}}">
-                  
+
                 </div>
 
                   <button type="submit" name="submit" class="btn btn-info" onclick="auth()">Update</button>
                 </div>
           </fieldset>
           </form>
-          
+
         </div>
       </div>
 
-   
+
 
   </body>
 
@@ -163,10 +163,10 @@
 
      // Listen for when everything has loaded
      window.addEventListener("load", removePage, false);
-        const loader = document.getElementById('ld');        
+        const loader = document.getElementById('ld');
         function removePage(){
           loader.classList.add('shrink');
-        } 
+        }
 
     function auth() {
       var xml = new XMLHttpRequest();
