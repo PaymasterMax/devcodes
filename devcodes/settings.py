@@ -18,8 +18,19 @@ SECRET_KEY = 'ghr%=q!3afx83t+1dojl%j15mta%6!v@bpx2l5p+ki2i!)zqs3'
 # DEBUG = True
 DEBUG = False
 
+SESSION_COOKIE_SECURE = True
 ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com']
-ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ["*"]
+
+CSRF_COOKIE_SECURE = True
+
+SECURE_HSTS_SECONDS = 60
+
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_PRELOAD = True
+SECURE_REFERRER_POLICY = "same-origin"
 
 
 # Application definition
