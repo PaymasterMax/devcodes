@@ -82,6 +82,9 @@
               <div class="message-content">
                 {{data.text_message}}
                 <p><span class="time">{{data.text_time|timemodifier }}</span></p>
+                <a href="{% url 'chatroom:delete' data.aid receiver.uid %} ">
+                  <button type="button" name="button" class="btn btn-danger">delete</button>
+                </a>
               </div>
             </div>
 

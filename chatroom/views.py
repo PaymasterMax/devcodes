@@ -96,3 +96,15 @@ def adminpanel(request):
             return render(request , "home/admin.html" , context = {"feeds":feeds , "userinfo":userinfo})
         else:
             return redirect("/chatroom/")
+
+
+
+def deletechat(request , chtid, chat_user):
+    try:
+        request.session["username"]
+    except Exception as e:
+        request.session["redirect"] = "/chatroom/{}/#frm/".format(chat_user)
+        return redirect("/login/")
+    else:
+        chatmod.objects.delete(aid = chtid)
+        return redirect("/chatroom/{}/#frm/".format(chat_user))
