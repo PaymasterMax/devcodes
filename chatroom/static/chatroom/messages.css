@@ -319,7 +319,10 @@ textarea {
   color: #000;
   text-decoration: none;
 }
-
+.btn-del {
+  float: right;
+  text-decoration: none;
+}
 
 @media screen and (max-width:700px) {
 
