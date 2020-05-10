@@ -41,6 +41,7 @@ def signup(request):
                     except Exception as e:
                         signmodel.objects.create(username = username , pnumber = pnumber , email = email , password = password ,
                         hobby = hobby , profilepic = profilepic , is_admin = False)
+                        cloudinary.uploader.upload(profilepic)
                         return redirect("/login/")
 
                     else:
