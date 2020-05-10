@@ -74,7 +74,7 @@
       {% for data in chats %}
         {% if userdetails.uid == data.r1uid_id %}
         <!-- <hr> -->
-            <div class="one-message first">
+            <div class="one-message second">
               <p class="profile">
                 <img src="/media/{{data.r1uid.profilepic}}" alt="profile" title="{{data.r1uid.username}}">
               </p>
@@ -89,7 +89,7 @@
         {% else %}
           <hr>
           <!-- other message -->
-          <div class="one-message second">
+          <div class="one-message first">
             <div class="message-content">
               {{data.text_message}}
               <p><span class="second-time">{{data.text_time|timemodifier }}</span></p>
