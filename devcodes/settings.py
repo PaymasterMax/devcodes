@@ -49,8 +49,8 @@ INSTALLED_APPS = [
     'questions.apps.QuestionsConfig',
     "peer.apps.PeerConfig",
     'chatroom.apps.ChatroomConfig',
-    'whitenoise.runserver_nostatic',
-    'django.contrib.staticfiles',
+    # 'whitenoise.runserver_nostatic',
+    # 'django.contrib.staticfiles',
     # 'social_django',
     "cloudinary",
 ]
