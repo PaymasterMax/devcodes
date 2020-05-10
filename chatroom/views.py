@@ -106,5 +106,5 @@ def deletechat(request , chtid, chat_user):
         request.session["redirect"] = "/chatroom/{}/#frm/".format(chat_user)
         return redirect("/login/")
     else:
-        chatmod.objects.delete(aid = chtid)
+        chatmod.objects.get(aid = chtid).delete()
         return redirect("/chatroom/{}/#frm/".format(chat_user))
