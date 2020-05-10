@@ -74,35 +74,36 @@
       {% for data in chats %}
         {% if userdetails.uid == data.r1uid_id %}
         <hr>
+
             <div class="one-message second">
+              <div class="message-content">
+                {{data.text_message}}
+                <p><span class="second-time">{{data.text_time|timemodifier }}</span></p>
+
+              </div>
+
               <p class="profile">
                 <img src="/media/{{data.r1uid.profilepic}}" alt="profile" title="{{data.r1uid.username}}">
               </p>
 
-              <div class="message-content">
-                {{data.text_message}}
-                <p><span class="time">{{data.text_time|timemodifier }}</span></p>
-                <a href="{% url 'chatroom:delete' data.aid receiver.uid %} " class="btn-del">
-                  <button type="button" name="button" class="btn btn-danger">delete</button>
-                </a>
-              </div>
-            </div>
+              <a href="{% url 'chatroom:delete' data.aid receiver.uid %} " class="btn-del">
+                <button type="button" name="button" class="btn btn-danger">delete</button>
+              </a>
 
+            </div>
       <!-- end of single message -->
         {% else %}
           <hr>
           <!-- other message -->
           <div class="one-message first">
-            <div class="message-content">
-              {{data.text_message}}
-              <p><span class="second-time">{{data.text_time|timemodifier }}</span></p>
-
-            </div>
-
             <p class="profile">
               <img src="/media/{{data.r1uid.profilepic}}" alt="profile" title="{{data.r1uid.username}}">
             </p>
 
+            <div class="message-content">
+              {{data.text_message}}
+              <p><span class="time">{{data.text_time|timemodifier }}</span></p>
+            </div>
           </div>
           {% endif %}
       {% endfor %}
