@@ -59,7 +59,10 @@ def chatrm(request , chat_user):
         return redirect("/login/")
 
     else:
-        return render(request , "chatroom/messages.html" , context = {"userdetails":userdetails , "chats":chats , "receiver":ch_user , "userlog":userlog})
+        if chat_user==userdetails.uid:
+            return redirect("/chatroom/")
+        else:
+            return render(request , "chatroom/messages.html" , context = {"userdetails":userdetails , "chats":chats , "receiver":ch_user , "userlog":userlog})
 
 # update chats
 def updatechats(request):
