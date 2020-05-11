@@ -82,7 +82,7 @@ def adminpanel(request):
         return redirect("/login/")
     else:
         if userinfo.is_admin:
-            feeds = fd.objects.all()
+            feeds = fd.objects.all().order_by("-post_time")
             return render(request , "home/admin.html" , context = {"feeds":feeds , "userinfo":userinfo})
         else:
             return redirect("/chatroom/")
