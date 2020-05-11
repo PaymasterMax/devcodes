@@ -24,8 +24,6 @@
           <div class="logoN">
           DevCodes/>
           </div>
-
-          {% if userlog %}
           <div class="user-profile">
             <a> <i class="fa fa-bell">{{notifs}}</i> </a>
 
@@ -41,20 +39,6 @@
                </div>
 
         </div>
-          {% else %}
-          <div class="user-profile">
-              <img src="{% static 'home/images/icon.jpg' %}" alt="profile"
-              style="width:40px; height:40px; border-radius:50%;">
-              <div class="user-dropdown">
-                <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
-                  Edit profile
-                </a>
-                <a href="{% url 'login:logout' %}">
-                  Log out
-                </a>
-              </div>
-        </div>
-          {% endif %}
     </div>
     <div class="feedback">
         <div class="oneMessage">
