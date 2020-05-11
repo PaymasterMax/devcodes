@@ -3,21 +3,17 @@ from signup.models import Signup as signmod
 from .models import ChatModel as chatmod , FeedBack as fd
 from django.db.models import Q,Max
 
-def db_unique(db_obj):
+def db_unique(db_obj , curr_user):
     unique_chat = list()
     for x in db_obj:
         x1 , x2 = x.r1uid_id , x.r2uid_id
-
-        if x1 in [value.r1uid_id for value in unique_chat] or x1 in [value.r2uid_id for value in unique_chat]:
-            pass
-
-        elif x2 in [value.r1uid_id for value in unique_chat] or x2 in [value.r2uid_id for value in unique_chat]:
-            pass
-
-        else:
+        # x1  not me
+        if x1 !=curr_user and x1 not in [value.r1uid_id for value in unique_chat]:
             unique_chat.append(x)
-
-    # print(unique_chat)
+        else:
+            # x1 is me
+            if x2 not in [value.r2uid_id for value in unique_chat]:
+                unique_chat.append(x)
     return (unique_chat)
 
 
@@ -38,7 +34,7 @@ def inbox(request):
         # all_message = chatmod.objects.filter(Q(r2uid_id = userdetails.uid) | Q(r1uid_id = userdetails.uid)).latest()
         # print(all_message)
 
-        all_messages = db_unique(all_messages)
+        all_messages = db_unique(all_messages , userdetails.uid)
         return render(request , "chatroom/inbox.html" , context = {"all_messages":all_messages , "userdetails":userdetails , "newmessage":newmessage , "userlog":userlog})
 
 
