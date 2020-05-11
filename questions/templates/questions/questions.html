@@ -130,7 +130,36 @@ display: none;
               {{question.language}}
               </div>
             </div>
-            
+            <div class="reply-section">
+              {% if mydetails.uid|likey:question %}
+                    <div class="like">
+                    <img src="{% static 'questions/images/like.svg' %}" id="initial" class="initial" alt="like icon"
+                    style="width: 30px; height: 40px;">
+
+                    <img src="{% static 'questions/images/coloredLike.svg' %}" id="final" class="final" alt="like icon"
+                    style="width: 30px; height: 40px;">
+
+                     {{question.question_liked.count}}
+                    </div>
+              {% else %}
+                  <div class="like">
+                  <img src="{% static 'questions/images/like.svg' %}" id="initial" class="initial" alt="like icon"
+                  style="width: 30px; height: 40px;" onclick="updatemonster(qid);">
+
+                  <img src="{% static 'questions/images/coloredLike.svg' %}" id="final" class="final" alt="like icon"
+                  style="width: 30px; height: 40px;" onclick="updatemonster(qid);">
+
+                       {{question.question_liked.count}}
+                  </div>
+              {% endif %}
+             <div class="message">
+             <img src="{% static 'questions/images/message.svg' %}" alt="message icon">
+             {{question.no_of_answers}}
+             </div>
+             <div class="Click">
+            <a href="{% url 'questions:answers' question.qid %}"> Click to view replies</a>
+             </div>
+            </div>
           </div>
     </div>
 
