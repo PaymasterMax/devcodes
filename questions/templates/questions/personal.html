@@ -17,28 +17,6 @@
     <link rel="stylesheet" href="{% static 'questions/personal.css' %}">
   </head>
   <body>
-    <!-- <div class="nav-bar" id="upPart">
-      <div class="links">
-        <a href="{% url 'home:home' %}">home</a> |
-        <a href="{%url 'questions:questions' %}">Questions</a> |
-        <a href="{% url 'peers:peers' %}">Peers</a> |
-        <a href="{% url 'chatroom:inbox' %}">inbox</a>
-
-          <i class="fa fa-envelope"> {{newmessage}}</i>
-
-        </div>
-        <div class="logo">
-        DevCodes/>
-        </div>
-
-        <div class="user-profile">
-          <a href="{% url 'profile:profile' %}">
-            <a> <i class="fa fa-bell">5</i> </a>
-            <img src="/media/{{mydetails.profilepic}}" alt="profile" style="width:40px; height:40px; border-radius:50%;">
-          </a>
-      </div>
-  </div> -->
-
   <div class="nav-bar">
 
   <!-- Home icon Beginning -->
@@ -64,12 +42,12 @@
   <a href="{% url 'home:home' %}" class="Plinks">Home</a>
 <a href="{% url 'peers:peers' %}" class="Plinks">Peers</a>
 <a href="{% url 'questions:questions' %}" class="Plinks">Questions
- <i class="fa fa-caret-down"></i></a> 
-<a href="{% url 'questions:myquestions' %}" class="Plinks-in">My Questions</a> 
+ <i class="fa fa-caret-down"></i></a>
+<a href="{% url 'questions:myquestions' %}" class="Plinks-in">My Questions</a>
 <a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope"> {{newmessage}}</i>
-     </a> 
-<a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a> 
-<a href="{% url 'login:login' %}" class="Plinks">  Log out </a> 
+     </a>
+<a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a>
+<a href="{% url 'login:logout' %}" class="Plinks">  Log out </a>
 
 
 
@@ -175,7 +153,7 @@
 <script>
 
  // home icon
-        
+
  const full = document.getElementById('full');
         const ex = document.getElementById('ex');
         const iLinks = document.getElementById('iLinks');
@@ -194,7 +172,7 @@
             ex.style.display = 'none';
             iLinks.style.display = 'none';
         });
-        
+
         // end of home icon
 
   var up=document.getElementById('up');

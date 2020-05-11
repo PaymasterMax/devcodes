@@ -10,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <title>Dev Code | Answers</title> 
+    <title>Dev Code | Answers</title>
 
     <link rel="stylesheet" href="{% static 'questions/answers.css' %}">
     <link rel="stylesheet" href="{% static 'home/icon.css' %}">
@@ -44,18 +44,18 @@
 
 <a href="{% url 'peers:peers' %}" class="Plinks">Peers</a>
  <a href="{% url 'questions:questions' %}" class="Plinks">Questions
-   <i class="fa fa-caret-down"></i></a> 
- <a href="{% url 'questions:myquestions' %}" class="Plinks-in">My Questions</a> 
+   <i class="fa fa-caret-down"></i></a>
+ <a href="{% url 'questions:myquestions' %}" class="Plinks-in">My Questions</a>
   <a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope"> {{newmessage}}</i>
-       </a> 
- <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a> 
- <a href="{% url 'login:login' %}" class="Plinks">  Log out </a> 
+       </a>
+ <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a>
+ <a href="{% url 'login:logout' %}" class="Plinks">  Log out </a> 
 
 
 
 
  </div>
-  
+
   <!-- Ending of icon -->
 
       <div class="links">
@@ -188,7 +188,7 @@
 
     <script type="text/javascript">
  // home icon
-        
+
  const full = document.getElementById('full');
         const ex = document.getElementById('ex');
         const iLinks = document.getElementById('iLinks');
@@ -207,7 +207,7 @@
             ex.style.display = 'none';
             iLinks.style.display = 'none';
         });
-        
+
         // end of home icon
 
 

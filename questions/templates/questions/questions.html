@@ -60,12 +60,12 @@ display: none;
   <a href="{% url 'home:home' %}" class="Plinks">Home</a>
 <a href="{% url 'peers:peers' %}" class="Plinks">Peers</a>
 <a href="{% url 'questions:questions' %}" class="Plinks">Questions
- <i class="fa fa-caret-down"></i></a> 
-<a href="{% url 'questions:myquestions' %}" class="Plinks-in">My Questions</a> 
+ <i class="fa fa-caret-down"></i></a>
+<a href="{% url 'questions:myquestions' %}" class="Plinks-in">My Questions</a>
 <a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope"> {{newmessage}}</i>
-     </a> 
-<a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a> 
-<a href="{% url 'login:login' %}" class="Plinks">  Log out </a> 
+     </a>
+<a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a>
+<a href="{% url 'login:logout' %}" class="Plinks">  Log out </a> 
 
 
 
@@ -79,7 +79,7 @@ display: none;
 
       <a href="{% url 'peers:peers' %}">Peers</a>
       <a href="{% url 'questions:myquestions' %}" class="personalize"> | My Questions</a>
-      <a href="{% url 'chatroom:inbox' %}" class="personalize">| Inbox 
+      <a href="{% url 'chatroom:inbox' %}" class="personalize">| Inbox
         <i class="fa fa-envelope"> {{newmessage}}</i>
       </a>
       </div>
@@ -140,20 +140,20 @@ display: none;
             <div class="reply-section">
               {% if mydetails.uid|likey:question %}
                     <div class="like">
-                    <img src="{% static 'questions/images/like.svg' %}" id="initial" class="initial" alt="like icon" 
+                    <img src="{% static 'questions/images/like.svg' %}" id="initial" class="initial" alt="like icon"
                     style="width: 30px; height: 40px;">
 
-                    <img src="{% static 'questions/images/coloredLike.svg' %}" id="final" class="final" alt="like icon" 
+                    <img src="{% static 'questions/images/coloredLike.svg' %}" id="final" class="final" alt="like icon"
                     style="width: 30px; height: 40px;">
 
                      {{question.question_liked.count}}
                     </div>
               {% else %}
                   <div class="like">
-                  <img src="{% static 'questions/images/like.svg' %}" id="initial" class="initial" alt="like icon" 
+                  <img src="{% static 'questions/images/like.svg' %}" id="initial" class="initial" alt="like icon"
                   style="width: 30px; height: 40px;" onclick="updatemonster({question,qid});">
 
-                  <img src="{% static 'questions/images/coloredLike.svg' %}" id="final" class="final" alt="like icon" 
+                  <img src="{% static 'questions/images/coloredLike.svg' %}" id="final" class="final" alt="like icon"
                   style="width: 30px; height: 40px;" onclick="updatemonster({question,qid});">
 
                        {{question.question_liked.count}}
@@ -221,9 +221,9 @@ display: none;
   <a href="#upPart"><img src="{% static 'questions/images/up.svg' %}" alt="up_key" class="up-icon"  id="up">
     </a>
 <script>
-   
+
  // home icon
-        
+
  const full = document.getElementById('full');
         const ex = document.getElementById('ex');
         const iLinks = document.getElementById('iLinks');
@@ -242,7 +242,7 @@ display: none;
             ex.style.display = 'none';
             iLinks.style.display = 'none';
         });
-        
+
         // end of home icon
 
   const initailLike = document.getElementById('initial');
@@ -320,10 +320,10 @@ else{
   }
 
 x.addEventListener("click",function(){
-   
+
   modal.classList.remove('active');
   overlay.classList.remove('active');
-  
+
   }
 
 );

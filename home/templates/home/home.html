@@ -49,18 +49,18 @@
 
 <a href="{% url 'peers:peers' %}" class="Plinks">Peers</a>
  <a href="{% url 'questions:questions' %}" class="Plinks">Questions
-   <i class="fa fa-caret-down"></i></a> 
- <a href="{% url 'questions:myquestions' %}" class="Plinks-in">My Questions</a> 
+   <i class="fa fa-caret-down"></i></a>
+ <a href="{% url 'questions:myquestions' %}" class="Plinks-in">My Questions</a>
   <a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope"> {{newmessage}}</i>
-       </a> 
- <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a> 
- <a href="{% url 'login:login' %}" class="Plinks">  Log out </a> 
+       </a>
+ <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a>
+ <a href="{% url 'login:login' %}" class="Plinks">  Log out </a>
 
 
 
 
  </div>
-  
+
   <!-- Ending of icon -->
 
   <div class="links">
@@ -70,10 +70,10 @@
           <!-- dropdowm for questions -->
         <div class="dropdown">
        <div class="dropbtn">
-          <a href="{% url 'questions:questions' %}">Questions<i class="fa fa-caret-down"></i></a> 
+          <a href="{% url 'questions:questions' %}">Questions<i class="fa fa-caret-down"></i></a>
          </div>
-        <div class="dropdown-content"> 
-            <a href="{% url 'questions:myquestions' %}">My Questions</a> 
+        <div class="dropdown-content">
+            <a href="{% url 'questions:myquestions' %}">My Questions</a>
            </div>
      </div>
 
@@ -97,7 +97,7 @@
                <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
                  Edit profile
                </a>
-               <a href="{% url 'login:login' %}">
+               <a href="{% url 'login:logout' %}">
                  Log out
                </a>
              </div>
@@ -341,16 +341,16 @@
     </footer>
 
         <script>
-          
+
            // Listen for when everything has loaded
         window.addEventListener("load", removePage, false);
-        const loader = document.getElementById('ld');        
+        const loader = document.getElementById('ld');
         function removePage(){
           loader.classList.add('shrink');
         }
 
   // home icon
-        
+
   const full = document.getElementById('full');
         const ex = document.getElementById('ex');
         const iLinks = document.getElementById('iLinks');
@@ -369,7 +369,7 @@
             ex.style.display = 'none';
             iLinks.style.display = 'none';
         });
-        
+
         // end of home icon
 
 

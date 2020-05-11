@@ -9,16 +9,11 @@
     <div class="nav-bar">
         <div class="links">
           <a href="{% url 'home:home' %}" >Home</a> |
-    
+
           <a href="{% url 'peers:peers' %}">Peers</a> |
-    
+
           <a href="{% url 'questions:myquestions' %}">My Questions</a>
-            <!-- dropdowm for questions -->
-          <!-- <div class="dropdown">
-         <div class="dropbtn"> <a href="{% url 'questions:questions' %}">Questions<i class="fa fa-caret-down"></i></a>  </div>
-          <div class="dropdown-content">   <a href="{% url 'questions:myquestions' %}">My Questions</a>  </div>
-       </div> -->
-    
+
           |
           <a href="{% url 'chatroom:inbox' %}">Inbox</a>
           <a href="{% url 'chatroom:inbox' %}">
@@ -28,11 +23,11 @@
           <div class="logoN">
           DevCodes/>
           </div>
-    
+
           {% if userlog %}
           <div class="user-profile">
             <a> <i class="fa fa-bell">{{notifs}}</i> </a>
-            
+
               <img src="/media/{{userinfo.profilepic}}" alt="profile"
                style="width:40px; height:40px; border-radius:50%;">
                <div class="user-dropdown">
@@ -43,17 +38,17 @@
                    Log out
                  </a>
                </div>
-            
+
         </div>
           {% else %}
           <div class="user-profile">
-              <img src="{% static 'home/images/icon.jpg' %}" alt="profile" 
+              <img src="{% static 'home/images/icon.jpg' %}" alt="profile"
               style="width:40px; height:40px; border-radius:50%;">
               <div class="user-dropdown">
                 <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
                   Edit profile
                 </a>
-                <a href="{% url 'login:login' %}">
+                <a href="{% url 'login:logout' %}">
                   Log out
                 </a>
               </div>
@@ -67,7 +62,7 @@
         </div>
         <div class="email-content">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse hic blanditiis,
-             sit saepe perspiciatis consequatur dolorum dicta ex 
+             sit saepe perspiciatis consequatur dolorum dicta ex
             officiis quos expedita voluptate, aut quidem culpa accusantium distinctio consectetur, aliquid optio.
         </div>
         <p id="time">@2hrs ago</p>
@@ -82,8 +77,8 @@
                 pkmurungi.pm@gmail.com
             </div>
             <div class="email-content">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse vel dolore tenetur eos odit veritatis 
-                possimus delectus 
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse vel dolore tenetur eos odit veritatis
+                possimus delectus
                 nulla consequuntur blanditiis quasi repellat modi totam, facere ratione quas alias nam nihil.
                 </div>
                 <p> @2hrs ago</p>
