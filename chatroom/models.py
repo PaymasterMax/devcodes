@@ -9,14 +9,11 @@ class ChatModel(models.Model):
     r1uid = models.ForeignKey(signupobj , related_name = "first_user" , on_delete = models.CASCADE)
     r2uid = models.ForeignKey(signupobj , related_name = "second_user" , on_delete = models.CASCADE)
 
-
     class Meta:
         db_table = "Chats"
         get_latest_by = "text_time"
 
-
 # feedback
-
 class FeedBack(models.Model):
     fid = models.AutoField(primary_key = True ,  serialize = True)
     feedback_sender = models.EmailField(max_length = 40)

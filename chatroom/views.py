@@ -15,6 +15,7 @@ def db_unique(db_obj , curr_user):
             # x1 is me
             if x2 not in [value.r2uid_id for value in unique_chat] and x2 not in [value.r1uid_id for value in unique_chat]:
                 unique_chat.append(x)
+
     return (unique_chat)
 
 
@@ -30,10 +31,6 @@ def inbox(request):
 
     else:
         all_messages = chatmod.objects.filter(Q(r2uid_id = userdetails.uid) | Q(r1uid_id = userdetails.uid)).order_by("-text_time")
-        dat = chatmod.objects.filter(r2uid_id = userdetails.uid).values("r1uid_id").annotate(recentm = Max("text_time"))
-        # print(all_messages)
-        # all_message = chatmod.objects.filter(Q(r2uid_id = userdetails.uid) | Q(r1uid_id = userdetails.uid)).latest()
-        # print(all_message)
 
         all_messages = db_unique(all_messages , userdetails.uid)
         return render(request , "chatroom/inbox.html" , context = {"all_messages":all_messages , "userdetails":userdetails , "newmessage":newmessage , "userlog":userlog})
@@ -78,7 +75,6 @@ def updatechats(request):
         pass
 
 
-
 def adminpanel(request):
     try:
         userinfo = signmod.objects.get(username = request.session["username"])
@@ -90,7 +86,6 @@ def adminpanel(request):
             return render(request , "home/admin.html" , context = {"feeds":feeds , "userinfo":userinfo})
         else:
             return redirect("/chatroom/")
-
 
 
 def deletechat(request , chtid, chat_user):
