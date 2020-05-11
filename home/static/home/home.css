@@ -3,7 +3,13 @@
      Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+
+
+
 /* nav bar attributes */
+
+
+ 
 
 .nav-bar{
   display: flex;
@@ -160,6 +166,8 @@
   background: -o-linear-gradient(51deg, #1de81acf, #d9e01291);
 
   padding: 15px;
+  padding-left:0;
+  padding-right:0;
   /* background-color: #54df52; */
 }
 .mainlinks {
@@ -427,9 +435,22 @@ color: white;
 
 @media only screen and (max-width:600px){
   /* nav bar attributes */
-  .logoN{
+  .showIcon{
+    display: flex;
+}
+.showHref{
+    display: grid;
+}
+.removeIcon{
+    display: none;
+}
+  .full-icon{
+    display: flex;
+  }
+  .links{
     display: none;
   }
+
   .nav-bar{
     padding: 0px;
   }

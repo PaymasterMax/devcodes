@@ -13,10 +13,47 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <title>Dev Code | Messages</title>
     <link rel="stylesheet" href="{% static 'chatroom/messages.css' %}">
+    <link rel="stylesheet" href="{% static 'home/icon.css' %}">
+
   </head>
   <body>
-
     <div class="nav-bar">
+      <!-- Home icon Beginning -->
+
+    <div class="full-icon" id="full">
+      <div class="row">
+          <div class="dot"></div>   <div class="line"></div>
+      </div>
+      <div class="row">
+          <div class="dot"></div>   <div class="line"></div>
+      </div>
+      <div class="row">
+          <div class="dot"></div>   <div class="line"></div>
+      </div>
+  </div>
+
+  <div class="no-padding" id="ex">
+      <div class="forward-slash"></div>
+      <div class="backward-slash"></div>
+  </div>
+
+ <div class="icon-links" id="iLinks">
+  <a href="{% url 'home:home' %}" class="Plinks">Home</a>
+<a href="{% url 'peers:peers' %}" class="Plinks">Peers</a>
+ <a href="{% url 'questions:questions' %}" class="Plinks">Questions
+   <i class="fa fa-caret-down"></i></a> 
+ <a href="{% url 'questions:myquestions' %}" class="Plinks-in">My Questions</a> 
+  <a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope"> {{newmessage}}</i>
+       </a> 
+ <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a> 
+ <a href="{% url 'login:login' %}" class="Plinks">  Log out </a> 
+
+
+
+
+ </div>
+  
+  <!-- Ending of icon -->
       <div class="links">
         <a href="{% url 'home:home' %}">Home</a> |
 
@@ -25,7 +62,7 @@
 
           <!-- dropdowm for questions -->
         <div class="dropdown">
-       <div class="dropbtn"> <a href="{% url 'questions:questions' %}">Questions<i class="fa fa-caret-down"></i></a>  </div>
+       <div class="dropbtn personalize"> <a href="{% url 'questions:questions' %}">Questions<i class="fa fa-caret-down"></i></a>  </div>
         <div class="dropdown-content">   <a href="{% url 'questions:myquestions' %}">My Questions</a>  </div>
      </div>
 
@@ -49,7 +86,9 @@
                <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
                  Edit profile
                </a>
-               <a href="{% url 'login:logout' %}">
+               <a href="{% url 'questions:questions' %}" class="small-personalize">Questions</a>
+               <a href="{% url 'questions:myquestions' %}" class="small-personalize">My Questions</a>
+               <a href="{% url 'login:login' %}">
                  Log out
                </a>
              </div>
@@ -64,46 +103,41 @@
         {% endif %}
   </div>
 
+  <div class="back-icon">
+    <img src="../../static/questions/images/back.png" alt="Back" style="width: 35px; height: 30px;">
+  </div>
     <div class="main">
-        <div class="personchat">
-          <img src="/media/{{receiver.profilepic}}" alt="{{receiver.username}}" title="{{receiver.username}}">
-          <p>{{receiver.username}}</p>
-        </div>
 
       <!-- single message -->
       {% for data in chats %}
         {% if userdetails.uid == data.r1uid_id %}
         <hr>
-
-            <div class="one-message second">
-              <div class="message-content">
-                {{data.text_message}}
-                <p><span class="second-time">{{data.text_time|timemodifier }}</span></p>
-                <br>
-                <a href="{% url 'chatroom:delete' data.aid receiver.uid %} " class="btn-del">
-                  <button type="button" name="button" class="btn btn-danger">delete</button>
-                </a>
-              </div>
-
+            <div class="one-message first">
               <p class="profile">
                 <img src="/media/{{data.r1uid.profilepic}}" alt="profile" title="{{data.r1uid.username}}">
               </p>
 
-
+              <div class="message-content">
+                {{data.text_message}}
+                <p><span class="time">{{data.text_time|timemodifier }}</span></p>
+              </div>
             </div>
+
       <!-- end of single message -->
         {% else %}
           <hr>
           <!-- other message -->
-          <div class="one-message first">
+          <div class="one-message second">
+            <div class="message-content">
+              {{data.text_message}}
+              <p><span class="second-time">{{data.text_time|timemodifier }}</span></p>
+
+            </div>
+
             <p class="profile">
               <img src="/media/{{data.r1uid.profilepic}}" alt="profile" title="{{data.r1uid.username}}">
             </p>
 
-            <div class="message-content">
-              {{data.text_message}}
-              <p><span class="time">{{data.text_time|timemodifier }}</span></p>
-            </div>
           </div>
           {% endif %}
       {% endfor %}
@@ -132,6 +166,29 @@
     <div class="footer">
 
     </div>
+    <script>
+       // home icon
+        
+  const full = document.getElementById('full');
+        const ex = document.getElementById('ex');
+        const iLinks = document.getElementById('iLinks');
 
+        full.addEventListener('click',function(){
+            // full.classList.add('removeIcon');
+            full.style.display = 'none';
+            // ex.classList.add('showIcon');
+            ex.style.display = 'flex';
+            iLinks.style.display = 'flex';
+        });
+        ex.addEventListener('click',function(){
+            // full.classList.remove('removeIcon');
+            full.style.display = 'flex';
+            // ex.classList.remove('showIcon');
+            ex.style.display = 'none';
+            iLinks.style.display = 'none';
+        });
+        
+        // end of home icon
+    </script>
   </body>
 </html>

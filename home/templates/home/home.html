@@ -11,8 +11,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>DevCodes | Home</title>
-    <link rel="stylesheet" href="{% static 'home/spinner.css' %}">
     <link rel="stylesheet" href="{% static 'home/home.css' %}">
+    <link rel="stylesheet" href="{% static 'home/spinner.css' %}">
+    <link rel="stylesheet" href="{% static 'home/icon.css' %}">
   </head>
   <body>
 
@@ -24,13 +25,56 @@
 
 
     <div class="nav-bar">
-      <div class="links">
+
+          <!-- Home icon Beginning -->
+
+    <div class="full-icon" id="full">
+      <div class="row">
+          <div class="dot"></div>   <div class="line"></div>
+      </div>
+      <div class="row">
+          <div class="dot"></div>   <div class="line"></div>
+      </div>
+      <div class="row">
+          <div class="dot"></div>   <div class="line"></div>
+      </div>
+  </div>
+
+  <div class="no-padding" id="ex">
+      <div class="forward-slash"></div>
+      <div class="backward-slash"></div>
+  </div>
+
+ <div class="icon-links" id="iLinks">
+
+<a href="{% url 'peers:peers' %}" class="Plinks">Peers</a>
+ <a href="{% url 'questions:questions' %}" class="Plinks">Questions
+   <i class="fa fa-caret-down"></i></a> 
+ <a href="{% url 'questions:myquestions' %}" class="Plinks-in">My Questions</a> 
+  <a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope"> {{newmessage}}</i>
+       </a> 
+ <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a> 
+ <a href="{% url 'login:login' %}" class="Plinks">  Log out </a> 
+
+
+
+
+ </div>
+  
+  <!-- Ending of icon -->
+
+  <div class="links">
+
         <a href="{% url 'peers:peers' %}">Peers</a> |
 
           <!-- dropdowm for questions -->
         <div class="dropdown">
-       <div class="dropbtn"> <a href="{% url 'questions:questions' %}">Questions<i class="fa fa-caret-down"></i></a>  </div>
-        <div class="dropdown-content">   <a href="{% url 'questions:myquestions' %}">My Questions</a>  </div>
+       <div class="dropbtn">
+          <a href="{% url 'questions:questions' %}">Questions<i class="fa fa-caret-down"></i></a> 
+         </div>
+        <div class="dropdown-content"> 
+            <a href="{% url 'questions:myquestions' %}">My Questions</a> 
+           </div>
      </div>
 
         |
@@ -53,7 +97,7 @@
                <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
                  Edit profile
                </a>
-               <a href="{% url 'login:logout' %}">
+               <a href="{% url 'login:login' %}">
                  Log out
                </a>
              </div>
@@ -63,6 +107,15 @@
         <div class="user-profile">
             <img src="{% static 'home/images/icon.jpg' %}" alt="profile"
             style="width:40px; height:40px; border-radius:50%;">
+            <div class="user-dropdown">
+              <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
+                Edit profile
+              </a>
+              <a href="{% url 'login:login' %}">
+                Log out
+              </a>
+            </div>
+
       </div>
         {% endif %}
   </div>
@@ -81,7 +134,7 @@
 
                   <div class="inner-class">
                     <p class="peerprof">
-                      <img src="{% static 'home/images/other/bcode.jpg' %}" alt="Devcodes">
+                      <img src="{% static 'home/images/other/bcode.jpg' %}" alt="">
                     </p>
                     <div class="recentq">
                       <p>
@@ -288,13 +341,36 @@
     </footer>
 
         <script>
-
+          
            // Listen for when everything has loaded
         window.addEventListener("load", removePage, false);
-        const loader = document.getElementById('ld');
+        const loader = document.getElementById('ld');        
         function removePage(){
           loader.classList.add('shrink');
         }
+
+  // home icon
+        
+  const full = document.getElementById('full');
+        const ex = document.getElementById('ex');
+        const iLinks = document.getElementById('iLinks');
+
+        full.addEventListener('click',function(){
+            // full.classList.add('removeIcon');
+            full.style.display = 'none';
+            // ex.classList.add('showIcon');
+            ex.style.display = 'flex';
+            iLinks.style.display = 'flex';
+        });
+        ex.addEventListener('click',function(){
+            // full.classList.remove('removeIcon');
+            full.style.display = 'flex';
+            // ex.classList.remove('showIcon');
+            ex.style.display = 'none';
+            iLinks.style.display = 'none';
+        });
+        
+        // end of home icon
 
 
         const turn = document.getElementById("btn");

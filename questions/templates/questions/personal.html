@@ -12,6 +12,8 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <title>Dev Code | Questions</title>
     <link rel="stylesheet" href="{% static 'questions/questions.css' %}">
+
+    <link rel="stylesheet" href="{% static 'home/icon.css' %}">
     <link rel="stylesheet" href="{% static 'questions/personal.css' %}">
   </head>
   <body>
@@ -38,6 +40,44 @@
   </div> -->
 
   <div class="nav-bar">
+
+  <!-- Home icon Beginning -->
+
+  <div class="full-icon" id="full">
+    <div class="row">
+        <div class="dot"></div>   <div class="line"></div>
+    </div>
+    <div class="row">
+        <div class="dot"></div>   <div class="line"></div>
+    </div>
+    <div class="row">
+        <div class="dot"></div>   <div class="line"></div>
+    </div>
+</div>
+
+<div class="no-padding" id="ex">
+    <div class="forward-slash"></div>
+    <div class="backward-slash"></div>
+</div>
+
+<div class="icon-links" id="iLinks">
+  <a href="{% url 'home:home' %}" class="Plinks">Home</a>
+<a href="{% url 'peers:peers' %}" class="Plinks">Peers</a>
+<a href="{% url 'questions:questions' %}" class="Plinks">Questions
+ <i class="fa fa-caret-down"></i></a> 
+<a href="{% url 'questions:myquestions' %}" class="Plinks-in">My Questions</a> 
+<a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope"> {{newmessage}}</i>
+     </a> 
+<a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a> 
+<a href="{% url 'login:login' %}" class="Plinks">  Log out </a> 
+
+
+
+
+</div>
+
+<!-- Ending of icon -->
+
     <div class="links">
       <a href="{% url 'home:home' %}">Home</a> |
 
@@ -133,6 +173,30 @@
 
 
 <script>
+
+ // home icon
+        
+ const full = document.getElementById('full');
+        const ex = document.getElementById('ex');
+        const iLinks = document.getElementById('iLinks');
+
+        full.addEventListener('click',function(){
+            // full.classList.add('removeIcon');
+            full.style.display = 'none';
+            // ex.classList.add('showIcon');
+            ex.style.display = 'flex';
+            iLinks.style.display = 'flex';
+        });
+        ex.addEventListener('click',function(){
+            // full.classList.remove('removeIcon');
+            full.style.display = 'flex';
+            // ex.classList.remove('showIcon');
+            ex.style.display = 'none';
+            iLinks.style.display = 'none';
+        });
+        
+        // end of home icon
+
   var up=document.getElementById('up');
   window.onscroll=function(){
   var scrollPos=window.pageYOffset;

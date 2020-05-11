@@ -11,10 +11,50 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <title>Dev Code | Inbox</title>
+
     <link rel="stylesheet" href="{% static 'questions/answers.css' %}">
+    <link rel="stylesheet" href="{% static 'home/icon.css' %}">
+
   </head>
   <body>
     <div class="nav-bar">
+      <!-- Home icon Beginning -->
+
+    <div class="full-icon" id="full">
+      <div class="row">
+          <div class="dot"></div>   <div class="line"></div>
+      </div>
+      <div class="row">
+          <div class="dot"></div>   <div class="line"></div>
+      </div>
+      <div class="row">
+          <div class="dot"></div>   <div class="line"></div>
+      </div>
+  </div>
+
+  <div class="no-padding" id="ex">
+      <div class="forward-slash"></div>
+      <div class="backward-slash"></div>
+  </div>
+
+ <div class="icon-links" id="iLinks">
+  <a href="{% url 'home:home' %}" class="Plinks">Home</a>
+<a href="{% url 'peers:peers' %}" class="Plinks">Peers</a>
+ <a href="{% url 'questions:questions' %}" class="Plinks">Questions
+   <i class="fa fa-caret-down"></i></a> 
+ <a href="{% url 'questions:myquestions' %}" class="Plinks-in">My Questions</a> 
+  <a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope"> {{newmessage}}</i>
+       </a> 
+ <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a> 
+ <a href="{% url 'login:login' %}" class="Plinks">  Log out </a> 
+
+
+
+
+ </div>
+  
+  <!-- Ending of icon -->
+
       <div class="links">
         <a href="{% url 'home:home' %}">Home</a> |
 
@@ -26,10 +66,17 @@
         <div class="dropdown-content">   <a href="{% url 'questions:myquestions' %}">My Questions</a>  </div>
      </div>
 
+
+        <!-- <a href="{% url 'chatroom:inbox' %}">Inbox</a> -->
+        <a href="{% url 'chatroom:inbox' %}">| Inbox
+          <i class="fa fa-envelope"> {{newmessage}}</i>
+        </a>
         </div>
         <div class="logoN">
         DevCodes/>
         </div>
+
+        {% if userlog %}
         <div class="user-profile">
           <a> <i class="fa fa-bell">{{notifs}}</i> </a>
 
@@ -46,22 +93,60 @@
                <a href="{% url 'questions:myquestions' %}" class="small-personalize">
                  My Questions
                </a>
-               <a href="{% url 'login:logout' %}">
+               <a href="{% url 'login:login' %}">
                  Log out
                </a>
              </div>
 
       </div>
+        {% else %}
+        <div class="user-profile">
+            <img src="{% static 'home/images/icon.jpg' %}" alt="profile"
+            style="width:40px; height:40px; border-radius:50%;">
+
+      </div>
+        {% endif %}
   </div>
 
     <div class="main">
 
-      <!-- Start of messages -->
+      <!-- Start of answers -->
         <h4 id="upPart">Inbox</h4>
         <hr style="width:100px;margin: 0px auto;">
         {% for msg in all_messages %}
-        <div class="answers">
-          {% if msg.r1uid_id|umodifier:userdetails.uid %}
+            {% if msg.bell_seen %}
+            <div class="answers">
+
+              <div class="profile queryprofile">
+                <img src="/media/{{msg.r1uid.profilepic}}" alt="profile" title="{{answer.auid.username}}">
+                <p>{{msg.r1uid.username}}</p>
+              </div>
+
+              <div class="answers-content">
+                <div class="answers-main-content">
+                  {{msg.text_message}}
+                </div>
+
+                <p class="ft">
+                  <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">Open</a>
+                </p>
+
+                <p class="ft">
+                  {{msg.r1uid.hobby}}
+                </p>
+                <p class="ft">
+                  {{msg.text_time | timemodifier}}
+                </p>
+
+                <p class="ft">
+                  Seen
+                </p>
+              </div>
+            </div>
+            {% else %}
+
+                <div class="answers">
+                  {% if msg.r1uid_id|umodifier:userdetails.uid %}
                   <div class="profile queryprofile">
                     <img src="/media/{{msg.r2uid.profilepic}}" alt="profile" title="{{msg.r2uid.username}}">
                     <p>{{msg.r2uid.username}}</p>
@@ -73,6 +158,7 @@
                     </div>
 
                     <p class="ft">
+                      <i class="fa fa-envelope seen"> {{newmessage}}</i>
                       <a href="{% url 'chatroom:chatroom' msg.r2uid_id %}">Open</a>
                     </p>
 
@@ -82,15 +168,8 @@
                     <p class="ft">
                       {{msg.text_time | timemodifier}}
                     </p>
-                    <p class="ft">
-                      {% if msg.bell_seen %}
-                      Seen
-
-                      {% else %}
-                      {% endif %}
-                    </p>
                   </div>
-            {% else %}
+                  {% else %}
                   <div class="profile queryprofile">
                     <img src="/media/{{msg.r1uid.profilepic}}" alt="profile" title="{{msg.r1uid.username}}">
                     <p>{{msg.r1uid.username}}</p>
@@ -102,12 +181,7 @@
                     </div>
 
                     <p class="ft">
-                      <p class="ft">
-                        {% if msg.bell_seen %}
-                        {% else %}
-                        <i class="fa fa-envelope seen"> {{newmessage}}</i>
-                        {% endif %}
-                      </p>
+                      <i class="fa fa-envelope seen"> {{newmessage}}</i>
                       <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">Open</a>
                     </p>
 
@@ -117,18 +191,11 @@
                     <p class="ft">
                       {{msg.text_time | timemodifier}}
                     </p>
-
-                    <p class="ft">
-                      {% if msg.bell_seen %}
-                      Seen
-
-                      {% else %}
-
-                      {% endif %}
-                    </p>
                   </div>
                   {% endif %}
                 </div>
+
+            {% endif %}
         {% endfor %}
 
 </div>
@@ -136,6 +203,29 @@
     <div class="footer">
 
     </div>
+<script>
+   // home icon
+        
+   const full = document.getElementById('full');
+        const ex = document.getElementById('ex');
+        const iLinks = document.getElementById('iLinks');
 
+        full.addEventListener('click',function(){
+            // full.classList.add('removeIcon');
+            full.style.display = 'none';
+            // ex.classList.add('showIcon');
+            ex.style.display = 'flex';
+            iLinks.style.display = 'flex';
+        });
+        ex.addEventListener('click',function(){
+            // full.classList.remove('removeIcon');
+            full.style.display = 'flex';
+            // ex.classList.remove('showIcon');
+            ex.style.display = 'none';
+            iLinks.style.display = 'none';
+        });
+        
+        // end of home icon
+</script>
   </body>
 </html>
