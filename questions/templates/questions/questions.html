@@ -35,7 +35,78 @@ display: none;
   </head>
   <body>
 <!-- uniform nav-bar -->
-  
+  <div class="nav-bar">
+
+  <!-- Home icon Beginning -->
+
+  <div class="full-icon" id="full">
+    <div class="row">
+        <div class="dot"></div>   <div class="line"></div>
+    </div>
+    <div class="row">
+        <div class="dot"></div>   <div class="line"></div>
+    </div>
+    <div class="row">
+        <div class="dot"></div>   <div class="line"></div>
+    </div>
+</div>
+
+<div class="no-padding" id="ex">
+    <div class="forward-slash"></div>
+    <div class="backward-slash"></div>
+</div>
+
+<div class="icon-links" id="iLinks">
+  <a href="{% url 'home:home' %}" class="Plinks">Home</a>
+<a href="{% url 'peers:peers' %}" class="Plinks">Peers</a>
+<a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope"> {{newmessage}}</i></a>
+<a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a>
+<a href="{% url 'login:logout' %}" class="Plinks">  Log out </a>
+
+</div>
+
+<!-- Ending of icon -->
+
+    <div class="links">
+      <a href="{% url 'home:home' %}" >Home</a> |
+
+      <a href="{% url 'peers:peers' %}">Peers</a>
+      <a href="{% url 'questions:myquestions' %}" class="personalize"> | My Questions</a>
+      <a href="{% url 'chatroom:inbox' %}" class="personalize">| Inbox
+        <i class="fa fa-envelope"> {{newmessage}}</i>
+      </a>
+      </div>
+      <div class="logoN">
+      DevCodes/>
+      </div>
+
+      {% if userlog %}
+      <div class="user-profile">
+        <a> <i class="fa fa-bell">{{notifs}}</i> </a>
+
+          <img src="/media/{{mydetails.profilepic}}" alt="profile"
+           style="width:40px; height:40px; border-radius:50%;">
+           <div class="user-dropdown">
+             <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
+               Edit profile
+             </a>
+             <a href="{% url 'questions:myquestions' %}" class="small-personalize">My Questions</a>
+             <a href="{% url 'chatroom:inbox' %}" class="small-personalize">Inbox</a>
+             <a href="{% url 'login:logout' %}">
+               Log out
+             </a>
+
+           </div>
+
+    </div>
+      {% else %}
+      <div class="user-profile">
+          <img src="{% static 'home/images/icon.jpg' %}" alt="profile"
+          style="width:40px; height:40px; border-radius:50%;">
+
+    </div>
+      {% endif %}
+</div>
 
   <div class="page-title"  id="upPart">Questions page</div>
   <div class="main-window">
@@ -142,135 +213,6 @@ display: none;
   </button>
   <a href="#upPart"><img src="{% static 'questions/images/up.svg' %}" alt="up_key" class="up-icon"  id="up">
     </a>
-<script>
 
- // home icon
-
- const full = document.getElementById('full');
-        const ex = document.getElementById('ex');
-        const iLinks = document.getElementById('iLinks');
-
-        full.addEventListener('click',function(){
-            // full.classList.add('removeIcon');
-            full.style.display = 'none';
-            // ex.classList.add('showIcon');
-            ex.style.display = 'flex';
-            iLinks.style.display = 'flex';
-        });
-        ex.addEventListener('click',function(){
-            // full.classList.remove('removeIcon');
-            full.style.display = 'flex';
-            // ex.classList.remove('showIcon');
-            ex.style.display = 'none';
-            iLinks.style.display = 'none';
-        });
-
-        // end of home icon
-
-  const initailLike = document.getElementById('initial');
-  const finalLike = document.getElementById('final');
-  const holder = document.querySelector('.like');
-
-//   holder.addEventListener('click',function(){
-// initailLike.classList.toggle('clicked');
-// finalLike.classList.toggle('clicked');
-//   });
-
-  holder.addEventListener('click',function(){
-if(initailLike.classList.contains('clicked')){
-  finalLike.classList.add('showClicked');
-  initailLike.classList.remove('clicked');
-}
-else{
-  initailLike.classList.add('clicked');
-  finalLike.classList.remove('showClicked');
-}
-  });
-
-// function fr shwing up icn
-  var up=document.getElementById('up');
-  window.onscroll=function(){
-  var scrollPos=window.pageYOffset;
-  if(scrollPos>100){
-      up.classList.add('show');
-  }
-  else{
-      up.classList.remove('show');
-  }
-  }
-  const openModalButtons = document.querySelectorAll('[data-modal-target]')
-  const closeModalButtons = document.querySelectorAll('[data-close-button]')
-  const overlay = document.getElementById('overlay')
-  const question = document.getElementById('modal');
-  // const modal = document.querySelector(button.dataset.modalTarget)
-  let x = document.getElementById('Xbtn');
-
-
-
-  openModalButtons.forEach(button =>{
-    button.addEventListener('click', () => {
-      const modal = document.querySelector(button.dataset.modalTarget)
-      openModal(modal)
-    })
-  })
-  overlay.addEventListener('click', () => {
-    const modals = document.querySelectorAll('.modal.active')
-    modals.forEach(modal =>{
-      closeModal(modal)
-    })
-
-  })
-  closeModalButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const modal = button.closest('.modal')
-      closeModal(modal)
-    })
-  })
-  function openModal(modal){
-    if(modal == null) {return}
-    else{
-    modal.classList.add('active')
-    overlay.classList.add('active')
-    }
-  }
-  function closeModal(modal){
-    if(modal == null) {return}
-    else{
-    question.classList.remove('active')
-    overlay.classList.remove('active')
-    }
-  }
-
-x.addEventListener("click",function(){
-
-  modal.classList.remove('active');
-  overlay.classList.remove('active');
-
-  }
-
-);
-
-
-
-  function updatemonster(qid) {
-    try {
-        var xmlhttp = new XMLHttpRequest();
-    } catch (e) {
-      var xmlhttp = new ActiveXObject();
-    }
-    finally {
-      xmlhttp.open("POST" , "{% url 'questions:updatelikes' %}" , true);
-      xmlhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
-      xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
-
-      xmlhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          alert(this.responseText);
-        }
-      }
-      xmlhttp.send("qid="  + qid);
-    }
-  }
-</script>
   </body>
 </html>
