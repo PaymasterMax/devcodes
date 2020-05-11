@@ -7,8 +7,10 @@ import cloudinary.api
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# prod_db  =  dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(prod_db)
+DATABASES = {}
+DATABASES["default"] =  dj_database_url.config(conn_max_age=500)
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -17,8 +19,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ghr%=q!3afx83t+1dojl%j15mta%6!v@bpx2l5p+ki2i!)zqs3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 SESSION_COOKIE_SECURE = True
 ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com']
@@ -131,10 +133,25 @@ AUTHENTICATION_BACKENDS = (
 WSGI_APPLICATION = 'devcodes.wsgi.application'
 
 
+# Database
+# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+
+
+
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+
+
 DATABASES = {
     'default': {
          'ENGINE': 'django.db.backends.sqlite3',
          'NAME': "devcodes.sqlite3",
+         # 'ENGINE': 'django.db.backends.mysql',
+         # 'NAME': "devcodes",
+         # "HOST":"127.0.0.1",
+         # "PORT":3306,
+         # "USER":"root",
+         # "PASSWORD":"",
 
     }
 }
