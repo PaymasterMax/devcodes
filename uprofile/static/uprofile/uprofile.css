@@ -83,20 +83,25 @@ body{
   .user-profile{
     color:#fff;
     position: relative;
+    width:68px;
+    text-align: right;
   }
   .user-dropdown{
+    padding-left: 3px;
     position: absolute;
     background-color: #303d5c;
-
-
-    width: max-content;
     z-index: 1;
+    /* padding: 6px; */
+    padding-top: 5px;
+    width: max-content;
+    padding-right: 5px;
     display: none;
+    text-align: left;
   }
-  .user-profile img:hover .user-dropdown{
+  .user-profile:hover .user-dropdown{
 display: grid;
   }
-  .user-profile img:focus .user-dropdown{
+  .user-profile:focus .user-dropdown{
     display: grid;
   }
 
@@ -108,7 +113,7 @@ display: grid;
 }
 
 /* End of nav */
-
+/* 
 .profile {
   display: block;
   margin: 0px auto;
@@ -122,7 +127,7 @@ display: grid;
   height: 100px;
   margin: 0px auto;
   border-radius: 50%;
-}
+} */
 
 
 input[type = "file"] {
@@ -145,11 +150,11 @@ input[type = "file"] {
     border-radius: 10px;
   background: #f5f2f261;
 }
-.nav-bar{
+/* .nav-bar{
   margin-bottom: 30px;
   text-align: left;
   background: grey;
-    padding-left: 25px;
+    padding-left: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
 
@@ -164,7 +169,7 @@ input[type = "file"] {
   width: 40px;
   float: right;
   margin-right: 20px;
-}
+} */
 .profile {
   display: block;
   margin: 0px auto;
@@ -253,11 +258,11 @@ font-size: 18px;
   margin-bottom:20px;
 }
 
-.btn .btn-info{
+.btn{
+  margin-bottom: 10px;
   width: max-content;
   justify-self: center;
-  background-color: rgb(35, 35, 212);
-  background: linear-gradient(326deg, #0905f9,#9001fdc2);
+  /* background: linear-gradient(326deg, #0905f9,#9001fdc2); */
 }
 
 @media only screen and (max-width:600px){
@@ -268,15 +273,8 @@ font-size: 18px;
   .nav-bar{
     padding: 0px;
   }
-
+  .sect{
+    margin-bottom: 5px;
+  }
 /* end of navbar */
-=======
-body{
-  height:100vh;
-  width:100%;
-  background-image: url("../uprofile/images/flat-screen-lte.jpeg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top;
-  background-color: #1d2252;
 }
