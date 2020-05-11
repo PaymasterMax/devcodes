@@ -98,7 +98,7 @@ def updatelikes(request):
     try:
         userdetails = Signup.objects.get(username = request.session['username'])
     except Exception as e:
-        return redirect("/login/")
+        return HttpResponse("Not logged in")
 
     else:
         Qid = request.POST["qid"]
