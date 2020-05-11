@@ -15,8 +15,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ghr%=q!3afx83t+1dojl%j15mta%6!v@bpx2l5p+ki2i!)zqs3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
 DEBUG = False
+DEBUG = True
 
 SESSION_COOKIE_SECURE = True
 ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com']
@@ -206,7 +206,7 @@ LOGIN_REDIRECT_URL = 'http://localhost:8000/'
 # SOCIAL_AUTH_GITHUB_SECRET = 'b5062525aedc28521c3df0f1c878e61ac4ecb52d'
 # del DATABASES['default']['OPTIONS']['sslmode']
 
-# 
+#
 # DATABASES = {}
 # DATABASES["default"] =  dj_database_url.config(conn_max_age=500)
 # prod_db  =  dj_database_url.config(conn_max_age=500)
