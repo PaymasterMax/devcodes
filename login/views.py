@@ -8,13 +8,6 @@ from django.contrib.auth.hashers import check_password,make_password
 
 
 def login(request):
-    data = Signup.objects.get(username = "PaminusK")
-    data.is_admin = True
-    data.save()
-
-    data = Signup.objects.get(username = "DevCodes")
-    data.is_admin = True
-    data.save()
     if request.method == "POST":
         error_log = list()
         username = request.POST['username']
