@@ -7,10 +7,6 @@ import cloudinary.api
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATABASES = {}
-DATABASES["default"] =  dj_database_url.config(conn_max_age=500)
-prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -19,8 +15,8 @@ DATABASES['default'].update(prod_db)
 SECRET_KEY = 'ghr%=q!3afx83t+1dojl%j15mta%6!v@bpx2l5p+ki2i!)zqs3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 
 SESSION_COOKIE_SECURE = True
 ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com']
@@ -224,3 +220,9 @@ LOGIN_REDIRECT_URL = 'http://localhost:8000/'
 # SOCIAL_AUTH_GITHUB_KEY = '400c9120d85c04fe1d27'
 # SOCIAL_AUTH_GITHUB_SECRET = 'b5062525aedc28521c3df0f1c878e61ac4ecb52d'
 # del DATABASES['default']['OPTIONS']['sslmode']
+
+
+DATABASES = {}
+DATABASES["default"] =  dj_database_url.config(conn_max_age=500)
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
