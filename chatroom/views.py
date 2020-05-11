@@ -13,7 +13,7 @@ def db_unique(db_obj , curr_user):
                 unique_chat.append(x)
         else:
             # x1 is me
-            if x2 not in [value.r2uid_id for value in unique_chat]:
+            if x2 not in [value.r2uid_id for value in unique_chat] and x2 not in [value.r1uid_id for value in unique_chat]:
                 unique_chat.append(x)
     return (unique_chat)
 
