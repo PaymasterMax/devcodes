@@ -1,4 +1,5 @@
 {% load static %}
+{% load timemod %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -41,37 +42,25 @@
         </div>
     </div>
     <div class="feedback">
-        <div class="oneMessage">
-        <div class="emailTime">
-            pkmurungi.pm@gmail.com
-        </div>
-        <div class="email-content">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse hic blanditiis,
-             sit saepe perspiciatis consequatur dolorum dicta ex
-            officiis quos expedita voluptate, aut quidem culpa accusantium distinctio consectetur, aliquid optio.
-        </div>
-        <p id="time">@2hrs ago</p>
 
-        <div class="respond">
-            <button class="resBtn">Respond</button>
-        </div>
+      {% for feed in feeds %}
+          <div class="oneMessage">
+          <div class="emailTime">
+              {{feed.feedback_sender}}
+          </div>
+          <div class="email-content">
+                {{feed.feedback}}
+          </div>
+          <p id="time"> @{{timemodifier|feed.post_time}}</p>
 
-        </div>
-        <div class="oneMessage">
-            <div class="emailTime">
-                pkmurungi.pm@gmail.com
-            </div>
-            <div class="email-content">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse vel dolore tenetur eos odit veritatis
-                possimus delectus
-                nulla consequuntur blanditiis quasi repellat modi totam, facere ratione quas alias nam nihil.
-                </div>
-                <p> @2hrs ago</p>
+          <div class="respond">
+              <button class="resBtn">
+                <a href="{% url 'chatroom:chatroom' 1 %} ">respond</a>
+              </button>
+          </div>
 
-            <div class="respond">
-                <button class="resBtn">Respond</button>
-            </div>
-            </div>
+          </div>
+      {% endfor %}
     </div>
 </body>
 </html>
