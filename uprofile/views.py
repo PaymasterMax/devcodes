@@ -16,9 +16,6 @@ def profileview(request):
         else:
             return render(request , "uprofile/uprofile.html" , context = {"mydetails":mydetails , "newmessage":newmessage})
 
-    else:
-        pass
-
 
 def update_profile(request):
     if request.method == "POST":
