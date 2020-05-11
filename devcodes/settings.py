@@ -138,21 +138,6 @@ DATABASES = {}
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 
-DATABASES = {
-    'default': {
-         'ENGINE': 'django.db.backends.sqlite3',
-         'NAME': "devcodes.sqlite3",
-         # 'ENGINE': 'django.db.backends.mysql',
-         # 'NAME': "devcodes",
-         # "HOST":"127.0.0.1",
-         # "PORT":3306,
-         # "USER":"root",
-         # "PASSWORD":"",
-
-    }
-}
-
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -221,8 +206,8 @@ LOGIN_REDIRECT_URL = 'http://localhost:8000/'
 # SOCIAL_AUTH_GITHUB_SECRET = 'b5062525aedc28521c3df0f1c878e61ac4ecb52d'
 # del DATABASES['default']['OPTIONS']['sslmode']
 
-
-DATABASES = {}
-DATABASES["default"] =  dj_database_url.config(conn_max_age=500)
-prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
+# 
+# DATABASES = {}
+# DATABASES["default"] =  dj_database_url.config(conn_max_age=500)
+# prod_db  =  dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(prod_db)
