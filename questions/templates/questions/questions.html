@@ -80,8 +80,8 @@ display: none;
       DevCodes/>
       </div>
 
-      {% if userlog %}
       <div class="user-profile">
+        {% if userlog %}
         <a> <i class="fa fa-bell">{{notifs}}</i> </a>
 
           <img src="/media/{{mydetails.profilepic}}" alt="profile"
@@ -111,6 +111,31 @@ display: none;
   <div class="page-title"  id="upPart">Questions page</div>
   <div class="main-window">
   <div class="person-holder">
+    {% for question in Questions %}
+
+    <div class="oneQuestion">
+          <div class="profile-pic">
+          <img src = "/media/{{question.quid.profilepic}}" alt="profile">
+          </div>
+
+          <div class="question-container">
+            <div class="user-details-first-row">
+
+              {{question.quid.username}}   @
+              {{question.time_posted | timemodifier}}
+            </div>
+            <div class="question-content">
+              <div class="question-text">{{question.question}}</div>
+            <div class="languages-tagged">
+              {{question.language}}
+              </div>
+            </div>
+            
+          </div>
+    </div>
+
+
+    {% endfor %}
   </div>
 
   <div class = "main-question" class="modal"  id="modal">
