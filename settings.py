@@ -133,14 +133,6 @@ WSGI_APPLICATION = 'devcodes.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-
-
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
-
-prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
-
 DATABASES = {
     'default': {
          'ENGINE': 'django.db.backends.sqlite3',
@@ -218,6 +210,11 @@ LOGIN_URL = "login"
 LOGOUT_URL = "logout"
 LOGIN_REDIRECT_URL = 'http://localhost:8000/'
 
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
 
 
 # SOCIAL_AUTH_GITHUB_KEY = '400c9120d85c04fe1d27'
