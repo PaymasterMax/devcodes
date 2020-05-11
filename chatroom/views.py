@@ -8,7 +8,7 @@ def db_unique(db_obj , curr_user):
     for x in db_obj:
         x1 , x2 = x.r1uid_id , x.r2uid_id
         # x1  not me
-        if x1 !=curr_user and x1 not in [value.r1uid_id for value in unique_chat]:
+        if x1 !=curr_user and x1 not in [value.r1uid_id for value in unique_chat] and x1 not in [value.r2uid_id for value in unique_chat]:
             unique_chat.append(x)
         else:
             # x1 is me

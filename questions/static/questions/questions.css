@@ -70,6 +70,7 @@ body{
     .user-profile{
       color:rgb(255, 255, 255);
       position: relative;
+      width:75px;
     }
     .user-dropdown{
       position: absolute;
@@ -104,6 +105,7 @@ body{
 .person-holder{
     display:block;
     height:max-content;
+    min-width: 215px;
 }
 .oneQuestion{
 display:flex;
@@ -139,7 +141,7 @@ margin-right: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     padding-bottom: 3px;
-    min-width: 230px;
+    min-width: 215px;
     border-top-style:none ;
 }
 .reply-section .like,.message img{
@@ -199,9 +201,10 @@ font-weight: 600;
 font-size: 1.1em;
 color: black;
 }
-.pose a img{
-    width:20px;
-    height: 20px;
+.pose img{
+    width:25px;
+    height: 25px;
+    display: none;
 }
 .languages{
     margin: 15px auto;
@@ -242,6 +245,11 @@ box-shadow: 3px 3px 9px 0px black;
 .up-icon{
     width: 50px; height:50px; border-radius: 50%;
     position: fixed; bottom:2%; right:1.2%;
+    opacity:0;
+    transition: .6s;
+}
+.show{
+    opacity: 1;
 }
 .close-button{
     display: none;
@@ -281,7 +289,7 @@ box-shadow: 3px 3px 9px 0px black;
     padding-left: 20px;
 
     }
-    .pose a img{
+    .pose img{
         display: inline;
     }
     .logo{
@@ -289,6 +297,7 @@ box-shadow: 3px 3px 9px 0px black;
     }
     .person-holder{
         width: 100%;
+        min-width: 215px;
     }
     .profile-pic img{
         height: 50px;
@@ -319,8 +328,10 @@ box-shadow: 3px 3px 9px 0px black;
         bottom: 1%;
         width:30px;
         height: 30px;
+        transition: .7s;
 
     }
+    
     .question-container{
         margin:0;
         min-width: 0px;
@@ -362,3 +373,19 @@ box-shadow: 3px 3px 9px 0px black;
       display: block;
     }
 }
+
+
+/* animating the like button
+#initail{
+display: inline;
+}
+#final{
+display: none;
+}
+#final.clicked{
+display: inline;
+}
+#initail.clicked{
+display: none;
+} */
+
