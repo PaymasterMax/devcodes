@@ -147,7 +147,7 @@ display: none;
                   style="width: 30px; height: 40px;" onclick="updatemonster(qid);">
 
                   <img src="{% static 'questions/images/coloredLike.svg' %}" id="final" class="final" alt="like icon"
-                  style="width: 30px; height: 40px;" onclick="updatemonster({question,qid});">
+                  style="width: 30px; height: 40px;" onclick="updatemonster(qid);">
 
                        {{question.question_liked.count}}
                   </div>
@@ -171,7 +171,7 @@ display: none;
 
     <div class="pose">
       Ask a Question
-      <img src="../../static/questions/images/x.svg" alt="&times;" id="Xbtn">
+      <img src="{% static 'questions/images/x.svg' %}" alt="&times;" id="Xbtn">
       <!-- <button data-close-button class="close-button">&times;</button> -->
   </div>
     <form class="" action="{% url 'questions:askquestions' %}" method="post">
