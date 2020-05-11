@@ -7,22 +7,19 @@ def db_unique(db_obj):
     unique_chat = list()
     for x in db_obj:
         x1 , x2 = x.r1uid_id , x.r2uid_id
-        if x.r1uid_id in [value.r1uid_id for value in unique_chat]:
-            if x.r2uid_id==x2:
-                pass
-            else:
-                unique_chat.append(x)
+
+        if x1 in [value.r1uid_id for value in unique_chat] or x1 in [value.r2uid_id for value in unique_chat]:
+            pass
+
+        elif x2 in [value.r1uid_id for value in unique_chat] or x2 in [value.r2uid_id for value in unique_chat]:
+            pass
+
         else:
-            if x.r2uid_id in [value.r2uid_id for value in unique_chat]:
-                if x.r1uid_id==x1:
-                    unique_chat.append(x)
-                else:
-                    pass
-            else:
-                unique_chat.append(x)
+            unique_chat.append(x)
 
     # print(unique_chat)
     return (unique_chat)
+
 
 def inbox(request):
     try:
