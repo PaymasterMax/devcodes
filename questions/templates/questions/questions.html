@@ -59,16 +59,9 @@ display: none;
 <div class="icon-links" id="iLinks">
   <a href="{% url 'home:home' %}" class="Plinks">Home</a>
 <a href="{% url 'peers:peers' %}" class="Plinks">Peers</a>
-<a href="{% url 'questions:questions' %}" class="Plinks">Questions
- <i class="fa fa-caret-down"></i></a>
-<a href="{% url 'questions:myquestions' %}" class="Plinks-in">My Questions</a>
-<a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope"> {{newmessage}}</i>
-     </a>
+<a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope"> {{newmessage}}</i></a>
 <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a>
 <a href="{% url 'login:logout' %}" class="Plinks">  Log out </a>
-
-
-
 
 </div>
 
@@ -151,7 +144,7 @@ display: none;
               {% else %}
                   <div class="like">
                   <img src="{% static 'questions/images/like.svg' %}" id="initial" class="initial" alt="like icon"
-                  style="width: 30px; height: 40px;" onclick="updatemonster({question,qid});">
+                  style="width: 30px; height: 40px;" onclick="updatemonster(qid);">
 
                   <img src="{% static 'questions/images/coloredLike.svg' %}" id="final" class="final" alt="like icon"
                   style="width: 30px; height: 40px;" onclick="updatemonster({question,qid});">
