@@ -138,16 +138,18 @@
                   {{msg.text_time | timemodifier}}
                 </p>
 
+                {% if msg.bell_seen %}
                 <p class="ft">
-                  Seen
+                  seen
                 </p>
+                {% endif %}
               </div>
             </div>
             {% else %}
             <div class="answers">
 
               <div class="profile queryprofile">
-                <img src="/media/{{msg.r1uid.profilepic}}" alt="{{msg.r1uid.username}}" title="{{answer.auid.username}}">
+                <img src="/media/{{msg.r1uid.profilepic}}" alt="{{msg.r1uid.username}}" title="{{msg.r1uid_id.username}}">
                 <p>{{msg.r1uid.username}}</p>
               </div>
 
@@ -165,10 +167,6 @@
                 </p>
                 <p class="ft">
                   {{msg.text_time | timemodifier}}
-                </p>
-
-                <p class="ft">
-                  Seen
                 </p>
               </div>
             </div>
