@@ -72,7 +72,7 @@ INSTALLED_APPS = [
 # )
 
 cloudinary.config(
-    cloud_name = CLOUDINARY_CLOUD_NAME,
+    cloud_name = "hti2kicdw",
     api_key = "744951147868868",
     api_secret = "R4355opHqPb1UxeGgFR1aABDUyI"
 )
