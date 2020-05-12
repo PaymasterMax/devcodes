@@ -95,7 +95,9 @@
   </div>
 
   <div class="back-icon">
-    <img src="{% static 'questions/images/back.svg' %}" alt="Back" style="width: 35px; height: 30px;">
+    <a href="{% url 'chatroom:inbox' %}">
+      <img src="{% static 'questions/images/back.svg' %}" alt="Back" style="width: 35px; height: 30px;">
+    </a>
   </div>
     <div class="main">
 
