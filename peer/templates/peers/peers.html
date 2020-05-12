@@ -78,7 +78,7 @@
         </div>
       <div class="user-profile">
         <a> <i class="fa fa-bell">{{notifs}}</i> </a>
-           {% cloudinary user.profilepic.url className="myimg" alt="{{user.username}}" title="{{user.username}}" height=200 width=100 %}
+           {% cloudinary user.profilepic.url className="myimg" alt=user.username title=user.username height=200 width=100 %}
 
            <div class="user-dropdown">
              <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
@@ -120,7 +120,7 @@
 
       <div class="user-infor">
         <div class="profile">
-          {% cloudinary usr.profilepic.url className="usr.username" title="{{usr.username}}" alt="{{usr.username}}" height=200 width=100 %}
+          {% cloudinary usr.profilepic.url className=usr.username title=usr.username alt=usr.username height=200 width=100 %}
         </div>
 
         <div class="detail-user">
