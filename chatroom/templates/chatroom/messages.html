@@ -79,7 +79,7 @@
         <div class="user-profile" id="upPart">
           <a> <i class="fa fa-bell">{{notifs}}</i> </a>
 
-             {% cloudinary userdetails.profilepic.url alt="{{userdetails.username}}" title="{{userdetails.username}}" className="myimg" height=200 width=100 %}
+             {% cloudinary userdetails.profilepic.url alt=userdetails.username title=userdetails.username className="myimg" height=200 width=100 %}
              <div class="user-dropdown">
                <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
                  Edit profile
@@ -111,8 +111,7 @@
                 <p><span class="time">{{data.text_time|timemodifier }}</span></p>
               </div>
               <p class="profile">
-                <!-- <img src="{{ data.r1uid.profilepic.url }}" alt="profile" title="{{data.r1uid.username}}"> -->
-                {% cloudinary data.r1uid.profilepic.url className="myimg" alt="{{data.r1uid.username}}" title="{{data.r1uid.username}}" height=200 width=100 %}
+                {% cloudinary data.r1uid.profilepic.url className="myimg" alt=data.r1uid.username title=data.r1uid.username height=200 width=100 %}
               </p>
             </div>
       <!-- end of single message -->

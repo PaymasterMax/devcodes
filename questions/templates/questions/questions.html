@@ -87,7 +87,7 @@ display: none;
 
           <!-- <img src="{{ mydetails.profilepic.url }}" alt="profile"
            style="width:40px; height:40px; border-radius:50%;"> -->
-           {% cloudinary mydetails.profilepic.url className="myimg" alt="{{mydetails.username}}" title="{{mydetails.username}}" height=200 width=100 %}
+           {% cloudinary mydetails.profilepic.url className="myimg" alt=mydetails.username title=mydetails.username height=200 width=100 %}
            <div class="user-dropdown">
              <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
                Edit profile
@@ -118,7 +118,7 @@ display: none;
     <div class="oneQuestion">
           <div class="profile-pic">
           <!-- <img src = "{{ question.quid.profilepic.url }}" alt="profile"> -->
-          {% cloudinary question.quid.profilepic.url className="myimg" alt="{{question.quid.username}}" title="{{question.quid.username}}" height=200 width=100 %}
+          {% cloudinary question.quid.profilepic.url className="myimg" alt=question.quid.username title=question.quid.username height=200 width=100 %}
           </div>
 
           <div class="question-container">
