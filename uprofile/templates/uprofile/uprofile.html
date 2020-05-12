@@ -93,7 +93,7 @@
 
       <div class="main-details">
         <!-- profile pic -->
-          {% cloudinary mydetails.profilepic.url className="myimg" height=200 width=100 alt=mydetails.username title=mydetails.username %}
+          {% cloudinary mydetails.profilepic.url className="profilef" height=200 width=100 alt=mydetails.username title=mydetails.username %}
           <!-- update form -->
           <form class="" action="{% url 'profile:update' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
