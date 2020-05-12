@@ -1,6 +1,7 @@
 {% load timemod %}
 {% load static %}
 {% load like %}
+{% load cloudinary %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -84,8 +85,9 @@ display: none;
         {% if userlog %}
         <a> <i class="fa fa-bell">{{notifs}}</i> </a>
 
-          <img src="{{ mydetails.profilepic.url }}" alt="profile"
-           style="width:40px; height:40px; border-radius:50%;">
+          <!-- <img src="{{ mydetails.profilepic.url }}" alt="profile"
+           style="width:40px; height:40px; border-radius:50%;"> -->
+           {% cloudinary mydetails.profilepic.url className="myimg" height=200 width=100 %}
            <div class="user-dropdown">
              <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
                Edit profile
@@ -115,7 +117,8 @@ display: none;
 
     <div class="oneQuestion">
           <div class="profile-pic">
-          <img src = "{{ question.quid.profilepic.url }}" alt="profile">
+          <!-- <img src = "{{ question.quid.profilepic.url }}" alt="profile"> -->
+          {% cloudinary question.quid.profilepic.url className="myimg" height=200 width=100 %}
           </div>
 
           <div class="question-container">

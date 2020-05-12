@@ -1,4 +1,5 @@
 {% load static %}
+{% load cloudinary %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -97,8 +98,9 @@
         <div class="user-profile">
           <a> <i class="fa fa-bell">{{notifs}}</i> </a>
 
-            <img src="{{ mydetails.profilepic.url }}" alt="{{ mydetails.username }}"
-             style="width:40px; height:40px; border-radius:50%;">
+            <!-- <img src="{{ mydetails.profilepic.url }}" alt="{{ mydetails.username }}"
+             style="width:40px; height:40px; border-radius:50%;"> -->
+             {% cloudinary mydetails.profilepic.url className="myimg" height=200 width=100 alt="{{ mydetails.username }}" %}
              <div class="user-dropdown">
                <!-- <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
                  Edit profile
@@ -114,8 +116,8 @@
       <div class="main-details">
         <!-- profile pic -->
 
-          <img src="{{ mydetails.profilepic.url }}" class="profile-image" alt="profile">
-
+          <!-- <img src="{{ mydetails.profilepic.url }}" class="profile-image" alt="profile"> -->
+          {% cloudinary mydetails.profilepic.url className="profile-image" height=200 width=100 alt="{{ mydetails.username }}" alt="profile" %}
 
 
           <!-- update form -->

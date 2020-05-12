@@ -18,6 +18,11 @@ body{
     background: #303d5c;
     color: #17a2b8;
 }
+.myimg {
+  width:40px;
+  height:40px;
+  border-radius:50%;
+}
 .nav-bar a{
   font-weight: 400;
   color: #fff;
@@ -113,7 +118,7 @@ display: grid;
 }
 
 /* End of nav */
-/* 
+/*
 .profile {
   display: block;
   margin: 0px auto;
