@@ -120,8 +120,7 @@
               <!-- other message -->
               <div class="one-message first">
                 <p class="profile">
-                  <!-- <img src="{{ data.r1uid.profilepic.url }}" alt="profile" title="{{data.r1uid.username}}"> -->
-                  {% cloudinary data.r1uid.profilepic.url className="myimg" alt="{{data.r1uid.username}}" title="{{data.r1uid.username}}" height=200 width=100 %}
+                  {% cloudinary data.r1uid.profilepic.url className="myimg" alt=data.r1uid.username title=data.r1uid.username height=200 width=100 %}
                 </p>
 
                 <div class="message-content">
