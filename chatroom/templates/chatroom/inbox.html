@@ -80,9 +80,6 @@
 
         <div class="user-profile">
           <a> <i class="fa fa-bell">{{notifs}}</i> </a>
-
-            <!-- <img src="{{ userdetails.profilepic.url }}" alt="profile"
-             style="width:40px; height:40px; border-radius:50%;"> -->
              {% cloudinary userdetails.profilepic.url className="myimg" title=userdetails.username alt=userdetails.username height=200 width=100 %}
              <div class="user-dropdown">
                <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
@@ -113,7 +110,7 @@
             <div class="answers">
 
               <div class="profile queryprofile">
-                <img src="{{ msg.r2uid.profilepic.url }}" alt="{{msg.r2uid.username}}" title="{{msg.r2uid_id.username}}">
+                {% cloudinary msg.r2uid.profilepic.url className="myimg" title=msg.r2uid.username alt=msg.r2uid.username height=200 width=100 %}
                 <p>{{msg.r2uid.username}}</p>
               </div>
 
