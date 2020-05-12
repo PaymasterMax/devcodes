@@ -80,7 +80,7 @@
         <div class="user-profile" id="upPart">
           <a> <i class="fa fa-bell">{{notifs}}</i> </a>
 
-            <img src="/media/{{userdetails.profilepic}}" alt="profile"
+            <img src="{{ userdetails.profilepic.url }}" alt="profile"
              style="width:40px; height:40px; border-radius:50%;">
              <div class="user-dropdown">
                <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
@@ -121,7 +121,7 @@
           </div>
 
           <p class="profile">
-            <img src="/media/{{data.r1uid.profilepic}}" alt="profile" title="{{data.r1uid.username}}">
+            <img src="{{ data.r1uid.profilepic.url }}" alt="profile" title="{{data.r1uid.username}}">
           </p>
 
         </div>
@@ -131,7 +131,7 @@
           <hr>
               <div class="one-message second">
                 <p class="profile">
-                  <img src="/media/{{data.r1uid.profilepic}}" alt="profile" title="{{data.r1uid.username}}">
+                  <img src="{{ data.r1uid.profilepic.url }}" alt="profile" title="{{data.r1uid.username}}">
                 </p>
 
                 <div class="message-content">

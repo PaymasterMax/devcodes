@@ -46,7 +46,7 @@
 <a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope"> {{newmessage}}</i>
      </a>
 <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a>
-<a href="{% url 'login:logout' %}" class="Plinks">  Log out </a> 
+<a href="{% url 'login:logout' %}" class="Plinks">  Log out </a>
 
 
 
@@ -74,18 +74,11 @@
         <div class="logoN">
         DevCodes/>
         </div>
-
-        <!-- <div class="user-profile">
-          <a> <i class="fa fa-bell">5</i> </a>
-          <a href="{% url 'profile:profile' %}">
-            <img src="/media/{{user.profilepic}}" alt="profile" style="width:40px; height:40px; border-radius:50%;">
-          </a>
-      </div> -->
       {% if userlog %}
       <div class="user-profile">
         <a> <i class="fa fa-bell">{{notifs}}</i> </a>
 
-          <img src="/media/{{user.profilepic}}" alt="profile"
+          <img src="{{ user.profilepic.url }}" alt="profile"
            style="width:40px; height:40px; border-radius:50%;">
            <div class="user-dropdown">
              <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
@@ -134,7 +127,7 @@
 
       <div class="user-infor">
         <div class="profile">
-          <img src="/media/{{usr.profilepic}}" alt="profile" title="{{usr.username}}">
+          <img src="{{ usr.profilepic.url }}" alt="profile" title="{{usr.username}}">
         </div>
 
         <div class="detail-user">

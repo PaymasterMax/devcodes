@@ -83,7 +83,7 @@
       <div class="user-profile">
         <a> <i class="fa fa-bell">{{notifs}}</i> </a>
 
-          <img src="/media/{{userinfo.profilepic}}" alt="profile"
+          <img src="{{ userinfo.profilepic.url }}" alt="profile"
            style="width:40px; height:40px; border-radius:50%;">
            <div class="user-dropdown">
              <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
@@ -110,10 +110,6 @@
     {% for question in Questions %}
 
     <div class="oneQuestion">
-          <!-- <div class="profile-pic">
-          <img src = "/media/{{question.quid.profilepic}}" alt="profile">
-          </div> -->
-
           <div class="question-container">
             <div class="user-details-first-row">
 

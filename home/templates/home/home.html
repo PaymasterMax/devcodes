@@ -91,7 +91,7 @@
         <div class="user-profile">
           <a> <i class="fa fa-bell">{{notifs}}</i> </a>
 
-            <img src="/media/{{userinfo.profilepic}}" alt="profile"
+            <img src="{{ userinfo.profilepic.url }}" alt="profile"
              style="width:40px; height:40px; border-radius:50%;">
              <div class="user-dropdown">
                <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
@@ -156,7 +156,7 @@
 
                     <div class="inner-class">
                       <p class="peerprof">
-                        <img src="/media/{{q.quid.profilepic}}" alt="{{q.quid.question_asker.username}}">
+                        <img src="{{ q.quid.profilepic.url }}" alt="{{q.quid.question_asker.username}}">
                         <br>{{q.quid.username}}
                       </p>
                       <p class="recentq">

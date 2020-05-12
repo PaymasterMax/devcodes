@@ -107,16 +107,6 @@
                  Log out
                </a>
              </div>
-
-
-          <a href="{% url 'questions:questions' %}">Questions</a> |
-          <a href="{% url 'peers:peers' %}">Peers</a> |
-          <a href="{% url 'home:home' %}">Chat</a>
-          <a href="{% url 'home:home' %}">Home</a>
-
-          <img src="{{ mydetails.profilepic.url }}" alt="profile" class="nav-profile">
-
-
       </div>
   </div>
       <div class="main-container">
@@ -124,7 +114,7 @@
       <div class="main-details">
         <!-- profile pic -->
 
-          <img src="/media/{{mydetails.profilepic}}" class="profile-image" alt="profile">
+          <img src="{{ mydetails.profilepic.url }}" class="profile-image" alt="profile">
 
 
 

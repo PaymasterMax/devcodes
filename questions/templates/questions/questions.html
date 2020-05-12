@@ -84,7 +84,7 @@ display: none;
         {% if userlog %}
         <a> <i class="fa fa-bell">{{notifs}}</i> </a>
 
-          <img src="/media/{{mydetails.profilepic}}" alt="profile"
+          <img src="{{ mydetails.profilepic.url }}" alt="profile"
            style="width:40px; height:40px; border-radius:50%;">
            <div class="user-dropdown">
              <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
@@ -115,7 +115,7 @@ display: none;
 
     <div class="oneQuestion">
           <div class="profile-pic">
-          <img src = "/media/{{question.quid.profilepic}}" alt="profile">
+          <img src = "{{ question.quid.profilepic.url }}" alt="profile">
           </div>
 
           <div class="question-container">

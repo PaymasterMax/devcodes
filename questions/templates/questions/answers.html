@@ -81,7 +81,7 @@
         <div class="user-profile">
           <a> <i class="fa fa-bell">{{notifs}}</i> </a>
 
-            <img src="/media/{{userinfo.profilepic}}" alt="profile"
+            <img src="{{userinfo.profilepic.url }}" alt="profile"
              style="width:40px; height:40px; border-radius:50%;">
              <div class="user-dropdown">
                <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
@@ -111,7 +111,7 @@
       <div class="question">
 
         <div class="profile queryprofile">
-          <img src="/media/{{question_info.quid.profilepic}}" alt="{{question_info.quid.username}}" title="{{question_info.quid.username}}">
+          <img src="{{ question_info.quid.profilepic.url }}" alt="{{question_info.quid.username}}" title="{{question_info.quid.username}}">
           <p>{{question_info.quid.username}}</p>
         </div>
 
@@ -137,7 +137,7 @@
       <div class="answers">
 
         <div class="profile queryprofile">
-          <img src="/media/{{answer.auid.profilepic}}" alt="profile" title="{{answer.auid.username}}">
+          <img src="{{ answer.auid.profilepic.url }}" alt="profile" title="{{answer.auid.username}}">
           <p>{{answer.auid.username}}</p>
         </div>
 

@@ -80,7 +80,7 @@
         <div class="user-profile">
           <a> <i class="fa fa-bell">{{notifs}}</i> </a>
 
-            <img src="/media/{{userdetails.profilepic}}" alt="profile"
+            <img src="{{ userdetails.profilepic.url }}" alt="profile"
              style="width:40px; height:40px; border-radius:50%;">
              <div class="user-dropdown">
                <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
@@ -118,7 +118,7 @@
             <div class="answers">
 
               <div class="profile queryprofile">
-                <img src="/media/{{msg.r2uid.profilepic}}" alt="{{msg.r2uid.username}}" title="{{msg.r2uid_id.username}}">
+                <img src="{{ msg.r2uid.profilepic.url }}" alt="{{msg.r2uid.username}}" title="{{msg.r2uid_id.username}}">
                 <p>{{msg.r2uid.username}}</p>
               </div>
 
@@ -149,7 +149,7 @@
             <div class="answers">
 
               <div class="profile queryprofile">
-                <img src="/media/{{msg.r1uid.profilepic}}" alt="{{msg.r1uid.username}}" title="{{msg.r1uid_id.username}}">
+                <img src="{{ msg.r1uid.profilepic.url }}" alt="{{msg.r1uid.username}}" title="{{msg.r1uid_id.username}}">
                 <p>{{msg.r1uid.username}}</p>
               </div>
 
