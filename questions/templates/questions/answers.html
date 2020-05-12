@@ -114,7 +114,7 @@
 
         <div class="profile queryprofile">
           <!-- <img src="{{ question_info.quid.profilepic.url }}" alt="{{question_info.quid.username}}" title="{{question_info.quid.username}}"> -->
-          {% cloudinary question_info.quid.profilepic.url className="myimg" height=200 width=100 alt="{{question_info.quid.username}} title="{{question_info.quid.username}}" %}
+          {% cloudinary question_info.quid.profilepic.url className="myimg" height=200 width=100 alt="profile" %}
           <p>{{question_info.quid.username}}</p>
         </div>
 
@@ -141,7 +141,7 @@
 
         <div class="profile queryprofile">
           <!-- <img src="{{ answer.auid.profilepic.url }}" alt="profile" title="{{answer.auid.username}}"> -->
-          {% cloudinary answer.auid.profilepic.url className="myimg" height=200 width=100 alt="profile" title="{{answer.auid.username}}" %}
+          {% cloudinary answer.auid.profilepic.url className="myimg" height=200 width=100 alt="profile" %}
           <p>{{answer.auid.username}}</p>
         </div>
 
