@@ -80,10 +80,7 @@
         {% if userlog %}
         <div class="user-profile">
           <a> <i class="fa fa-bell">{{notifs}}</i> </a>
-
-            <!-- <img src="{{userinfo.profilepic.url }}" alt="profile"
-             style="width:40px; height:40px; border-radius:50%;"> -->
-             {% cloudinary userinfo.profilepic.url className="myimg" alt=userinfo.username title=userinfo.username height=200 width=100 %}
+             {% cloudinary userdetails.profilepic.url className="myimg" alt=userdetails.username title=userdetails.username height=200 width=100 %}
              <div class="user-dropdown">
                <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
                  Edit profile
