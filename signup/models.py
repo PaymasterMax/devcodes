@@ -8,7 +8,8 @@ class Signup(models.Model):
     pnumber = models.IntegerField()
     location = models.CharField(max_length = 30  , default = "Nairobi/Kenya")
     hobby = models.CharField(max_length = 30)
-    profilepic = CloudinaryField()
+    profilepic = CloudinaryField("image")
+    # profilepic = models.FileField()
     password = models.CharField(max_length = 255)
     is_admin = models.BooleanField(default = False)
 

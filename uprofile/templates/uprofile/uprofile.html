@@ -97,7 +97,7 @@
         <div class="user-profile">
           <a> <i class="fa fa-bell">{{notifs}}</i> </a>
 
-            <img src="/media/{{mydetails.profilepic}}" alt="{{mydetails.username}}"
+            <img src="{{ mydetails.profilepic.url }}" alt="{{ mydetails.username }}"
              style="width:40px; height:40px; border-radius:50%;">
              <div class="user-dropdown">
                <!-- <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
@@ -114,7 +114,7 @@
           <a href="{% url 'home:home' %}">Chat</a>
           <a href="{% url 'home:home' %}">Home</a>
 
-          <img src="/media/{{mydetails.profilepic}}" alt="profile" class="nav-profile">
+          <img src="{{ mydetails.profilepic.url }}" alt="profile" class="nav-profile">
 
 
       </div>

@@ -56,19 +56,26 @@ INSTALLED_APPS = [
 ]
 
 
-cloudinary.config(
-  cloud_name = os.environ.get('hti2kicdw'),
-  api_key = os.environ.get('744951147868868'),
-  api_secret = os.environ.get('R4355opHqPb1UxeGgFR1aABDUyI'),
-  secure = True
-)
-cloudinary.config(
-  cloud_name = 'hti2kicdw',
-  api_key = '744951147868868',
-  api_secret = 'R4355opHqPb1UxeGgFR1aABDUyI'
-)
+# cloudinary.config(
+#   cloud_name = os.environ.get('hti2kicdw'),
+#   api_key = os.environ.get('744951147868868'),
+#   api_secret = os.environ.get('R4355opHqPb1UxeGgFR1aABDUyI'),
+#   secure = True
+# )
+#
+#
+#
+# cloudinary.config(
+#   cloud_name = 'hti2kicdw',
+#   api_key = '744951147868868',
+#   api_secret = 'R4355opHqPb1UxeGgFR1aABDUyI'
+# )
 
-
+cloudinary.config(
+    cloud_name = CLOUDINARY_CLOUD_NAME,
+    api_key = "744951147868868",
+    api_secret = "R4355opHqPb1UxeGgFR1aABDUyI"
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
