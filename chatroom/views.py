@@ -33,7 +33,7 @@ def inbox(request):
         all_messages = chatmod.objects.filter(Q(r2uid_id = userdetails.uid) | Q(r1uid_id = userdetails.uid)).order_by("-text_time")
 
         all_messages = db_unique(all_messages , userdetails.uid)
-        return render(request , "chatroom/inbox.html/#frm" , context = {"all_messages":all_messages , "userdetails":userdetails , "newmessage":newmessage , "userlog":userlog})
+        return render(request , "chatroom/inbox.html/" , context = {"all_messages":all_messages , "userdetails":userdetails , "newmessage":newmessage , "userlog":userlog})
 
 
 def chatrm(request , chat_user):
