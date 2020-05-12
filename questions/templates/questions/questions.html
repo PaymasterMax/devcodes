@@ -64,12 +64,9 @@ display: none;
 <a href="{% url 'login:logout' %}" class="Plinks">  Log out </a>
 
 </div>
-
 <!-- Ending of icon -->
-
     <div class="links">
       <a href="{% url 'home:home' %}" >Home</a> |
-
       <a href="{% url 'peers:peers' %}">Peers</a>
       <a href="{% url 'questions:myquestions' %}" class="personalize"> | My Questions</a>
       <a href="{% url 'chatroom:inbox' %}" class="personalize">| Inbox
@@ -77,15 +74,12 @@ display: none;
       </a>
       </div>
       <div class="logoN">
-         <link rel="icon" type="image/svg" sizes="40x40" href="{% static 'questions/images/devcodes _svg_lg.svg' %}">
+        <img src="{% static 'questions/images/devcodes _svg_lg.svg' %}" alt="logo">
       </div>
 
       <div class="user-profile">
         {% if userlog %}
         <a> <i class="fa fa-bell">{{notifs}}</i> </a>
-
-          <!-- <img src="{{ mydetails.profilepic.url }}" alt="profile"
-           style="width:40px; height:40px; border-radius:50%;"> -->
            {% cloudinary mydetails.profilepic.url className="myimg" alt=mydetails.username title=mydetails.username height=200 width=100 %}
            <div class="user-dropdown">
              <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
