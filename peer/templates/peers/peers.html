@@ -1,5 +1,6 @@
 {% load static %}
 {% load messagecounter %}
+{% load cloudinary %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -128,6 +129,7 @@
       <div class="user-infor">
         <div class="profile">
           <img src="{{ usr.profilepic.url }}" alt="profile" title="{{usr.username}}">
+          {% cloudinary usr.profilepic.url className="usr.username" height=200 width=100 %}
         </div>
 
         <div class="detail-user">
