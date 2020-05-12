@@ -235,6 +235,25 @@
 
 
 
+
+    <!-- bootstrap alert -->
+
+
+
+    <div class="alert alert-warning alert-dismissible fade show" id="alrt" role="alert">
+      Thanks for submitng feedback
+
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+
+
+
+
+    <!-- end of bootstrap alert -->
+
     <footer>
         <!-- footer section -->
         <div class="footer">
@@ -403,7 +422,7 @@
             xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
             xmlhttp.onreadystatechange = function () {
               if (this.readyState == 4 && this.status ==200) {
-                alert("Thanks for submiting your feedback.");
+                al = $("#alrt").css("display", "inline-block");
               }
             }
             xmlhttp.send("email="+email+"&feedback="+feedback);
