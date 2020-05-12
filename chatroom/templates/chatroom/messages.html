@@ -75,8 +75,6 @@
         <div class="logoN">
         DevCodes/>
         </div>
-
-        {% if userlog %}
         <div class="user-profile" id="upPart">
           <a> <i class="fa fa-bell">{{notifs}}</i> </a>
 
@@ -94,17 +92,10 @@
              </div>
 
       </div>
-        {% else %}
-        <div class="user-profile">
-            <img src="{% static 'home/images/icon.jpg' %}" alt="profile"
-            style="width:40px; height:40px; border-radius:50%;">
-
-      </div>
-        {% endif %}
   </div>
 
   <div class="back-icon">
-    <img src="../../static/questions/images/back.png" alt="Back" style="width: 35px; height: 30px;">
+    <img src="{% static 'questions/images/back.png' %}" alt="Back" style="width: 35px; height: 30px;">
   </div>
     <div class="main">
 
@@ -112,34 +103,32 @@
       {% for data in chats %}
         {% if userdetails.uid == data.r1uid_id %}
         <hr>
-        <!-- other message -->
-        <div class="one-message first">
-          <div class="message-content">
-            {{data.text_message}}
-            <p><span class="second-time">{{data.text_time|timemodifier }}</span></p>
+            <div class="one-message second">
+              <p class="profile">
+                <img src="{{ data.r1uid.profilepic.url }}" alt="profile" title="{{data.r1uid.username}}">
+              </p>
 
-          </div>
-
-          <p class="profile">
-            <img src="{{ data.r1uid.profilepic.url }}" alt="profile" title="{{data.r1uid.username}}">
-          </p>
-
-        </div>
+              <div class="message-content">
+                {{data.text_message}}
+                <p><span class="time">{{data.text_time|timemodifier }}</span></p>
+              </div>
+            </div>
       <!-- end of single message -->
         {% else %}
+              <hr>
+              <!-- other message -->
+              <div class="one-message first">
+                <div class="message-content">
+                  {{data.text_message}}
+                  <p><span class="second-time">{{data.text_time|timemodifier }}</span></p>
 
-          <hr>
-              <div class="one-message second">
+                </div>
+
                 <p class="profile">
                   <img src="{{ data.r1uid.profilepic.url }}" alt="profile" title="{{data.r1uid.username}}">
                 </p>
 
-                <div class="message-content">
-                  {{data.text_message}}
-                  <p><span class="time">{{data.text_time|timemodifier }}</span></p>
-                </div>
               </div>
-
         <!-- end of single message -->
           {% endif %}
       {% endfor %}
