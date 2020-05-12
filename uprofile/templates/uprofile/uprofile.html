@@ -12,25 +12,18 @@
     <title>DevCodes | profile</title>
     <link rel="icon" href="{% static 'questions/images/devtitle.svg' %}" name"favicon">
     <link rel="stylesheet" href="{% static 'uprofile/uprofile.css' %}">
-
     <link rel="stylesheet" href="{% static 'home/spinner.css' %}">
     <link rel="stylesheet" href="{% static 'home/icon.css' %}">
   </head>
   <body>
-
 <!-- Begining of spinner -->
 <div class="loader-wrapper" id="ld">
   <span class="loader"><span class="loader-inner"></span></span>
       </div>
       <!-- End of spinner -->
-
-
-
      <!-- new nav-bar -->
      <div class="nav-bar">
-
   <!-- Home icon Beginning -->
-
   <div class="full-icon" id="full">
     <div class="row">
         <div class="dot"></div>   <div class="line"></div>
@@ -42,20 +35,16 @@
         <div class="dot"></div>   <div class="line"></div>
     </div>
 </div>
-
 <div class="no-padding" id="ex">
     <div class="forward-slash"></div>
     <div class="backward-slash"></div>
 </div>
-
 <div class="icon-links" id="iLinks">
   <a href="{% url 'home:home' %}" class="Plinks">Home</a>
 <a href="{% url 'peers:peers' %}" class="Plinks">Peers</a>
 {% if mydetails.is_admin %}
 <a href="{% url 'chatroom:adminpanel' %}" class="Plinks">Admin</a>
-
 {% else %}
-
 {% endif %}
 <a href="{% url 'questions:questions' %}" class="Plinks">Questions
  <i class="fa fa-caret-down"></i></a>
@@ -64,14 +53,8 @@
      </a>
 <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a>
 <a href="{% url 'login:logout' %}" class="Plinks">  Log out </a>
-
-
-
-
 </div>
-
 <!-- Ending of icon -->
-
       <div class="links">
         <a href="{% url 'home:home' %}">Home</a> |
 
