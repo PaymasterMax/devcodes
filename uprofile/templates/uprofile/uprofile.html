@@ -101,7 +101,7 @@
 
             <!-- <img src="{{ mydetails.profilepic.url }}" alt="{{ mydetails.username }}"
              style="width:40px; height:40px; border-radius:50%;"> -->
-             {% cloudinary mydetails.profilepic.url className="myimg" height=200 width=100 alt="{{ mydetails.username }}" %}
+             {% cloudinary mydetails.profilepic.url className="myimg" height=200 width=100 alt="{{ mydetails.username }}" title="{{ mydetails.username }}" %}
              <div class="user-dropdown">
                <!-- <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
                  Edit profile

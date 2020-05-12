@@ -84,7 +84,7 @@
 
             <!-- <img src="{{userinfo.profilepic.url }}" alt="profile"
              style="width:40px; height:40px; border-radius:50%;"> -->
-             {% cloudinary userinfo.profilepic.url className="myimg" height=200 width=100 %}
+             {% cloudinary userinfo.profilepic.url className="myimg" alt="{{userinfo.username}}" title="{{userinfo.username}}" height=200 width=100 %}
              <div class="user-dropdown">
                <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
                  Edit profile
@@ -114,7 +114,7 @@
 
         <div class="profile queryprofile">
           <!-- <img src="{{ question_info.quid.profilepic.url }}" alt="{{question_info.quid.username}}" title="{{question_info.quid.username}}"> -->
-          {% cloudinary question_info.quid.profilepic.url className="myimg" height=200 width=100 alt="profile" %}
+          {% cloudinary question_info.quid.profilepic.url className="myimg" height=200 width=100 alt="{{question_info.quid.username}}" title="{{question_info.quid.username}}" %}
           <p>{{question_info.quid.username}}</p>
         </div>
 

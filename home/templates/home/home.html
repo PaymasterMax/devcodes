@@ -95,7 +95,7 @@
 
             <!-- <img src="{{ userinfo.profilepic.url }}" alt="profile"
              style="width:40px; height:40px; border-radius:50%;"> -->
-             {% cloudinary userinfo.profilepic.url className="myimg" alt="profile" height=200 width=100 %}
+             {% cloudinary userinfo.profilepic.url className="myimg" title="{{userinfo.username}}" alt="{{userinfo.username}}" height=200 width=100 %}
              <div class="user-dropdown">
                <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
                  Edit profile
@@ -155,7 +155,7 @@
 
                     <div class="inner-class">
                       <p class="peerprof">
-                        {% cloudinary  q.quid.profilepic.url className="myimg" alt="{{q.quid.username}}" height=200 width=100 %}
+                        {% cloudinary  q.quid.profilepic.url className="myimg" alt="{{q.quid.username}}" title="{{q.quid.username}}" height=200 width=100 %}
                         <br>{{q.quid.username}}
                       </p>
                       <p class="recentq">
