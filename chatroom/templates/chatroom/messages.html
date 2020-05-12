@@ -95,7 +95,7 @@
   </div>
 
   <div class="back-icon">
-    <img src="{% static 'questions/images/back.png' %}" alt="Back" style="width: 35px; height: 30px;">
+    <img src="{% static 'questions/images/back.svg' %}" alt="Back" style="width: 35px; height: 30px;">
   </div>
     <div class="main">
 
@@ -120,7 +120,7 @@
                 <p class="profile">
                   <img src="{{ data.r1uid.profilepic.url }}" alt="profile" title="{{data.r1uid.username}}">
                 </p>
-                
+
                 <div class="message-content">
                   {{data.text_message}}
                   <p><span class="second-time">{{data.text_time|timemodifier }}</span></p>
