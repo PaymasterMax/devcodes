@@ -49,24 +49,15 @@
      </a>
 <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a>
 <a href="{% url 'login:logout' %}" class="Plinks">  Log out </a>
-
-
-
-
 </div>
-
 <!-- Ending of icon -->
-
-
       <div class="links">
         <a href="{% url 'home:home' %}">Home</a> |
-
           <!-- A dropdown for questions -->
         <div class="dropdown">
        <div class="dropbtn"> <a href="{% url 'questions:questions' %}">Questions<i class="fa fa-caret-down"></i></a>  </div>
         <div class="dropdown-content">   <a href="{% url 'questions:myquestions' %}">My Questions</a>  </div>
      </div>
-
         |
         <a href="{% url 'chatroom:inbox' %}">Inbox</a>
         <a href="{% url 'chatroom:inbox' %}">
@@ -79,7 +70,6 @@
       <div class="user-profile">
         <a> <i class="fa fa-bell">{{notifs}}</i> </a>
            {% cloudinary user.profilepic.url className="myimg" alt=user.username title=user.username height=200 width=100 %}
-
            <div class="user-dropdown">
              <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
                Edit profile
@@ -88,17 +78,13 @@
                Log out
              </a>
            </div>
-
     </div>
   </div>
-
-
-
     <!-- main page -->
     <div class="main">
       <div class="search" id="upPart">
         <p class="logo">
-          <img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="">
+          <img src="{% static 'questions/images/devcodes _svg_lg.svg' %}" alt="">
         </p>
           <form class="search-form" action="{% url 'peers:locatepeers' %}" method="get">
             <input type="search" name="peer" placeholder="Search" required autocomplete="language" value="{{query}}">
