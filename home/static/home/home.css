@@ -337,7 +337,7 @@ border-radius: 15px;
 color: white;
 }
 
-.alrt {
+#alrt {
   display: none;
 }
 @media only screen and (max-width:1200px){
