@@ -100,13 +100,13 @@
         {% endif %}
   </div>
 
+  <div class="back-icon">
+    <a href="{% url 'questions:questions' %}">
+      <img src="{% static 'questions/images/back.svg' %}" alt="Back" style="width: 35px; height: 30px;">
+    </a>
+  </div>
     <div class="main">
       <h4 id="upPart">Question</h4>
-      <div class="back-icon">
-        <a href="{% url 'questions:questions' %}">
-          <img src="{% static 'questions/images/back.svg' %}" alt="Back" style="width: 35px; height: 30px;">
-        </a>
-      </div>
       <hr style="width:100px;margin: 0px auto;">
       <div class="question">
 
