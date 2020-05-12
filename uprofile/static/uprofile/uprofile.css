@@ -5,10 +5,7 @@ body{
   background-size: cover;
   background-color: #0a1d2f;
 }
-
-
 /* nav bar attributes */
-
 .nav-bar{
   display: flex;
   justify-content: space-between;
