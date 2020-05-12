@@ -12,6 +12,7 @@ class Signup(models.Model):
     # profilepic = models.FileField()
     password = models.CharField(max_length = 255)
     is_admin = models.BooleanField(default = False)
+    is_activated = models.BooleanField(default = False)
 
     class Meta:
         db_table = "signup"
