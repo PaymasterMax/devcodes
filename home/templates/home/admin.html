@@ -52,13 +52,6 @@
                 {{feed.feedback}}
           </div>
           <p id="time"> @{{feed.post_time|timemodifier}}</p>
-
-          <div class="respond">
-              <button class="resBtn">
-                <a href="{% url 'chatroom:chatroom' 1 %} ">respond</a>
-              </button>
-          </div>
-
           </div>
       {% endfor %}
     </div>
