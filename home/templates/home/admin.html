@@ -25,14 +25,10 @@
           </a>
           </div>
           <div class="logoN">
-          DevCodes/>
+              <link rel="icon" type="image/svg" sizes="40x40" href="{% static 'questions/images/devcodes _svg_lg.svg' %}">
           </div>
           <div class="user-profile">
             <a> <i class="fa fa-bell">{{notifs}}</i> </a>
-
-              <!-- <img src="{{ userinfo.profilepic.url }}" alt="profile"
-               style="width:40px; height:40px; border-radius:50%;"> -->
-
                {% cloudinary userinfo.profilepic.url className="myimg" title=userdetails.username alt=userdetails.username height=200 width=100 %}
                <div class="user-dropdown">
                  <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">

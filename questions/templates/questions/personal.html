@@ -64,20 +64,13 @@
       <a href="{% url 'peers:peers' %}">Peers</a> |
 
       <a href="{% url 'questions:questions' %}">Questions</a> |
-        <!-- dropdowm for questions -->
-      <!-- <div class="dropdown">
-     <div class="dropbtn"> <a href="{% url 'questions:questions' %}">Questions<i class="fa fa-caret-down"></i></a>  </div>
-      <div class="dropdown-content">   <a href="{% url 'questions:myquestions' %}">My Questions</a>  </div>
-   </div> -->
-
-
       <a href="{% url 'chatroom:inbox' %}">Inbox</a>
       <a href="{% url 'chatroom:inbox' %}">
         <i class="fa fa-envelope"> {{newmessage}}</i>
       </a>
       </div>
       <div class="logoN">
-      DevCodes/>
+        <link rel="icon" type="image/svg" sizes="40x40" href="{% static 'questions/images/devcodes _svg_lg.svg' %}">
       </div>
       <div class="user-profile">
         <a> <i class="fa fa-bell">{{notifs}}</i> </a>
