@@ -75,12 +75,10 @@
         <div class="logoN">
         DevCodes/>
         </div>
-      {% if userlog %}
       <div class="user-profile">
         <a> <i class="fa fa-bell">{{notifs}}</i> </a>
+           {% cloudinary usr.profilepic.url className="myimg" height=40 width=40 %}
 
-          <img src="{{ user.profilepic.url }}" alt="profile"
-           style="width:40px; height:40px; border-radius:50%;">
            <div class="user-dropdown">
              <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
                Edit profile
@@ -91,13 +89,6 @@
            </div>
 
     </div>
-      {% else %}
-      <div class="user-profile">
-          <img src="{% static 'home/images/icon.jpg' %}" alt="profile"
-          style="width:40px; height:40px; border-radius:50%;">
-
-    </div>
-      {% endif %}
   </div>
 
 
@@ -129,7 +120,7 @@
       <div class="user-infor">
         <div class="profile">
           <img src="{{ usr.profilepic.url }}" alt="profile" title="{{usr.username}}">
-          {% cloudinary usr.profilepic.url className="usr.username" height=200 width=100 %}
+          {% cloudinary usr.profilepic.url className="usr.username" height=70 width=70 %}
         </div>
 
         <div class="detail-user">
