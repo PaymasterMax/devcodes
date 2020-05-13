@@ -69,7 +69,6 @@
         <div class="logoN">
           <img src="{% static 'questions/images/devtitle.svg' %}" class="myimg" alt="logo">
         </div>
-
         <div class="user-profile">
           <a> <i class="fa fa-bell">{{notifs}}</i> </a>
              {% cloudinary userdetails.profilepic.url className="myimg" title=userdetails.username alt=userdetails.username height=200 width=100 %}
@@ -77,7 +76,6 @@
                <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
                  Edit profile
                </a>
-
                <a href="{% url 'questions:questions' %}" class="small-personalize">
                  Questions
                </a>
@@ -88,7 +86,6 @@
                  Log out
                </a>
              </div>
-
       </div>
   </div>
 
@@ -126,6 +123,10 @@
                 <p class="ft">
                   seen
                 </p>
+                {% else %}
+                    <p class="newmessagec alert-success">
+                      10
+                    </p>
                 {% endif %}
               </div>
             </div>
