@@ -125,7 +125,7 @@
                 </p>
                 {% else %}
                     <p class="newmessagec alert-danger">
-                    new {{msg.r1uid_id|msagecounter}}
+                    new {{msg.r1uid_id|msagecounter:msg.r2uid_id}}
                     </p>
                 {% endif %}
               </div>

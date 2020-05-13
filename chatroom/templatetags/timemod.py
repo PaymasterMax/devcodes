@@ -42,8 +42,8 @@ def umod(send_id , my_id):
 
 
 @register.filter("msagecounter")
-def msagecount(msguid):
-    mymessages = chtmd.objects.filter(r1uid_id = msguid)
+def msagecount(msguid , msguid2):
+    mymessages = chtmd.objects.filter(r1uid_id = msguid , r2uid_id = msguid2)
     unread = 0
     for x in mymessages:
         if not x.bell_seen:
