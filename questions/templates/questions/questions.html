@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="{% static 'questions/questions.css' %}">
     <link rel="stylesheet" href="{% static 'home/icon.css' %}">
     <link rel="icon" href="{% static 'questions/images/devcodes _svg_lg.svg' %}" name"favicon">
-
     <style>
       /* animating the like button*/
 .initail{
@@ -82,16 +81,6 @@ display: none;
         {% if userlog %}
         <a> <i class="fa fa-bell">{{notifs}}</i> </a>
            {% cloudinary mydetails.profilepic.url className="myimg" alt=mydetails.username title=mydetails.username height=200 width=100 %}
-           <div class="user-dropdown">
-             <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
-               Edit profile
-             </a>
-             <a href="{% url 'questions:myquestions' %}" class="small-personalize">My Questions</a>
-             <a href="{% url 'chatroom:inbox' %}" class="small-personalize">Inbox</a>
-             <a href="{% url 'login:logout' %}">
-               Log out
-             </a>
-           </div>
     </div>
       {% else %}
       <div class="user-profile">

@@ -77,13 +77,6 @@
           <a> <i class="fa fa-bell">{{notifs}}</i> </a>
 
              {% cloudinary userinfo.profilepic.url className="myimg" title=userinfo.username alt=userinfo.username height=200 width=100 %}
-             <div class="user-dropdown">
-               <a href="{% url 'profile:profile' %}" style="border-bottom: 1px solid grey;">
-                 Edit profile
-               </a>
-               <a href="{% url 'login:logout' %}">
-                 Log out
-               </a>
              </div>
 
       </div>
