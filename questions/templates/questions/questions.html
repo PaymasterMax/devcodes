@@ -91,9 +91,7 @@ display: none;
              <a href="{% url 'login:logout' %}">
                Log out
              </a>
-
            </div>
-
     </div>
       {% else %}
       <div class="user-profile">
@@ -102,12 +100,11 @@ display: none;
     </div>
       {% endif %}
 </div>
-
   <div class="page-title"  id="upPart">Questions page</div>
   <div class="main-window">
     <div class="toast mytoast" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast-header">
-    <img src="..." class="rounded mr-2" alt="...">
+    <!-- <img src="..." class="rounded mr-2" alt="..."> -->
     <span class="mr-auto">
       <img src="{% static 'questions/images/devtitle.svg' %}" class="myimg" alt="logo">
     </span>
@@ -119,7 +116,6 @@ display: none;
   <div class="toast-body" id="mytoast-content">
   </div>
 </div>
-
   <div class="person-holder">
     {% for question in Questions %}
 
@@ -130,7 +126,6 @@ display: none;
           </div>
           <div class="question-container">
             <div class="user-details-first-row">
-
               {{question.quid.username}}   @
               {{question.time_posted | timemodifier}}
             </div>
