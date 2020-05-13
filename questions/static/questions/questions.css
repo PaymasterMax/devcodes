@@ -17,6 +17,9 @@ img {
 
 .mytoast {
   display: none;
+  position: relative;
+  float: right;
+  margin: 0px;
 }
 .nav-bar{
     display: flex;
