@@ -116,15 +116,6 @@
 
                   <input type="text" class="entry" name="email" value="{{mydetails.email}}" placeholder="Enter email" id="email">
                </div>
-
-              <!-- <tr>
-                <td>
-                  <label>password</label>
-                </td>
-                <td>
-                  <input type="text" name="password" value="">
-                </td>
-              </tr> -->
                 <div class="sect">
 
                   <label class="labels">Language</label>
@@ -159,9 +150,7 @@
         function removePage(){
           loader.classList.add('shrink');
         }
-
          // home icon
-
   const full = document.getElementById('full');
         const ex = document.getElementById('ex');
         const iLinks = document.getElementById('iLinks');
@@ -182,7 +171,6 @@
         });
 
         // end of home icon
-
     function auth() {
       var xml = new XMLHttpRequest();
 
@@ -192,7 +180,7 @@
           alert(this.responseText);
         }
       }
-      var data = JSON.stringify({"username":"duncan"});
+      var data = ;
       xml.setRequestHeader("X-CSRFToken" , "{{ csrf_token }}");
       xml.open("POST" , "{% url 'profile:update' %}");
       xml.send();
