@@ -125,7 +125,7 @@
                 </p>
                 {% else %}
                     <p class="newmessagec alert-danger">
-                      {{msg.r1uid_id|msagecounter}}
+                    new {{msg.r1uid_id|msagecounter}}
                     </p>
                 {% endif %}
               </div>
@@ -152,6 +152,10 @@
                 </p>
                 <p class="ft">
                   {{msg.text_time | timemodifier}}
+                </p>
+
+                <p class="newmessagec">
+                open {{msg.count}}
                 </p>
               </div>
             </div>

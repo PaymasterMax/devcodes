@@ -46,6 +46,6 @@ def msagecount(msguid):
     mymessages = chtmd.objects.filter(r1uid_id = msguid)
     unread = 0
     for x in mymessages:
-        if x.bell_seen:
+        if not x.bell_seen:
             unread+=1
     return unread
