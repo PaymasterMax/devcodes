@@ -33,7 +33,6 @@ SECURE_SSL_REDIRECT = True
 SECURE_HSTS_PRELOAD = True
 SECURE_REFERRER_POLICY = "same-origin"
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -55,23 +54,6 @@ INSTALLED_APPS = [
     # 'social_django',
     "cloudinary",
 ]
-
-
-# cloudinary.config(
-#   cloud_name = os.environ.get('hti2kicdw'),
-#   api_key = os.environ.get('744951147868868'),
-#   api_secret = os.environ.get('R4355opHqPb1UxeGgFR1aABDUyI'),
-#   secure = True
-# )
-#
-#
-#
-# cloudinary.config(
-#   cloud_name = 'hti2kicdw',
-#   api_key = '744951147868868',
-#   api_secret = 'R4355opHqPb1UxeGgFR1aABDUyI'
-# )
-
 cloudinary.config(
     cloud_name = "hti2kicdw",
     api_key = "744951147868868",
@@ -120,7 +102,6 @@ TEMPLATES = [
     },
 ]
 
-
 dotenv_file = os.path.join(BASE_DIR, ".env")
 if os.path.isfile(dotenv_file):
     dotenv.load_dotenv(dotenv_file)
@@ -133,18 +114,13 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-
 WSGI_APPLICATION = 'devcodes.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-
-
 DATABASES = {}
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -202,8 +178,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR , "media_root")
 
 
-
-
 LOGIN_URL = "login"
 LOGOUT_URL = "logout"
 LOGIN_REDIRECT_URL = 'http://localhost:8000/'
@@ -213,9 +187,3 @@ LOGIN_REDIRECT_URL = 'http://localhost:8000/'
 # SOCIAL_AUTH_GITHUB_KEY = '400c9120d85c04fe1d27'
 # SOCIAL_AUTH_GITHUB_SECRET = 'b5062525aedc28521c3df0f1c878e61ac4ecb52d'
 # del DATABASES['default']['OPTIONS']['sslmode']
-
-#
-# DATABASES = {}
-# DATABASES["default"] =  dj_database_url.config(conn_max_age=500)
-# prod_db  =  dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(prod_db)
