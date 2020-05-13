@@ -12,13 +12,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <title>Dev Code | Answers</title>
-
     <link rel="stylesheet" href="{% static 'questions/answers.css' %}">
     <link rel="stylesheet" href="{% static 'home/icon.css' %}">
-
   </head>
   <body>
-
     <div class="nav-bar">
 
         <!-- Home icon Beginning -->
@@ -77,6 +74,14 @@
         <div class="user-profile">
           <a> <i class="fa fa-bell">{{notifs}}</i> </a>
              {% cloudinary userdetails.profilepic.url className="myimg" alt=userdetails.username title=userdetails.username height=200 width=100 %}
+             <div class="user-dropdown">
+               <a href="{% url 'login:logout' %}">
+                 Log out
+               </a>
+               <a href="{% url 'profile:profile' %}">
+                 Edit profile
+              </a>
+             </div>
       </div>
         {% else %}
         <div class="user-profile">

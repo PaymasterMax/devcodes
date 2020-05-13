@@ -15,12 +15,10 @@
     <title>Dev Code | Messages</title>
     <link rel="stylesheet" href="{% static 'chatroom/messages.css' %}">
     <link rel="stylesheet" href="{% static 'home/icon.css' %}">
-
   </head>
   <body>
     <div class="nav-bar">
       <!-- Home icon Beginning -->
-
     <div class="full-icon" id="full">
       <div class="row">
           <div class="dot"></div>   <div class="line"></div>
@@ -32,12 +30,10 @@
           <div class="dot"></div>   <div class="line"></div>
       </div>
   </div>
-
   <div class="no-padding" id="ex">
       <div class="forward-slash"></div>
       <div class="backward-slash"></div>
   </div>
-
  <div class="icon-links" id="iLinks">
   <a href="{% url 'home:home' %}" class="Plinks">Home</a>
 <a href="{% url 'peers:peers' %}" class="Plinks">Peers</a>
@@ -71,6 +67,14 @@
           <a> <i class="fa fa-bell">{{notifs}}</i> </a>
 
              {% cloudinary userdetails.profilepic.url alt=userdetails.username title=userdetails.username className="myimg" height=200 width=100 %}
+             <div class="user-dropdown">
+               <a href="{% url 'login:logout' %}">
+                 Log out
+               </a>
+               <a href="{% url 'profile:profile' %}">
+                 Edit profile
+              </a>
+             </div>
       </div>
   </div>
   <div class="back-icon">
