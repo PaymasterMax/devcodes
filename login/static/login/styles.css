@@ -6,7 +6,11 @@
 	 Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	box-sizing:border-box;
 }
-
+img {
+  width:60px;
+  height:60px;
+  border-radius:50%;
+}
 body{
 	background-color: #fff;
 	background-image: url("images/city.jpg");

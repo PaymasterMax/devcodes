@@ -4,6 +4,11 @@
      Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
      sans-serif,Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+img {
+  width:60px;
+  height:60px;
+  border-radius:50%;
+}
 body{
     background:#0a1d2f;
     margin:0;

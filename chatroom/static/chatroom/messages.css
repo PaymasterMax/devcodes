@@ -2,6 +2,11 @@ body {
   background-color: #0a1d2f;
   /* background-color: #242721; */
 }
+img {
+  width:60px;
+  height:60px;
+  border-radius:50%;
+}
 
 /* nav-bar beginning */
 .nav-bar{

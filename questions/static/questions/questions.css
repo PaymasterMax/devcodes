@@ -5,6 +5,12 @@ body{
     background:#0a1d2f;
     margin:0;
 }
+
+img {
+  width:60px;
+  height:60px;
+  border-radius:50%;
+}
 .myimg {
   font-size: 25px;
 }

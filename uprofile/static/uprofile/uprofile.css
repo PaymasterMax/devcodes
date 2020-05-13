@@ -16,12 +16,13 @@ body{
     color: #17a2b8;
 }
 img {
-  width:40px;
-  height:40px;
+  width:100px;
+  height:100px;
   border-radius:50%;
 }
+
 #upPart {
-  font-size: 15px;
+  font-size: 23px;
 }
 .nav-bar a{
   font-weight: 400;

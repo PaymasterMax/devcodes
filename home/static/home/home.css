@@ -3,8 +3,12 @@
      Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+img {
+  width:60px;
+  height:60px;
+  border-radius:50%;
+}
 /* nav bar attributes */
-
 .nav-bar{
   display: flex;
   justify-content: space-between;
