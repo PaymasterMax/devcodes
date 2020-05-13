@@ -98,7 +98,7 @@ def forgotcredetials(request):
                         obj.starttls()
                         obj.login("devcodesv1@gmail.com","admin@devcodesv1.1")
                         obj.sendmail(sender,receiver,message)
-
+                        obj.close()
                     except Exception as error:
                         print("Error: {}".format(error))
                         bug_hunter.append("Connection could not be established")
