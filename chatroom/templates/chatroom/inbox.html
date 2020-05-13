@@ -121,7 +121,7 @@
                 {% endif %}
                 <p class="newmessagec">
                   <a href="{% url 'chatroom:chatroom' msg.r2uid_id %}">
-                    open {{msg.r1uid.count}}
+                    open
                   </a>
                 </p>
               </div>
@@ -145,7 +145,7 @@
                 {% if msg.bell_seen  %}
                   <p class="newmessagec">
                     <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">
-                      open {{msg.r1uid.count}}
+                      open
                     </a>
                   </p>
                 {% else %}
