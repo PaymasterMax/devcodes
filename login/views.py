@@ -1,7 +1,7 @@
 from django.shortcuts import render , redirect
 from django.http import HttpResponse
 from signup.models import Signup
-import smtplib,string,random
+import smtplib as sm,string,random
 import validate_email as v
 from django.contrib.auth.hashers import check_password,make_password
 
@@ -94,7 +94,7 @@ def forgotcredetials(request):
                     """%("anornymous99@gmail.com",receiver , hashcode)
 
                     try:
-                        obj=smtplib.SMTP('smtp.gmail.com', 587)
+                        obj=sm.SMTP('smtp.gmail.com', 587)
                         obj.starttls()
                         obj.login("devcodesv1@gmail.com","admin@devcodesv1.1")
                         obj.sendmail(sender,receiver,message)
@@ -112,12 +112,9 @@ def forgotcredetials(request):
                         print("Exiting the mail client program")
                         return render(request , "login/thanks.html")
                 else:
-
                     return render(request , "login/forgot.html" , context = {"error":bug_hunter})
-
     else:
         return render(request , "login/forgot.html" , context = {"error":bug_hunter})
-
 
 
 def logout(request):
