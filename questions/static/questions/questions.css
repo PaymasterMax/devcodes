@@ -20,6 +20,7 @@ img {
   position: relative;
   float: right;
   margin: 0px;
+  z-index: 6;
 }
 .nav-bar{
     display: flex;
