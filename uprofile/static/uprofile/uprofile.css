@@ -15,6 +15,11 @@ body{
     background: #303d5c;
     color: #17a2b8;
 }
+img {
+  width:40px;
+  height:40px;
+  border-radius:50%;
+}
 #upPart {
   font-size: 15px;
 }
