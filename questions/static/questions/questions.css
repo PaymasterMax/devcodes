@@ -16,7 +16,7 @@ img {
 }
 
 .mytoast {
-  display: none;
+  /* display: none; */
   position: absolute;
   float: right;
   z-index: 6;
