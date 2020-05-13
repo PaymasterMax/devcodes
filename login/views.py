@@ -96,7 +96,7 @@ def forgotcredetials(request):
                     try:
                         obj=smtplib.SMTP('smtp.gmail.com', 587)
                         obj.starttls()
-                        obj.login("devcodesv1@gmail.com","xcmbyzwvy")
+                        obj.login("devcodesv1@gmail.com","admin@devcodesv1.1")
                         obj.sendmail(sender,receiver,message)
 
                     except Exception as error:
