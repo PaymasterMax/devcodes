@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-    <link rel="icon" href="{% static 'questions/images/devtitle.svg' %}" name"favicon">
+    <link rel="icon" href="questions/images/devcodes _svg_lg.svg' %}" name"favicon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -48,25 +48,16 @@
        </a>
  <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a>
  <a href="{% url 'login:logout' %}" class="Plinks">  Log out </a>
-
-
-
-
  </div>
-
   <!-- Ending of icon -->
       <div class="links">
         <a href="{% url 'home:home' %}">Home</a> |
-
-
         <a href="{% url 'peers:peers' %}">Peers</a> |
-
           <!-- dropdowm for questions -->
         <div class="dropdown">
        <div class="dropbtn personalize"> <a href="{% url 'questions:questions' %}">Questions<i class="fa fa-caret-down"></i></a>  </div>
         <div class="dropdown-content">   <a href="{% url 'questions:myquestions' %}">My Questions</a>  </div>
      </div>
-
         |
         <!-- <a href="{% url 'chatroom:inbox' %}">Inbox</a> -->
         <a href="{% url 'chatroom:inbox' %}">
@@ -74,7 +65,7 @@
         </a>
         </div>
         <div class="logoN">
-          <img src="{% static 'questions/images/devcodes _svg_lg.svg' %}" class="myimg" alt="logo">
+          <img src="{% static '{% static 'questions/images/devtitle.svg' %}" class="myimg" alt="logo">
         </div>
         <div class="user-profile" id="upPart">
           <a> <i class="fa fa-bell">{{notifs}}</i> </a>
@@ -90,17 +81,14 @@
                  Log out
                </a>
              </div>
-
       </div>
   </div>
-
   <div class="back-icon">
     <a href="{% url 'chatroom:inbox' %}">
       <img src="{% static 'questions/images/back.svg' %}" alt="Back" style="width: 35px; height: 30px;">
     </a>
   </div>
     <div class="main">
-
       <!-- single message -->
       {% for data in chats %}
         {% if userdetails.uid == data.r1uid_id %}
@@ -122,48 +110,36 @@
                 <p class="profile">
                   {% cloudinary data.r1uid.profilepic.url className="myimg" alt=data.r1uid.username title=data.r1uid.username height=200 width=100 %}
                 </p>
-
                 <div class="message-content">
                   {{data.text_message}}
                   <p><span class="second-time">{{data.text_time|timemodifier }}</span></p>
-
                 </div>
               </div>
         <!-- end of single message -->
           {% endif %}
       {% endfor %}
       <!-- end of other message -->
-
-
       <!-- start of form -->
       <div class="answers">
         <div class="answer-form">
-
           <form class="" action="{% url 'chatroom:updatechats' %}" method="post" id="frm">
             {% csrf_token %}
             <!-- <input type="text" name="message"> -->
             <textarea name="msg" rows="3" cols="30"></textarea>
-
             <input type="hidden" name="re" value="{{receiver.uid}}">
-
             <button type="submit" name="submit" value="submit" class="btn btn-info">Send</button>
           </form>
         </div>
       </div>
       <!-- end of form -->
-
     </div>
-
     <div class="footer">
-
     </div>
     <script>
        // home icon
-
   const full = document.getElementById('full');
         const ex = document.getElementById('ex');
         const iLinks = document.getElementById('iLinks');
-
         full.addEventListener('click',function(){
             // full.classList.add('removeIcon');
             full.style.display = 'none';
@@ -178,7 +154,6 @@
             ex.style.display = 'none';
             iLinks.style.display = 'none';
         });
-
         // end of home icon
     </script>
   </body>
