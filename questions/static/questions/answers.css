@@ -21,6 +21,9 @@ body {
   border-radius: 50%;
   padding: 10px;
 }
+.newmessagec>a{
+  text-decoration: none;
+}
 
 /* nav-bar beginning */
 .small-personalize {
