@@ -102,6 +102,7 @@ def forgotcredetials(request):
                     except Exception as error:
                         print("Error: {}".format(error))
                         bug_hunter.append("Connection could not be established")
+                        bug_hunter.append(error)
                         return render(request , "login/forgot.html" , context = {"error":bug_hunter})
 
                     else:
