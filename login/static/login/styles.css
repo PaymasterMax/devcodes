@@ -121,6 +121,9 @@ form{
 	display: block;
 	text-align: center;
 }
+.inputlabelmod {
+	color: #fff;
+}
 
 .keepme
 {

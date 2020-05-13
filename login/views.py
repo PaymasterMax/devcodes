@@ -86,11 +86,11 @@ def forgotcredetials(request):
                     receiver = lostuser
 
                     message = """From: %s
-                    To: %s
-                    Content-Type:text/html
-                    Mime-version:1.0
-                    Content-disposition: text
-                    Subject:Vibes reset password is: %s
+                    To: %s,
+                    Content-Type:text/html,
+                    Mime-version:1.0,
+                    Content-disposition: text,
+                    Subject:Vibes reset password is: %s,
                     """%("anornymous99@gmail.com",receiver , hashcode)
 
                     try:
@@ -102,7 +102,7 @@ def forgotcredetials(request):
                     except Exception as error:
                         print("Error: {}".format(error))
                         bug_hunter.append("Connection could not be established")
-                        bug_hunter.append(error)
+                        # bug_hunter.append(error)
                         return render(request , "login/forgot.html" , context = {"error":bug_hunter})
 
                     else:
