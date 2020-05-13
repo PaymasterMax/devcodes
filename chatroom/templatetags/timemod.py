@@ -1,6 +1,7 @@
 from django import template
 from django.utils import timezone
 import time
+from chatroom.models import ChatModel as chtmd
 
 register = template.Library()
 
@@ -38,3 +39,13 @@ def umod(send_id , my_id):
         return True
     else:
         return False
+
+
+@register.filter("msagecounter")
+def msagecount(msguid):
+    mymessages = chtmd.objects.filter(r1uid_id = msguid)
+    unread = 0
+    for x in mymessages:
+        if x.bell_seen:
+            unread+=1
+    return unread
