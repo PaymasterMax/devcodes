@@ -137,9 +137,7 @@
             ex.style.display = 'none';
             iLinks.style.display = 'none';
         });
-
         // end of home icon
-
   var up=document.getElementById('up');
   window.onscroll=function(){
   var scrollPos=window.pageYOffset;
@@ -151,6 +149,25 @@
   }
   }
 
+  $(".initial").clicked(function(){
+    this.disabled = true;
+    try {
+      var xml = new XMLHttpRequest();
+    } catch (e) {
+      var xml = new XActiveObject();
+    } finally {
+      xml.onreadystatechange = function() {
+        if (this.readyState==4 && this.status==200) {
+          alert("Question liked");
+        }
+      }
+      var csid = $("input[type='hidden']").text();
+      xml.open("POST" , "{% url 'questions:updatelikes' %}" , true);
+      xml.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+      xml.setRequestHeader("X-CSRFToken" , csid);
+      xml.send("qid="+qid);
+    }
+  });
 </script>
 </body>
 </html>

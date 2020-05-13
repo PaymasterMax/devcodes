@@ -314,6 +314,7 @@ x.addEventListener("click",function(){
 
 );
   function updatemonster(qid) {
+    $(".initial").disabled = true
     try {
         var xmlhttp = new XMLHttpRequest();
     } catch (e) {
@@ -326,7 +327,10 @@ x.addEventListener("click",function(){
 
       xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
+          $(".mytoast").fadeIn(2);
           $(".mytoast").css("display" , "block");
+          $(".mytoast").css("background-color" , "red");
+          $(".mytoast").css("z-index" , "5");
           $("#mytoast-content").text(this.responseText);
           alert("Question liked");
         }
