@@ -170,10 +170,9 @@ display: none;
   </div>
     <form class="" action="{% url 'questions:askquestions' %}" method="post">
       {% csrf_token %}
-
     <div class="question">
 
-          <textarea rows="7" cols="38"  placeholder="Type a question.." name="question"  id="question"
+          <textarea autofocus rows="7" cols="38"  placeholder="Type a question.." name="question"  id="question"
             required style="
           background:rgba(255, 255, 255, 0.912);
                border-radius: 3px;

@@ -119,7 +119,7 @@
           <form class="" action="{% url 'chatroom:updatechats' %}" method="post" id="frm">
             {% csrf_token %}
             <!-- <input type="text" name="message"> -->
-            <textarea name="msg" rows="3" cols="30"></textarea>
+            <textarea name="msg" rows="3" cols="30" autofocus></textarea>
             <input type="hidden" name="re" value="{{receiver.uid}}">
             <button type="submit" name="submit" value="submit" class="btn btn-info">Send</button>
           </form>
