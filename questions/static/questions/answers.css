@@ -19,6 +19,7 @@ body {
   float: right;
   position: relative;
   border-radius: 50%;
+  padding: 30px;
 }
 
 /* nav-bar beginning */
