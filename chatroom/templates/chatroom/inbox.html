@@ -108,9 +108,9 @@
                   {{msg.text_message}}
                 </div>
 
-                <p class="ft">
+                <!-- <p class="ft">
                   <a href="{% url 'chatroom:chatroom' msg.r2uid_id %}">Open</a>
-                </p>
+                </p> -->
 
                 <p class="ft">
                   {{msg.r1uid.hobby}}
@@ -122,6 +122,9 @@
                 {% if msg.bell_seen %}
                 <p class="ft">
                   seen
+                </p>
+                <p class="newmessagec">
+                open {{msg.count}}
                 </p>
                 {% else %}
                     <p class="newmessagec alert-danger">
