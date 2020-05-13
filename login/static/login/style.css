@@ -13,7 +13,9 @@
 	background-image: linear-gradient(to right, red, purple);
 }
 
-
+.myimg {
+	font-size: 25px;
+}
 .loginbox>h4
 {
 	box-sizing: border-box;
@@ -55,7 +57,7 @@ color: #000000;
 	width: 50vw;
 	margin:0px auto;
 	color:#000000;
-	
+
 }
 .loginbox>form>input
 {

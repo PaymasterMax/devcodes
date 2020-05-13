@@ -6,9 +6,7 @@ body{
     margin:0;
 }
 .myimg {
-  width:40px;
-  height:40px;
-  border-radius:50%;
+  font-size: 25px;
 }
 .nav-bar{
     display: flex;

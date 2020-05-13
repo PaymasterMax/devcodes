@@ -22,7 +22,9 @@ html {
   text-align: center;
 }
 
-
+.myimg {
+  font-size: 25px;
+}
 .links {
   color: #fff;
   background-color: #456;
