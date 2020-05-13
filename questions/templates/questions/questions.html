@@ -140,10 +140,10 @@ display: none;
               {% else %}
                   <div class="like">
                   <img src="{% static 'questions/images/like.svg' %}" id="initial" class="initial" alt="like icon"
-                  style="width: 30px; height: 40px;" onclick="updatemonster(question.qid);">
+                  style="width: 30px; height: 40px;" onclick="updatemonster({{question.qid}});">
 
                   <img src="{% static 'questions/images/clike.svg' %}" id="final" class="final" alt="like icon"
-                  style="width: 30px; height: 40px;" onclick="updatemonster(question.qid);">
+                  style="width: 30px; height: 40px;" onclick="updatemonster({{question.qid}});">
 
                        {{question.question_liked.count}}
                   </div>
@@ -316,9 +316,6 @@ x.addEventListener("click",function(){
   }
 
 );
-
-
-
   function updatemonster(qid) {
     try {
         var xmlhttp = new XMLHttpRequest();

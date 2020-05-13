@@ -102,7 +102,6 @@ def updatelikes(request):
 
     else:
         Qid = request.POST["qid"]
-        print(Qid)
         qlike.objects.create(Qid_id = Qid , luid_id = userdetails.uid)
         return HttpResponse("Like saved")
 
