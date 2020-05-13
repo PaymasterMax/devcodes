@@ -339,7 +339,8 @@ x.addEventListener("click",function(){
       xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           $(".mytoast").css("display" , "block");
-          $("#mytoast-content").text(this.responseText)
+          $("#mytoast-content").text(this.responseText);
+          alert("Question liked");
         }
       }
       xmlhttp.send("qid=" + qid);
