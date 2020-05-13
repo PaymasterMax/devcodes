@@ -107,11 +107,6 @@
                 <div class="answers-main-content">
                   {{msg.text_message}}
                 </div>
-
-                <!-- <p class="ft">
-                  <a href="{% url 'chatroom:chatroom' msg.r2uid_id %}">Open</a>
-                </p> -->
-
                 <p class="ft">
                   {{msg.r1uid.hobby}}
                 </p>
@@ -124,11 +119,15 @@
                   seen
                 </p>
                 <p class="newmessagec">
-                open {{msg.count}}
+                    <a href="{% url 'chatroom:chatroom' msg.r2uid_id %}">
+                      open {{msg.r1uid_count}}
+                    </a>
                 </p>
                 {% else %}
                     <p class="newmessagec alert-danger">
-                    new {{msg.r1uid_id|msagecounter:msg.r2uid_id}}
+                    <a href="{% url 'chatroom:chatroom' msg.r2uid_id %}">
+                      new {{msg.r1uid_id|msagecounter:msg.r2uid_id}}
+                    </a>
                     </p>
                 {% endif %}
               </div>
@@ -147,10 +146,6 @@
                 </div>
 
                 <p class="ft">
-                  <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">Open</a>
-                </p>
-
-                <p class="ft">
                   {{msg.r1uid.hobby}}
                 </p>
                 <p class="ft">
@@ -158,7 +153,9 @@
                 </p>
 
                 <p class="newmessagec">
-                open {{msg.count}}
+                  <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">
+                    open {{msg.count}}
+                  </a>
                 </p>
               </div>
             </div>
