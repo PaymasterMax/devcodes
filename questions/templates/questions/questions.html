@@ -324,7 +324,6 @@ x.addEventListener("click",function(){
       xmlhttp.open("POST" , "{% url 'questions:updatelikes' %}" , true);
       xmlhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
       xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
-
       xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           // $(".mytoast").fadeIn(2);
