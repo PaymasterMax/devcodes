@@ -115,13 +115,12 @@ def newcr(request):
         newpass = request.POST["password"]
         confirmnewpass = request.POST["confirmpassword"]
         secretcode = request.POST["code"]
-
         try:
             recpassword  = recoverdata.objects.get(secret_code = secretcode)
         except Exception as e:
             bug_hunter.append("Incorrect code")
         else:
-            dataobj = Signup.objects.get(uid = recpassword.uid))
+            dataobj = Signup.objects.get(uid = recpassword.uid)
             dataobj.password = newpass
             dataobj.save()
         return redirect("/login/")
