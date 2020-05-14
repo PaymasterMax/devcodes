@@ -123,6 +123,7 @@ def newcr(request):
             dataobj = Signup.objects.get(uid = recpassword.uid)
             dataobj.password = newpass
             dataobj.save()
+            recpassword.delete()
         return redirect("/login/")
     else:
         return render(request , "login/newcreds.html" , context = {"error":bug_hunter})
