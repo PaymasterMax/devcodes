@@ -137,20 +137,15 @@ display: none;
                     <button type="button" class="likebtn" style="width: 30px; height: 40px;">
                       <img src="{% static 'questions/images/clike.svg' %}" id="final" class="final" alt="like icon"
                       style="width: 30px; height: 40px;">
-                      <span class="countlike">{{question.question_liked.count}}</span>
+                      <span id="{{question.qid}}">{{question.question_liked.count}}</span>
                     </button>
                     </div>
               {% else %}
                   <div class="like">
-                  <!-- <button type="button" class="likebtn" onclick="updatemonster({{question.qid}});" style="width: 30px; height: 40px;">
-                    <img src="{% static 'questions/images/like.svg' %}" id="initial" class="initial" alt="like icon"
-                    style="width: 30px; height: 40px;">
-                  </button> -->
-
                   <button type="button" class="likebtn" onclick="updatemonster({{question.qid}});" style="width: 30px; height: 40px;">
                     <img src="{% static 'questions/images/clike.svg' %}" id="final" class="final" alt="like icon"
                     style="width: 30px; height: 40px;">
-                    <span class="countlike">{{question.question_liked.count}}</span>
+                    <span id="{{question.qid}}">{{question.question_liked.count}}</span>
                   </button>
                   </div>
               {% endif %}
@@ -335,11 +330,11 @@ x.addEventListener("click",function(){
         if (this.readyState == 4 && this.status == 200) {
           var data = JSON.parse(this.responseText)
           if (data.is_logged) {
-            $(".countlike").text(data.counter)
+            $("#"+qid).text(data.counter)
             $(".mytoast").css("display" , "block");
             $(".mytoast").css("background-color" , "red");
             $(".mytoast").css("z-index" , "5");
-            $("#mytoast-content").text(data.liked);
+            $("#"+qid).text(data.liked);
             alert(data.is_logged.liked);
           } else {
             alert("redirecting")
