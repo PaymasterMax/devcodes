@@ -315,7 +315,7 @@ x.addEventListener("click",function(){
             $(".mytoast").css("display" , "block");
             $(".mytoast").css("background-color" , "red");
             $(".mytoast").css("z-index" , "5");
-            $("#"+qid).text(data.liked);
+            $("#"+qid).text(data.counter);
             alert(data.liked);
           } else {
             $(location).attr("href" , "{% url 'login:login' %}")
