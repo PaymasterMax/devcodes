@@ -317,7 +317,7 @@ x.addEventListener("click",function(){
   }
 );
   function updatemonster(qid) {
-    $("#question"+qid).attr("disabled", true)
+    $("#question"+qid).disabled=true
     try {
         var xmlhttp = new XMLHttpRequest();
     } catch (e) {
@@ -335,7 +335,7 @@ x.addEventListener("click",function(){
             $(".mytoast").css("display" , "block");
             $(".mytoast").css("background-color" , "red");
             $(".mytoast").css("z-index" , "5");
-            $("#question"+qid).text(data.counter);
+            document.getElementById("#question"+qid).innerHTML = data.counter;
             alert(data.liked);
           } else {
             $(location).attr("href" , "{% url 'login:login' %}")
