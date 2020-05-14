@@ -146,7 +146,7 @@ display: none;
                 {% if mydetails.uid|likey:question %}
                       <div class="like">
                       <button type="button" class="likebtn" style="width: 30px; height: 40px;">
-                        <img src="{% static 'questions/images/clike.svg' %}" id="final" class="final" alt="like icon"
+                        <img src="{% static 'questions/images/coloredLike.svg' %}" id="final" class="final" alt="like icon"
                         style="width: 30px; height: 40px;">
                         <span id="question{{question.qid}}">{{question.question_liked.count}}</span>
                       </button>
@@ -154,7 +154,7 @@ display: none;
                 {% else %}
                     <div class="like">
                     <button type="button" class="likebtn" onclick="updatemonster({{question.qid}});" style="width: 30px; height: 40px;">
-                      <img src="{% static 'questions/images/clike.svg' %}" id="final" class="final" alt="like icon"
+                      <img src="{% static 'questions/images/coloredLike.svg' %}" id="final" class="final" alt="like icon"
                       style="width: 30px; height: 40px;">
                       <span id="question{{question.qid}}">{{question.question_liked.count}}</span>
                     </button>
