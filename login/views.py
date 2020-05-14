@@ -95,7 +95,7 @@ def forgotcredetials(request):
                     Subject:Vibes reset password is: %s,
                     """%("devcodesv1@gmail.com",receiver , hashcode)
                     msgobj = MIMEMultipart()
-                    message = "Your recovery code is " + hashcode
+                    message = "Your recovery code is %s"%hashcode
                     msgobj["From"] = "devcodesv1@gmail.com"
                     msgobj["To"] = receiver
                     msgobj["Subject"] = "Devcodes recovery code."
