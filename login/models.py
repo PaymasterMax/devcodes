@@ -9,5 +9,5 @@ class recoverdata(models.Model):
         self.arg = arg
 
     id = models.AutoField(primary_key = True , serialize = True)
-    uid = models.ForeignKey(sv , related_name = "recnewdb")
+    uid = models.ForeignKey(sv , related_name = "recnewdb" , on_delete = models.CASCADE)
     secret_code = models.CharField(max_length = 10)
