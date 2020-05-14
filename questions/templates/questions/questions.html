@@ -137,23 +137,21 @@ display: none;
                     <button type="button" class="likebtn" style="width: 30px; height: 40px;">
                       <img src="{% static 'questions/images/clike.svg' %}" id="final" class="final" alt="like icon"
                       style="width: 30px; height: 40px;">
+                      <span class="countlike">{{question.question_liked.count}}</span>
                     </button>
-
-                     {{question.question_liked.count}}
                     </div>
               {% else %}
                   <div class="like">
-                  <button type="button" class="likebtn" onclick="updatemonster({{question.qid}});" style="width: 30px; height: 40px;">
+                  <!-- <button type="button" class="likebtn" onclick="updatemonster({{question.qid}});" style="width: 30px; height: 40px;">
                     <img src="{% static 'questions/images/like.svg' %}" id="initial" class="initial" alt="like icon"
                     style="width: 30px; height: 40px;">
-                  </button>
+                  </button> -->
 
                   <button type="button" class="likebtn" onclick="updatemonster({{question.qid}});" style="width: 30px; height: 40px;">
                     <img src="{% static 'questions/images/clike.svg' %}" id="final" class="final" alt="like icon"
                     style="width: 30px; height: 40px;">
+                    <span class="countlike">{{question.question_liked.count}}</span>
                   </button>
-
-                       {{question.question_liked.count}}
                   </div>
               {% endif %}
              <div class="message">
@@ -321,7 +319,6 @@ x.addEventListener("click",function(){
   overlay.classList.remove('active');
 
   }
-
 );
   function updatemonster(qid) {
     $(".likebtn").attr("disabled", true)
@@ -337,14 +334,15 @@ x.addEventListener("click",function(){
       xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           if (this.responseText.is_logged) {
+            alert(this.responseText.liked);
             $(".mytoast").css("display" , "block");
             $(".mytoast").css("background-color" , "red");
             $(".mytoast").css("z-index" , "5");
             $("#mytoast-content").text(this.responseText.liked);
-            alert(this.responseText.liked);
+            $(".countlike").text(this.responseText.counter)
           } else {
             alert("redirecting")
-            $(location).attr("href" , {% url 'login:login' %})
+            $(location).attr("href" , "{% url 'login:login' %}")
           }
         }
       }
