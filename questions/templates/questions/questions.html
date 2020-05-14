@@ -317,8 +317,8 @@ x.addEventListener("click",function(){
   }
 );
   function updatemonster(qid) {
-    $().attr("disabled" , true)
-    $("#question"+qid).prop("disabled" , true)
+    // $().attr("disabled" , true)
+    $("question"+qid).prop("disabled" , true)
     try {
         var xmlhttp = new XMLHttpRequest();
     } catch (e) {
