@@ -336,16 +336,15 @@ x.addEventListener("click",function(){
       xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
       xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-          // if (this.responseText) {
-          //
-          // } else {
-          //   $(".mytoast").css("display" , "block");
-          //   $(".mytoast").css("background-color" , "red");
-          //   $(".mytoast").css("z-index" , "5");
-          //   $("#mytoast-content").text(this.responseText);
-          //   alert("Question liked");
-          // }
-          alert(this.responseText)
+          if (this.responseText.is_logged) {
+            $(".mytoast").css("display" , "block");
+            $(".mytoast").css("background-color" , "red");
+            $(".mytoast").css("z-index" , "5");
+            $("#mytoast-content").text(this.responseText.liked);
+            alert(this.responseText.liked);
+          } else {
+            $(location).attr("href" , {% url 'login:login' %})
+          }
         }
       }
       xmlhttp.send("qid=" + qid);

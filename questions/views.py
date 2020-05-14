@@ -107,7 +107,7 @@ def updatelikes(request):
         is_logged = True
         liked = "question liked"
     data = {"liked":liked,"is_logged":is_logged}
-    return JsonResponse(data)
+    return JsonResponse(data , safe)
 
 
 def feed(request):
