@@ -61,7 +61,11 @@ display: none;
 <div class="icon-links" id="iLinks">
   <a href="{% url 'home:home' %}" class="Plinks">Home</a>
 <a href="{% url 'peers:peers' %}" class="Plinks">Peers</a>
-<a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope"> {{newmessage}}</i></a>
+<a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox
+  {% if userlog %}
+    <i class="fa fa-envelope"> {{newmessage}}</i>
+  {% endif %}
+</a>
 <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a>
 <a href="{% url 'login:logout' %}" class="Plinks">  Log out </a>
 
@@ -72,7 +76,10 @@ display: none;
       <a href="{% url 'peers:peers' %}">Peers</a>
       <a href="{% url 'questions:myquestions' %}" class="personalize"> | My Questions</a>
       <a href="{% url 'chatroom:inbox' %}" class="personalize">| Inbox
-        <i class="fa fa-envelope"> {{newmessage}}</i>
+        {% if userlog %}
+          <i class="fa fa-envelope"> {{newmessage}}</i>
+        {% endif %}
+
       </a>
       </div>
       <div class="logoN">
@@ -127,22 +134,32 @@ display: none;
               </div>
             </div>
             <div class="reply-section">
-              {% if mydetails.uid|likey:question %}
+              {% if userlog %}
+                {% if mydetails.uid|likey:question %}
+                      <div class="like">
+                      <button type="button" class="likebtn" style="width: 30px; height: 40px;">
+                        <img src="{% static 'questions/images/clike.svg' %}" id="final" class="final" alt="like icon"
+                        style="width: 30px; height: 40px;">
+                        <span id="{{question.qid}}">{{question.question_liked.count}}</span>
+                      </button>
+                      </div>
+                {% else %}
                     <div class="like">
-                    <button type="button" class="likebtn" style="width: 30px; height: 40px;">
+                    <button type="button" class="likebtn" onclick="updatemonster({{question.qid}});" style="width: 30px; height: 40px;">
                       <img src="{% static 'questions/images/clike.svg' %}" id="final" class="final" alt="like icon"
                       style="width: 30px; height: 40px;">
                       <span id="{{question.qid}}">{{question.question_liked.count}}</span>
                     </button>
                     </div>
+                {% endif %}
               {% else %}
-                  <div class="like">
-                  <button type="button" class="likebtn" onclick="updatemonster({{question.qid}});" style="width: 30px; height: 40px;">
-                    <img src="{% static 'questions/images/clike.svg' %}" id="final" class="final" alt="like icon"
-                    style="width: 30px; height: 40px;">
-                    <span id="{{question.qid}}">{{question.question_liked.count}}</span>
-                  </button>
-                  </div>
+                    <div class="like">
+                    <button type="button" class="likebtn" onclick="updatemonster({{question.qid}});" style="width: 30px; height: 40px;">
+                      <img src="{% static 'questions/images/clike.svg' %}" id="final" class="final" alt="like icon"
+                      style="width: 30px; height: 40px;">
+                      <span id="{{question.qid}}">{{question.question_liked.count}}</span>
+                    </button>
+                    </div>
               {% endif %}
              <div class="message">
              <img src="{% static 'questions/images/message.svg' %}" alt="message icon">
@@ -176,10 +193,9 @@ display: none;
                border-radius: 3px;
                border-style: none;
                resize:none;
-               width:100%;
-               "></textarea>
+               width:100%;">
+            </textarea>
     </div>
-
     <div class="languages">
         <input type="text" maxlength="15" name="language" required placeholder="Mention programming language(s).." id="question" size="33"
         style="
