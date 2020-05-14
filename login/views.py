@@ -94,7 +94,7 @@ def forgotcredetials(request):
                     # Content-disposition: text,
                     # Subject:Vibes reset password is: %s,
                     # """%("devcodesv1@gmail.com",receiver , hashcode)
-                    message = "Your recovery code is <strong>%s</strong>"%hashcode
+                    message = "Your recovery code is <strong>%s</strong><a href='devcodes.herokuapp.com/recovery/'>Reset link</a>"%hashcode
                     mess = MIMEMultipart("alternatives")
                     mess["From"] = "devcodesv1@gmail.com"
                     mess["To"] = receiver
