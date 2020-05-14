@@ -343,6 +343,7 @@ x.addEventListener("click",function(){
             $("#mytoast-content").text(this.responseText.liked);
             alert(this.responseText.liked);
           } else {
+            alert("redirecting")
             $(location).attr("href" , {% url 'login:login' %})
           }
         }
