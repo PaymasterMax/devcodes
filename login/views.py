@@ -5,7 +5,7 @@ import smtplib as sm ,validate_email as v,string,random
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from django.contrib.auth.hashers import check_password,make_password
-
+from .models import recoverdata
 
 def login(request):
     if request.method == "POST":
@@ -79,7 +79,7 @@ def forgotcredetials(request):
                     # Content-disposition: text,
                     # Subject:Vibes reset password is: %s,
                     # """%("devcodesv1@gmail.com",receiver , hashcode)
-                    message = "Your recovery code is <strong>%s</strong><a href='devcodes.herokuapp.com/login/'>Reset link</a>"%hashcode
+                    message = "Your recovery code is <strong>%s </strong><a href='devcodes.herokuapp.com/login/updatereset/'> reset link</a>"%hashcode
                     mess = MIMEMultipart("alternatives")
                     mess["From"] = "devcodesv1@gmail.com"
                     mess["To"] = receiver
@@ -99,8 +99,7 @@ def forgotcredetials(request):
                         return render(request , "login/forgot.html" , context = {"error":bug_hunter})
 
                     else:
-                        userdata.password = make_password(hashcode)
-                        userdata.save()
+                        recoverdata.objects.create(uid = Signup.objects.get(email = receiver).uid , secret_code = hashcode)
                         print("Message sent successfully to {}".format(receiver))
                         print("Exiting the mail client program")
                         return render(request , "login/thanks.html")
@@ -109,6 +108,21 @@ def forgotcredetials(request):
     else:
         return render(request , "login/forgot.html" , context = {"error":bug_hunter})
 
+
+def newcr(request):
+    bug_hunter = list()
+    if request.method=="POST":
+        newpass = request.POST["password"]
+        confirmnewpass = request.POST["confirmpassword"]
+        secretcode = request.POST["code"]
+
+        recpassword  = recoverdata.objects.get(secret_code = secretcode)
+        dataobj = Signup.objects.get(uid = recpassword.uid))
+        dataobj.password = newpass
+        dataobj.save()
+        return redirect("/login/")
+    else:
+        return render(request , "login/newcreds.html" , context = {"error":bug_hunter})
 
 def logout(request):
     # clear the session vars
