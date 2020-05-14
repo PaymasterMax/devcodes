@@ -334,14 +334,14 @@ x.addEventListener("click",function(){
       xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           var data = JSON.parse(this.responseText)
-          alert(data[0]);
+          alert(data.is_logged);
           if (data.is_logged) {
             $(".mytoast").css("display" , "block");
             $(".mytoast").css("background-color" , "red");
             $(".mytoast").css("z-index" , "5");
             $("#mytoast-content").text(data.liked);
             $(".countlike").text(data.counter)
-            alert(is_logged.liked);
+            alert(data.is_logged.liked);
           } else {
             alert("redirecting")
             $(location).attr("href" , "{% url 'login:login' %}")
