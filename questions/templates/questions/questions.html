@@ -333,7 +333,8 @@ x.addEventListener("click",function(){
       xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
       xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-          alert(this.responseText.is_logged)
+          var data = JSON.parse(this.responseText)
+          alert(data);
           if (this.responseText.is_logged) {
             alert(this.responseText.liked);
             $(".mytoast").css("display" , "block");
