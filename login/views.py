@@ -1,12 +1,10 @@
 from django.shortcuts import render , redirect
 from django.http import HttpResponse
 from signup.models import Signup
-import smtplib as sm,string,random
-import validate_email as v
+import smtplib as sm ,validate_email as v,string,random
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from django.contrib.auth.hashers import check_password,make_password
-
 
 
 def login(request):
@@ -14,19 +12,14 @@ def login(request):
         error_log = list()
         username = request.POST['username']
         password = request.POST['password']
-
         try:
             userinfo = Signup.objects.get(username = username)
             username = userinfo.username
-
         except Exception as e:
             error_log.append(" Wrong credentials")
-
             return render(request , "login/login.html" , context = {"error_log" : error_log})
-
         else:
             if check_password(password , userinfo.password):
-
                 # add username to the session
                 request.session["username"] = username
                 request.session['items'] = list()
@@ -37,17 +30,14 @@ def login(request):
                     del request.session["redirect"]
                 except Exception as e:
                     # set the sessions expiry date
-                    request.session.set_expiry(10)
+                    request.session.set_expiry(0)
                     # redirect user to home page
                     return redirect("/")
                 else:
                     return redirect("{}".format(red_req))
-
             else:
                 error_log.append("Wrong credentials")
                 return render(request , "login/login.html" , context = {"error_log" : error_log})
-
-
     else:
         try:
             request.session["username"]
@@ -56,7 +46,6 @@ def login(request):
 
         else:
             return redirect("/")
-
 
 
 def forgotcredetials(request):
@@ -74,19 +63,15 @@ def forgotcredetials(request):
         else:
             try:
                 userdata = Signup.objects.get(email = lostuser)
-
             except Signup.DoesNotExist as e:
                 bug_hunter.append("Email not registered with us")
                 return render(request , "login/forgot.html" , context = {"error":bug_hunter})
-
             else:
-
                 if v.validate_email(lostuser):
                     hashcode = string.digits + string.ascii_letters + string.digits + string.digits
                     hashcode = "".join([random.choice(hashcode) for value in range(10)])
                     sender = "anornymous99@gmail.com"
                     receiver = lostuser
-
                     # message = """From: %s
                     # To: %s,
                     # Content-Type:text/html,
@@ -94,7 +79,7 @@ def forgotcredetials(request):
                     # Content-disposition: text,
                     # Subject:Vibes reset password is: %s,
                     # """%("devcodesv1@gmail.com",receiver , hashcode)
-                    message = "Your recovery code is <strong>%s</strong><a href='devcodes.herokuapp.com/recovery/'>Reset link</a>"%hashcode
+                    message = "Your recovery code is <strong>%s</strong><a href='devcodes.herokuapp.com/login/'>Reset link</a>"%hashcode
                     mess = MIMEMultipart("alternatives")
                     mess["From"] = "devcodesv1@gmail.com"
                     mess["To"] = receiver
@@ -126,7 +111,7 @@ def forgotcredetials(request):
 
 
 def logout(request):
-    # clear the session variables
+    # clear the session vars
     request.session.clear()
     request.session.flush()
     request.session["loginstatus"] = False
