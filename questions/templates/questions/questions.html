@@ -335,7 +335,7 @@ x.addEventListener("click",function(){
             $(".mytoast").css("background-color" , "red");
             $(".mytoast").css("z-index" , "5");
             $("#"+qid).text(data.liked);
-            alert(data.is_logged.liked);
+            alert(data.liked);
           } else {
             alert("redirecting")
             $(location).attr("href" , "{% url 'login:login' %}")
