@@ -94,12 +94,12 @@ def forgotcredetials(request):
                     # Content-disposition: text,
                     # Subject:Vibes reset password is: %s,
                     # """%("devcodesv1@gmail.com",receiver , hashcode)
-                    message = "Your recovery code is %s"%hashcode
+                    message = "Your recovery code is <strong>%s</strong>"%hashcode
                     mess = MIMEMultipart("alternatives")
                     mess["From"] = "devcodesv1@gmail.com"
                     mess["To"] = receiver
                     mess["Subject"] = "Devcodes recovery code."
-                    message = MIMEText( message, "plain")
+                    message = MIMEText( message, "html")
                     mess.attach(message)
                     try:
                         obj=sm.SMTP('smtp.gmail.com', 587)
