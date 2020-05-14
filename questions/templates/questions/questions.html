@@ -188,7 +188,6 @@ display: none;
         border-style: none;
         border-color: #0b5858;
         ">
-
     </div>
     <div class="question-btns">
         <button type="submit" class="post">Post</button>
@@ -200,18 +199,14 @@ display: none;
   <div id="overlay"></div>
    <button data-modal-target="#modal" class="openButton">
     Ask
-
   </button>
   <a href="#upPart"><img src="{% static 'questions/images/up.svg' %}" alt="up_key" class="up-icon"  id="up">
     </a>
 <script>
-
  // home icon
-
  const full = document.getElementById('full');
         const ex = document.getElementById('ex');
         const iLinks = document.getElementById('iLinks');
-
         full.addEventListener('click',function(){
             // full.classList.add('removeIcon');
             full.style.display = 'none';
@@ -237,7 +232,6 @@ display: none;
 // initailLike.classList.toggle('clicked');
 // finalLike.classList.toggle('clicked');
 //   });
-
   holder.addEventListener('click',function(){
 if(initailLike.classList.contains('clicked')){
   finalLike.classList.add('showClicked');
@@ -248,7 +242,6 @@ else{
   finalLike.classList.remove('showClicked');
 }
   });
-
 // function fr shwing up icn
   var up=document.getElementById('up');
   window.onscroll=function(){
@@ -266,9 +259,6 @@ else{
   const question = document.getElementById('modal');
   // const modal = document.querySelector(button.dataset.modalTarget)
   let x = document.getElementById('Xbtn');
-
-
-
   openModalButtons.forEach(button =>{
     button.addEventListener('click', () => {
       const modal = document.querySelector(button.dataset.modalTarget)
@@ -280,7 +270,6 @@ else{
     modals.forEach(modal =>{
       closeModal(modal)
     })
-
   })
   closeModalButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -302,12 +291,9 @@ else{
     overlay.classList.remove('active')
     }
   }
-
 x.addEventListener("click",function(){
-
   modal.classList.remove('active');
   overlay.classList.remove('active');
-
   }
 );
   function updatemonster(qid) {
