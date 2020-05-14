@@ -8,20 +8,19 @@ from chatroom.models import FeedBack as fd
 from django.http import JsonResponse , HttpResponse
 
 def questionsview(request):
+    all_questions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted")
     try:
         userdetails = Signup.objects.get(username = request.session["username"])
         newmessage = chtb.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False).count()
         userlog = True
     except Exception as e:
-        # userlog = False
+        userlog = False
         # request.session["redirect"] = "/questions/"
         # return redirect("/login/")
-        pass
+        return render(request , "questions/questions.html" , context = {"Questions":all_questions , "userlog":userlog})
 
     else:
-        all_questions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted")
         return render(request , "questions/questions.html" , context = {"Questions":all_questions , "mydetails":userdetails , "newmessage":newmessage , "userlog":userlog})
-        return HttpResponse("Quetions page")
 
 
 def myquestions(request):
