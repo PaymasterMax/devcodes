@@ -334,6 +334,7 @@ x.addEventListener("click",function(){
       xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           var data = JSON.parse(this.responseText)
+          alert(data[0]);
           if (data.is_logged) {
             $(".mytoast").css("display" , "block");
             $(".mytoast").css("background-color" , "red");
