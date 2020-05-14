@@ -130,11 +130,6 @@ display: none;
               {% if mydetails.uid|likey:question %}
                     <div class="like">
                     <button type="button" class="likebtn" style="width: 30px; height: 40px;">
-                      <img src="{% static 'questions/images/like.svg' %}" id="initial" class="initial" alt="like icon"
-                      style="width: 30px; height: 40px;">
-                    </button>
-
-                    <button type="button" class="likebtn" style="width: 30px; height: 40px;">
                       <img src="{% static 'questions/images/clike.svg' %}" id="final" class="final" alt="like icon"
                       style="width: 30px; height: 40px;">
                       <span id="{{question.qid}}">{{question.question_liked.count}}</span>
@@ -337,7 +332,6 @@ x.addEventListener("click",function(){
             $("#"+qid).text(data.liked);
             alert(data.liked);
           } else {
-            alert("redirecting")
             $(location).attr("href" , "{% url 'login:login' %}")
           }
         }
