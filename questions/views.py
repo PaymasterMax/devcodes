@@ -16,6 +16,7 @@ def questionsview(request):
         # userlog = False
         # request.session["redirect"] = "/questions/"
         # return redirect("/login/")
+        pass
 
     else:
         all_questions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted")
