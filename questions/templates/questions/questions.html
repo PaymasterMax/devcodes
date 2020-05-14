@@ -90,6 +90,14 @@ display: none;
         {% if userlog %}
         <a> <i class="fa fa-bell">{{notifs}}</i> </a>
            {% cloudinary mydetails.profilepic.url className="myimg" alt=mydetails.username title=mydetails.username height=200 width=100 %}
+           <div class="user-dropdown">
+             <a href="{% url 'login:logout' %}">
+               Log out
+             </a>
+             <a href="{% url 'profile:profile' %}">
+               Edit profile
+            </a>
+           </div>
     </div>
       {% else %}
       <div class="user-profile">
@@ -140,7 +148,7 @@ display: none;
                       <button type="button" class="likebtn" style="width: 30px; height: 40px;">
                         <img src="{% static 'questions/images/clike.svg' %}" id="final" class="final" alt="like icon"
                         style="width: 30px; height: 40px;">
-                        <span id="{{question.qid}}">{{question.question_liked.count}}</span>
+                        <span id="question{{question.qid}}">{{question.question_liked.count}}</span>
                       </button>
                       </div>
                 {% else %}
@@ -148,7 +156,7 @@ display: none;
                     <button type="button" class="likebtn" onclick="updatemonster({{question.qid}});" style="width: 30px; height: 40px;">
                       <img src="{% static 'questions/images/clike.svg' %}" id="final" class="final" alt="like icon"
                       style="width: 30px; height: 40px;">
-                      <span id="{{question.qid}}">{{question.question_liked.count}}</span>
+                      <span id="question{{question.qid}}">{{question.question_liked.count}}</span>
                     </button>
                     </div>
                 {% endif %}
@@ -157,7 +165,7 @@ display: none;
                     <button type="button" class="likebtn" onclick="updatemonster({{question.qid}});" style="width: 30px; height: 40px;">
                       <img src="{% static 'questions/images/clike.svg' %}" id="final" class="final" alt="like icon"
                       style="width: 30px; height: 40px;">
-                      <span id="{{question.qid}}">{{question.question_liked.count}}</span>
+                      <span id="question{{question.qid}}">{{question.question_liked.count}}</span>
                     </button>
                     </div>
               {% endif %}
@@ -171,13 +179,9 @@ display: none;
             </div>
           </div>
     </div>
-
-
     {% endfor %}
   </div>
-
   <div class = "main-question" class="modal"  id="modal">
-
     <div class="pose">
       Ask a Question
       <img src="{% static 'questions/images/x.svg' %}" alt="&times;" id="Xbtn">
@@ -313,7 +317,7 @@ x.addEventListener("click",function(){
   }
 );
   function updatemonster(qid) {
-    $(".likebtn").attr("disabled", true)
+    $("#question"+qid).attr("disabled", true)
     try {
         var xmlhttp = new XMLHttpRequest();
     } catch (e) {
@@ -331,7 +335,7 @@ x.addEventListener("click",function(){
             $(".mytoast").css("display" , "block");
             $(".mytoast").css("background-color" , "red");
             $(".mytoast").css("z-index" , "5");
-            $("#"+qid).text(data.counter);
+            $("#question"+qid).text(data.counter);
             alert(data.liked);
           } else {
             $(location).attr("href" , "{% url 'login:login' %}")
