@@ -45,8 +45,6 @@
  <a href="{% url 'questions:questions' %}" class="Plinks">Questions
    <i class="fa fa-caret-down"></i></a>
  <a href="{% url 'questions:myquestions' %}" class="Plinks-in">My Questions</a>
-  <a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope"> {{newmessage}}</i>
-       </a>
  <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a>
  <a href="{% url 'login:logout' %}" class="Plinks">  Log out </a>
  </div>
@@ -61,10 +59,6 @@
        <div class="dropbtn"> <a href="{% url 'questions:questions' %}">Questions<i class="fa fa-caret-down"></i></a>  </div>
         <div class="dropdown-content">   <a href="{% url 'questions:myquestions' %}">My Questions</a>  </div>
      </div>
-        <!-- <a href="{% url 'chatroom:inbox' %}">Inbox</a> -->
-        <a href="{% url 'chatroom:inbox' %}">| Inbox
-          <i class="fa fa-envelope"> {{newmessage}}</i>
-        </a>
         </div>
         <div class="logoN">
           <img src="{% static 'questions/images/devtitle.svg' %}" class="myimg" alt="logo">
@@ -73,12 +67,12 @@
           <a> <i class="fa fa-bell">{{notifs}}</i> </a>
              {% cloudinary userdetails.profilepic.url className="myimg" title=userdetails.username alt=userdetails.username height=200 width=100 %}
              <div class="user-dropdown">
+               <a href="{% url 'profile:profile' %}">
+                 Edit profile
+               </a>
                <a href="{% url 'login:logout' %}">
                  Log out
                </a>
-               <a href="{% url 'profile:profile' %}">
-                 Edit profile
-              </a>
              </div>
           </div>
       </div>

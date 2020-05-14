@@ -271,7 +271,7 @@ button[type = "submit"] {
 }
 
 .queryprofile>p {
-  margin-left: 0px;
+  margin: 0px auto;
 }
 
 
