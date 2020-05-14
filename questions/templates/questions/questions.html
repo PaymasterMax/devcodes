@@ -331,11 +331,11 @@ x.addEventListener("click",function(){
         if (this.readyState == 4 && this.status == 200) {
           var data = JSON.parse(this.responseText)
           if (data.is_logged) {
-            $("#"+qid).text(data.counter)
+            // $("#"+qid).text(data.counter)
             $(".mytoast").css("display" , "block");
             $(".mytoast").css("background-color" , "red");
             $(".mytoast").css("z-index" , "5");
-            document.getElementById("#question"+qid).innerHTML = data.counter;
+            document.getElementById("question"+qid).innerHTML = data.counter;
             alert(data.liked);
           } else {
             $(location).attr("href" , "{% url 'login:login' %}")
