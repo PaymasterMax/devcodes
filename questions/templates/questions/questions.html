@@ -127,21 +127,29 @@ display: none;
             <div class="reply-section">
               {% if mydetails.uid|likey:question %}
                     <div class="like">
-                    <img src="{% static 'questions/images/like.svg' %}" id="initial" class="initial" alt="like icon"
-                    style="width: 30px; height: 40px;">
+                    <button type="button" class="likebtn">
+                      <img src="{% static 'questions/images/like.svg' %}" id="initial" class="initial" alt="like icon"
+                      style="width: 30px; height: 40px;">
+                    </button>
 
-                    <img src="{% static 'questions/images/clike.svg' %}" id="final" class="final" alt="like icon"
-                    style="width: 30px; height: 40px;">
+                    <button type="button" class="likebtn">
+                      <img src="{% static 'questions/images/clike.svg' %}" id="final" class="final" alt="like icon"
+                      style="width: 30px; height: 40px;">
+                    </button>
 
                      {{question.question_liked.count}}
                     </div>
               {% else %}
                   <div class="like">
-                  <img src="{% static 'questions/images/like.svg' %}" id="initial" class="initial" alt="like icon"
-                  style="width: 30px; height: 40px;" onclick="updatemonster({{question.qid}});">
+                  <button type="button" class="likebtn" onclick="updatemonster({{question.qid}});">
+                    <img src="{% static 'questions/images/like.svg' %}" id="initial" class="initial" alt="like icon"
+                    style="width: 30px; height: 40px;">
+                  </button>
 
-                  <img src="{% static 'questions/images/clike.svg' %}" id="final" class="final" alt="like icon"
-                  style="width: 30px; height: 40px;" onclick="updatemonster({{question.qid}});">
+                  <button type="button" class="likebtn" onclick="updatemonster({{question.qid}});">
+                    <img src="{% static 'questions/images/clike.svg' %}" id="final" class="final" alt="like icon"
+                    style="width: 30px; height: 40px;">
+                  </button>
 
                        {{question.question_liked.count}}
                   </div>
@@ -314,7 +322,7 @@ x.addEventListener("click",function(){
 
 );
   function updatemonster(qid) {
-    $(".initial").disabled = true
+    $(".likebtn").attr("disabled", true)
     try {
         var xmlhttp = new XMLHttpRequest();
     } catch (e) {
@@ -326,7 +334,6 @@ x.addEventListener("click",function(){
       xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
       xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-          // $(".mytoast").fadeIn(2);
           $(".mytoast").css("display" , "block");
           $(".mytoast").css("background-color" , "red");
           $(".mytoast").css("z-index" , "5");

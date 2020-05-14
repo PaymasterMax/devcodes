@@ -93,7 +93,9 @@
             </div>
             <div class="reply-section">
              <div class="like">
-             <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;">
+             <button type="button" class="likebtn">
+               <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;">
+             </button>
              {{question.no_of_answers}}
              </div>
              <div class="message">
@@ -149,8 +151,8 @@
   }
   }
 
-  $(".initial").click(function(){
-    this.disabled = true;
+  $(".likebtn").click(function(){
+    this.attr("disabled" , true);
     try {
       var xml = new XMLHttpRequest();
     } catch (e) {
