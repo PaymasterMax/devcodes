@@ -87,24 +87,25 @@ def forgotcredetials(request):
                     sender = "anornymous99@gmail.com"
                     receiver = lostuser
 
-                    message = """From: %s
-                    To: %s,
-                    Content-Type:text/html,
-                    Mime-version:1.0,
-                    Content-disposition: text,
-                    Subject:Vibes reset password is: %s,
-                    """%("devcodesv1@gmail.com",receiver , hashcode)
-                    msgobj = MIMEMultipart()
+                    # message = """From: %s
+                    # To: %s,
+                    # Content-Type:text/html,
+                    # Mime-version:1.0,
+                    # Content-disposition: text,
+                    # Subject:Vibes reset password is: %s,
+                    # """%("devcodesv1@gmail.com",receiver , hashcode)
                     message = "Your recovery code is %s"%hashcode
-                    msgobj["From"] = "devcodesv1@gmail.com"
-                    msgobj["To"] = receiver
-                    msgobj["Subject"] = "Devcodes recovery code."
-                    msgobj.attach(message ,"plain")
+                    mess = MIMEMultipart("alternatives")
+                    mess["From"] = "devcodesv1@gmail.com"
+                    mess["To"] = receiver
+                    mess["Subject"] = "Devcodes recovery code."
+                    message = MIMEText( message, "plain")
+                    mess.attach(message)
                     try:
                         obj=sm.SMTP('smtp.gmail.com', 587)
                         obj.starttls()
                         obj.login("devcodesv1@gmail.com","admin@devcodesv1.1")
-                        obj.sendmail(sender,receiver,message)
+                        obj.sendmail(sender,receiver,mess.as_string())
                         obj.close()
                     except Exception as error:
                         print("Error: {}".format(error))
