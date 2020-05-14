@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from signup.models import Signup
 import smtplib as sm,string,random
 import validate_email as v
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from django.contrib.auth.hashers import check_password,make_password
 
 
@@ -91,8 +93,13 @@ def forgotcredetials(request):
                     Mime-version:1.0,
                     Content-disposition: text,
                     Subject:Vibes reset password is: %s,
-                    """%("anornymous99@gmail.com",receiver , hashcode)
-
+                    """%("devcodesv1@gmail.com",receiver , hashcode)
+                    msgobj = MIMEMultipart()
+                    message = "Your recovery code is " + hashcode
+                    msgobj["From"] = "devcodesv1@gmail.com"
+                    msgobj["To"] = receiver
+                    msgobj["Subject"] = "Devcodes recovery code."
+                    msgobj.attach(message ,"plain")
                     try:
                         obj=sm.SMTP('smtp.gmail.com', 587)
                         obj.starttls()
