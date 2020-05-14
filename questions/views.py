@@ -13,9 +13,9 @@ def questionsview(request):
         newmessage = chtb.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False).count()
         userlog = True
     except Exception as e:
-        userlog = False
-        request.session["redirect"] = "/questions/"
-        return redirect("/login/")
+        # userlog = False
+        # request.session["redirect"] = "/questions/"
+        # return redirect("/login/")
 
     else:
         all_questions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted")
@@ -98,12 +98,15 @@ def updatelikes(request):
     try:
         userdetails = Signup.objects.get(username = request.session['username'])
     except Exception as e:
-        return HttpResponse("Not logged in")
-
+        is_logged = False
+        liked = "question not liked"
     else:
         Qid = request.POST["qid"]
         qlike.objects.create(Qid_id = Qid , luid_id = userdetails.uid)
-        return HttpResponse("Like saved")
+        is_logged = True
+        liked = "question liked"
+    data = {"liked":liked,"is_logged":is_logged}
+    return JsonResponse(data)
 
 
 def feed(request):

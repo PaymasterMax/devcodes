@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="{% static 'home/icon.css' %}">
     <link rel="icon" href="{% static 'questions/images/devcodes _svg_lg.svg' %}" name"favicon">
     <style>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
       /* animating the like button*/
 .initail{
 display: inline;
@@ -334,11 +336,16 @@ x.addEventListener("click",function(){
       xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
       xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-          $(".mytoast").css("display" , "block");
-          $(".mytoast").css("background-color" , "red");
-          $(".mytoast").css("z-index" , "5");
-          $("#mytoast-content").text(this.responseText);
-          alert("Question liked");
+          // if (this.responseText) {
+          //
+          // } else {
+          //   $(".mytoast").css("display" , "block");
+          //   $(".mytoast").css("background-color" , "red");
+          //   $(".mytoast").css("z-index" , "5");
+          //   $("#mytoast-content").text(this.responseText);
+          //   alert("Question liked");
+          // }
+          alert(this.responseText)
         }
       }
       xmlhttp.send("qid=" + qid);
