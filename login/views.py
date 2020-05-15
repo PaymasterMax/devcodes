@@ -118,7 +118,7 @@ def newcr(request):
         try:
             recpassword  = Recoverdata.objects.get(secret_code = secretcode)
             dataobj = Signup.objects.get(uid = recpassword.uid_id)
-        except Recoverdata.DoesNotExist,Signup.DoesNotExist as e:
+        except (Recoverdata.DoesNotExist,Signup.DoesNotExist) as e:
             bug_hunter.append("Incorrect information provided.")
         else:
             dataobj.password = newpass
