@@ -36,8 +36,8 @@
 				<input type="phone" name="pnumber" placeholder="phone" class="input" id="phone">
 				<input type="email" name="email" placeholder="email" required autocomplete="true" class="input" onchange="emailauthentication()" id="ema">
 				<label id="emailvalid" class="validation"></label>
-				<input type="password" name = "pass1" placeholder="Password" id="pass1" required  class="input" onchange="passwordmaster(pass1)"> <span class="fa fa-eye"></span>
-				<input type="password" placeholder="confirm password" name="pass2" id="pass2" class="input" onchange="passwordmaster(pass2)" required>
+				<input type="password" name = "pass1" placeholder="Password" id="pass1" required  class="input passf" onchange="passwordmaster(pass1)"> <span class="fa fa-eye" aria-hidden="true" onclick="showp();"></span>
+				<input type="password" placeholder="confirm password" name="pass2" id="pass2" class="input passf" onchange="passwordmaster(pass2)" required>
 				<input type="text" placeholder="Hobby" name = "hobby" required autocomplete="true" class="input" id="hobby">
 				<input type="file" name="profilepic" value="Profile picture" class="input" id="profile" required>
 				<!-- <input type="submit" name="submit" value="signup" id="submit" class="input" onclick="spinnermanager()"> -->
@@ -91,38 +91,6 @@ function spinnermanager()
 		document.getElementById("spin").setAttribute
 		("class" , "fa fa-spinner fa-spin fa-1x");
 	}
-
-
-	// document.getElementById("submit").setAttribute("disabled");
-	// var csrf = document.getElementById("tok").value;
-	// var uname = document.getElementById("uname").value;
-	// var phone = document.getElementById("phone").value;
-	// var email = document.getElementById("ema").value;
-	// var password = document.getElementById("pass1").value;
-	// var hobby = document.getElementById("hobby").value;
-	// var profilepic = document.getElementById("profile").value;
-	//
-	//
-	//
-	// var xhttp = new XMLHttpRequest();
-	// xhttp.onreadystatechange = function()
-	// {
-	// 	if(this.readyState == 4 && this.status == 200)
-	// 	{
-	// 		document.getElementById("spin").setAttribute("class" , "");
-	// 			alert(this.responseText);
-	// 	}
-	// }
-	//
-	// xhttp.open("POST" , "/signup/" , true);
-	// var ck = document.cookie.split("=")[1];
-	// alert(ck);
-	// xhttp.setRequestHeader("X-CSRFToken" ,ck);
-	// xhttp.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
-	// xhttp.send("username="+uname+"&pnumber="+phone+"&email="+email+"&password="+password+"&hobby="+hobby+"&profilepic"+profilepic);
-
-}
-
 
 
 function form_manager()
@@ -270,7 +238,13 @@ function userauthentication(uid)
 
 
 	function showp() {
-		
+		var pel = document.getElementById("pass1"))
+		if (pel.type === "password") {
+			$(".passf").setAttribute("type" , "text")
+		}
+		else {
+			$(".passf").setAttribute("type" , "password")
+		}
 	}
 
 </script>
