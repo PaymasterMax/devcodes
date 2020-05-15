@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="icon" href="{% static 'questions/images/devcodes _svg_lg.svg' %}" name"favicon">
 	<meta lang="en" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<title>DevCodes | signup</title>
@@ -16,9 +15,12 @@
 		<span class="loader"><span class="loader-inner"></span></span>
 			</div>
 			<!-- End of spinner -->
+
 	<p>
-		<img src="{% static 'questions/images/devtitle.svg' %}" class="myimg" alt="logo">
+		<img src="{% static 'home/images/logo/blackhat.jpg' %}" alt="image" id="photo">
+
 	</p>
+
 	<div class="bon">
 		<div class="bony">
 			<form action="{% url 'signup:signup' %}" method="post" enctype="multipart/form-data" onabort="cancel()">
@@ -36,8 +38,8 @@
 				<input type="phone" name="pnumber" placeholder="phone" class="input" id="phone">
 				<input type="email" name="email" placeholder="email" required autocomplete="true" class="input" onchange="emailauthentication()" id="ema">
 				<label id="emailvalid" class="validation"></label>
-				<input type="password" name = "pass1" placeholder="Password" id="pass1" required  class="input passf" onchange="passwordmaster(pass1)"> <span class="fa fa-eye" aria-hidden=true onclick="showp();"></span>
-				<input type="password" placeholder="confirm password" name="pass2" id="pass2" class="input passf" onchange="passwordmaster(pass2)" required>
+				<input type="password" name = "pass1" placeholder="Password" id="pass1" required  class="input" onchange="passwordmaster(pass1)">
+				<input type="password" placeholder="confirm password" name="pass2" id="pass2" class="input" onchange="passwordmaster(pass2)" required>
 				<input type="text" placeholder="Hobby" name = "hobby" required autocomplete="true" class="input" id="hobby">
 				<input type="file" name="profilepic" value="Profile picture" class="input" id="profile" required>
 				<!-- <input type="submit" name="submit" value="signup" id="submit" class="input" onclick="spinnermanager()"> -->
@@ -91,6 +93,38 @@ function spinnermanager()
 		document.getElementById("spin").setAttribute
 		("class" , "fa fa-spinner fa-spin fa-1x");
 	}
+
+
+	// document.getElementById("submit").setAttribute("disabled");
+	// var csrf = document.getElementById("tok").value;
+	// var uname = document.getElementById("uname").value;
+	// var phone = document.getElementById("phone").value;
+	// var email = document.getElementById("ema").value;
+	// var password = document.getElementById("pass1").value;
+	// var hobby = document.getElementById("hobby").value;
+	// var profilepic = document.getElementById("profile").value;
+	//
+	//
+	//
+	// var xhttp = new XMLHttpRequest();
+	// xhttp.onreadystatechange = function()
+	// {
+	// 	if(this.readyState == 4 && this.status == 200)
+	// 	{
+	// 		document.getElementById("spin").setAttribute("class" , "");
+	// 			alert(this.responseText);
+	// 	}
+	// }
+	//
+	// xhttp.open("POST" , "/signup/" , true);
+	// var ck = document.cookie.split("=")[1];
+	// alert(ck);
+	// xhttp.setRequestHeader("X-CSRFToken" ,ck);
+	// xhttp.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+	// xhttp.send("username="+uname+"&pnumber="+phone+"&email="+email+"&password="+password+"&hobby="+hobby+"&profilepic"+profilepic);
+
+}
+
 
 
 function form_manager()
@@ -197,6 +231,10 @@ function userauthentication(uid)
 	xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
 	xhttp.send("username="+user);
 }
+
+
+
+
 	function emailauthentication(emid)
 	{
 		var xhttp = new XMLHttpRequest();
@@ -230,17 +268,6 @@ function userauthentication(uid)
 		xhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
 		xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
 		xhttp.send("email="+email);
-	}
-
-
-	function showp() {
-		var pel = document.getElementById("pass1");
-		if (pel.type === "password") {
-			$(".passf").setAttribute("type" , "text");
-		}
-		else {
-			$(".passf").setAttribute("type" , "password");
-		}
 	}
 
 </script>
