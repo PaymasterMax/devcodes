@@ -18,7 +18,7 @@
 	<div class="bon">
 		<div class="bony">
 
-	<form action="{% url 'login:forgot' %}" method="POST">
+	<form action="{% url 'login:newcreds' %}" method="POST">
 
 		{% csrf_token %}
 		<h3>Enter recovery email</h3>
