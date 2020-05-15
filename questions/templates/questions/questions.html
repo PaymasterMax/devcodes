@@ -316,9 +316,17 @@ x.addEventListener("click",function(){
   overlay.classList.remove('active');
   }
 );
+  function checkmesages() {
+    try {
+      var xmlobj = new XMLHttpRequest();
+    } catch (e) {
+      var xmlobj = new ActiveXObject();
+    } finally {
+      var msgcount = 0;
+    }
+  }
+
   function updatemonster(qid) {
-    // $().attr("disabled" , true)
-    // $("question"+qid).prop("disabled" , true)
     var quid = "question"+qid
     document.getElementById(quid).disabled = true;
     try {
