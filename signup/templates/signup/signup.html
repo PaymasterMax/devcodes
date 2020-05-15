@@ -182,14 +182,14 @@ else if(document.getElementById("hobby").value == "")
 					{
 						document.getElementById("pass1").innerHTML = "";
 						document.getElementById("pass2").innerHTML = "";
-						elpasser.value = "password cannot be empty";
+						elpasser.innerHTML = "password cannot be empty";
 					}
 
 				else if(pass1 != pass2)
 					{
 						document.getElementById("pass1").innerHTML = "";
 						document.getElementById("pass2").innerHTML = "";
-						elpasser.value = "Password mismatch";
+						elpasser.innerHTML = "Password mismatch";
 					}
 
 				else {
@@ -197,7 +197,7 @@ else if(document.getElementById("hobby").value == "")
 						{
 							document.getElementById("pass2").innerHTML = "";
 							document.getElementById("pass1").innerHTML = "";
-							elpasser.value = "Short password";
+							elpasser.innerHTML = "Short password";
 						}
 					}
 			}
