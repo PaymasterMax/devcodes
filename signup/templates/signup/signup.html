@@ -38,6 +38,7 @@
 				<input type="email" name="email" placeholder="email" required autocomplete="true" class="input" onchange="emailauthentication()" id="ema">
 				<label id="emailvalid" class="validation"></label>
 				<input type="password" name = "pass1" placeholder="Password" id="pass1" required  class="input passfield" onchange="passwordmaster(pass1)"> <i class="fa fa-eye" id="stats" aria-hidden="true" onclick="showpass();"></i>
+				<label id="passwordm" class="validation"></label>
 				<input type="password" placeholder="confirm password" name="pass2" id="pass2" class="input passfield" onchange="passwordmaster(pass2)" required>
 				<input type="text" placeholder="Hobby" name = "hobby" required autocomplete="true" class="input" id="hobby">
 				<input type="file" name="profilepic" value="Profile picture" class="input" id="profile" required>
@@ -173,7 +174,7 @@ else if(document.getElementById("hobby").value == "")
 	{
 		var pass1 = document.getElementById("pass1").value;
 		var pass2 = document.getElementById("pass2").value;
-
+		var elpasser = document.getElementById("passwordm")
 		if(pass1 != "" && pass2 != "")
 			{
 
@@ -181,14 +182,14 @@ else if(document.getElementById("hobby").value == "")
 					{
 						document.getElementById("pass1").innerHTML = "";
 						document.getElementById("pass2").innerHTML = "";
-						alert("password cannot be empty");
+						elpasser.value = "password cannot be empty";
 					}
 
 				else if(pass1 != pass2)
 					{
 						document.getElementById("pass1").innerHTML = "";
 						document.getElementById("pass2").innerHTML = "";
-						alert("Password mismatch");
+						elpasser.value = "Password mismatch";
 					}
 
 				else {
@@ -196,7 +197,7 @@ else if(document.getElementById("hobby").value == "")
 						{
 							document.getElementById("pass2").innerHTML = "";
 							document.getElementById("pass1").innerHTML = "";
-							alert("Short password");
+							elpasser.value = "Short password";
 						}
 					}
 			}
