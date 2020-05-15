@@ -99,7 +99,7 @@ def forgotcredetials(request):
                         return render(request , "login/forgot.html" , context = {"error":bug_hunter})
 
                     else:
-                        recoverdata.objects.create(uid = Signup.objects.get(email = receiver).uid , secret_code = hashcode)
+                        recoverdata.objects.create(uid_id = Signup.objects.get(email = receiver).uid , secret_code = hashcode)
                         print("Message sent successfully to {}".format(receiver))
                         print("Exiting the mail client program")
                         return render(request , "login/thanks.html")
