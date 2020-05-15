@@ -275,11 +275,11 @@ function showpass() {
 	var elpass = $(".passfield");
 	var stats = $("#stats")
 	if (elpass.attr("type") === "password") {
-		elpass.attr("type" ="text");
+		elpass.attr("type" ,"text");
 		stats.attr("class" , "fa fa-eye-slash");
 	}
 	else {
-		elpass.attr("type"="password");
+		elpass.attr("type","password");
 		stats.attr("class" , "fa fa-eye");
 	}
 }
