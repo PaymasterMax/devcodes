@@ -112,7 +112,7 @@ def forgotcredetials(request):
 def newcr(request):
     bug_hunter = list()
     if request.method=="POST":
-        newpass = request.POST["password"]
+        newpass = make_password(request.POST["password"])
         confirmnewpass = request.POST["confirmpassword"]
         secretcode = request.POST["code"]
         try:
