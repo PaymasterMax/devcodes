@@ -37,7 +37,7 @@
 				<input type="phone" name="pnumber" placeholder="phone" class="input" id="phone">
 				<input type="email" name="email" placeholder="email" required autocomplete="true" class="input" onchange="emailauthentication()" id="ema">
 				<label id="emailvalid" class="validation"></label>
-				<input type="password" name = "pass1" placeholder="Password" id="pass1" required  class="input passfield" onchange="passwordmaster(pass1)"> <i class="fa fa-eye" aria-hidden="true" onclick="showpass();"></i>
+				<input type="password" name = "pass1" placeholder="Password" id="pass1" required  class="input passfield" onchange="passwordmaster(pass1)"> <i class="fa fa-eye" id="stats" aria-hidden="true" onclick="showpass();"></i>
 				<input type="password" placeholder="confirm password" name="pass2" id="pass2" class="input passfield" onchange="passwordmaster(pass2)" required>
 				<input type="text" placeholder="Hobby" name = "hobby" required autocomplete="true" class="input" id="hobby">
 				<input type="file" name="profilepic" value="Profile picture" class="input" id="profile" required>
@@ -272,12 +272,15 @@ function userauthentication(uid)
 
 
 function showpass() {
-	var elpass = document.getElementsByClassName('className')("passfield");
-	if (elpass.type === "password") {
-		elpass.type ="text";
+	var elpass = $(".passfield");
+	var stats = $("#stats")
+	if (elpass.attr("type") === "password") {
+		elpass.attr("type" ="text");
+		stats.attr("class" , "fa fa-eye-slash");
 	}
 	else {
-		elpass.type="password";
+		elpass.attr("type"="password");
+		stats.attr("class" , "fa fa-eye");
 	}
 }
 </script>
