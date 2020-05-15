@@ -5,7 +5,7 @@ import smtplib as sm ,validate_email as v,string,random
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from django.contrib.auth.hashers import check_password,make_password
-from .models import recoverdata
+from .models import Recoverdata
 
 def login(request):
     if request.method == "POST":
@@ -99,7 +99,7 @@ def forgotcredetials(request):
                         return render(request , "login/forgot.html" , context = {"error":bug_hunter})
 
                     else:
-                        recoverdata.objects.create(uid_id = Signup.objects.get(email = receiver).uid , secret_code = hashcode)
+                        Recoverdata.objects.create(uid_id = Signup.objects.get(email = receiver).uid , secret_code = hashcode)
                         print("Message sent successfully to {}".format(receiver))
                         print("Exiting the mail client program")
                         return render(request , "login/thanks.html")
@@ -116,11 +116,11 @@ def newcr(request):
         confirmnewpass = request.POST["confirmpassword"]
         secretcode = request.POST["code"]
         try:
-            recpassword  = recoverdata.objects.get(secret_code = secretcode)
-        except Exception as e:
+            recpassword  = Recoverdata.objects.get(secret_code = secretcode)
+        except Recoverdata.DoesNotExist as e:
             bug_hunter.append("Incorrect code")
         else:
-            dataobj = Signup.objects.get(uid = recpassword.uid)
+            dataobj = Signup.objects.get(uid = recpassword.uid_id)
             dataobj.password = newpass
             dataobj.save()
             recpassword.delete()
