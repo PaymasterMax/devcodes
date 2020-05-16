@@ -16,7 +16,7 @@
     <title>DevCodes | Questions</title>
     <link rel="stylesheet" href="{% static 'questions/questions.css' %}">
     <link rel="stylesheet" href="{% static 'home/icon.css' %}">
-    <link rel="icon" href="{% static 'questions/images/devcodes _svg_lg.svg' %}" name"favicon">
+    <link rel="icon" href="{% static 'questions/images/devcodes _svg_lg.svg' %}" name="favicon">
     <style>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -92,11 +92,11 @@ display: none;
         <a> <i class="fa fa-bell">{{notifs}}</i> </a>
            {% cloudinary mydetails.profilepic.url className="myimg" alt=mydetails.username title=mydetails.username height=200 width=100 %}
            <div class="user-dropdown">
-             <a href="{% url 'login:logout' %}">
-               Log out
-             </a>
              <a href="{% url 'profile:profile' %}">
                Edit profile
+            </a>
+            <a href="{% url 'login:logout' %}">
+              Log out
             </a>
            </div>
     </div>
