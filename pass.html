@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+	.pass{
+			display:none;
+			color: #ff5851;
+		}
+		.miss{
+			display:none;
+			color: #ff5851;
+		}
+		.showAlert{
+			display:block;
+		}
+	</style>
+
+<body>
+    
+    <input type="password" name = "pass1" placeholder="Password" id="pass1"
+    required  class="input" onchange="passwordmaster(pass1)">
+    <label id="shortPass" class="pass">* short password * </label>
+   <input type="password" placeholder="confirm password" name="pass2" id="pass2" 
+   class="input" onchange="passwordmaster(pass2)" required>
+   <label id ="mismatch" class="miss"> * password mismatch *</label>
+<script>
+    //alerts
+const mismatch = document.getElementById('mismatch');
+const shortPass = document.getElementById('shortPass');
+
+function showMismatch(){
+mismatch.classList.add('showAlert');
+}
+function removeMismatch(){
+	mismatch.classList.remove('showAlert');
+}
+function showShort(){
+shortPass.classList.add('showAlert');
+}
+function removeShort(){
+	shortPass.classList.remove('showAlert');
+}
+function passwordmaster()
+	{
+		var pass1 = document.getElementById("pass1").value;
+		var pass2 = document.getElementById("pass2").value;
+
+		if(pass1 != "" && pass2 != "")
+			{
+
+				if(pass1 == "" || pass2 == "")
+					{
+						document.getElementById("pass1").innerHTML = "";
+						document.getElementById("pass2").innerHTML = "";
+						alert("password cannot be empty");
+					}
+
+				else if(pass1 != pass2)
+					{
+						document.getElementById("pass1").innerHTML = "";
+						document.getElementById("pass2").innerHTML = "";
+						// alert("Password mismatch");
+						showMismatch();
+					}
+
+				else {
+					removeMismatch();
+					if(pass1.length < 10)
+						{
+							document.getElementById("pass2").innerHTML = "";
+							document.getElementById("pass1").innerHTML = "";
+							//  alert("Short password");
+							showShort();
+						}
+					else{
+						removeShort();
+					}
+					}
+			}
+	}
+</script>
+</body>
+</html>

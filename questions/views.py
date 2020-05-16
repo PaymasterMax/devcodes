@@ -114,3 +114,13 @@ def feed(request):
     feed = request.POST["feedback"]
     fd.objects.create(feedback_sender = user_mail, feedback = feed)
     return JsonResponse({"feedback":True})
+
+
+def updaterquestions(request):
+    try:
+        qstions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted")
+    except Questions.DoesNotExist as e:
+        pass
+    else:
+        qstions = {"new_questions": qstions}
+    return JsonResponse(qstions)

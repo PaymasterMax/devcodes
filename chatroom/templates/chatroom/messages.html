@@ -15,6 +15,7 @@
     <title>Dev Code | Messages</title>
     <link rel="stylesheet" href="{% static 'chatroom/messages.css' %}">
     <link rel="stylesheet" href="{% static 'home/icon.css' %}">
+    <script src="{% static 'javascript/message.js' %}" charset="utf-8"></script>
   </head>
   <body>
     <div class="nav-bar">
@@ -129,26 +130,5 @@
     </div>
     <div class="footer">
     </div>
-    <script>
-       // home icon
-  const full = document.getElementById('full');
-        const ex = document.getElementById('ex');
-        const iLinks = document.getElementById('iLinks');
-        full.addEventListener('click',function(){
-            // full.classList.add('removeIcon');
-            full.style.display = 'none';
-            // ex.classList.add('showIcon');
-            ex.style.display = 'flex';
-            iLinks.style.display = 'flex';
-        });
-        ex.addEventListener('click',function(){
-            // full.classList.remove('removeIcon');
-            full.style.display = 'flex';
-            // ex.classList.remove('showIcon');
-            ex.style.display = 'none';
-            iLinks.style.display = 'none';
-        });
-        // end of home icon
-    </script>
   </body>
 </html>

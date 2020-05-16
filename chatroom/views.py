@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.http import JsonResponse
 from signup.models import Signup as signmod
 from .models import ChatModel as chatmod , FeedBack as fd
 from django.db.models import Q,Max
@@ -97,3 +98,15 @@ def deletechat(request , chtid, chat_user):
     else:
         chatmod.objects.get(aid = chtid).delete()
         return redirect("/chatroom/{}/#frm/".format(chat_user))
+
+
+def updatemessage(request):
+    try:
+        usercreds = signmod.objects.get(username = request.session["username"])
+    except Exception as e:
+        pass
+    else:
+        all_messages = chatmod.objects.filter(bell_seen = False , Q(r2uid_id = usercreds.uid) | Q(r1uid_id = usercreds.uid)).order_by("-text_time")
+        all_messages = db_unique(all_messages , usercreds.uid)
+        all_messages = {"all_messages":all_messages}
+    return JsonResponse(all_messages)
