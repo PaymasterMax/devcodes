@@ -106,7 +106,7 @@ def updatemessage(request):
     except Exception as e:
         pass
     else:
-        all_messages = chatmod.objects.filter(bell_seen = False , Q(r2uid_id = usercreds.uid) | Q(r1uid_id = usercreds.uid)).order_by("-text_time")
+        all_messages = chatmod.objects.filter(Q(r2uid_id = usercreds.uid) | Q(r1uid_id = usercreds.uid) , bell_seen = False).order_by("-text_time")
         all_messages = db_unique(all_messages , usercreds.uid)
         all_messages = {"all_messages":all_messages}
     return JsonResponse(all_messages)
