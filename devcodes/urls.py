@@ -6,6 +6,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 # from .views import handler404,handler500
 
+
+
 urlpatterns = [
     url('master/', admin.site.urls),
     url("^$" , include("home.urls")),
