@@ -150,7 +150,7 @@ display: none;
                       <!-- <button type="button" class="likebtn" style="width: 30px; height: 40px;"> -->
                         <!-- <img src="{% static 'home/images/svgimages/empty love.svg' %}" alt="like" id="emptyLove"> -->
                         <img src="{% static 'home/images/svgimages/coloredlove.svg' %}" alt="like" id="Love">
-                        <span id="question{{question.qid}}">{{question.question_liked.count}}</span>
+                        <span id="{{question.qid}}">{{question.question_liked.count}}</span>
                       <!-- </button> -->
                       </div>
                 {% else %}
@@ -272,8 +272,7 @@ display: none;
 
 
     function updatemonster(qid) {
-      var quid = "question"+qid
-      document.getElementById(quid).disabled = true;
+      document.getElementById(qid).disabled = true;
       try {
           var xmlhttp = new XMLHttpRequest();
       } catch (e) {
@@ -291,7 +290,7 @@ display: none;
               $(".mytoast").css("display" , "block");
               $(".mytoast").css("background-color" , "red");
               $(".mytoast").css("z-index" , "5");
-              document.getElementById("question"+qid).innerHTML = data.counter;
+              document.getElementById(qid).innerHTML = data.counter;
               alert(data.liked);
             } else {
               $(location).attr("href" , "{% url 'login:login' %}")
