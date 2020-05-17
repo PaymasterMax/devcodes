@@ -119,7 +119,7 @@ def feed(request):
 def updaterquestions(request):
     try:
         qstions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted")
-    except Questions.DoesNotExist as e:
+    except Exception as e:
         qstions = {"new_questions": "None"}
     else:
         qstions = {"new_questions": qstions}
