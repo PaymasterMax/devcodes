@@ -4,7 +4,7 @@ app_name = "questions"
 
 urlpatterns = [
     url("^$" , views.questionsview , name = "questions"),
-    url("^updaterquestions/" , views.updaterquestions , name = "updaterquestions"),
+    url("^qupdater/" , views.qupdater , name = "qupdater"),
     url("^feedback/$" , views.feed , name = "feedback"),
     url("^updatelikes/$" , views.updatelikes , name = "updatelikes"),
     url("^myquestions/$" , views.myquestions , name = "myquestions"),

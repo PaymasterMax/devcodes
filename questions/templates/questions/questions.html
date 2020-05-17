@@ -236,7 +236,7 @@ display: none;
             alert(data);
           }
         }
-        xmlobj_messanger.open("POST" , "{% url 'questions:updaterquestions' %}" , true);
+        xmlobj_messanger.open("POST" , "{% url 'questions:qupdater' %}" , true);
         xmlobj_messanger.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
         xmlobj_messanger.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
         xmlobj_messanger.send();

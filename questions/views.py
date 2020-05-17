@@ -116,5 +116,5 @@ def feed(request):
     return JsonResponse({"feedback":True})
 
 
-def updaterquestions(request):
+def qupdater(request):
     return JsonResponse({"new_questions": Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted")})
