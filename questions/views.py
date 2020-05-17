@@ -118,4 +118,4 @@ def feed(request):
 
 def qupdater(request):
     qdata = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted")
-    return JsonResponse({"new_questions": list(qdata)})
+    return JsonResponse(list(qdata), safe=False)
