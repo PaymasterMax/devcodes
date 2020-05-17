@@ -246,7 +246,7 @@ function updatermonster() {
     xmlobj_messanger.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
     xmlobj_messanger.send();
   }
-});
+};
 
 // Check message
 setInterval(function(){
