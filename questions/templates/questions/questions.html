@@ -234,7 +234,8 @@ display: none;
         xmlobj_messanger.onreadystatechange = function() {
           alert("Hello out eve");
           if (this.readyState == 4 && this.status==200) {
-            alert("Hello in the if");
+            var data = JSON.parse(this.responseText);
+            alert(data);
           }
         }
         xmlobj_messanger.open("POST" , "{% url 'questions:updaterquestions' %}" , true);
