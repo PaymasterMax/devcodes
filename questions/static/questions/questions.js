@@ -226,6 +226,28 @@ function elementCreator(questionobj) {
 //
 $(document).ready(function() {
   alert("Hello world");
+
+  // alert("Main alert");
+  // try {
+  //   var xmlobj_messanger = new XMLHttpRequest();
+  // } catch (e) {
+  //   var xmlobj_messanger = new ActiveXObject();
+  // } finally {
+  //   xmlobj_messanger.onreadystatechange = function() {
+  //     alert("Hello out eve");
+  //     if (this.readyState == 4 && this.status==200) {
+  //       alert("Hello in the if");
+  //       var data = JSON.parse(this.responseText);
+  //       for (var i = 0; i < data.new_questions.length; i++) {
+  //         elementCreator(data[i]);
+  //       }
+  //     }
+  //   }
+  //   xmlobj_messanger.open("POST" , "{% url 'questions:updaterquestions' %}" , true);
+  //   xmlobj_messanger.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+  //   xmlobj_messanger.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+  //   xmlobj_messanger.send();
+  // }
 });
 
 // Check message
