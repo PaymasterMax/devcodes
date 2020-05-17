@@ -225,21 +225,23 @@ display: none;
     </a>
     <script type="text/javascript">
     $(document).ready(function(){
+      document.getElementById(quid).disabled = true;
       try {
-        var xmlobj_messanger = new XMLHttpRequest();
+          var xmlhttp = new XMLHttpRequest();
       } catch (e) {
-        var xmlobj_messanger = new ActiveXObject();
-      } finally {
-        xmlobj_messanger.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status==200) {
-            var data = JSON.parse(this.responseText);
+        var xmlhttp = new ActiveXObject();
+      }
+      finally {
+        xmlhttp.open("POST" , "{% url 'questions:qupdater' %}" , true);
+        xmlhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+        xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+        xmlhttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText)
             alert(data);
           }
         }
-        xmlobj_messanger.open("POST" , "{% url 'questions:qupdater' %}" , true);
-        xmlobj_messanger.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
-        xmlobj_messanger.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
-        xmlobj_messanger.send();
+        xmlhttp.send();
       }
     });
     </script>
