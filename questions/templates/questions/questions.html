@@ -237,7 +237,9 @@ display: none;
         xmlhttp.onreadystatechange = function () {
           if (this.readyState == 4 && this.status == 200) {
             var data = JSON.parse(this.responseText)
-            alert(data);
+            for (var i = 0; i < data.length; i++) {
+              alert(data[i]);
+            }
           }
         }
         xmlhttp.send();
