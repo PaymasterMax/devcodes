@@ -248,11 +248,7 @@ display: none;
         xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
         xmlhttp.onreadystatechange = function () {
           if (this.readyState == 4 && this.status == 200) {
-            var data = JSON.parse(this.responseText)
-            for (var i = 0; i < data.length; i++) {
-              // alert(data[i]);
-              // elementCreator(data[i]);
-            }
+            
           }
         }
         xmlhttp.send();
