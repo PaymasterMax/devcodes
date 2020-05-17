@@ -225,9 +225,12 @@ display: none;
   <a href="#upPart"><img src="{% static 'questions/images/up.svg' %}" alt="up_key" class="up-icon"  id="up">
     </a>
     <script type="text/javascript">
-    function newmessmonster() {
-      alert("Hello world")
-    }
+    $(document).ready(function(){
+
+      function newmessmonster() {
+        alert("Hello world");
+      }
+    });
     </script>
 </body>
 </html>
