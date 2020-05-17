@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{% static 'questions/questions.css' %}">
     <link rel="stylesheet" href="{% static 'home/icon.css' %}">
     <link rel="icon" href="{% static 'questions/images/devcodes _svg_lg.svg' %}" name="favicon">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="{% static 'questions/questions.js' %}" charset="utf-8"></script>
     <style>
 
@@ -232,7 +232,6 @@ display: none;
         var xmlobj_messanger = new ActiveXObject();
       } finally {
         xmlobj_messanger.onreadystatechange = function() {
-          alert("Hello out eve");
           if (this.readyState == 4 && this.status==200) {
             var data = JSON.parse(this.responseText);
             alert(data);
