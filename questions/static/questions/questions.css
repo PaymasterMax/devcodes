@@ -390,17 +390,26 @@ box-shadow: 3px 3px 9px 0px black;
     }
 }
 
+#emptyLove{
+    width:20px;
+    height: 20px;
+    margin: 5px;
+    cursor: pointer;
+}
+#Love{
+    width: 20px;
+    margin: 5px;
+    height: 20px;
+    display: none;
+    cursor: pointer;
+    animation: bigUp .9s 0s ease-out forwards;
 
-/* animating the like button
-#initail{
-display: inline;
 }
-#final{
-display: none;
+@keyframes bigUp{
+    0%{
+        transform:scale(1.6);
+    }
+    100%{
+        transform: none;
+    }
 }
-#final.clicked{
-display: inline;
-}
-#initail.clicked{
-display: none;
-} */
