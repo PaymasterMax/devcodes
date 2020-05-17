@@ -232,9 +232,9 @@ function updatermonster() {
   } finally {
     xmlobj_messanger.open("POST" , "{% url 'questions:updaterquestions' %}" , true);
     xmlobj_messanger.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
-    xmlhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+    xmlobj_messanger.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
     xmlobj_messanger.send();
-    
+
     xmlobj_messanger.onreadystatechange = function() {
       if (this.readyState == 4 && this.status==200) {
         var data = JSON.parse(this.responseText);
