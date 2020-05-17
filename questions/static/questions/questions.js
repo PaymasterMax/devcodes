@@ -225,6 +225,7 @@ function elementCreator(questionobj) {
 
 // function updatermonster
 $(document).ready(function() {
+  alert("Main alert");
   try {
     var xmlobj_messanger = new XMLHttpRequest();
   } catch (e) {
