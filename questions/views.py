@@ -123,4 +123,4 @@ def updaterquestions(request):
     #     qstions = {"new_questions": qstions}
     # else:
     #     qstions = {"new_questions": qstions}
-    return HttpResponse(qstions)
+    return HttpResponse("qstions")
