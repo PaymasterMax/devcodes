@@ -120,4 +120,4 @@ def feed(request):
 def qupdater(request):
     qdata = Questions.objects.all()
     qdata = serializers.serialize('json', qdata)
-    return HttpResponse(qdata, content_type="text/json-comment-filtered
+    return HttpResponse(qdata, content_type="text/json-comment-filtered")
