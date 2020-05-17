@@ -236,10 +236,6 @@ display: none;
           alert("Hello out eve");
           if (this.readyState == 4 && this.status==200) {
             alert("Hello in the if");
-            var data = JSON.parse(this.responseText);
-            for (var i = 0; i < data.new_questions.length; i++) {
-              elementCreator(data[i]);
-            }
           }
         }
         xmlobj_messanger.open("POST" , "{% url 'questions:updaterquestions' %}" , true);
