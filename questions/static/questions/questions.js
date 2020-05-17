@@ -226,23 +226,19 @@ function elementCreator(questionobj) {
 
 function updatermonster() {
   try {
-    var xmlobj_messanger = new XMLHttpRequest();
+    xmlobj = new XMLHttpRequest();
   } catch (e) {
-    var xmlobj_messanger = new ActiveXObject();
+    xmlobj = new ActiveXObject();
   } finally {
-    xmlobj_messanger.open("POST" , "{% url 'questions:updaterquestions' %}" , true);
-    xmlobj_messanger.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
-    xmlobj_messanger.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
-    xmlobj_messanger.send();
-
-    xmlobj_messanger.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status==200) {
-        var data = JSON.parse(this.responseText);
-        for (var i = 0; i < data.new_questions.length; i++) {
-          elementCreator(data[i]);
-        }
+    xmlobj.onreadystatechange = function() {
+      if (this.readyState==4 && this.status ==200) {
+        alert("Hello world");
       }
     }
+    xmlobj.open("POST" , "{% url 'questions:updaterquestions' %}" , true);
+    xmlobj.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+    xmlobj.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+    xmlobj.send();
   }
 }
 
