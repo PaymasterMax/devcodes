@@ -16,7 +16,7 @@ SECRET_KEY = 'ghr%=q!3afx83t+1dojl%j15mta%6!v@bpx2l5p+ki2i!)zqs3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-DEBUG = True
+# DEBUG = True
 
 SESSION_COOKIE_SECURE = True
 ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com']
@@ -49,9 +49,6 @@ INSTALLED_APPS = [
     'questions.apps.QuestionsConfig',
     "peer.apps.PeerConfig",
     'chatroom.apps.ChatroomConfig',
-    # 'whitenoise.runserver_nostatic',
-    # 'django.contrib.staticfiles',
-    # 'social_django',
     "cloudinary",
 ]
 cloudinary.config(
@@ -94,9 +91,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-
-                # 'social_django.context_processors.backends',
-                # 'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -107,10 +101,6 @@ if os.path.isfile(dotenv_file):
     dotenv.load_dotenv(dotenv_file)
 
 AUTHENTICATION_BACKENDS = (
-    # 'social_core.backends.github.GithubOAuth2',
-    # 'social_core.backends.twitter.TwitterOAuth',
-    # 'social_core.backends.facebook.FacebookOAuth2',
-
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -176,14 +166,3 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR , "media_root")
-
-
-LOGIN_URL = "login"
-LOGOUT_URL = "logout"
-LOGIN_REDIRECT_URL = 'http://localhost:8000/'
-
-
-
-# SOCIAL_AUTH_GITHUB_KEY = '400c9120d85c04fe1d27'
-# SOCIAL_AUTH_GITHUB_SECRET = 'b5062525aedc28521c3df0f1c878e61ac4ecb52d'
-# del DATABASES['default']['OPTIONS']['sslmode']

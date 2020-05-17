@@ -2,6 +2,7 @@
 {% load static %}
 {% load like %}
 {% load cloudinary %}
+{% load tz %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -135,7 +136,9 @@ display: none;
           <div class="question-container">
             <div class="user-details-first-row">
               {{question.quid.username}}   @
-              {{question.time_posted | timemodifier}}
+              {% localtime %}
+                {{question.time_posted | timemodifier}}
+              {% endlocaltime %}
             </div>
             <div class="question-content">
               <div class="question-text">{{question.question}}</div>
