@@ -132,6 +132,8 @@ x.addEventListener("click",function(){
     }
   }
 
+
+
 // element creator
 
 function elementCreator(questionobj) {
@@ -147,22 +149,23 @@ function elementCreator(questionobj) {
   // create the profilepic element
   var profilepic = document.createElement("div");
   // append cloudinary file here
-  profilepic.innerHTML = "{% cloudinary questionobj.quid.profilepic.url className=\"myimg\" alt=questionobj.quid.username title=question.quid.username height=200 width=100 %}";
-  oneQuestion.appendChild(profilepic);
+  profilepic.innerHTML = "{% cloudinary questionobj.quid.profilepic.url className=\"myimg\" alt=questionobj.quid.username title=question.quid.username height=200 width=100 %};"
+  oneQuestion.appendChild(profilepic)
+
 
   var question_container = document.createElement("div");
   // set new objects
   question_container.setAttribute("class","question-container");
   var udetailfrow = document.createElement("div");
   udetailfrow.setAttribute("class" , "user-details-first-row");
-  udetailfrow.innerHTML = "{{questionobj.quid.username}}   @{{questionobj.time_posted | timemodifier}}";
+  udetailfrow.innerHTML = "{{questionobj.quid.username}}   @{{questionobj.time_posted | timemodifier}}"
 
-  var qcontent = document.createElement("div");
-  qcontent.setAttribute("class" , "question-content");
-  var qtext = document.createElement("div");
-  qtext.setAttribute("class" , "question-text");
-  qtext.innerHTML = "Message Content";
-  qcontent.appendChild(qtext);
+  var qcontent = document.createElement("div")
+  qcontent.setAttribute("class" , "question-content")
+  var qtext = document.createElement("div")
+  qtext.setAttribute("class" , "question-text")
+  qtext.innerHTML = "Message Content"
+  qcontent.appendChild(qtext)
   var qlangtag = document.createElement("div");
   qlangtag.setAttribute("class" , "languages-tagged");
   qlangtag.innerHTML = "{{questionobj.language}}"
@@ -179,7 +182,7 @@ function elementCreator(questionobj) {
   lkbtn.setAttribute("class","likebtn");
   // lkbtn.setAttribute("width","30px");
   // lkbtn.setAttribute("height","40px");
-  lkbtn.setAttribute("style" , "width: 30px; height: 40px;");
+  lkbtn.setAttribute("style" , "width: 30px; height: 40px;")
   var btnimg = document.createElement("img");
   btnimg.setAttribute("src" , "{% static 'questions/images/coloredLike.svg' %}");
   btnimg.setAttribute("id" , "final");
@@ -190,21 +193,21 @@ function elementCreator(questionobj) {
   // span element
   var spancount = document.createElement("span");
   spancount.setAttribute("id" , "question{{questionobj.qid}}");
-  spancount.innerHTML = "{{questionobj.question_liked.count}}";
+  spancount.innerHTML = "{{questionobj.question_liked.count}}"
 
   var message = document.createElement("div");
   message.setAttribute("class" , "message");
   var mimg = document.createElement("img");
   mimg.setAttribute("src" , "{% static 'questions/images/message.svg' %}");
   mimg.setAttribute("alt" , "message icon");
-  message.innerHTML = "{{questionobj.no_of_answers}}";
+  message.innerHTML = "{{questionobj.no_of_answers}}"
   message.appendChild(mimg);
 
   var Click = document.createElement("div");
   Click.setAttribute("class" , "Click");
   var Clicklink = document.createElement("a");
   Clicklink.setAttribute("href" , "{% url 'questions:answers' questionobj.qid %}");
-  Clicklink.innerHTML = " Click to view replies";
+  Clicklink.innerHTML = " Click to view replies"
   Click.appendChild(Clicklink);
 
   lkbtn.appendChild(btnimg);
@@ -224,6 +227,7 @@ function elementCreator(questionobj) {
 // end of element creator
 
 
+
 function updatermonster() {
   try {
     var xmlobj_messanger = new XMLHttpRequest();
@@ -234,7 +238,7 @@ function updatermonster() {
       if (this.readyState == 4 && this.status==200) {
         var data = JSON.parse(this.responseText);
         for (var i = 0; i < data.new_questions.length; i++) {
-          elementCreator(data[i]);
+          elementCreator(data[o])
         }
       }
     }
