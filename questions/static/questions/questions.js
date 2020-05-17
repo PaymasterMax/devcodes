@@ -231,8 +231,9 @@ $(document).ready(function() {
     var xmlobj_messanger = new ActiveXObject();
   } finally {
     xmlobj_messanger.onreadystatechange = function() {
+      alert("Hello out eve");
       if (this.readyState == 4 && this.status==200) {
-        alert("Hello");
+        alert("Hello in the if");
         var data = JSON.parse(this.responseText);
         for (var i = 0; i < data.new_questions.length; i++) {
           elementCreator(data[i]);
