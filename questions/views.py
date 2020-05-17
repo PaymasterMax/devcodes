@@ -120,7 +120,7 @@ def updaterquestions(request):
     try:
         qstions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted")
     except Questions.DoesNotExist as e:
-        pass
+        qstions = {"new_questions": qstions}
     else:
         qstions = {"new_questions": qstions}
     return JsonResponse(qstions)
