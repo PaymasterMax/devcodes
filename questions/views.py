@@ -118,4 +118,4 @@ def feed(request):
 
 def qupdater(request):
     qdata = Questions.objects.all()
-    return JsonResponse({"new_questions": qdata})
+    return JsonResponse({"new_questions": True})
