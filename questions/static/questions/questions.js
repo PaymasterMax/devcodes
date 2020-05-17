@@ -91,16 +91,6 @@ x.addEventListener("click",function(){
   overlay.classList.remove('active');
   }
 );
-  function checkmesages() {
-    try {
-      var xmlobj = new XMLHttpRequest();
-    } catch (e) {
-      var xmlobj = new ActiveXObject();
-    } finally {
-      var msgcount = 0;
-    }
-  }
-
   function updatemonster(qid) {
     var quid = "question"+qid
     document.getElementById(quid).disabled = true;
@@ -252,3 +242,13 @@ function elementCreator(questionobj) {
 // setInterval(function(){
 //   updatermonster();
 // } , 1000);
+
+function checkmesages() {
+  try {
+    var xmlobj = new XMLHttpRequest();
+  } catch (e) {
+    var xmlobj = new ActiveXObject();
+  } finally {
+    var msgcount = 0;
+  }
+}
