@@ -272,7 +272,7 @@ display: none;
 
 
     function updatemonster(qid) {
-      document.getElementById(qid).disabled = true;
+      document.getElementById(qid.toString()).disabled = true;
       try {
           var xmlhttp = new XMLHttpRequest();
       } catch (e) {
