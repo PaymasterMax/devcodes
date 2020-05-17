@@ -238,7 +238,7 @@ display: none;
           if (this.readyState == 4 && this.status == 200) {
             var data = JSON.parse(this.responseText)
             for (var i = 0; i < data.length; i++) {
-              alert(data[i]);
+              // alert(data[i]);
               elementCreator(data[i]);
             }
           }
