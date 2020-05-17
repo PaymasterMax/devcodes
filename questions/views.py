@@ -6,6 +6,7 @@ from .models import Questions , Answers , QuestionLike as qlike
 from chatroom.models import ChatModel as chtb
 from chatroom.models import FeedBack as fd
 from django.http import JsonResponse , HttpResponse
+from django.core import serializers
 
 def questionsview(request):
     all_questions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted")
@@ -117,5 +118,6 @@ def feed(request):
 
 
 def qupdater(request):
-    qdata = list(Questions.objects.all())
-    return JsonResponse(qdata, safe=False)
+    qdata = Questions.objects.all()
+    qdata = serializers.serialize('json', qdata)
+    return HttpResponse(qdata, content_type="text/json-comment-filtered")
