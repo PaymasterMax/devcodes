@@ -146,28 +146,28 @@ display: none;
               {% if userlog %}
                 {% if mydetails.uid|likey:question %}
                       <div class="like">
-                      <button type="button" class="likebtn" style="width: 30px; height: 40px;">
-                        <img src="{% static 'home/images/svgimages/empty love.svg' %}" alt="like" id="emptyLove">
+                      <!-- <button type="button" class="likebtn" style="width: 30px; height: 40px;"> -->
+                        <!-- <img src="{% static 'home/images/svgimages/empty love.svg' %}" alt="like" id="emptyLove"> -->
                         <img src="{% static 'home/images/svgimages/colored love.svg' %}" alt="like" id="Love">
                         <span id="question{{question.qid}}">{{question.question_liked.count}}</span>
-                      </button>
+                      <!-- </button> -->
                       </div>
                 {% else %}
                     <div class="like">
-                    <button type="button" class="likebtn" onclick="updatemonster({{question.qid}});" style="width: 30px; height: 40px;">
-                      <img src="{% static 'home/images/svgimages/empty love.svg' %}" alt="like" id="emptyLove">
+                    <!-- <button type="button" class="likebtn" onclick="updatemonster({{question.qid}});" style="width: 30px; height: 40px;"> -->
+                      <img src="{% static 'home/images/svgimages/empty love.svg' %}" alt="like" id="emptyLove" onclick="updatemonster({{question.qid}});">
                       <img src="{% static 'home/images/svgimages/colored love.svg' %}" alt="like" id="Love">
                       <span id="question{{question.qid}}">{{question.question_liked.count}}</span>
-                    </button>
+                    <!-- </button> -->
                     </div>
                 {% endif %}
               {% else %}
                     <div class="like">
-                    <button type="button" class="likebtn" onclick="updatemonster({{question.qid}});" style="width: 30px; height: 40px;">
-                      <img src="{% static 'home/images/svgimages/empty love.svg' %}" alt="like" id="emptyLove">
+                    <!-- <button type="button" class="likebtn" onclick="updatemonster({{question.qid}});" style="width: 30px; height: 40px;"> -->
+                      <!-- <img src="{% static 'home/images/svgimages/empty love.svg' %}" alt="like" id="emptyLove"> -->
                       <img src="{% static 'home/images/svgimages/colored love.svg' %}" alt="like" id="Love">
                       <span id="question{{question.qid}}">{{question.question_liked.count}}</span>
-                    </button>
+                    <!-- </button> -->
                     </div>
               {% endif %}
              <div class="message">
