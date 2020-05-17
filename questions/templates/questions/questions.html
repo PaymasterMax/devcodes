@@ -237,7 +237,7 @@ display: none;
       // create the profilepic element
       var profilepic = document.createElement("div");
       // append cloudinary file here
-      profilepic.innerHTML = {% cloudinary questionobj.quid.profilepic.url className="myimg" alt=questionobj.quid.username title=question.quid.username height=200 width=100 %};
+      // profilepic.innerHTML = {% cloudinary questionobj.quid.profilepic.url className="myimg" alt=questionobj.quid.username title=question.quid.username height=200 width=100 %};
       oneQuestion.appendChild(profilepic);
 
       var question_container = document.createElement("div");
@@ -245,7 +245,7 @@ display: none;
       question_container.setAttribute("class","question-container");
       var udetailfrow = document.createElement("div");
       udetailfrow.setAttribute("class" , "user-details-first-row");
-      udetailfrow.innerHTML = "{{questionobj.quid.username}}   @{{questionobj.time_posted | timemodifier}}";
+      udetailfrow.innerHTML = {{questionobj.quid.username}}   "@"{{questionobj.time_posted | timemodifier}};
 
       var qcontent = document.createElement("div");
       qcontent.setAttribute("class" , "question-content");
@@ -255,7 +255,7 @@ display: none;
       qcontent.appendChild(qtext);
       var qlangtag = document.createElement("div");
       qlangtag.setAttribute("class" , "languages-tagged");
-      qlangtag.innerHTML = "{{questionobj.language}}"
+      qlangtag.innerHTML = {{questionobj.language}}
       qcontent.appendChild(qlangtag);
 
       var replysec = document.createElement("div");
@@ -280,14 +280,14 @@ display: none;
       // span element
       var spancount = document.createElement("span");
       spancount.setAttribute("id" , "question{{questionobj.qid}}");
-      spancount.innerHTML = "{{questionobj.question_liked.count}}";
+      spancount.innerHTML = {{questionobj.question_liked.count}};
 
       var message = document.createElement("div");
       message.setAttribute("class" , "message");
       var mimg = document.createElement("img");
       mimg.setAttribute("src" , "{% static 'questions/images/message.svg' %}");
       mimg.setAttribute("alt" , "message icon");
-      message.innerHTML = "{{questionobj.no_of_answers}}";
+      message.innerHTML = {{questionobj.no_of_answers}};
       message.appendChild(mimg);
 
       var Click = document.createElement("div");
