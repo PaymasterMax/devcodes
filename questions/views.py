@@ -103,7 +103,8 @@ def updatelikes(request):
         liked = "question not liked"
     else:
         Qid = request.POST["qid"]
-        qlike.objects.create(Qid_id = Qid , luid_id = userdetails.uid)
+        if userdetails.uid !=qlike.objects.filter(luid_id = userdetails.uid , Qid_id = Qid).luid_id:
+            qlike.objects.create(Qid_id = Qid , luid_id = userdetails.uid)
         is_logged = True
         liked = "question liked"
     data = {"liked":liked,"is_logged":is_logged , "counter":Questions.objects.filter(qid = Qid).count()}
