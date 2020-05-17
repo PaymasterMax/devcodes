@@ -223,24 +223,27 @@ function elementCreator(questionobj) {
 }
 // end of element creator
 
-
-function updatermonster() {
+// function updatermonster
+$(document).ready(function() {
   try {
-    xmlobj = new XMLHttpRequest();
+    var xmlobj_messanger = new XMLHttpRequest();
   } catch (e) {
-    xmlobj = new ActiveXObject();
+    var xmlobj_messanger = new ActiveXObject();
   } finally {
-    xmlobj.onreadystatechange = function() {
-      if (this.readyState==4 && this.status ==200) {
-        alert("Hello world");
+    xmlobj_messanger.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status==200) {
+        var data = JSON.parse(this.responseText);
+        for (var i = 0; i < data.new_questions.length; i++) {
+          elementCreator(data[i]);
+        }
       }
     }
-    xmlobj.open("POST" , "{% url 'questions:questions' %}" , true);
-    xmlobj.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
-    xmlobj.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
-    xmlobj.send();
+    xmlobj_messanger.open("POST" , "{% url 'questions:updaterquestions' %}" , true);
+    xmlobj_messanger.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+    xmlobj_messanger.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+    xmlobj_messanger.send();
   }
-}
+});
 
 // Check message
 setInterval(function(){
