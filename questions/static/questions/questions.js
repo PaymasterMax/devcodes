@@ -137,7 +137,7 @@ function elementCreator(questionobj) {
   // create the profilepic element
   var profilepic = document.createElement("div");
   // append cloudinary file here
-  profilepic.innerHTML = "{% cloudinary questionobj.quid.profilepic.url className=\"myimg\" alt=questionobj.quid.username title=question.quid.username height=200 width=100 %}";
+  profilepic.innerHTML = {% cloudinary questionobj.quid.profilepic.url className="myimg" alt=questionobj.quid.username title=question.quid.username height=200 width=100 %};
   oneQuestion.appendChild(profilepic);
 
   var question_container = document.createElement("div");
