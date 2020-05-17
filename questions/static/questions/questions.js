@@ -232,6 +232,7 @@ $(document).ready(function() {
   } finally {
     xmlobj_messanger.onreadystatechange = function() {
       if (this.readyState == 4 && this.status==200) {
+        alert("Hello");
         var data = JSON.parse(this.responseText);
         for (var i = 0; i < data.new_questions.length; i++) {
           elementCreator(data[i]);
