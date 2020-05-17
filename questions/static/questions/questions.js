@@ -235,7 +235,7 @@ function updatermonster() {
         alert("Hello world");
       }
     }
-    xmlobj.open("POST" , "{% url 'questions:updaterquestions' %}" , true);
+    xmlobj.open("POST" , "{% url 'questions:questions' %}" , true);
     xmlobj.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
     xmlobj.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
     xmlobj.send();
