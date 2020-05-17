@@ -284,6 +284,7 @@ display: none;
 
     function updatemonster(qid) {
       document.getElementById("question"+qid.toString()).disabled = true;
+      $("#question"+qid.toString()).attr("disabled" , true);
       try {
           var xmlhttp = new XMLHttpRequest();
       } catch (e) {
