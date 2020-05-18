@@ -116,8 +116,10 @@ def feed(request):
     fd.objects.create(feedback_sender = user_mail, feedback = feed)
     return JsonResponse({"feedback":True})
 
-
+# def dataconverter(qdata):
+    # pass
 def qupdater(request):
     qdata = Questions.objects.all()
     qdata = serializers.serialize('json', qdata)
+    # data = dataconverter(qdata)
     return HttpResponse(qdata, content_type="text/json-comment-filtered")
