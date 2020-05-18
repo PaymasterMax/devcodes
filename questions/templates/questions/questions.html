@@ -61,8 +61,8 @@ display: none;
 
 <div class="icon-links" id="iLinks">
   <a href="{% url 'home:home' %}" class="Plinks">Home</a>
-<a href="{% url 'peers:peers' %}" class="Plinks">Peers</a>
-<a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox
+  <a href="{% url 'peers:peers' %}" class="Plinks">Peers</a>
+  <a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox
   {% if userlog %}
     <i class="fa fa-envelope"> {{newmessage}}</i>
   {% endif %}
