@@ -116,10 +116,52 @@ def feed(request):
     fd.objects.create(feedback_sender = user_mail, feedback = feed)
     return JsonResponse({"feedback":True})
 
-# def dataconverter(qdata):
-    # pass
+
+def timemodifier(timeobj):
+    time_lapse = int((timezone.now()-timeobj).total_seconds())
+
+    # test for days
+    if time_lapse <= 432000 and time_lapse >= 86400:
+
+        return str(int(time_lapse/86400)) + " day(s) ago"
+
+    elif time_lapse<86400:
+
+        # test for hours
+        if time_lapse>=3600:
+            return str(int(time_lapse/3600)) + " hours ago"
+
+            # test for minutes
+        elif time_lapse<3600 and time_lapse>60:
+            return str(int(time_lapse/60)) + " minutes ago"
+
+        # test for seconds
+        else:
+            return str(time_lapse) + " seconds ago"
+
+
+    else:
+        return timeobj
+
+
+def dataconverter(qdata):
+    dbuserdata = dict()
+    counter = 0
+    for x in qdata:
+        dbuserdata["{}oneuser".format(counter)] = {
+        "username":x.quid.username ,
+        "profilepic":{% cloudinary x.quid.profilepic.url className="myimg" alt=x.quid.username title=x.quid.username height=200 width=100 %},
+        "time_posted":timemodifier(x.time_posted),
+        "question":x.question,
+        "language":x.language
+        "likes":x.question_liked.count(),
+        "answers":x.question_to_answer.count(),
+        }
+        counter+=1
+    return dbuserdata
+
 def qupdater(request):
     qdata = Questions.objects.all()
     qdata = serializers.serialize('json', qdata)
-    # data = dataconverter(qdata)
+    qdata = dataconverter(qdata)
     return HttpResponse(qdata, content_type="text/json-comment-filtered")
