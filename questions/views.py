@@ -154,8 +154,8 @@ def dataconverter(qdata):
         "time_posted":timemodifier(x.time_posted),
         "question":x.question,
         "language":x.language
-        "likes":x.question_liked.count(),
-        "answers":x.question_to_answer.count(),
+        # "likes":x.question_liked.count(),
+        # "answers":x.question_to_answer.count(),
         }
         counter+=1
     return dbuserdata
