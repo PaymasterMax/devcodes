@@ -16,8 +16,8 @@ def questionsview(request):
         userlog = True
     except Exception as e:
         userlog = False
-        # request.session["redirect"] = "/questions/"
-        # return redirect("/login/")
+        request.session["redirect"] = "/questions/"
+        return redirect("/login/")
         return render(request , "questions/questions.html" , context = {"Questions":all_questions , "userlog":userlog})
 
     else:
