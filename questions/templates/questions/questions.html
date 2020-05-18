@@ -203,14 +203,13 @@ display: none;
       {% csrf_token %}
     <div class="question">
 
-          <textarea autofocus rows="7" cols="38"  placeholder="Type a question.." name="question"  id="question"
+          <textarea rows="7" cols="38"  placeholder="Type a question.." name="question"  id="question"
             required style="
           background:rgba(255, 255, 255, 0.912);
                border-radius: 3px;
                border-style: none;
                resize:none;
-               width:100%;" maxlength="1025">
-            </textarea>
+               width:100%;" maxlength="1025"></textarea>
     </div>
     <div class="languages">
         <input type="text" maxlength="15" name="language" required placeholder="Mention programming language(s).." id="question" size="33"
