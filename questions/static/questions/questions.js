@@ -1,5 +1,4 @@
  // home icon
- $(document).ready(function() {
    const full = document.getElementById('full');
           const ex = document.getElementById('ex');
           const iLinks = document.getElementById('iLinks');
@@ -108,5 +107,3 @@
       var msgcount = 0;
     }
   }
-
-});
