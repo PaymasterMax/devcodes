@@ -369,6 +369,9 @@ color: white;
 }
 @media only screen and (max-width:600px){
   /* nav bar attributes */
+  .user-dropdown {
+    display: none;
+  }
   .showIcon{
     display: flex;
 }

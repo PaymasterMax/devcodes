@@ -286,6 +286,9 @@ box-shadow: 3px 3px 9px 0px black;
     *{
         font-size: 14px;
     }
+    .user-dropdown {
+      display: none;
+    }
     .modal.active,.main-question.active {
         transform: translate(-50%, -50%) scale(1);
     }

@@ -330,7 +330,9 @@ textarea {
 
 
 @media screen and (max-width:700px) {
-
+  .user-dropdown {
+    display: none;
+  }
   .main {
     width: 94vw;
     margin: 0px auto;
