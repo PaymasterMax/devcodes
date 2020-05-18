@@ -300,7 +300,7 @@ display: none;
               document.getElementById("question"+qid.toString()).innerHTML = data.counter;
               // alert(data.liked);
               document.getElementById("Love");
-              document.removeChild(document.getElementById("emptyLove"));
+              document.getElementById("emptyLove").setAttribute("display" , "none");
             } else {
               $(location).attr("href" , "{% url 'login:login' %}")
             }
