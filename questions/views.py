@@ -106,7 +106,7 @@ def updatelikes(request):
         qlike.objects.create(Qid_id = Qid , luid_id = userdetails.uid)
         is_logged = True
         liked = "question liked"
-    data = {"liked":liked,"is_logged":is_logged , "counter":Questions.objects.filter(qid = Qid).count()}
+    data = {"liked":liked,"is_logged":is_logged , "counter":Questions.objects.get(qid = Qid).question_liked.count()}
     return JsonResponse(data)
 
 
