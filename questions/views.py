@@ -94,11 +94,11 @@ def update_answers(request , Qid):
 
 def checklike(udet , qid):
     try:
-        checkdata = Questions.objects.get(qid = qid).question_liked.all()
+        checkdata = Questions.objects.get(qid = qid)
     except Exception as e:
         return False
     else:
-        if udet in checkdata.luid:
+        if udet in checkdata.question_liked.luid_id:
             return True
         else:
             return False
