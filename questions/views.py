@@ -149,12 +149,12 @@ def dataconverter(qdata):
     counter = 0
     for x in qdata:
         dbuserdata["{}oneuser".format(counter)] = {
-        x}
+        }
         counter+=1
     return dbuserdata
 
 def qupdater(request):
-    qdata = Questions.objects.all()
-    qdata = dataconverter(qdata)
-    # qdata = serializers.serialize('json', qdata)
+    qdata = request.META["REMOTE_ADDR"]
+    # qdata = dataconverter(qdata)
+    qdata = serializers.serialize('json', qdata)
     return HttpResponse(qdata, content_type="text/json-comment-filtered")
