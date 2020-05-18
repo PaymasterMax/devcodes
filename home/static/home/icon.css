@@ -2,7 +2,7 @@
 .icon-links{
     animation: slide .8s 0s cubic-bezier(0.32, 0.96, 0.58, 1.11) forwards;
     position: absolute;
-      z-index: 2;
+      z-index: 10;
       padding-left: 7px;
     display: none;
     flex-direction: column;
@@ -12,7 +12,7 @@
     background: #303d5c;
     border-top: 2px solid rgb(12, 215, 247);
     border-bottom: 2px solid rgb(12, 215, 247);
-  
+
   }
   .Plinks,.Plinks-in{
     text-decoration: none;
@@ -22,7 +22,7 @@
   .Plinks-in{
     margin-left: 5px;
   }
-  
+
           .full-icon{
             width: 33px;
     height: 33px;
@@ -41,7 +41,7 @@
     height: 3px;
     border-radius: 50%;
     background-color: rgb(255, 255, 255);
-  
+
         }
         .line{
             width: 11px;
@@ -49,7 +49,7 @@
     border-radius: 10px;
     margin-left: 3px;
     background-color: rgb(255, 255, 255);
-  
+
         }
         .row{
             display: flex;
@@ -58,7 +58,7 @@
             opacity: 1;
             transform: scale(0);
             animation: opac 1s 0.1s ease-out forwards;
-  
+
         }
         .no-padding{
             border: 2px solid rgb(255, 255, 255);
@@ -73,7 +73,7 @@
     display: none;
     margin: 5px;
         }
-        
+
         .forward-slash{
             width: 20px;
     height: 2px;
@@ -82,13 +82,13 @@
     animation: rotateF 1s 0.1s ease-out forwards;
         }
         .backward-slash{
-            
+
             width: 20px;
             height: 2px;
             background-color: #fff;
             animation: rotateL 1s 0.1s ease-out forwards;
         }
-       
+
         @keyframes rotateF {
             0%{
                 transform: translateY(-0.2em);
@@ -118,7 +118,7 @@
         @keyframes slide{
           0%{
             transform: translateX(-100%) translateY(7rem);
-  
+
           }
           100%{
             transform: translateX(0%) translateY(7rem) ;
@@ -145,12 +145,12 @@
             .links{
               display: none;
             }
-          
+
             .nav-bar{
               padding: 0px;
             }
-          
+
           /* end of navbar */
-          
-            
-          }  
+
+
+          }
