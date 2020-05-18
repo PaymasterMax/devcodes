@@ -80,7 +80,7 @@
           <img src="{% static 'questions/images/devtitle.svg' %}" class="myimg" alt="logo">
         </p>
           <form class="search-form" action="{% url 'peers:locatepeers' %}" method="get">
-            <input type="search" name="peer" placeholder="Search" required autocomplete="language" value="{{query}}">
+            <input type="search" name="peer" placeholder="Search" required autocomplete="language" value="{{query}}" maxlength="30">
             <button type="submit" name="button" class="btn btn-info">search</button>
             <br>
               <select class="slen" name="critrion" size="1">

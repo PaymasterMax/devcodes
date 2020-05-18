@@ -112,8 +112,9 @@
           <div class="question-main-content">
             {{question_info.question}}
           </div>
-          {{question_info.quid.hobby}}
-
+          <p class="ft">
+            {{question_info.quid.hobby}}
+          </p>
           <p class="ft">
           </p>
           <p class="ft">
@@ -163,7 +164,7 @@
         <textarea rows="3" cols="25" placeholder="your answer" name="answer"
         style="width: 80%;
         resize: none;
-        margin-bottom: 10px;"></textarea>
+        margin-bottom: 10px;" maxlength="255" required></textarea>
       <button type="submit" name="submit" value="submit" class="btn btn-info">Send</button>
     </form>
 
