@@ -149,19 +149,13 @@ def dataconverter(qdata):
     counter = 0
     for x in qdata:
         dbuserdata["{}oneuser".format(counter)] = {
-        "username":x.quid.username ,
-        "profilepic":"{% cloudinary x.quid.profilepic.url className=\"myimg\" alt=x.quid.username title=x.quid.username height=200 width=100 %}",
-        "time_posted":timemodifier(x.time_posted),
-        "question":x.question,
-        "language":x.language
-        "likes":{{"x.question_liked.count()"}},
-        "answers":"{{x.question_to_answer.count()}}",
+        x
         }
         counter+=1
     return dbuserdata
 
 def qupdater(request):
     qdata = Questions.objects.all()
-    qdata = serializers.serialize('json', qdata)
     qdata = dataconverter(qdata)
+    qdata = serializers.serialize('json', qdata)
     return HttpResponse(qdata, content_type="text/json-comment-filtered")
