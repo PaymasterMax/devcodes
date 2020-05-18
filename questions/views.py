@@ -92,7 +92,16 @@ def update_answers(request , Qid):
     else:
         return redirect("/questions/answers/{}/".format(Qid))
 
-
+def checklike(udet , qid):
+    try:
+        checkdata = Questions.objects.get(qid = qid).question_liked.all()
+    except Exception as e:
+        return False
+    else:
+        if udet in checkdata.luid_id:
+            return True
+        else:
+            return False
 
 # update likes
 def updatelikes(request):
@@ -103,7 +112,8 @@ def updatelikes(request):
         liked = "question not liked"
     else:
         Qid = request.POST["qid"]
-        qlike.objects.create(Qid_id = Qid , luid_id = userdetails.uid)
+        if not checklike(userdetails.uid , Qid):
+            qlike.objects.create(Qid_id = Qid , luid_id = userdetails.uid)
         is_logged = True
         liked = "question liked"
     data = {"liked":liked,"is_logged":is_logged , "counter":Questions.objects.get(qid = Qid).question_liked.count()}
