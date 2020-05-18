@@ -248,7 +248,7 @@ display: none;
         xmlhttp.onreadystatechange = function () {
           if (this.readyState == 4 && this.status == 200) {
               for (var i = 0; i < this.responseText.length; i++) {
-                alert(this.responseText[i])
+                alert(this.responseText[i][0])
               }
           }
         }
