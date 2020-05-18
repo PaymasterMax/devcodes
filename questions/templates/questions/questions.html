@@ -234,6 +234,97 @@ display: none;
   <a href="#upPart"><img src="{% static 'questions/images/up.svg' %}" alt="up_key" class="up-icon"  id="up">
     </a>
     <script type="text/javascript">
+    function elementCreator(questionobj) {
+    // main holder for all questions
+    var person_holder = document.getElementById("person-holder");
+    // one message
+    var oneQuestion = document.createElement("div");
+    // set the class of the qholder
+    oneQuestion.setAttribute("class" , "oneQuestion");
+    // oneQuestion.innerHTML = "Hello Once a question"
+    person_holder.appendChild(oneQuestion)
+
+    // create the profilepic element
+    var profilepic = document.createElement("div");
+    // append cloudinary file here
+    // profilepic.innerHTML = {% cloudinary questionobj.quid.profilepic.url className="myimg" alt=questionobj.quid.username title=question.quid.username height=200 width=100 %};
+    oneQuestion.appendChild(profilepic);
+
+    var question_container = document.createElement("div");
+    // set new objects
+    question_container.setAttribute("class","question-container");
+    var udetailfrow = document.createElement("div");
+    udetailfrow.setAttribute("class" , "user-details-first-row");
+    udetailfrow.innerHTML = questionobj.quid.username   "@"questionobj.time_posted | timemodifier;
+
+    var qcontent = document.createElement("div");
+    qcontent.setAttribute("class" , "question-content");
+    var qtext = document.createElement("div");
+    qtext.setAttribute("class" , "question-text");
+    qtext.innerHTML = "Message Content";
+    qcontent.appendChild(qtext);
+    var qlangtag = document.createElement("div");
+    qlangtag.setAttribute("class" , "languages-tagged");
+    qlangtag.innerHTML = questionobj.language
+    qcontent.appendChild(qlangtag);
+
+    var replysec = document.createElement("div");
+    replysec.setAttribute("class","reply-section");
+
+    // children of replysec
+    var like = document.createElement("div");
+    like.setAttribute("class" , "like");
+    var lkbtn = document.createElement("button");
+    lkbtn.setAttribute("type","button");
+    lkbtn.setAttribute("class","likebtn");
+    // lkbtn.setAttribute("width","30px");
+    // lkbtn.setAttribute("height","40px");
+    lkbtn.setAttribute("style" , "width: 30px; height: 40px;");
+    var btnimg = document.createElement("img");
+    btnimg.setAttribute("src" , "{% static 'questions/images/coloredLike.svg' %}");
+    btnimg.setAttribute("id" , "final");
+    btnimg.setAttribute("class" , "final");
+    btnimg.setAttribute("alt" , "like button");
+    btnimg.setAttribute("style" , "width: 30px; height: 40px;");
+
+    // span element
+    var spancount = document.createElement("span");
+    spancount.setAttribute("id" , "question{{questionobj.qid}}");
+    spancount.innerHTML = questionobj.question_liked.count;
+
+    var message = document.createElement("div");
+    message.setAttribute("class" , "message");
+    var mimg = document.createElement("img");
+    mimg.setAttribute("src" , "{% static 'questions/images/message.svg' %}");
+    mimg.setAttribute("alt" , "message icon");
+    message.innerHTML = questionobj.no_of_answers;
+    message.appendChild(mimg);
+
+    var Click = document.createElement("div");
+    Click.setAttribute("class" , "Click");
+    var Clicklink = document.createElement("a");
+    Clicklink.setAttribute("href" , "{% url 'questions:answers' questionobj.qid %}");
+    Clicklink.innerHTML = " Click to view replies";
+    Click.appendChild(Clicklink);
+
+    lkbtn.appendChild(btnimg);
+    lkbtn.appendChild(spancount);
+    like.appendChild(lkbtn);
+    replysec.appendChild(like);
+    replysec.appendChild(message);
+    replysec.appendChild(Click);
+    // end of childred of replysec
+
+    // add childre to parents
+    question_container.appendChild(udetailfrow);
+    question_container.appendChild(qcontent);
+    oneQuestion.appendChild(question_container);
+    oneQuestion.appendChild(replysec);
+    }
+      // setInterval(function() {
+      //   elementCreator(),1000
+      // });
+        // end of message updating
 
     $(document).ready(function(){
       try {
