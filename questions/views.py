@@ -163,5 +163,5 @@ def dataconverter(qdata):
 def qupdater(request):
     qdata = Questions.objects.all()
     qdata = serializers.serialize('json', qdata)
-    qdata = dataconverter(qdata)
+    # qdata = dataconverter(qdata)
     return HttpResponse(qdata, content_type="text/json-comment-filtered")
