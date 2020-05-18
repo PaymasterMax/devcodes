@@ -98,7 +98,7 @@ def checklike(udet , qid):
     except Exception as e:
         return False
     else:
-        if udet in checkdata.luid_id:
+        if udet in checkdata.luid:
             return True
         else:
             return False
@@ -112,7 +112,7 @@ def updatelikes(request):
         liked = "question not liked"
     else:
         Qid = request.POST["qid"]
-        if checklike(userdetails.uid , Qid):
+        if not checklike(userdetails.uid , Qid):
             qlike.objects.create(Qid_id = Qid , luid_id = userdetails.uid)
         is_logged = True
         liked = "question liked"
