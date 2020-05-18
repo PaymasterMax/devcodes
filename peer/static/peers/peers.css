@@ -556,6 +556,9 @@ hr {
 
 
 @media screen and (max-width:800px) {
+  .user-dropdown {
+    display: none;
+  }
   .main {
     width: 96%;
     display: block;
@@ -608,6 +611,9 @@ hr {
   }
 }
 @media only screen and (max-width:600px){
+  .user-dropdown {
+    display: none;
+  }
   .logoN{
     display: none;
   }
