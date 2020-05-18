@@ -150,7 +150,7 @@ def dataconverter(qdata):
     for x in qdata:
         dbuserdata["{}oneuser".format(counter)] = {
         "username":x.quid.username ,
-        "profilepic":{% cloudinary x.quid.profilepic.url className="myimg" alt=x.quid.username title=x.quid.username height=200 width=100 %},
+        # "profilepic":{% cloudinary x.quid.profilepic.url className="myimg" alt=x.quid.username title=x.quid.username height=200 width=100 %},
         "time_posted":timemodifier(x.time_posted),
         "question":x.question,
         "language":x.language
