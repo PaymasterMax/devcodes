@@ -149,8 +149,7 @@ def dataconverter(qdata):
     counter = 0
     for x in qdata:
         dbuserdata["{}oneuser".format(counter)] = {
-        x
-        }
+        x}
         counter+=1
     return dbuserdata
 
