@@ -392,7 +392,9 @@ box-shadow: 3px 3px 9px 0px black;
       display: block;
     }
 }
-
+.like > span:first-child {
+  margin-right: 20px;
+}
 #emptyLove{
     width:20px;
     height: 20px;
