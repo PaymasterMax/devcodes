@@ -17,29 +17,29 @@ const full = document.getElementById('full');
         iLinks.style.display = 'none';
     });
     // end of home icon
-
-    function updatermonster() {
-      try {
-        var xmlobj_messanger = new XMLHttpRequest();
-      } catch (e) {
-        var xmlobj_messanger = new ActiveXObject();
-      } finally {
-        xmlobj_messanger.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status==200) {
-            var data = JSON.parse(this.responseText);
-            for (var i = 0; i < data.all_messages.length; i++) {
-              alert(data[i]);
-            }
-          }
-        }
-        xmlobj_messanger.open("POST" , "{% url 'chatroom:updatemessage' %}" , true);
-        xmlobj_messanger.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
-        xmlobj_messanger.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
-        xmlobj_messanger.send();
-      }
-    }
-
-    // Check message
-    setInterval(function(){
-      updatermonster();
-    } , 1000);
+    // 
+    // function updatermonster() {
+    //   try {
+    //     var xmlobj_messanger = new XMLHttpRequest();
+    //   } catch (e) {
+    //     var xmlobj_messanger = new ActiveXObject();
+    //   } finally {
+    //     xmlobj_messanger.onreadystatechange = function() {
+    //       if (this.readyState == 4 && this.status==200) {
+    //         var data = JSON.parse(this.responseText);
+    //         for (var i = 0; i < data.all_messages.length; i++) {
+    //           alert(data[i]);
+    //         }
+    //       }
+    //     }
+    //     xmlobj_messanger.open("POST" , "{% url 'chatroom:updatemessage' %}" , true);
+    //     xmlobj_messanger.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+    //     xmlobj_messanger.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+    //     xmlobj_messanger.send();
+    //   }
+    // }
+    //
+    // // Check message
+    // setInterval(function(){
+    //   updatermonster();
+    // } , 1000);
