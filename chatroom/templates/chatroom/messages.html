@@ -80,6 +80,9 @@
     </a>
   </div>
     <div class="main">
+      <p class="profile">
+        {% cloudinary userdetails.profilepic.url className="myimg" alt=userdetails.username title=userdetails.username height=200 width=100 %}
+      </p>
       <!-- single message -->
       {% for data in chats %}
         {% if userdetails.uid == data.r1uid_id %}
