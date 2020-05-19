@@ -405,7 +405,7 @@ box-shadow: 3px 3px 9px 0px black;
     width: 20px;
     margin: 5px;
     height: 20px;
-    display: none;
+    /* display: none; */
     cursor: pointer;
     animation: bigUp .9s 0s ease-out forwards;
 
