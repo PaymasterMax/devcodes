@@ -81,7 +81,7 @@
   </div>
     <div class="main">
       <p class="mainuprofile">
-        {% cloudinary userdetails.profilepic.url className="myimg" alt=userdetails.username title=userdetails.username height=300 width=200 %}
+        {% cloudinary receiver.profilepic.url className="myimg" alt=receiver.username title=receiver.username height=300 width=200 %}
       </p>
       <!-- single message -->
       {% for data in chats %}
