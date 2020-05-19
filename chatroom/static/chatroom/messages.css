@@ -58,6 +58,7 @@ top:0;
 .mainuprofile {
   display: block;
   margin-top: 100px;
+  padding-top: 40px;
 }
 .mainuprofile > img {
   display: block;
