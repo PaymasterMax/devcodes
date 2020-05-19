@@ -19,7 +19,7 @@ body{
   /* display: none; */
   position: absolute;
   float: right;
-  z-index: 6;
+  z-index: 10;
 }
 .nav-bar{
     display: flex;
@@ -286,7 +286,7 @@ box-shadow: 3px 3px 9px 0px black;
     *{
         font-size: 14px;
     }
-    .user-dropdown {
+    .user-dropdown a {
       display: none;
     }
     .modal.active,.main-question.active {

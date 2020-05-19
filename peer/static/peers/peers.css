@@ -233,6 +233,9 @@ hr {
     width: 100%;
     font-size: 12px;
   }
+  .user-dropdown a {
+    display: none;
+  }
 .header {
   min-height: 10vh;
 }
@@ -611,7 +614,7 @@ hr {
   }
 }
 @media only screen and (max-width:600px){
-  .user-dropdown {
+  .user-dropdown a {
     display: none;
   }
   .logoN{
