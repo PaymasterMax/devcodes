@@ -44,11 +44,13 @@
 <a href="{% url 'peers:peers' %}" class="Plinks">Peers</a>
  <a href="{% url 'questions:questions' %}" class="Plinks">Questions
    <i class="fa fa-caret-down"></i></a>
- <a href="{% url 'questions:myquestions' %}" class="Plinks-in">My Questions</a>
-  <a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope"> {{newmessage}}</i>
-       </a>
- <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a>
- <a href="{% url 'login:logout' %}" class="Plinks">  Log out </a>
+        {% if userlog %}
+        <a href="{% url 'questions:myquestions' %}" class="Plinks-in">My Questions</a>
+        <a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope"> {{newmessage}}</i>
+        </a>
+         <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a>
+         <a href="{% url 'login:logout' %}" class="Plinks">  Log out </a>
+       {% endif %}
  </div>
   <!-- Ending of icon -->
   <div class="links">
@@ -63,10 +65,12 @@
            </div>
      </div>
         |
-        <a href="{% url 'chatroom:inbox' %}">Inbox</a>
-        <a href="{% url 'chatroom:inbox' %}">
-          <i class="fa fa-envelope"> {{newmessage}}</i>
-        </a>
+        {% if userlog %}
+          <a href="{% url 'chatroom:inbox' %}">Inbox</a>
+          <a href="{% url 'chatroom:inbox' %}">
+            <i class="fa fa-envelope"> {{newmessage}}</i>
+          </a>
+        {% endif %}
         </div>
         <div class="logoN" id="upPart">
           <img src="{% static 'questions/images/devtitle.svg' %}" class="myimg" alt="logo">

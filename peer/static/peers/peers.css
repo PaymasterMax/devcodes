@@ -233,9 +233,6 @@ hr {
     width: 100%;
     font-size: 12px;
   }
-  .user-dropdown a {
-    display: none;
-  }
 .header {
   min-height: 10vh;
 }
@@ -559,9 +556,6 @@ hr {
 
 
 @media screen and (max-width:800px) {
-  .user-dropdown {
-    display: none;
-  }
   .main {
     width: 96%;
     display: block;

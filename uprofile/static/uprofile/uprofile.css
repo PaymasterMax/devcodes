@@ -206,7 +206,7 @@ font-size: 18px;
 }
 @media only screen and (max-width:600px){
   /* nav bar attributes */
-  .user-dropdown {
+  .user-dropdown a{
     display: none;
   }
   .logoN{
