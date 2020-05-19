@@ -74,7 +74,7 @@
 </div>
 
   <div class="page-title" id="upPart">My Questions page</div>
-  <div class="main-window-personal">
+  <div class="main-window">
         <div class="person-holder">
     {% for question in Questions %}
 
@@ -93,9 +93,36 @@
             </div>
             <div class="reply-section">
              <div class="like">
-             <button type="button" class="likebtn">
-               <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;">
-             </button>
+
+               {% if mydetails.uid|likey:question %}
+                     <div class="like">
+                       <!-- <img src="{% static 'home/images/svgimages/empty love.svg' %}" alt="like" id="emptyLove"> -->
+                       <img src="{% static 'home/images/svgimages/coloredlove.svg' %}" alt="like" id="Love" style="width: 20px;
+                       margin: 5px;
+                       height: 20px;
+                       display: inline;
+                       cursor: pointer;
+                       animation: bigUp .9s 0s ease-out forwards;">
+                       <span id="question{{question.qid}}" style="margin-right:20px;">{{question.question_liked.count}}</span>
+                     </div>
+               {% else %}
+                   <div class="like">
+                     <img src="{% static 'home/images/svgimages/emptylove.svg' %}" alt="like" id="emptyLove" onclick="updatemonster({{question.qid}});"
+                     style="width:20px;
+                     height: 20px;
+                     margin: 5px;
+                     cursor: pointer;">
+                     <img src="{% static 'home/images/svgimages/coloredlove.svg' %}" alt="like" id="Love"
+                     style="width: 20px;
+                     margin: 5px;
+                     height: 20px;
+                     display: none;
+                     cursor: pointer;
+                     animation: bigUp .9s 0s ease-out forwards;">
+                     <span id="question{{question.qid}}" style="margin-right:20px;">{{question.question_liked.count}}</span>
+                   </div>
+               {% endif %}
+               
              {{question.no_of_answers}}
              </div>
              <div class="message">
