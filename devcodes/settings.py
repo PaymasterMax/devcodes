@@ -19,7 +19,7 @@ DEBUG = False
 DEBUG = True
 
 SESSION_COOKIE_SECURE = True
-ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com']
+ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com' , "devcodes.herokuapp.com"]
 # ALLOWED_HOSTS = ["*"]
 
 CSRF_COOKIE_SECURE = True

@@ -112,8 +112,8 @@ def updatelikes(request):
         liked = "question not liked"
     else:
         Qid = request.POST["qid"]
-        if not checklike(userdetails.uid , Qid):
-            qlike.objects.create(Qid_id = Qid , luid_id = userdetails.uid)
+        # if not checklike(userdetails.uid , Qid):
+        qlike.objects.create(Qid_id = Qid , luid_id = userdetails.uid)
         is_logged = True
         liked = "question liked"
     data = {"liked":liked,"is_logged":is_logged , "counter":Questions.objects.get(qid = Qid).question_liked.count()}
@@ -154,14 +154,14 @@ def timemodifier(timeobj):
         return timeobj
 
 
-def dataconverter(qdata):
-    dbuserdata = dict()
-    counter = 0
-    for x in qdata:
-        dbuserdata["{}oneuser".format(counter)] = {
-        }
-        counter+=1
-    return dbuserdata
+# def dataconverter(qdata):
+#     dbuserdata = dict()
+#     counter = 0
+#     for x in qdata:
+#         dbuserdata["{}oneuser".format(counter)] = {
+#         }
+#         counter+=1
+#     return dbuserdata
 
 def qupdater(request):
     qdata = Questions.objects.all()
