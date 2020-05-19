@@ -1,6 +1,7 @@
 {% load timemod %}
 {% load static %}
 {% load cloudinary %}
+{% load like %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -122,7 +123,7 @@
                      <span id="question{{question.qid}}" style="margin-right:20px;">{{question.question_liked.count}}</span>
                    </div>
                {% endif %}
-               
+
              {{question.no_of_answers}}
              </div>
              <div class="message">
