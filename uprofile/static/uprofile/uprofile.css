@@ -12,8 +12,11 @@ body{
   align-items:center;
   height:max-content;
   padding: 4px 10px;
-    background: #303d5c;
-    color: #17a2b8;
+  background: #303d5c;
+  color: #17a2b8;
+  width:100%;
+  z-index:4;
+  top:0;
 }
 img {
   width:100px;
