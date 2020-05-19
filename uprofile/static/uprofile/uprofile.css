@@ -169,6 +169,7 @@ input[type = "file"] {
   display:flex;
   justify-content: center;
   align-items: center;
+  margin-top: 120px;
 }
 .main-details{
   display: grid;
