@@ -55,7 +55,13 @@ top:0;
    margin: 0;
 }
 
-
+.mainuprofile {
+  display: block;
+}
+.mainuprofile > img {
+  display: block;
+  margin: 0px auto;
+}
 
 .dropdown-content {
   display: none;
