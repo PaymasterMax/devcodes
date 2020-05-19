@@ -153,7 +153,7 @@ display: none;
                         display: inline;
                         cursor: pointer;
                         animation: bigUp .9s 0s ease-out forwards;">
-                        <span id="question{{question.qid}}">{{question.question_liked.count}}</span>
+                        <span id="question{{question.qid}}" style="margin-right:20px;">{{question.question_liked.count}}</span>
                       </div>
                 {% else %}
                     <div class="like">
@@ -169,7 +169,7 @@ display: none;
                       display: none;
                       cursor: pointer;
                       animation: bigUp .9s 0s ease-out forwards;">
-                      <span id="question{{question.qid}}">{{question.question_liked.count}}</span>
+                      <span id="question{{question.qid}}" style="margin-right:20px;">{{question.question_liked.count}}</span>
                     </div>
                 {% endif %}
               {% else %}
@@ -177,7 +177,7 @@ display: none;
                     <!-- <button type="button" class="likebtn" onclick="updatemonster({{question.qid}});" style="width: 30px; height: 40px;"> -->
                       <!-- <img src="{% static 'home/images/svgimages/empty love.svg' %}" alt="like" id="emptyLove"> -->
                       <img src="{% static 'home/images/svgimages/coloredlove.svg' %}" alt="like" id="Love">
-                      <span id="question{{question.qid}}">{{question.question_liked.count}}</span>
+                      <span id="question{{question.qid}}" style="margin-right:20px;">{{question.question_liked.count}}</span>
                     <!-- </button> -->
                     </div>
               {% endif %}
