@@ -20,7 +20,7 @@ img {
   position:fixed;
   width:100%;
   z-index:4;
-top:0;
+  top:0;
 }
 .nav-bar a{
   font-weight: 400;
