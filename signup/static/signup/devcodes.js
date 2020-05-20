@@ -117,7 +117,7 @@ else if(document.getElementById("hobby").value == "")
 	}
 
 // Verifcation
-function userauthentication(uid)
+function userauthentication()
 {
 	var xhttp = new XMLHttpRequest();
 	var user = document.getElementById("uname").value;

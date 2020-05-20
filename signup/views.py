@@ -91,7 +91,7 @@ def emailauthentication(request):
     try:
         email = request.POST['email']
     except Exception as e:
-        return HttpResponse("Null and void")
+        return HttpResponse(e)
 
     else:
         try:
