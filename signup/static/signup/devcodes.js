@@ -89,7 +89,7 @@ else if(document.getElementById("hobby").value == "")
 	{
 		var pass1 = document.getElementById("pass1").value;
 		var pass2 = document.getElementById("pass2").value;
-		var elpasser = document.getElementById("passwordm")
+		var elpasser = document.getElementById("pass")
 		if(pass1 != "" && pass2 != "")
 			{
 				if(pass1 == "" || pass2 == "")
