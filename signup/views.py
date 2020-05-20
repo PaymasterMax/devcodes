@@ -94,13 +94,14 @@ def emailauthentication(request):
         return HttpResponse("Null and void")
 
     else:
-        try:
-            signmodel.objects.get(email = email)
-        except Exception as e:
-            if v.validate_email(email):
-                return HttpResponse("false")
-            else:
-                return HttpResponse("Email not found")
-
-        else:
-            return HttpResponse("true")
+        return HttpResponse("true")
+        # try:
+        #     signmodel.objects.get(email = email)
+        # except Exception as e:
+        #     if v.validate_email(email):
+        #         return HttpResponse("false")
+        #     else:
+        #         return HttpResponse("Email not found")
+        #
+        # else:
+        #     return HttpResponse("true")
