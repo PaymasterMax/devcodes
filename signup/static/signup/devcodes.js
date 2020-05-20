@@ -145,7 +145,7 @@ function userauthentication(uid)
 	xhttp.send("username="+user);
 }
 
-	function emailauthentication(emid)
+	function emailauthentication()
 	{
 		var xhttp = new XMLHttpRequest();
 		var email = document.getElementById("ema").value;

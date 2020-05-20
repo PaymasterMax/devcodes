@@ -27,6 +27,8 @@ body{
 }
 .validation {
 	text-align: center;
+	display: block;
+	margin: 0px auto;
 }
 a{
 	color: #456;
