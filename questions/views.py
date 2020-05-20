@@ -6,7 +6,6 @@ from .models import Questions , Answers , QuestionLike as qlike
 from chatroom.models import ChatModel as chtb
 from chatroom.models import FeedBack as fd
 from django.http import JsonResponse , HttpResponse
-from django.core import serializers
 
 def questionsview(request):
     all_questions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted")
