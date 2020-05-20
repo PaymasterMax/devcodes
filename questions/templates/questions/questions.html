@@ -73,6 +73,7 @@
     <div class="links">
       <a href="{% url 'home:home' %}" >Home</a> |
       <a href="{% url 'peers:peers' %}">Peers</a>
+      <a href="{% url 'questions:myquestions' %}" class="personalize"> | My Questions</a>
       <a href="{% url 'chatroom:inbox' %}" class="personalize">| Inbox
         {% if userlog %}
           <i class="fa fa-envelope"> {{newmessage}}</i>
@@ -179,6 +180,7 @@
              {{question.no_of_answers}}
              </div>
              <div class="Click">
+            <a href="{% url 'questions:answers' question.qid %}"> Click to view replies</a>
              </div>
             </div>
           </div>
@@ -191,7 +193,7 @@
       <img src="{% static 'questions/images/x.svg' %}" alt="&times;" id="Xbtn">
       <!-- <button data-close-button class="close-button">&times;</button> -->
   </div>
-    <form class="" action="" method="post">
+    <form class="" action="{% url 'questions:askquestions' %}" method="post">
       {% csrf_token %}
     <div class="question">
 
@@ -247,6 +249,38 @@
 
     for(x=0;x<=length;x++){
     likeAct(likeBtn,liked,x);
+    }
+
+
+    function updatemonster(qid) {
+      document.getElementById("question"+qid.toString()).disabled = true;
+      $("#question"+qid.toString()).attr("disabled" , true);
+      try {
+          var xmlhttp = new XMLHttpRequest();
+      } catch (e) {
+        var xmlhttp = new ActiveXObject();
+      }
+      finally {
+        xmlhttp.open("POST" , "{% url 'questions:updatelikes' %}" , true);
+        xmlhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+        xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+        xmlhttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText)
+            if (data.is_logged) {
+              // $("#"+qid).text(data.counter)
+              $(".mytoast").css("display" , "block");
+              $(".mytoast").css("background-color" , "red");
+              $(".mytoast").css("z-index" , "5");
+              document.getElementById("question"+qid.toString()).innerHTML = data.counter;
+              // alert(data.liked);
+            } else {
+              $(location).attr("href" , "{% url 'login:login' %}")
+            }
+          }
+        }
+        xmlhttp.send("qid=" + qid);
+      }
     }
 
     // message updating
