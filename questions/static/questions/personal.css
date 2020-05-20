@@ -4,3 +4,6 @@
 .personal{
     max-width: 99%;
 }
+.column{
+    flex-direction: column;
+}

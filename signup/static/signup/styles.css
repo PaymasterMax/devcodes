@@ -1,17 +1,3 @@
-.js-loading *, .js-loading *:before, .js-loading *:after {
-	background-color: rgb(204, 72, 72);
-			animation-play-state: paused !important;
-  }
-
-
-	.myimg {
-	  width:60px;
-	  height:60px;
-	  border-radius:50%;
-	}
-	.myimg {
-	  font-size: 25px;
-	}
 *{
 	padding:0px;
 	margin:0px;
@@ -20,7 +6,11 @@
 	 Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	box-sizing:border-box;
 }
-
+img {
+  width:60px;
+  height:60px;
+  border-radius:50%;
+}
 body{
 	background-color: #fff;
 	background-image: url("images/city.jpg");
@@ -74,6 +64,7 @@ form{
 
 
 .bon{
+	max-width: 100%;
 	background-color: rgba(7, 7, 68, 0.833);
 	border: 1px solid #c0c0c0;
 	padding: 6px;
@@ -95,13 +86,6 @@ form{
 
 .bony{
 	padding:5px 20px 20px;
-	text-align: center;
-    color: white;
-    text-shadow: 0px 1px 4px black;
-}
-.bony h2{
-	font-weight: 500;
-
 }
 .bony h3{
 	color: white;
@@ -137,6 +121,9 @@ form{
 	color: #f00;
 	display: block;
 	text-align: center;
+}
+.inputlabelmod {
+	color: #fff;
 }
 
 .keepme
@@ -178,6 +165,7 @@ input[type="submit"]:hover{
 .dropdown{
 	position: relative;
 	display: inline-block;
+	float: right;
 	margin-right: 5px;
 }
 
@@ -258,7 +246,7 @@ nav{
 }
 
 .card{
-	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.26);
 	padding: 16px;
 	text-align:center;
 	font-family:arial;
@@ -272,6 +260,17 @@ nav{
 	border-right: 1px solid #c0c0c0;
 	font-weight: bold;
 	font-size: 0.8em;
+}
+.pass{
+	display:none;
+	color: #fc5a55;
+}
+.miss{
+	display:none;
+	color: #ff5851;
+}
+.showAlert{
+	display:block;
 }
 @media screen and (max-width: 600px){
 	.column{
@@ -295,6 +294,7 @@ nav{
 }
 #profile{
 	width: 200px;
+	height: 100px;
 }
 
 .welcome{
