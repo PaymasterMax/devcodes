@@ -119,7 +119,6 @@ def updatelikes(request):
     else:
         Qid = request.POST["qid"]
         checklike(userdetails.uid , Qid)
-        # if not checklike(userdetails.uid , Qid):
         qlike.objects.create(Qid_id = Qid , luid_id = userdetails.uid)
         is_logged = True
         liked = "question liked"
