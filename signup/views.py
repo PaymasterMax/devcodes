@@ -72,7 +72,7 @@ def userauthentication(request):
         uname = request.POST['username']
 
     except Exception as e:
-        return HttpResponse(e)
+        pass
 
     else:
         try:
@@ -91,9 +91,7 @@ def emailauthentication(request):
     try:
         email = request.POST['email']
     except Exception as e:
-        print(e)
-        print("\n\n\n\n\n")
-        return e
+        pass
 
     else:
         try:

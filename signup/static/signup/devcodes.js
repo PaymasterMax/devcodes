@@ -116,64 +116,6 @@ else if(document.getElementById("hobby").value == "")
 			}
 	}
 // Verifcation
-function userauthentication(){
-	var xhttp = new XMLHttpRequest();
-	var user = document.getElementById("uname").value;
-	xhttp.onreadystatechange = function()
-	{
-		if(this.readyState == 4 && this.status == 200)
-		{
-			if(this.responseText == "true")
-				{
-					document.getElementById("usernamevalid").innerHTML = "username taken";
-					document.getElementById("usernamevalid").style.color = "#f00";
-					// document.getElementById("submit").disabled=true;
-				}
-
-				else {
-					document.getElementById("usernamevalid").innerHTML = "username available";
-					document.getElementById("usernamevalid").style.color = "#7fa";
-					// document.getElementById("submit").enabled=true;
-				}
-		}
-	}
-	xhttp.open("POST" , "{% url 'signup:userauthentication' %}" , true);
-	xhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
-	xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
-	xhttp.send("username="+user);
-}
-
-	function emailauthentication(){
-		var xhttp = new XMLHttpRequest();
-		var email = document.getElementById("ema").value;
-		xhttp.onreadystatechange = function(){
-			if(this.readyState == 4 && this.status == 200)
-			{
-				if(this.responseText == "true")
-				{
-					document.getElementById("emailvalid").innerHTML = "Email in use by another account";
-					document.getElementById("emailvalid").style.color = "#f00";
-					// document.getElementById("submit").disabled=true;
-				}
-
-				else if(this.responseText == "false"){
-					document.getElementById("emailvalid").innerHTML = "email available";
-					document.getElementById("emailvalid").style.color = "#7fa";
-					// document.getElementById("submit").enabled=true;
-				}
-				else{
-					document.getElementById("emailvalid").innerHTML = this.responseText;
-					document.getElementById("emailvalid").style.color = "#f00f00";
-				}
-			}
-		}
-		xhttp.open("POST" , "/signup/emailauthentication/" , true);
-		xhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
-		xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
-		xhttp.send("email="+email);
-	}
-
-
 function showpass() {
 	var elpass = $(".passfield");
 	var stats = $("#stats")
