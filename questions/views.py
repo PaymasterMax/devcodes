@@ -98,16 +98,10 @@ def checklike(udet , qid):
     except Exception as e:
         return False
     else:
-        try:
-            print(checkdata.question_liked)
-            if udet in checkdata.question_liked.luid_id:
-                return True
-            else:
-                return False
-        except Exception as e:
-            pass
+        if udet in checkdata.question_liked.luid_id:
+            return True
         else:
-            pass
+            return False
 
 # update likes
 def updatelikes(request):
@@ -118,7 +112,7 @@ def updatelikes(request):
         liked = "question not liked"
     else:
         Qid = request.POST["qid"]
-        checklike(userdetails.uid , Qid)
+        # if not checklike(userdetails.uid , Qid):
         qlike.objects.create(Qid_id = Qid , luid_id = userdetails.uid)
         is_logged = True
         liked = "question liked"
@@ -131,35 +125,6 @@ def feed(request):
     feed = request.POST["feedback"]
     fd.objects.create(feedback_sender = user_mail, feedback = feed)
     return JsonResponse({"feedback":True})
-
-
-def timemodifier(timeobj):
-    time_lapse = int((timezone.now()-timeobj).total_seconds())
-
-    # test for days
-    if time_lapse <= 432000 and time_lapse >= 86400:
-
-        return str(int(time_lapse/86400)) + " day(s) ago"
-
-    elif time_lapse<86400:
-
-        # test for hours
-        if time_lapse>=3600:
-            return str(int(time_lapse/3600)) + " hours ago"
-
-            # test for minutes
-        elif time_lapse<3600 and time_lapse>60:
-            return str(int(time_lapse/60)) + " minutes ago"
-
-        # test for seconds
-        else:
-            return str(time_lapse) + " seconds ago"
-
-
-    else:
-        return timeobj
-
-
 # def dataconverter(qdata):
 #     dbuserdata = dict()
 #     counter = 0
