@@ -97,28 +97,15 @@
 
                {% if mydetails.uid|likey:question %}
                      <div class="like">
-                       <img src="{% static 'home/images/svgimages/coloredlove.svg' %}" alt="like" id="Love" style="width: 20px;
-                       margin: 5px;
-                       height: 20px;
-                       display: inline;
-                       cursor: pointer;
-                       animation: bigUp .9s 0s ease-out forwards;">
+                       <img src="{% static 'home/images/svgimages/coloredlove.svg' %}" alt="like" id="Love" style="width: 20px;margin: 5px;height: 20px;display: inline;cursor: pointer;animation: bigUp .9s 0s ease-out forwards;">
                        <span id="question{{question.qid}}" style="margin-right:20px;">{{question.question_liked.count}}</span>
                      </div>
                {% else %}
                    <div class="like">
-                     <img src="{% static 'home/images/svgimages/emptylove.svg' %}" alt="like" id="emptyLove" onclick="updatemonster({question,qid});"
-                     style="width:20px;
-                     height: 20px;
-                     margin: 5px;
-                     cursor: pointer;">
+                     <img src="{% static 'home/images/svgimages/emptylove.svg' %}" alt="like" id="emptyLove" onclick="updatemonster({{question,qid}});"
+                     style="width:20px;height: 20px;margin: 5px;cursor: pointer;">
                      <img src="{% static 'home/images/svgimages/coloredlove.svg' %}" alt="like" id="Love"
-                     style="width: 20px;
-                     margin: 5px;
-                     height: 20px;
-                     display: none;
-                     cursor: pointer;
-                     animation: bigUp .9s 0s ease-out forwards;">
+                     style="width: 20px;margin: 5px;height: 20px;display: none;cursor: pointer;animation: bigUp .9s 0s ease-out forwards;">
                      <span id="question{{question.qid}}" style="margin-right:20px;">{{question.question_liked.count}}</span>
                    </div>
                {% endif %}
