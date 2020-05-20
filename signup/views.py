@@ -88,20 +88,19 @@ def userauthentication(request):
 
 # email is in use?
 def emailauthentication(request):
-    # try:
-    #     email = request.POST['email']
-    # except Exception as e:
-    #     return HttpResponse("Null and void")
-    #
-    # else:
-    return HttpResponse("true")
-        # try:
-        #     signmodel.objects.get(email = email)
-        # except Exception as e:
-        #     if v.validate_email(email):
-        #         return HttpResponse("false")
-        #     else:
-        #         return HttpResponse("Email not found")
-        #
-        # else:
-        #     return HttpResponse("true")
+    try:
+        email = request.POST['email']
+    except Exception as e:
+        return HttpResponse("Null and void")
+
+    else:
+        try:
+            signmodel.objects.get(email = email)
+        except Exception as e:
+            if v.validate_email(email):
+                return HttpResponse("false")
+            else:
+                return HttpResponse("Email not found")
+
+        else:
+            return HttpResponse("true")
