@@ -189,15 +189,14 @@
   </div>
   <div class = "main-question" class="modal"  id="modal">
     <div class="pose">
-      Ask a Question
+        Ask a Question
       <img src="{% static 'questions/images/x.svg' %}" alt="&times;" id="Xbtn">
       <!-- <button data-close-button class="close-button">&times;</button> -->
   </div>
     <form class="" action="{% url 'questions:askquestions' %}" method="post">
       {% csrf_token %}
     <div class="question">
-
-          <textarea rows="7" cols="38"  placeholder="Type a question.." name="question"  id="question"
+          <textarea rows="7" cols="38"  placeholder="Type a question..." name="question"  id="question"
             required style="
           background:rgba(255, 255, 255, 0.912);
                border-radius: 3px;
@@ -206,7 +205,7 @@
                width:100%;" maxlength="1025"></textarea>
     </div>
     <div class="languages">
-        <input type="text" maxlength="15" name="language" required placeholder="Mention programming language(s).." id="question" size="33"
+        <input type="text" maxlength="15" name="language" required placeholder="Mention programming language(s)..." id="question" size="33"
         style="
         border-radius: 3px;
         background: white;
@@ -223,10 +222,10 @@
 </div>
   <div id="overlay"></div>
    <button data-modal-target="#modal" class="openButton">
-    Ask
+     Ask
   </button>
   <a href="#upPart"><img src="{% static 'questions/images/up.svg' %}" alt="up_key" class="up-icon"  id="up">
-    </a>
+  </a>
     <script type="text/javascript">
 
     const likeBtn = document.querySelectorAll('#emptyLove');
@@ -261,6 +260,20 @@
         var xmlhttp = new ActiveXObject();
       }
       finally {
+        xmlhttp.open("POST" , "{% url 'questions:updatelikes' %}" , true);
+        xmlhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+        xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+        xmlhttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText)
+            if (data.is_logged) {
+              document.getElementById("question"+qid.toString()).innerHTML = data.counter;
+            } else {
+              $(location).attr("href" , "{% url 'login:login' %}")
+            }
+          }
+        }
+        xmlhttp.send("qid=" + qid);
       }
     }
 
