@@ -56,7 +56,6 @@ def answersview(request , Qid):
         newmessage = chtb.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False).count()
         return render(request , "questions/answers.html" , context = {"userdetails":userdetails , "answers_form":answers_form , "Qid":Qid , "allanswers":allanswers , "question_info":question_info , "newmessage":newmessage , "userlog":userlog})
 
-
 def askquestionsview(request):
     if request.method == "POST":
         try:
@@ -92,17 +91,6 @@ def update_answers(request , Qid):
     else:
         return redirect("/questions/answers/{}/".format(Qid))
 
-def checklike(udet , qid):
-    try:
-        checkdata = Questions.objects.get(qid = qid)
-    except Exception as e:
-        return False
-    else:
-        if udet in checkdata.question_liked.luid_id:
-            return True
-        else:
-            return False
-
 # update likes
 def updatelikes(request):
     try:
@@ -112,7 +100,6 @@ def updatelikes(request):
         liked = "question not liked"
     else:
         Qid = request.POST["qid"]
-        # if not checklike(userdetails.uid , Qid):
         qlike.objects.create(Qid_id = Qid , luid_id = userdetails.uid)
         is_logged = True
         liked = "question liked"
