@@ -167,7 +167,7 @@ function userauthentication(){
 				}
 			}
 		}
-		xhttp.open("POST" , "/signup/emailauthentication" , true);
+		xhttp.open("POST" , "/signup/emailauthentication/" , true);
 		xhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
 		xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
 		xhttp.send("email="+email);
