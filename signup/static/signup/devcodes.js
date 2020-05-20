@@ -97,12 +97,14 @@ else if(document.getElementById("hobby").value == "")
 					{
 						document.getElementById("pass1").innerHTML = "";
 						document.getElementById("pass2").innerHTML = "";
+						emp.setAttribute("style" , "display:block")
 						emp.innerHTML = "password cannot be empty";
 					}
 				else if(pass1 != pass2)
 					{
 						document.getElementById("pass1").innerHTML = "";
 						document.getElementById("pass2").innerHTML = "";
+						mis.setAttribute("style" , "display:block")
 						mis.innerHTML = "Password mismatch";
 					}
 
@@ -111,6 +113,7 @@ else if(document.getElementById("hobby").value == "")
 						{
 							document.getElementById("pass2").innerHTML = "";
 							document.getElementById("pass1").innerHTML = "";
+							emp.setAttribute("style" , "display:block")
 							emp.innerHTML = "Short password";
 						}
 					}
