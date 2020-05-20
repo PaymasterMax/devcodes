@@ -107,6 +107,74 @@
 </div>
   <div class="page-title"  id="upPart">Questions page</div>
   <div class="main-window">
+
+  <div class="person-holder" id="person-holder">
+    {% for question in Questions %}
+
+    <div class="oneQuestion">
+          <div class="profile-pic">
+          <!-- <img src = "{{ question.quid.profilepic.url }}" alt="profile"> -->
+          
+          </div>
+          <div class="question-container">
+            <div class="user-details-first-row">
+              {{question.quid.username}}   @
+              {{question.time_posted | timemodifier}}
+            </div>
+            <div class="question-content">
+              <div class="question-text">{{question.question}}</div>
+            <div class="languages-tagged">
+              {{question.language}}
+              </div>
+            </div>
+            <div class="reply-section">
+              {% if userlog %}
+                {% if mydetails.uid|likey:question %}
+                      <div class="like">
+                        <!-- <img src="{% static 'home/images/svgimages/empty love.svg' %}" alt="like" id="emptyLove"> -->
+                        <img src="{% static 'home/images/svgimages/coloredlove.svg' %}" alt="like" class="colored" id="Love" style="width: 20px;
+                        margin: 5px;
+                        height: 20px; cursor: pointer;
+                        animation: bigUp .9s 0s ease-out forwards;">
+                        <span id="question{{question.qid}}" style="margin-right:20px;">{{question.question_liked.count}}</span>
+                      </div>
+                {% else %}
+                    <div class="like">
+                      <img src="{% static 'home/images/svgimages/emptylove.svg' %}" alt="like" id="emptyLove" onclick="updatemonster({question.qid});"
+                      style="width:20px;
+                      height: 20px;
+                      margin: 5px;
+                      cursor: pointer;">
+                      <img src="{% static 'home/images/svgimages/coloredlove.svg' %}" alt="like" id="Love"
+                      style="width: 20px;
+                      margin: 5px;
+                      height: 20px;
+                      cursor: pointer;
+                      animation: bigUp .9s 0s ease-out forwards;">
+                      <span id="question{{question.qid}}" style="margin-right:20px;">{{question.question_liked.count}}</span>
+                    </div>
+                {% endif %}
+              {% else %}
+                    <div class="like">
+                    <!-- <button type="button" class="likebtn" onclick="updatemonster({{question.qid}});" style="width: 30px; height: 40px;"> -->
+                      <!-- <img src="{% static 'home/images/svgimages/empty love.svg' %}" alt="like" id="emptyLove"> -->
+                      <img src="{% static 'home/images/svgimages/coloredlove.svg' %}" class="colored" alt="like" id="Love">
+                      <span id="question{{question.qid}}" style="margin-right:20px;">{{question.question_liked.count}}</span>
+                    <!-- </button> -->
+                    </div>
+              {% endif %}
+             <div class="message">
+             <img src="{% static 'questions/images/message.svg' %}" alt="message icon" style="margin-left:20px;">
+             {{question.no_of_answers}}
+             </div>
+             <div class="Click">
+            <a href="{% url 'questions:answers' question.qid %}"> Click to view replies</a>
+             </div>
+            </div>
+          </div>
+    </div>
+    {% endfor %}
+  </div>
   <div class = "main-question" class="modal"  id="modal">
     <div class="pose">
         Ask a Question
