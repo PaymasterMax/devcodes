@@ -115,10 +115,8 @@ else if(document.getElementById("hobby").value == "")
 					}
 			}
 	}
-
 // Verifcation
-function userauthentication()
-{
+function userauthentication(){
 	var xhttp = new XMLHttpRequest();
 	var user = document.getElementById("uname").value;
 	xhttp.onreadystatechange = function()
@@ -138,15 +136,14 @@ function userauthentication()
 					// document.getElementById("submit").enabled=true;
 				}
 		}
-	};
+	}
 	xhttp.open("POST" , "{% url 'signup:userauthentication' %}" , true);
 	xhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
 	xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
 	xhttp.send("username="+user);
 }
 
-	function emailauthentication()
-	{
+	function emailauthentication(){
 		var xhttp = new XMLHttpRequest();
 		var email = document.getElementById("ema").value;
 		xhttp.onreadystatechange = function(){
@@ -164,15 +161,12 @@ function userauthentication()
 					document.getElementById("emailvalid").style.color = "#7fa";
 					// document.getElementById("submit").enabled=true;
 				}
-
 				else{
 					document.getElementById("emailvalid").innerHTML = this.responseText;
 					document.getElementById("emailvalid").style.color = "#f00f00";
 				}
 			}
-		};
-		// xhttp.responseType = "json";
-
+		}
 		xhttp.open("POST" , "{% url 'signup:emailauthentication' %}" , true);
 		xhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
 		xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");

@@ -91,6 +91,8 @@ def emailauthentication(request):
     try:
         email = request.POST['email']
     except Exception as e:
+        print(e)
+        print("\n\n\n\n\n")
         return e
 
     else:
