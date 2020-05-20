@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="{% static 'home/icon.css' %}">
     <style>
       /* animating the like button*/
-     
         .initail{
         display: inline;
         }
@@ -230,24 +229,6 @@
     </a>
     <script type="text/javascript">
 
-    $(document).ready(function(){
-      try {
-          var xmlhttp = new XMLHttpRequest();
-      } catch (e) {
-        var xmlhttp = new ActiveXObject();
-      }
-      finally {
-        xmlhttp.open("POST" , "{% url 'questions:qupdater' %}" , true);
-        xmlhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
-        xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
-        xmlhttp.onreadystatechange = function () {
-          if (this.readyState == 4 && this.status == 200) {
-
-          }
-        }
-        xmlhttp.send();
-      }
-    });
     const likeBtn = document.querySelectorAll('#emptyLove');
     const liked = document.querySelectorAll('#Love');
     console.log(likeBtn.length);
