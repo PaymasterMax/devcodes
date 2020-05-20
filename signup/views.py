@@ -91,12 +91,11 @@ def emailauthentication(request):
     try:
         email = request.POST['email']
     except Exception as e:
-        pass
+        return HttpResponse("Null and void")
 
     else:
         try:
             signmodel.objects.get(email = email)
-
         except Exception as e:
             if v.validate_email(email):
                 return HttpResponse("false")

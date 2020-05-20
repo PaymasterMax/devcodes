@@ -9,7 +9,6 @@
 	<link rel="stylesheet" href="{% static 'signup/styles.css' %}"/>
 	<link rel="stylesheet" href="{% static 'home/spinner.css' %}">
 	<title>DevCodes | signup </title>
-
 </head>
 <body>
 	<!-- Begining of spinner -->
@@ -23,7 +22,6 @@
 	<div class="bon">
 		<div class="bony">
 			<form action="{% url 'signup:signup' %}" method="post" enctype="multipart/form-data" onabort="cancel()">
-
 				<h2>Join DevCodes</h2>
 					{% for error in error_log %}
 					<label class="inputlabel">
@@ -44,7 +42,6 @@
 		    required  class="input" onchange="passwordmaster(pass1)">
 		    <label id="shortPass" class="pass">* short password * </label>
 
-
 				<!-- <input type="password" placeholder="confirm password" name="pass2" id="pass2" class="input passfield" onchange="passwordmaster(pass2)" required> -->
 				<input type="password" placeholder="confirm password" name="pass2" id="pass2"
 		    class="input" onchange="passwordmaster(pass2)" required>
@@ -58,25 +55,15 @@
 					<!-- <i class="" id="submit"></i> -->
 					<i class="" id="spin"></i>
 				</button>
-
-
 			</form>
-
 				<p style="text-align:center">
 					<span>Already have an account?</span>
 						<a class="link" href="{% url 'login:login' %}">
 						Sign in
 					</a>
 				</p>
-
-
 	</div>
 </div>
-
-		<footer>
-
-	</footer>
 	<script src="{% static 'signup/devcodes.js' %}" charset="utf-8"></script>
-
 </body>
 </html>

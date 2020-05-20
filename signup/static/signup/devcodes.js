@@ -149,8 +149,7 @@ function userauthentication(uid)
 	{
 		var xhttp = new XMLHttpRequest();
 		var email = document.getElementById("ema").value;
-		xhttp.onreadystatechange = function()
-		{
+		xhttp.onreadystatechange = function(){
 			if(this.readyState == 4 && this.status == 200)
 			{
 				if(this.responseText == "true")
