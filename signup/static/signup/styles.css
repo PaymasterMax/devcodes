@@ -267,10 +267,12 @@ nav{
 .pass{
 	display:none;
 	color: #fc5a55;
+	text-align: center;
 }
 .miss{
 	display:none;
 	color: #ff5851;
+	text-align: center;
 }
 .showAlert{
 	display:block;
