@@ -19,8 +19,8 @@
 
           // end of home icon
 
-    const initailLike = document.getElementById('initial');
-    const finalLike = document.getElementById('final');
+    const initailLike = document.getElementById('emptyLove');
+    const finalLike = document.getElementById('Love');
     const holder = document.querySelector('.like');
 
   //   holder.addEventListener('click',function(){
