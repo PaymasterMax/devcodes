@@ -41,26 +41,6 @@
           for(x=0;x<=length;x++){
           likeAct(emptyLikeBtn,Liked,x);
           }
-
-          // end of anim
-    const initailLike = document.getElementById('emptyLove');
-    const finalLike = document.getElementById('Love');
-    const holder = document.querySelector('.like');
-
-  //   holder.addEventListener('click',function(){
-  // initailLike.classList.toggle('clicked');
-  // finalLike.classList.toggle('clicked');
-  //   });
-    holder.addEventListener('click',function(){
-  if(initailLike.classList.contains('clicked')){
-    finalLike.classList.add('showClicked');
-    initailLike.classList.remove('clicked');
-  }
-  else{
-    initailLike.classList.add('clicked');
-    finalLike.classList.remove('showClicked');
-  }
-    });
   // function fr shwing up icn
     var up=document.getElementById('up');
     window.onscroll=function(){
