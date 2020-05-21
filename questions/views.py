@@ -102,7 +102,7 @@ def checklikes(qid , uid):
         else:
             print("\n\n\n\n\n\n")
             print("uid not in data")
-            print qdata
+            print (qdata)
 
 
 # update likes
