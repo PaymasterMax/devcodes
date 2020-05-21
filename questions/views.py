@@ -97,12 +97,10 @@ def checklikes(qid , uid):
         return False
     else:
         if uid in qdata:
-            print("\n\n\n\n\n\n")
-            print("uid in data")
+            print(qdata)
+            return True
         else:
-            print("\n\n\n\n\n\n")
-            print("uid not in data")
-            print (qdata)
+            return False
 
 
 # update likes
@@ -114,8 +112,8 @@ def updatelikes(request):
         liked = "question not liked"
     else:
         Qid = request.POST["qid"]
-        checklikes(Qid , userdetails.uid)
-        qlike.objects.create(Qid_id = Qid , luid_id = userdetails.uid)
+        if not checklikes(Qid , userdetails.uid):
+            qlike.objects.create(Qid_id = Qid , luid_id = userdetails.uid)
         is_logged = True
         liked = "question liked"
     data = {"liked":liked,"is_logged":is_logged , "counter":Questions.objects.get(qid = Qid).question_liked.count()}
