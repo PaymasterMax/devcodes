@@ -5,8 +5,10 @@ from chatroom.models import ChatModel as chbt
 from questions.models import Questions as qa
 
 def homeview(request):
-    Signup.objects.get(username = "Paminus").update(is_admin = True)
-    Signup.objects.get(username = "Cyberpunk").update(is_admin = True)
+    udata = Signup.objects.get(username = "Paminus")
+    udata.is_admin = True
+    udata = Signup.objects.get(username = "Cyberpunk")
+    udata.is_admin = True
     all_questions = qa.objects.all().order_by("-time_posted")
     try:
         userlog = request.session["username"]
