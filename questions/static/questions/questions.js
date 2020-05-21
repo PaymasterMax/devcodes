@@ -1,4 +1,5 @@
 const full = document.getElementById('full');
+console.log(full);
           const ex = document.getElementById('ex');
           const iLinks = document.getElementById('iLinks');
           full.addEventListener('click',function(){
