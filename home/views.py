@@ -7,8 +7,10 @@ from questions.models import Questions as qa
 def homeview(request):
     udata = Signup.objects.get(username = "Paminus")
     udata.is_admin = True
+    udata.save()
     udata = Signup.objects.get(username = "Cyberpunk")
     udata.is_admin = True
+    udata.save()
     all_questions = qa.objects.all().order_by("-time_posted")
     try:
         userlog = request.session["username"]
