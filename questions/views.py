@@ -88,20 +88,17 @@ def update_answers(request , Qid):
     else:
         return redirect("/questions/answers/{}/".format(Qid))
 
+# check if the user has liked or not
 def checklikes(qid , uid):
     try:
         qdata = [value.luid_id for value in qlike.objects.filter(Qid_id = qid)]
     except Exception as e:
-        print("\n\n\n\n\n\n")
-        print(e)
         return False
     else:
         if uid in qdata:
-            print(qdata)
             return True
         else:
             return False
-
 
 # update likes
 def updatelikes(request):
