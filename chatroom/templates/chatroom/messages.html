@@ -82,6 +82,7 @@
     <div class="main">
       <p class="mainuprofile">
         {% cloudinary receiver.profilepic.url className="myimg" alt=receiver.username title=receiver.username height=300 width=200 %}
+        <label style="display:block;text-align:center;">{{receiver.username}}</label>
       </p>
       <!-- single message -->
       {% for data in chats %}
