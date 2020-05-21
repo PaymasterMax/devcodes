@@ -90,9 +90,9 @@ def update_answers(request , Qid):
 
 # check if the user has liked or not
 def checklikes(updatelikes):
-    uid = Signup.objects.get(username = request.session['username']).uid
     def wrapper(request):
         try:
+            uid = Signup.objects.get(username = request.session['username']).uid
             qdata = [value.luid_id for value in qlike.objects.filter(Qid_id = request.POST["qid"])]
         except Exception as e:
             return False
