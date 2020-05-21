@@ -22,8 +22,8 @@ console.log(full);
           //animating the like btn
           const emptyLikeBtn = document.querySelectorAll('#emptyLove');
           const Liked = document.querySelectorAll('#Love');
-          console.log(emptyLikeBtn.length);
-          console.log(Liked);
+          // console.log(emptyLikeBtn.length);
+          // console.log(Liked);
           let length = emptyLikeBtn.length - 1;
 
 
