@@ -1,5 +1,4 @@
- // home icon
-   const full = document.getElementById('full');
+const full = document.getElementById('full');
           const ex = document.getElementById('ex');
           const iLinks = document.getElementById('iLinks');
           full.addEventListener('click',function(){
