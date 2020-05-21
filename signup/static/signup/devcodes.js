@@ -44,41 +44,45 @@ function spinnermanager()
 function form_manager()
 {
 	var flag = false;
-
+	var favlang = document.getElementById("favlang");
 	if(document.getElementById("uname").value == "")
 	{
 
 		alert("Username blank");
+		favlang.setAttribute("style" , "display:none;");
 	}
 
 	else if(document.getElementById("phone").value == "")
 	{
 
 		alert("phone blank");
+		favlang.setAttribute("style" , "display:none;");
 	}
 	else if(document.getElementById("ema").value == "")
 	{
 
 		alert("email blank");
+		favlang.setAttribute("style" , "display:none;");
 	}
 	else if(document.getElementById("pass1").value == "" || document.getElementById("pass2").value == "")
 	{
 
 		alert("pass1 blank");
+		favlang.setAttribute("style" , "display:none;");
 	}
 
 else if(document.getElementById("hobby").value == "")
 	{
-
-		alert("hobby blank");
+		favlang.setAttribute("style" , "display:block;");
 	}
 	else if(document.getElementById("profile").value == "")
 	{
 
 		alert("profile blank");
+		favlang.setAttribute("style" , "display:none;");
 	}
 	else {
-
+		favlang.setAttribute("style" , "display:none;");
 	}
 	spinnermanager();
 }
@@ -94,6 +98,7 @@ else if(document.getElementById("hobby").value == "")
 						document.getElementById("pass2").innerHTML = "";
 						emp.setAttribute("style" , "display:block;margin:0px auto")
 						emp.innerHTML = "password cannot be empty";
+						mis.setAttribute("style" , "display:none;");
 					}
 				else if(pass1 != pass2)
 					{
@@ -101,6 +106,7 @@ else if(document.getElementById("hobby").value == "")
 						document.getElementById("pass2").innerHTML = "";
 						mis.setAttribute("style" , "display:block;margin:0px auto")
 						mis.innerHTML = "Password mismatch";
+						emp.setAttribute("style" , "display:none;");
 					}
 
 				else if(pass1.length < 10)
@@ -108,6 +114,7 @@ else if(document.getElementById("hobby").value == "")
 							document.getElementById("pass2").innerHTML = "";
 							document.getElementById("pass1").innerHTML = "";
 							emp.setAttribute("style" , "display:block;margin:0px auto")
+							mis.setAttribute("style" , "display:none;");
 							emp.innerHTML = "Short password";
 						}
 						else{

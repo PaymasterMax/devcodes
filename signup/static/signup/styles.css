@@ -274,6 +274,11 @@ nav{
 	color: #ff5851;
 	text-align: center;
 }
+.favlang{
+	display:none;
+	color: #ff5851;
+	text-align: center;
+}
 .showAlert{
 	display:block;
 }
