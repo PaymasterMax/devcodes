@@ -67,6 +67,7 @@
            {% cloudinary user.profilepic.url className="myimg" alt=user.username title=user.username height=200 width=100 %}
 
            <div class="user-dropdown">
+             <a href="{% url 'profile:update' %}">Edit profile</a>
              <a href="{% url 'login:logout' %}">
                Log out
              </a>
