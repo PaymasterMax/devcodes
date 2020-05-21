@@ -14,8 +14,6 @@ function removeShort(){
 	shortPass.classList.remove('showAlert');
 }
 
-
-
  // Listen for when everything has loaded
  window.addEventListener("load", removePage, false);
         const loader = document.getElementById('ld');
@@ -85,16 +83,14 @@ else if(document.getElementById("hobby").value == "")
 	spinnermanager();
 }
 
-	function passwordmaster()
-	{
+	function passwordmaster(){
 		var pass1 = document.getElementById("pass1").value;
 		var pass2 = document.getElementById("pass2").value;
 		var emp = document.getElementById("shortPass")
 		var mis = document.getElementById("mismatch")
 		if(pass1 != "" && pass2 != "")
 			{
-				if(pass1 == "" || pass2 == "")
-					{
+				if(pass1 == "" || pass2 == ""){
 						document.getElementById("pass1").innerHTML = "";
 						document.getElementById("pass2").innerHTML = "";
 						emp.setAttribute("style" , "display:block;margin:0px auto")
@@ -108,17 +104,19 @@ else if(document.getElementById("hobby").value == "")
 						mis.innerHTML = "Password mismatch";
 					}
 
-				else {
-					if(pass1.length < 10)
+				else if(pass1.length < 10)
 						{
 							document.getElementById("pass2").innerHTML = "";
 							document.getElementById("pass1").innerHTML = "";
 							emp.setAttribute("style" , "display:block;margin:0px auto")
 							emp.innerHTML = "Short password";
 						}
+						else{
+							emp.setAttribute("style" , "display:none;");
+							mis.setAttribute("style" , "display:none;");
+						}
 					}
-			}
-	}
+}
 // Verifcation
 function showpass() {
 	var elpass = $(".passfield");
