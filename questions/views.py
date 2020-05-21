@@ -90,7 +90,7 @@ def update_answers(request , Qid):
 
 def checklikes(qid , uid):
     try:
-        qdata = Questions.objects.get(qid = qid).question_liked.luid_id
+        qdata = qlike.objects.filter(Qid_id = qid).luid_id
     except Exception as e:
         print("\n\n\n\n\n\n")
         print(e)
