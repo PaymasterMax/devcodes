@@ -88,6 +88,23 @@ def update_answers(request , Qid):
     else:
         return redirect("/questions/answers/{}/".format(Qid))
 
+def checklikes(qid , uid):
+    try:
+        qdata = Questions.objects.get(qid = qid).question_liked.luid_id
+    except Exception as e:
+        print("\n\n\n\n\n\n")
+        print(e)
+        return False
+    else:
+        if uid in qdata:
+            print("\n\n\n\n\n\n")
+            print("uid in data")
+        else:
+            print("\n\n\n\n\n\n")
+            print("uid not in data")
+            print qdata
+
+
 # update likes
 def updatelikes(request):
     try:
@@ -97,6 +114,7 @@ def updatelikes(request):
         liked = "question not liked"
     else:
         Qid = request.POST["qid"]
+        checklikes(Qid , userdetails.uid)
         qlike.objects.create(Qid_id = Qid , luid_id = userdetails.uid)
         is_logged = True
         liked = "question liked"
