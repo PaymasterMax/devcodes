@@ -89,34 +89,32 @@ def update_answers(request , Qid):
         return redirect("/questions/answers/{}/".format(Qid))
 
 # check if the user has liked or not
-def checklikes(updatelikes):
-    def wrapper(request):
-        try:
-            uid = Signup.objects.get(username = request.session['username']).uid
-            qdata = [value.luid_id for value in qlike.objects.filter(Qid_id = request.POST["qid"])]
-        except Exception as e:
-            return False
+def checklikes(qid , uid):
+    try:
+        qdata = [value.luid_id for value in qlike.objects.filter(Qid_id = qid)]
+    except Exception as e:
+        return False
+    else:
+        if uid in qdata:
+            return True
         else:
-            if uid in qdata:
-                updatelikes(request)
-            else:
-                return False
+            return False
 
 # update likes
-@checklikes
 def updatelikes(request):
     try:
-        uid = Signup.objects.get(username = request.session['username']).uid
+        userdetails = Signup.objects.get(username = request.session['username'])
     except Exception as e:
-        liked = "Question not liked"
         is_logged = False
+        liked = "question not liked"
     else:
-        liked = "Question liked"
+        Qid = request.POST["qid"]
+        if not checklikes(Qid , userdetails.uid):
+            qlike.objects.create(Qid_id = Qid , luid_id = userdetails.uid)
         is_logged = True
-        qlike.objects.create(Qid_id = Qid , luid_id = uid)
-    finally:
-        data = {"liked":liked,"is_logged":is_logged , "counter":Questions.objects.get(qid = Qid).question_liked.count()}
-        return JsonResponse(data)
+        liked = "question liked"
+    data = {"liked":liked,"is_logged":is_logged , "counter":Questions.objects.get(qid = Qid).question_liked.count()}
+    return JsonResponse(data)
 
 
 def feed(request):
