@@ -193,7 +193,6 @@
           var xmlhttp = new ActiveXObject();
         } finally {
           xmlhttp.onreadystatechange = function(){
-            alert("Hello")
             if (this.readyState ==4 && this.static==200) {
               document.getElementById('newmessage').innerHTML = this.responseText;
             }
