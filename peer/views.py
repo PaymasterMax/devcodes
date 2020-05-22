@@ -36,7 +36,7 @@ def locatepeers(request):
         elif criteria=="language":
             indexed_peers = sp.objects.filter(hobby__icontains = searchterm).exclude(uid= current_user.uid)
             no_of_results = indexed_peers.count()
-            
+
         elif criteria=="location":
             indexed_peers = sp.objects.filter(location__icontains = searchterm).exclude(uid= current_user.uid)
             no_of_results = indexed_peers.count()
