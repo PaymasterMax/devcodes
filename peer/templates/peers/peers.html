@@ -168,7 +168,7 @@
                   }
                 }
               }
-              xmlhttp.open("POST" , "{% url 'chatroom:check_new_message' %}" , true);
+              xmlhttp.open("POST" , "{% url 'chatroom:newmessage' %}" , true);
               xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
               xmlhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
               xmlhttp.send();
