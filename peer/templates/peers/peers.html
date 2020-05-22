@@ -162,6 +162,7 @@
               xmlhttp.onreadystatechange = function(){
                 if (this.readyState ==4 && this.static==200) {
                   document.querySelectorAll(".newmessage").innerHTML = this.responseText;
+                  alert(this.responseText);
                 }
               }
               xmlhttp.open("POST" , "{% url 'chatroom:check_new_message' %}" , true);
