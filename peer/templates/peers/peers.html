@@ -63,7 +63,7 @@
           <img src="{% static 'questions/images/devtitle.svg' %}" class="myimg" alt="logo" style="width:100px; height:50px;">
         </div>
       <div class="user-profile">
-        <a> <i class="fa fa-bell">{{notifs}}</i> </a>
+        <a> <i class="fa fa-bell" id="notif1">{{notifs}}</i> </a>
            {% cloudinary user.profilepic.url className="myimg" alt=user.username title=user.username height=200 width=100 %}
 
            <div class="user-dropdown">
@@ -162,7 +162,10 @@
               xmlhttp.onreadystatechange = function(){
                 if (this.readyState ==4 && this.static==200) {
                   alert(this.responseText);
-                  document.getElementsByClassName('fa-envelope').innerHTML = this.responseText;
+                  var elemenets = document.getElementsByClassName('fa-envelope');
+                  for (var i = 0; i < elemenets.length; i++) {
+                    elemenets[i].innerHTML = this.responseText
+                  }
                 }
               }
               xmlhttp.open("POST" , "{% url 'chatroom:check_new_message' %}" , true);
