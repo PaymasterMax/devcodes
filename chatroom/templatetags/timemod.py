@@ -49,3 +49,9 @@ def msagecount(msguid , msguid2):
         if not x.bell_seen:
             unread+=1
     return unread
+
+
+
+@register.filter("username_modifier")
+def usermodifier(username):
+    return username.split(" ")[0]

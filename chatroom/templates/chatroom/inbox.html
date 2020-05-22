@@ -89,7 +89,7 @@
 
               <div class="profile queryprofile">
                 {% cloudinary msg.r2uid.profilepic.url className="myimg" title=msg.r2uid.username alt=msg.r2uid.username height=200 width=100 %}
-                <p>{{msg.r2uid.username}}</p>
+                <p>{{msg.r2uid.username|username_modifier}}</p>
               </div>
 
               <div class="answers-content">
