@@ -112,10 +112,4 @@ def updatemessage(request):
     return JsonResponse(all_messages)
 
 def check_new_message(request):
-    try:
-        userdetails = signmod.objects.get(username = request.session["username"])
-        messagecount = chatmod.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False).count()
-    except Exception as e:
-        return 10
-    else:
-        return 10
+    return 10
