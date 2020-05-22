@@ -54,4 +54,6 @@ def msagecount(msguid , msguid2):
 
 @register.filter("username_modifier")
 def usermodifier(username):
-    return username.split(" ")[0]
+    username.split(" ")[0]
+        efnjdfk
+    return username
