@@ -180,8 +180,8 @@
           alert(this.responseText);
         }
       }
-      xml.setRequestHeader("X-CSRFToken" , "{{ csrf_token }}");
       xml.open("POST" , "{% url 'profile:update' %}");
+      xml.setRequestHeader("X-CSRFToken" , "{{ csrf_token }}");
       xml.send();
     }
   </script>
