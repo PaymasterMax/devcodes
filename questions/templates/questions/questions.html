@@ -62,7 +62,7 @@
   <a href="{% url 'peers:peers' %}" class="Plinks">Peers</a>
   <a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox
   {% if userlog %}
-    <i class="fa fa-envelope" id="newmessage"> {{newmessage}}</i>
+    <i class="fa fa-envelope newmessage"> {{newmessage}}</i>
   {% endif %}
 </a>
 <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a>
@@ -76,7 +76,7 @@
       <a href="{% url 'questions:myquestions' %}" class="personalize"> | My Questions</a>
       <a href="{% url 'chatroom:inbox' %}" class="personalize">| Inbox
         {% if userlog %}
-          <i class="fa fa-envelope" id="newmessage"> {{newmessage}}</i>
+          <i class="fa fa-envelope newmessage"> {{newmessage}}</i>
         {% endif %}
 
       </a>
@@ -337,7 +337,7 @@
         } finally {
           xmlhttp.onreadystatechange = function(){
             if (this.readyState ==4 && this.static==200) {
-              document.getElementById('newmessage').innerHTML = this.responseText;
+              document.querySelectorAll(".newmessage").innerHTML = this.responseText;
             }
           }
           xmlhttp.open("POST" , "{% url 'chatroom:check_new_message' %}" , true);

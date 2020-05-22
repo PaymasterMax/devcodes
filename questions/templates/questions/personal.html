@@ -48,7 +48,7 @@
 <a href="{% url 'questions:questions' %}" class="Plinks">Questions
  <i class="fa fa-caret-down"></i></a>
 <a href="{% url 'questions:myquestions' %}" class="Plinks-in">My Questions</a>
-<a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope" id="newmessage"> {{newmessage}}</i>
+<a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope newmessage"> {{newmessage}}</i>
      </a>
 <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a>
 <a href="{% url 'login:logout' %}" class="Plinks">  Log out </a>
@@ -62,7 +62,7 @@
       <a href="{% url 'questions:questions' %}">Questions</a> |
       <a href="{% url 'chatroom:inbox' %}">Inbox</a>
       <a href="{% url 'chatroom:inbox' %}">
-        <i class="fa fa-envelope" id="newmessage"> {{newmessage}}</i>
+        <i class="fa fa-envelope newmessage"> {{newmessage}}</i>
       </a>
       </div>
       <div class="logoN">
@@ -215,7 +215,7 @@
       } finally {
         xmlhttp.onreadystatechange = function(){
           if (this.readyState ==4 && this.static==200) {
-            document.getElementById('newmessage').innerHTML = this.responseText;
+            document.querySelectorAll(".newmessage").innerHTML = this.responseText;
           }
         }
         xmlhttp.open("POST" , "{% url 'chatroom:check_new_message' %}" , true);
