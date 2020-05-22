@@ -184,8 +184,6 @@
       xml.setRequestHeader("X-CSRFToken" , "{{ csrf_token }}");
       xml.send();
     }
-
-    $(document).ready(function(){
       function checknewmessage(){
         try {
           var xmlhttp = new XMLHttpRequest();
@@ -207,6 +205,5 @@
       setInterval(function(){
         checknewmessage();
       } , 3000);
-    });
   </script>
 </html>
