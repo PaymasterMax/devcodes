@@ -118,4 +118,4 @@ def check_new_message(request):
     except Exception as e:
         pass
     else:
-        return messagecount
+        return 10
