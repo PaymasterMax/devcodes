@@ -62,7 +62,7 @@
   <a href="{% url 'peers:peers' %}" class="Plinks">Peers</a>
   <a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox
   {% if userlog %}
-    <i class="fa fa-envelope"> {{newmessage}}</i>
+    <i class="fa fa-envelope" id="newmessage"> {{newmessage}}</i>
   {% endif %}
 </a>
 <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a>
@@ -76,7 +76,7 @@
       <a href="{% url 'questions:myquestions' %}" class="personalize"> | My Questions</a>
       <a href="{% url 'chatroom:inbox' %}" class="personalize">| Inbox
         {% if userlog %}
-          <i class="fa fa-envelope"> {{newmessage}}</i>
+          <i class="fa fa-envelope" id="newmessage"> {{newmessage}}</i>
         {% endif %}
 
       </a>
@@ -301,29 +301,7 @@
         overlay.classList.remove('active');
         }
       );
-    //
-    // const likeBtn = document.querySelectorAll('#emptyLove');
-    // const liked = document.querySelectorAll('#Love');
-    // console.log(likeBtn.length);
-    // console.log(liked);
-    // let length = likeBtn.length - 1;
 
-
-    // function likeAct(array1,array2,i){
-    // array1[i].addEventListener('click',function(){
-    //         array1[i].style.display = 'none';
-    //         array2[i].style.display = "block";
-    // });
-    // array2[i].addEventListener('click',function(){
-    //     array2[i].style.display = 'none';
-    //     array1[i].style.display = 'block';
-    // });
-    // }
-    //
-    // for(x=0;x<=length;x++){
-    // likeAct(likeBtn,liked,x);
-    // }
-    //
 
     function updatemonster(qid) {
       document.getElementById("question"+qid.toString()).disabled = true;
@@ -350,6 +328,28 @@
         xmlhttp.send("qid=" + qid);
       }
     }
+    $(document).ready(function(){
+      function checknewmessage(){
+        try {
+          var xmlhttp = new XMLHttpRequest();
+        } catch (e) {
+          var xmlhttp = new ActiveXObject();
+        } finally {
+          xmlhttp.onreadystatechange = function(){
+            if (this.readyState ==4 && this.static==200) {
+              document.getElementById('newmessage').innerHTML = this.responseText;
+            }
+          }
+          xmlhttp.open("POST" , "{% url 'chatroom:check_new_message' %}" , true);
+          xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+          xmlhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+          xmlhttp.send();
+        }
+      }
+      setInterval(function(){
+        checknewmessage();
+      } , 3000);
+    });
     </script>
 </body>
 </html>

@@ -46,7 +46,7 @@
    <i class="fa fa-caret-down"></i></a>
         {% if userlog %}
         <a href="{% url 'questions:myquestions' %}" class="Plinks-in">My Questions</a>
-        <a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope"> {{newmessage}}</i>
+        <a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope" id="newmessage"> {{newmessage}}</i>
         </a>
          <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a>
          <a href="{% url 'login:logout' %}" class="Plinks">  Log out </a>
@@ -347,6 +347,28 @@
             xmlhttp.send("email="+email+"&feedback="+feedback);
           }
     }
+      $(document).ready(function(){
+        function checknewmessage(){
+          try {
+            var xmlhttp = new XMLHttpRequest();
+          } catch (e) {
+            var xmlhttp = new ActiveXObject();
+          } finally {
+            xmlhttp.onreadystatechange = function(){
+              if (this.readyState ==4 && this.static==200) {
+                document.getElementById('newmessage').innerHTML = this.responseText;
+              }
+            }
+            xmlhttp.open("POST" , "{% url 'chatroom:check_new_message' %}" , true);
+            xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+            xmlhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+            xmlhttp.send();
+          }
+        }
+        setInterval(function(){
+          checknewmessage();
+        } , 3000);
+      });
         </script>
     </body>
     </html>
