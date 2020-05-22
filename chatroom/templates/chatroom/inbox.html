@@ -119,7 +119,7 @@
             <div class="answers">
               <div class="profile queryprofile">
                 <img src="{{ msg.r1uid.profilepic.url }}" alt="{{msg.r1uid.username}}" title="{{msg.r1uid_id.username}}">
-                <p>{{msg.r1uid.username}}</p>
+                <p>{{msg.r1uid.username|username_modifier}}</p>
               </div>
               <div class="answers-content">
                 <div class="answers-main-content">
