@@ -97,11 +97,11 @@
                       <div class="answers-main-content">
                         {{msg.text_message}}
                       </div>
-                      <p class="newmessagec">
+                      <!-- <p class="newmessagec">
                         <a href="{% url 'chatroom:chatroom' msg.r2uid_id %}">
                           open
                         </a>
-                      </p>
+                      </p> -->
                     </div>
                     <div class="flexer">
                       <p class="ft">
@@ -134,11 +134,11 @@
                 </div>
               </div>
               {% if msg.bell_seen  %}
-                <p class="newmessagec">
+                <!-- <p class="newmessagec">
                   <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">
                     open
                   </a>
-                </p>
+                </p> -->
               {% else %}
                 <p class="newmessagec alert-danger">
                 <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">
