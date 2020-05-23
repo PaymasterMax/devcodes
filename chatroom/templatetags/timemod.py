@@ -19,15 +19,15 @@ def cont(timeobj):
 
         # test for hours
         if time_lapse>=3600:
-            return str(int(time_lapse/3600)) + " hours ago"
+            return str(int(time_lapse/3600)) + " hr(s) ago"
 
             # test for minutes
         elif time_lapse<3600 and time_lapse>60:
-            return str(int(time_lapse/60)) + " minutes ago"
+            return str(int(time_lapse/60)) + " min(s) ago"
 
         # test for seconds
         else:
-            return str(time_lapse) + " seconds ago"
+            return str(time_lapse) + " sec(s) ago"
 
 
     else:
