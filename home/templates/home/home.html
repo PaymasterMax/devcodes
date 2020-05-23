@@ -50,6 +50,9 @@
         </a>
          <a href="{% url 'profile:profile' %}" class="Plinks"> Edit profile </a>
          <a href="{% url 'login:logout' %}" class="Plinks">  Log out </a>
+         {% else %}
+         <a href="{% url 'signup:signup' %}" class="Plinks"> Signup </a>
+         <a href="{% url 'login:login' %}" class="Plinks">  Log in</a>
        {% endif %}
  </div>
   <!-- Ending of icon -->
@@ -73,6 +76,8 @@
         </div>
         <div class="logoN" id="upPart">
           <img src="{% static 'questions/images/devtitle.svg' %}" class="myimg" alt="logo" style="width:100px; height:50px;">
+          <a href="{% url 'signup:signup' %}">signup</a>
+          <a href="{% url 'login:login' %}">Log in</a>
         </div>
 
         {% if userlog %}

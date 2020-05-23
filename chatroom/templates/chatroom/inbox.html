@@ -85,29 +85,32 @@
         <hr style="width:100px;margin: 0px auto;">
         {% for msg in all_messages %}
             {% if msg.r1uid_id|umodifier:userdetails.uid %}
-            <div class="answers">
+            <div class="answers" style="align-items: center;">
 
               <div class="profile queryprofile">
                 {% cloudinary msg.r2uid.profilepic.url className="myimg" title=msg.r2uid.username alt=msg.r2uid.username height=200 width=100 %}
                 <p>{{msg.r2uid.username|username_modifier}}</p>
               </div>
 
-              <div class="answers-content">
+              <div class="answers-content" style="display: flex; flex-direction: column;
+               justify-content:space-between;">
                 <div class="answers-main-content">
                   {{msg.text_message}}
                 </div>
-                <p class="ft">
-                  {{msg.r2uid.hobby}}
-                </p>
-                <p class="ft">
-                  {{msg.text_time | timemodifier}}
-                </p>
+                <div class="flexer">
+                  <p class="ft">
+                    {{msg.r2uid.hobby}}
+                  </p>
+                  <p class="ft">
+                    {{msg.text_time | timemodifier}}
+                  </p>
 
-                {% if msg.bell_seen %}
-                <p class="ft">
-                  seen
-                </p>
-                {% endif %}
+                  {% if msg.bell_seen %}
+                  <p class="ft">
+                    seen
+                  </p>
+                  {% endif %}
+                </div>
                 <p class="newmessagec">
                   <a href="{% url 'chatroom:chatroom' msg.r2uid_id %}">
                     open
@@ -116,34 +119,37 @@
               </div>
             </div>
             {% else %}
-            <div class="answers">
+            <div class="answers" style="align-items: center;">
               <div class="profile queryprofile">
                 <img src="{{ msg.r1uid.profilepic.url }}" alt="{{msg.r1uid.username}}" title="{{msg.r1uid_id.username}}">
                 <p>{{msg.r1uid.username|username_modifier}}</p>
               </div>
-              <div class="answers-content">
+              <div class="answers-content" style="display: flex; flex-direction: column; justify-content: space-between;">
+              <div class="answers-content" >
                 <div class="answers-main-content">
                   {{msg.text_message}}
                 </div>
-                <p class="ft">
-                  {{msg.r1uid.hobby}}
-                </p>
-                <p class="ft">
-                  {{msg.text_time | timemodifier}}
-                </p>
-                {% if msg.bell_seen  %}
-                  <p class="newmessagec">
+                <div class="flexer">
+                  <p class="ft">
+                    {{msg.r1uid.hobby}}
+                  </p>
+                  <p class="ft">
+                    {{msg.text_time | timemodifier}}
+                  </p>
+                  {% if msg.bell_seen  %}
+                    <p class="newmessagec">
+                      <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">
+                        open
+                      </a>
+                    </p>
+                  {% else %}
+                    <p class="newmessagec alert-danger">
                     <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">
-                      open
+                      new {{msg.r1uid_id|msagecounter:msg.r2uid_id}}
                     </a>
-                  </p>
-                {% else %}
-                  <p class="newmessagec alert-danger">
-                  <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">
-                    new {{msg.r1uid_id|msagecounter:msg.r2uid_id}}
-                  </a>
-                  </p>
-                {% endif %}
+                    </p>
+                  {% endif %}
+                </div>
               </div>
             </div>
 
