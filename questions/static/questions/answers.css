@@ -368,6 +368,7 @@ button[type = "submit"] {
 
   .answers-main-content {
     margin-left: 50px;
+    margin: 5px;
   }
 
   button[type = "submit"] {
@@ -408,5 +409,9 @@ button[type = "submit"] {
 }
 .flexer .ft:last-child {
   text-align: left;
+}
+.newmessage {
+  right: 0;
+    top: 30%;
 }
 }
