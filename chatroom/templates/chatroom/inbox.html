@@ -119,6 +119,7 @@
                 </div>
               </div>
             {% else %}
+          <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">
             <div class="answers" style="align-items: center;">
               <div class="profile queryprofile">
                 {% cloudinary msg.r1uid.profilepic.url className="myimg" title=msg.r1uid.username alt=msg.r1uid.username height=200 width=100 %}
@@ -154,6 +155,7 @@
             </div>
 
           </div>
+          </a>
             {% endif %}
         {% endfor %}
 
