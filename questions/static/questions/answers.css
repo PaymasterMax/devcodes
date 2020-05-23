@@ -26,6 +26,9 @@ body {
   height: 60px;
   margin: auto;
 }
+a {
+  color: inherit;
+}
 .newmessagec>a{
   text-decoration: none;
 }
