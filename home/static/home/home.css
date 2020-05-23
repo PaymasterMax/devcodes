@@ -397,7 +397,9 @@ color: white;
   }
 
 /* end of navbar */
-
+.val {
+  display: none;
+}
 .flex-holder{
     flex-direction: column;
     padding: 10px 10px;
