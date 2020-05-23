@@ -75,7 +75,6 @@
                </a>
              </div>
           </div>
-      </div>
   </div>
 
     <div class="main">
@@ -123,7 +122,7 @@
             {% else %}
             <div class="answers" style="align-items: center;">
               <div class="profile queryprofile">
-                <img src="{{ msg.r1uid.profilepic.url }}" alt="{{msg.r1uid.username}}" title="{{msg.r1uid_id.username}}">
+                {% cloudinary msg.r1uid.profilepic.url className="myimg" title=msg.r1uid.username alt=msg.r1uid.username height=200 width=100 %}
                 <p>{{msg.r1uid.username|username_modifier}}</p>
               </div>
               <div class="answers-content" style="display: flex; flex-direction: column; justify-content: space-between;">
