@@ -129,14 +129,6 @@
                 <div class="answers-main-content">
                   {{msg.text_message}}
                 </div>
-                <div class="flexer">
-                  <p class="ft">
-                    {{msg.r1uid.hobby}}
-                  </p>
-                  <p class="ft">
-                    {{msg.text_time | timemodifier}}
-                  </p>
-                </div>
               </div>
               {% if msg.bell_seen  %}
                 <p class="newmessagec">
@@ -151,6 +143,14 @@
                 </a>
                 </p>
               {% endif %}
+              <div class="flexer">
+                <p class="ft">
+                  {{msg.r1uid.hobby}}
+                </p>
+                <p class="ft">
+                  {{msg.text_time | timemodifier}}
+                </p>
+              </div>
             </div>
 
           </div>
