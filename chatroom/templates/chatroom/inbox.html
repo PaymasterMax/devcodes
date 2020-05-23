@@ -97,25 +97,25 @@
                   <div class="answers-main-content">
                     {{msg.text_message}}
                   </div>
-                  <div class="flexer">
-                    <p class="ft">
-                      {{msg.r2uid.hobby}}
-                    </p>
-                    <p class="ft">
-                      {{msg.text_time | timemodifier}}
-                    </p>
-
-                    {% if msg.bell_seen %}
-                    <p class="ft">
-                      seen
-                    </p>
-                    {% endif %}
-                  </div>
                   <p class="newmessagec">
                     <a href="{% url 'chatroom:chatroom' msg.r2uid_id %}">
                       open
                     </a>
                   </p>
+                </div>
+                <div class="flexer">
+                  <p class="ft">
+                    {{msg.r2uid.hobby}}
+                  </p>
+                  <p class="ft">
+                    {{msg.text_time | timemodifier}}
+                  </p>
+
+                  {% if msg.bell_seen %}
+                  <p class="ft">
+                    seen
+                  </p>
+                  {% endif %}
                 </div>
               </div>
             {% else %}
