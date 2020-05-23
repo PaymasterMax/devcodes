@@ -381,6 +381,7 @@ button[type = "submit"] {
 .flexer {
   display: flex;
   width: 70%;
+  margin: 0px auto;
 }
 .flexer .ft {
   flex: 1;
