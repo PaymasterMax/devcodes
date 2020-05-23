@@ -34,6 +34,10 @@ body {
   color: inherit;
   cursor: default;
 }
+
+a .answers{
+  text-decoration: none;
+}
 .newmessagec>a{
   text-decoration: none;
 }
