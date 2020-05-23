@@ -94,14 +94,16 @@
 
                 <div class="answers-content" style="display: flex; flex-direction: column;
                  justify-content:space-between;">
-                  <div class="answers-main-content">
-                    {{msg.text_message}}
+                  <div class="answers-content">
+                    <div class="answers-main-content">
+                      {{msg.text_message}}
+                    </div>
+                    <p class="newmessagec">
+                      <a href="{% url 'chatroom:chatroom' msg.r2uid_id %}">
+                        open
+                      </a>
+                    </p>
                   </div>
-                  <p class="newmessagec">
-                    <a href="{% url 'chatroom:chatroom' msg.r2uid_id %}">
-                      open
-                    </a>
-                  </p>
                 </div>
                 <div class="flexer">
                   <p class="ft">
