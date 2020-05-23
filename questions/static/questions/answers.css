@@ -26,10 +26,10 @@ body {
   height: 60px;
   margin: auto;
 }
-.main>a {
+.main > a {
   color: inherit;
 }
-.main>a:hover{
+.main > a:hover{
   color: inherit;
 }
 .newmessagec>a{
