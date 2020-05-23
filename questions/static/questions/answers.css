@@ -367,8 +367,7 @@ button[type = "submit"] {
   }
 
   .answers-main-content {
-    margin-left: 50px;
-    margin: 5px;
+    margin: 0px;
   }
 
   button[type = "submit"] {
