@@ -345,12 +345,6 @@ button[type = "submit"] {
     align-items: flex-start;
     justify-content:space-between;
     margin: 10px 0px;
-
-    /* margin-left: 35px;
-    font-size: 12px;
-    overflow-wrap: break-word;
-    padding: 4px;
-    margin: 4px; */
   }
 
   .ft {
