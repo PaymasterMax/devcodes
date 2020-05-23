@@ -17,13 +17,14 @@ body {
     font-size: 25px;
 }
 .newmessagec {
-  float: right;
+  /* float: right; */
   position: absolute;
   right: 30px;
   border-radius: 50%;
   padding: 5px;
   width: 60px;
   height: 60px;
+  margin: auto;
 }
 .newmessagec>a{
   text-decoration: none;
