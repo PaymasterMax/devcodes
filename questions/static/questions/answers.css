@@ -378,6 +378,10 @@ button[type = "submit"] {
     width: 10%;
     margin-right: 4px;
   }
-
-
+.flexer {
+  display: flex;
+}
+.flexer .ft {
+  flex: 1;
+}
 }
