@@ -136,21 +136,21 @@
                   <p class="ft">
                     {{msg.text_time | timemodifier}}
                   </p>
-                  {% if msg.bell_seen  %}
-                    <p class="newmessagec">
-                      <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">
-                        open
-                      </a>
-                    </p>
-                  {% else %}
-                    <p class="newmessagec alert-danger">
-                    <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">
-                      new {{msg.r1uid_id|msagecounter:msg.r2uid_id}}
-                    </a>
-                    </p>
-                  {% endif %}
                 </div>
               </div>
+              {% if msg.bell_seen  %}
+                <p class="newmessagec">
+                  <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">
+                    open
+                  </a>
+                </p>
+              {% else %}
+                <p class="newmessagec alert-danger">
+                <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">
+                  new {{msg.r1uid_id|msagecounter:msg.r2uid_id}}
+                </a>
+                </p>
+              {% endif %}
             </div>
 
             {% endif %}
