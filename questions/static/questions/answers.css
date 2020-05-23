@@ -17,6 +17,7 @@ body {
     font-size: 25px;
 }
 .newmessagec {
+  display: inline;
   float: right;
   position: relative;
   border-radius: 50%;
@@ -334,6 +335,7 @@ button[type = "submit"] {
 
   .answers-main-content {
     margin-left: 50px;
+    display: inline-block;
   }
 
   button[type = "submit"] {
