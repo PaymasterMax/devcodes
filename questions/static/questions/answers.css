@@ -353,6 +353,8 @@ button[type = "submit"] {
     /* margin-left: 15px; */
     justify-content: space-between;
     margin: 10px 6px;
+    overflow: hidden;
+    max-height: 200px;
     /* margin-left: 35px;
     font-size: 12px;
     overflow-wrap: break-word;
