@@ -76,8 +76,6 @@
         </div>
         <div class="logoN" id="upPart">
           <img src="{% static 'questions/images/devtitle.svg' %}" class="myimg" alt="logo" style="width:100px; height:50px;">
-          <a href="{% url 'signup:signup' %}">signup</a>
-          <a href="{% url 'login:login' %}">Log in</a>
         </div>
 
         {% if userlog %}
@@ -98,8 +96,10 @@
       </div>
         {% else %}
         <div class="user-profile">
-            <img src="{% static 'home/images/icon.jpg' %}" alt="profile"
-            style="width:40px; height:40px; border-radius:50%;">
+            <!-- <img src="{% static 'home/images/icon.jpg' %}" alt="profile"
+            style="width:40px; height:40px; border-radius:50%;"> -->
+            <a href="{% url 'signup:signup' %}">signup</a>
+            <a href="{% url 'login:login' %}">Log in</a>
       </div>
         {% endif %}
   </div>
