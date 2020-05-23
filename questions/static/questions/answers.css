@@ -208,6 +208,7 @@ body {
   border-bottom: 1px solid #555;
   margin: 10px;
   min-height: 50px;
+  position:relative;
 }
 
 
