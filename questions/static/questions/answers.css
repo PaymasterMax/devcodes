@@ -11,6 +11,11 @@ img {
 body {
   background-color: #0a1d2f;
 }
+
+.flexer {
+  position: absolute;
+  margin-bottom: 0px;
+}
 .myimg {
     font-size: 25px;
 }
