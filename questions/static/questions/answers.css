@@ -26,11 +26,13 @@ body {
   height: 60px;
   margin: auto;
 }
-.main > a {
+.mainbox {
   color: inherit;
 }
-.main > a:hover{
+.mainbox:hover{
+  text-decoration: none;
   color: inherit;
+  cursor: default;
 }
 .newmessagec>a{
   text-decoration: none;

@@ -84,7 +84,7 @@
         <hr style="width:100px;margin: 0px auto;">
         {% for msg in all_messages %}
             {% if msg.r1uid_id|umodifier:userdetails.uid %}
-              <a href="{% url 'chatroom:chatroom' msg.r2uid_id %}">
+              <a href="{% url 'chatroom:chatroom' msg.r2uid_id %}" class="mainbox">
                 <div class="answers" style="align-items: center;">
 
                   <div class="profile queryprofile">
@@ -121,7 +121,7 @@
                 </div>
               </a>
             {% else %}
-          <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}">
+          <a href="{% url 'chatroom:chatroom' msg.r1uid_id %}" class="mainbox">
             <div class="answers" style="align-items: center;">
               <div class="profile queryprofile">
                 {% cloudinary msg.r1uid.profilepic.url className="myimg" title=msg.r1uid.username alt=msg.r1uid.username height=200 width=100 %}
