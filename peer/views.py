@@ -5,9 +5,9 @@ from django.http import HttpResponse
 
 def peers_suggest_per_lang(userinfo):
     try:
-        users = sp.objects.exclude(username = userinfo["username"])
-        # rest_of_users = sp.objects.exclude(username = userinfo["username"]).filter(hobby__ne = userinfo["hobby"])
-        # users = users
+        users = sp.objects.exclude(username = userinfo.username)
+        rest_of_users = sp.objects.exclude(username = userinfo.username).filter(hobby__ne = userinfo["hobby"])
+        users = users
     except Exception as e:
         print("\n\n\n\n\n\n\n{}".format(e))
         return 0
