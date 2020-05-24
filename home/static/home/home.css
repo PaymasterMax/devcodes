@@ -137,6 +137,9 @@
 }
 .mainlinks {
   text-decoration: none;
+}
+
+.view-answers {
   position: absolute;
   bottom: 20px;
   margin-right: auto;

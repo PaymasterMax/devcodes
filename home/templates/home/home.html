@@ -119,7 +119,7 @@
                       <p>
                           Learn more about your interests by accessing questions asked and answered by your peers.
                       </p>
-                      <a href="{% url 'questions:questions' %}" class="mainlinks">
+                      <a href="{% url 'questions:questions' %}" class="mainlinks view-answers">
                         <button type="button" name="button" class="btn btn-info">View Questions</button>
                       </a>
                     </div>
@@ -139,8 +139,8 @@
                         {{q.question}}
                         <br>
                         <br>
-                        <a href="{% url 'questions:answers' q.qid %}" class="mainlinks">
-                          <button type="button" name="button" class="btn btn-info" id="view-answers">{{q.question_to_answer.all.count}} answers</button>
+                        <a href="{% url 'questions:answers' q.qid %}" class="mainlinks view-answers">
+                          <button type="button" name="button" class="btn btn-info">{{q.question_to_answer.all.count}} answers</button>
                         </a>
                       </p>
                     </div>
