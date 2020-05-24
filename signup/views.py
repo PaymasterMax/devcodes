@@ -24,7 +24,7 @@ def signup(request):
         email = request.POST['email']
         pass1 = request.POST['pass1']
         pass2 = request.POST['pass2']
-        hobby = request.POST['hobby']
+        hobby = request.POST['hobby'].title()
         profilepic = request.FILES['profilepic']
         # location = "Hello"
         passwordflag = password_master(pass1 , pass2)
