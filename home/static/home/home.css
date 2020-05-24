@@ -139,13 +139,6 @@
   text-decoration: none;
 }
 
-.view-answers {
-  position: absolute;
-  bottom: 20px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
 .mainlinks:hover {
   text-decoration: none;
 }.footer {
@@ -436,5 +429,13 @@ color: white;
   }
   .feedback{
     width: 95%;
+  }
+}
+@media only screen and (min-width:1200px) {
+  .view-answers {
+    position: absolute;
+    bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
