@@ -11,6 +11,9 @@ img {
   height:60px;
   border-radius:50%;
 }
+.title {
+	color: #fff;
+}
 body{
 	background-color: #fff;
 	background-image: url("images/city.jpg");

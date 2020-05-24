@@ -22,7 +22,7 @@
 	<div class="bon">
 		<div class="bony">
 			<form action="{% url 'signup:signup' %}" method="post" enctype="multipart/form-data" onabort="cancel()">
-				<h2>Join DevCodes</h2>
+				<h2 class="title">Join DevCodes</h2>
 					{% for error in error_log %}
 					<label class="inputlabel">
 						{{error}}
@@ -58,7 +58,7 @@
 				</button>
 			</form>
 				<p style="text-align:center">
-					<span>Already have an account?</span>
+					<span class="title">Already have an account?</span>
 						<a class="link" href="{% url 'login:login' %}">
 						Sign in
 					</a>
