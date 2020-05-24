@@ -4,11 +4,17 @@ from chatroom.models import ChatModel as chtb
 from django.http import HttpResponse
 
 def peers_suggest_per_lang(userinfo):
-    users = sp.objects.exclude(username = userinfo["username"])
-    # rest_of_users = sp.objects.exclude(username = userinfo["username"]).filter(hobby__ne = userinfo["hobby"])
-    # users = users
+    try:
+        users = sp.objects.exclude(username = userinfo["username"])
+        # rest_of_users = sp.objects.exclude(username = userinfo["username"]).filter(hobby__ne = userinfo["hobby"])
+        # users = users
+    except Exception as e:
+        print("\n\n\n\n\n\n\n{}".format(e))
+        return 0
+    else:
+        return users
 
-    return users
+
 
 def peers(request):
     all_users = sp.objects.all()
