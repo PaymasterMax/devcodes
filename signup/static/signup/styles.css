@@ -108,7 +108,10 @@ form{
    margin: 5px 0px;
 }
 
-
+#submit {
+	display: block;
+	margin: 0px auto;
+}
 .input{
 	/* width: 40%; */
 	padding: 8px;
