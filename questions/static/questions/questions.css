@@ -287,6 +287,38 @@ box-shadow: 3px 3px 9px 0px black;
 .openButton{
     display: none;
 }
+
+.btnLabel{
+    background-color: #2CA79F;
+    padding: 8px 5px;
+    border-radius:4px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.btnLabel:hover{
+    background-color: #0562ED;
+}
+.btnLabel:focus{
+    background-color: #0562ED;
+
+}
+.far{
+    color: #000;
+    font-size: 20px;
+}
+
+#files{
+    visibility: visible;
+position: absolute;
+transform: translateX(-33%);
+z-index: -1;
+}
+.addImage{
+    position: relative;
+}
 /* Making it responsive */
 @media only screen and (max-width: 700px) {
     *{
