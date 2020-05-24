@@ -73,13 +73,18 @@ def askquestionsview(request):
             userdetails = Signup.objects.get(username = request.session["username"])
             questionlang = request.POST["language"]
             question = request.POST["question"]
-            qphoto = request.FILES["qphoto"]
+            # try:
+            #     qphoto = request.FILES["qphoto"]
+            # except Exception as e:
+            #     pass
+            # else:
+            #     pass
         except Exception as e:
             request.session["redirect"] = "/questions/updatequestions/"
             return redirect("/login/")
 
         else:
-            Questions.objects.create(quid_id = userdetails.uid, question = question , language = questionlang , qphoto = qphoto)
+            Questions.objects.create(quid_id = userdetails.uid, question = question , language = questionlang)
             return redirect("/questions/")
     else:
         return redirect("/questions/")
