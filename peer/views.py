@@ -8,10 +8,7 @@ def peers_suggest_per_lang(userinfo):
     try:
         users = sp.objects.exclude(username = userinfo.username).filter(hobby__iexact= userinfo.hobby)
         rest_of_users = sp.objects.exclude(username = userinfo.username).exclude(hobby__iexact = userinfo.hobby)
-        print("\n\n\n\n\n{}".format(users))
         users = chain(users , rest_of_users)
-        print(users)
-        print("\n\n\n\n\n")
     except Exception as e:
         return sp.objects.exclude(username = userinfo.username)
     else:

@@ -163,6 +163,7 @@
                 if (this.readyState ==4 && this.static==200) {
                   alert(this.responseText);
                   var elemenets = document.getElementsByClassName('newmessage');
+                  alert(this.responseText);
                   for (var i = 0; i < elemenets.length; i++) {
                     elemenets[i].innerHTML = this.responseText
                   }
