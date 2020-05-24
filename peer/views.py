@@ -5,7 +5,7 @@ from django.http import HttpResponse
 
 def peers_suggest_per_lang(userinfo):
     users = sp.objects.exclude(username = request.session["username"]).filter(hobby = userinfo.hobby)
-    rest_of_users = sp.objects.exclude(username = request.session["username"]).filter(hobby__ne = userinfo.hobby)
+    rest_of_users = sp.objects.exclude(username = request.session["username"]).filter(hobby = userinfo.hobby)
     users = users | rest_of_users
 
     return users
