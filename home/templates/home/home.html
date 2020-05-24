@@ -139,7 +139,7 @@
                         {{q.question}}
                         <br>
                         <br>
-                        <p>{{q.question_to_answer.all.count}}</p>
+                        <p>{{q.question_to_answer.all.count}} answers</p>
                         <a href="{% url 'questions:answers' q.qid %}" class="mainlinks">
                           <button type="button" name="button" class="btn btn-info" id="view-answers">View answers</button>
                         </a>
