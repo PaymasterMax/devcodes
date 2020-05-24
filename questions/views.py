@@ -10,10 +10,11 @@ from itertools import chain
 
 def custom_userquestions(userinfo):
     try:
-        custom_q_questions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted").filter(quid_id = userinfo.uid)
-        the_rest_question = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted").exclude(quid_id = userinfo.uid)
+        custom_q_questions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted").filter(quid.hobby__iexact = userinfo.hobby)
+        the_rest_question = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted").exclude(quid.hobby__iexact = userinfo.hobby)
         all_questions = chain(custom_q_questions , the_rest_question)
     except Exception as e:
+        print("\n\n\n\n\n{}".format(e))
         all_questions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted")
         return all_questions
     else:
