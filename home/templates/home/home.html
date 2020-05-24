@@ -98,7 +98,7 @@
         <div class="user-profile">
             <!-- <img src="{% static 'home/images/icon.jpg' %}" alt="profile"
             style="width:40px; height:40px; border-radius:50%;"> -->
-            <a href="{% url 'signup:signup' %}" class="val">Signup</a> | 
+            <a href="{% url 'signup:signup' %}" class="val">Signup</a> |
             <a href="{% url 'login:login' %}" class="val">Log in</a>
       </div>
         {% endif %}
@@ -139,6 +139,7 @@
                         {{q.question}}
                         <br>
                         <br>
+                        <p>{{q.question_to_answer.count}}</p>
                         <a href="{% url 'questions:answers' q.qid %}" class="mainlinks">
                           <button type="button" name="button" class="btn btn-info">View answers</button>
                         </a>
