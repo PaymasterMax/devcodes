@@ -170,7 +170,7 @@
       <img src="{% static 'questions/images/x.svg' %}" alt="&times;" id="Xbtn">
       <!-- <button data-close-button class="close-button">&times;</button> -->
   </div>
-    <form class="" action="{% url 'questions:askquestions' %}" method="post">
+    <form class="" action="{% url 'questions:askquestions' %}" method="post" enctype="multipart/form-data">
       {% csrf_token %}
     <div class="question">
           <textarea rows="7" cols="38"  placeholder="Type a question..." name="question"  id="question"
@@ -195,7 +195,7 @@
             <i class="far fa-image"></i>
             Add image
         </label>
-        <input id="files" style="visibility:visible" type="file">
+        <input type="file" name="qphoto" id="files" style="visibility:visible">
       </div>
     <div class="question-btns">
         <button type="submit" class="post">Post</button>

@@ -1,5 +1,6 @@
 from django.db import models
 from signup.models import Signup
+from cloudinary.models import CloudinaryField
 
 
 # The questions to answer
@@ -9,6 +10,7 @@ class Questions(models.Model):
     question = models.CharField(max_length = 1025)
     time_posted = models.DateTimeField(auto_now_add = True)
     language = models.CharField(max_length = 15 , default = "Python")
+    qphoto = CloudinaryField("image" , default = "")
 
     class Meta:
         db_table = "Questions"
