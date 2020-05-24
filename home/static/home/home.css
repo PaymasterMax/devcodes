@@ -137,6 +137,10 @@
 }
 .mainlinks {
   text-decoration: none;
+  position: absolute;
+  bottom: 20px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .mainlinks:hover {
@@ -354,11 +358,6 @@ color: white;
   position: absolute;
 }
 
-#view-answers {
-    position: absolute;
-    bottom: 2px;
-    margin: 0px auto;
-}
 @media only screen and (max-width:1200px){
   .vector, .vector-r{
     width: 300px;
