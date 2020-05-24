@@ -353,6 +353,11 @@ color: white;
   display: none;
   position: absolute;
 }
+
+#view-answers {
+    position: absolute;
+    bottom: 2px;
+}
 @media only screen and (max-width:1200px){
   .vector, .vector-r{
     width: 300px;
