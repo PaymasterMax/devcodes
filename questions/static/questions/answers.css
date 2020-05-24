@@ -368,6 +368,7 @@ button[type = "submit"] {
 
   .answers-main-content {
     margin: 0px;
+    max-width:90%
   }
 
   button[type = "submit"] {
