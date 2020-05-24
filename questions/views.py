@@ -6,11 +6,24 @@ from .models import Questions , Answers , QuestionLike as qlike
 from chatroom.models import ChatModel as chtb
 from chatroom.models import FeedBack as fd
 from django.http import JsonResponse , HttpResponse
+from itertools import chain
+
+def custom_userquestions(userinfo):
+    try:
+        custom_q_questions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted").filter(quid_id = userinfo.uid)
+        the_rest_question = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted").exclude(quid_id = userinfo.uid)
+        all_questions = chain(custom_q_questions , the_rest_question)
+    except Exception as e:
+        all_questions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted")
+        return all_questions
+    else:
+        return all_questions
+
 
 def questionsview(request):
-    all_questions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted")
     try:
         userdetails = Signup.objects.get(username = request.session["username"])
+        all_questions = custom_userquestions(userdetails)
         newmessage = chtb.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False).count()
         userlog = True
     except Exception as e:
