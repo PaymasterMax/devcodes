@@ -357,6 +357,7 @@ color: white;
 #view-answers {
     position: absolute;
     bottom: 2px;
+    margin: 0px auto;
 }
 @media only screen and (max-width:1200px){
   .vector, .vector-r{
