@@ -2,13 +2,14 @@ from django.shortcuts import render,redirect
 from signup.models import Signup as sp
 from chatroom.models import ChatModel as chtb
 from django.http import HttpResponse
+from itertools import chain
 
 def peers_suggest_per_lang(userinfo):
     try:
         users = sp.objects.exclude(username = userinfo.username).filter(hobby= userinfo.hobby)
         rest_of_users = sp.objects.exclude(username = userinfo.username).exclude(hobby = userinfo.hobby)
         print("\n\n\n\n\n{}".format(users))
-        users = users | rest_of_users
+        users = chain(users , rest_of_users)
         print(users)
         print("\n\n\n\n\n")
     except Exception as e:
