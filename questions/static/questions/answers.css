@@ -301,6 +301,9 @@ button[type = "submit"] {
 
 
 @media screen and (max-width:700px) {
+  .queryprofile {
+    margin-right: 60px;
+  }
   .user-dropdown {
     display: none;
   }
