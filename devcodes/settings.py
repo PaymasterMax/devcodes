@@ -16,22 +16,7 @@ SECRET_KEY = 'ghr%=q!3afx83t+1dojl%j15mta%6!v@bpx2l5p+ki2i!)zqs3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-# DEBUG = True
-
-SESSION_COOKIE_SECURE = True
 ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com' , "devcodes.herokuapp.com"]
-# ALLOWED_HOSTS = ["*"]
-
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_NAME = "devcodesd"
-SECURE_HSTS_SECONDS = 60
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-
-SECURE_SSL_REDIRECT = True
-SECURE_HSTS_PRELOAD = True
-SECURE_REFERRER_POLICY = "same-origin"
 
 # Application definition
 
