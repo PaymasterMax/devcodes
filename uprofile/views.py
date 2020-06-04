@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from chatroom.models import ChatModel as chtb
-
+from django.contrib.auth.hashers import make_password
 from signup.models import Signup as sp
 
 def profileview(request):
@@ -43,3 +43,20 @@ def update_profile(request):
 
     else:
         return redirect("/profile/")
+
+
+def changepassword(request):
+    try:
+        print(request.session.keys())
+        userinfo = sp.objects.get(username = request.session["username"])
+    except Exception as e:
+        return redirect("/login/")
+    else:
+        newpass = request.POST["password"]
+        confirm = request.POST["confirmpassword"]
+        if newpass ==confirm:
+            userinfo.password = make_password(newpass)
+            userinfo.save()
+            return HttpResponse("Password changed ..")
+        else:
+            return HttpResponse("Password not changed.")

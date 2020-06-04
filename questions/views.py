@@ -14,7 +14,6 @@ def custom_userquestions(userinfo):
         the_rest_question = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted").exclude(language__icontains = userinfo.hobby)
         all_questions = chain(custom_q_questions , the_rest_question)
     except Exception as e:
-        print("\n\n\n\n\n{}".format(e))
         all_questions = Questions.objects.all().annotate(no_of_answers = Count("question_to_answer")).order_by("-time_posted")
         return all_questions
     else:

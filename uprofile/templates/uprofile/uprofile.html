@@ -96,12 +96,10 @@
           <form class="" action="{% url 'profile:update' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
           <fieldset>
-
             <div class="info">
                <div class="Your"> Your details</div>
                   <div class="sect">
                   <label class="labels">Username</label>
-
                   <input type="text" class="entry" name="username" value="{{mydetails.username}}" placeholder="Enter username"
                   id="username">
               </div>
@@ -109,41 +107,49 @@
                   <label class="labels">Phone</label>
                   <input type="text" class="entry" name="phone" value="{{mydetails.pnumber}}" placeholder="Phone number" id="phone">
                </div>
-
                <div class="sect">
-
                   <label class="labels">Email</label>
-
                   <input type="text" class="entry" name="email" value="{{mydetails.email}}" placeholder="Enter email" id="email">
                </div>
                 <div class="sect">
-
                   <label class="labels">Language</label>
-
                   <input type="text" class="entry" name="language" value="{{mydetails.hobby}}" placeholder="Coding languages" id="language">
                 </div>
-
+                <div class="sect">
+                  <button type="button" name="button" onclick="showpopup();">Change password</button>
+                </div>
                 <div class="sect">
                   <label class="labels">Profile</label>
-
                   <input type="file" class="entry" name="profile" value="{{mydetails.profilepic}}">
-
                 </div>
-
                   <button type="submit" name="submit" class="btn btn-info" onclick="auth()">Update</button>
                 </div>
           </fieldset>
           </form>
-
         </div>
       </div>
 
-
-
+      <div class="changepassword" id="changepassword">
+      <form class="passwordform" action="{% url 'profile:changepassword' %}" method="post">
+        {% csrf_token %}
+          <p class="close" id="close" onclick="hidepopup();">&times;</p>
+          <div class="onefieldpassword">
+            <label class="passwordlabels">New password</label>
+            <br>
+            <input type="password" name="password" placeholder="New password" required class="pswordfield">
+          </div>
+          <div class="onefieldpassword">
+            <label class="passwordlabels">Confirm password</label>
+            <br>
+            <input type="password" name="confirmpassword" placeholder="Confirm password" required class="pswordfield">
+          </div>
+          <div class="onefieldpassword">
+            <button type="submit" name="button" class="btn btn-info changepass">Update</button>
+          </div>
+      </form>
+    </div>
   </body>
-
   <script type="text/javascript">
-
      // Listen for when everything has loaded
      window.addEventListener("load", removePage, false);
         const loader = document.getElementById('ld');
@@ -205,5 +211,14 @@
       setInterval(function(){
         checknewmessage();
       } , 3000);
+
+      function showpopup() {
+        var pop = document.getElementById("changepassword");
+        pop.setAttribute("style" , "display:block;animation: zoomer .4s  ease-out 1;")
+      }
+      function hidepopup() {
+        var popup = document.getElementById("changepassword");
+        popup.setAttribute("style" , "display:none;");
+      }
   </script>
 </html>
