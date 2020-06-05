@@ -131,6 +131,9 @@
 
       <div class="changepassword" id="changepassword">
       <form class="passwordform" action="{% url 'profile:changepassword' %}" method="post">
+        <div class="devcodeslogo">
+          <img src="{% static 'questions/images/devtitle.svg' %}" class="myimg" alt="logo" style="width: 100px;">
+        </div>
         {% csrf_token %}
           <p class="close" id="close" onclick="hidepopup();">&times;</p>
           <div class="onefieldpassword">

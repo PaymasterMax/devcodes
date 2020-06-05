@@ -7,23 +7,17 @@
 	<link rel="stylesheet" href="{% static 'home/spinner.css' %}">
 	<link rel="icon" href="{% static 'questions/images/devcodes.svg' %}" name="favicon">
 	<link rel="stylesheet" href="{% static 'login/styles.css' %}"/>
-
 </head>
-
 <body>
-
 <!-- Begining of spinner -->
 <div class="loader-wrapper" id="ld">
 	<span class="loader"><span class="loader-inner"></span></span>
 		</div>
 		<!-- End of spinner -->
-
 	<div class="bon">
 		<div class="prof-pic">
 			<img src="{% static 'questions/images/devtitle.svg' %}" class="myimg" alt="logo" style="width: 100px;">
 		</div>
-
-
 		<div class="bony">
 
 	<form action="{% url 'login:login' %}" method="POST" class="form-hander">

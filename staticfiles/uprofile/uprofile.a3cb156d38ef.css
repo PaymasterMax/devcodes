@@ -1,7 +1,7 @@
 body{
   height: 100vh;
   width: 100%;
-  background: url("../uprofile/images/tech1.jpg") center fixed;
+  background: url("../uprofile/images/tech1.a7d5f83ecaa7.jpg") center fixed;
   background-size: cover;
   background-color: #0a1d2f;
 }
@@ -210,8 +210,7 @@ font-size: 18px;
   /* background: linear-gradient(326deg, #0905f9,#9001fdc2); */
 }
 #changepassword {
-  /* background-color: #978da2ba; */
-  background-color: #303d5c;
+  background-color: #978da2ba;
   display: none;
   position: fixed;
   width: 100vw;
@@ -220,14 +219,11 @@ font-size: 18px;
   top: 0px;
   left: 0px;
 }
-.passwordform {
-  margin-top: 10%;
-}
 .close {
   font-size: 50px;
   position: fixed;
   top: 0px;
-  right: 3px;
+  right: 0px;
 }
 .close:hover {
   color: red;
@@ -241,6 +237,10 @@ font-size: 18px;
 .changepass {
   margin: 10px auto;
   display: block;
+}
+
+.passwordform {
+  margin-top: 20%;
 }
 .pswordfield {
   text-align: center;
@@ -257,12 +257,10 @@ font-size: 18px;
 }
 .devcodeslogo {
   display: block;
-  margin: 3%;
 }
 .devcodeslogo >img {
   display: block;
   margin: 0px auto;
-  border: 1px solid #fff;
 }
 @media only screen and (max-width:600px){
   /* nav bar attributes */

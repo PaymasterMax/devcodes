@@ -1,7 +1,7 @@
 body{
   height: 100vh;
   width: 100%;
-  background: url("../uprofile/images/tech1.jpg") center fixed;
+  background: url("../uprofile/images/tech1.a7d5f83ecaa7.jpg") center fixed;
   background-size: cover;
   background-color: #0a1d2f;
 }
@@ -221,13 +221,13 @@ font-size: 18px;
   left: 0px;
 }
 .passwordform {
-  margin-top: 10%;
+  margin-top: 13%;
 }
 .close {
   font-size: 50px;
   position: fixed;
   top: 0px;
-  right: 3px;
+  right: 0px;
 }
 .close:hover {
   color: red;
@@ -257,7 +257,7 @@ font-size: 18px;
 }
 .devcodeslogo {
   display: block;
-  margin: 3%;
+  margin: 10%;
 }
 .devcodeslogo >img {
   display: block;

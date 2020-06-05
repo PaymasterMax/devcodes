@@ -210,7 +210,8 @@ font-size: 18px;
   /* background: linear-gradient(326deg, #0905f9,#9001fdc2); */
 }
 #changepassword {
-  background-color: #978da2ba;
+  /* background-color: #978da2ba; */
+  background-color: #303d5c;
   display: none;
   position: fixed;
   width: 100vw;
@@ -219,11 +220,14 @@ font-size: 18px;
   top: 0px;
   left: 0px;
 }
+.passwordform {
+  margin-top: 10%;
+}
 .close {
   font-size: 50px;
   position: fixed;
   top: 0px;
-  right: 0px;
+  right: 3px;
 }
 .close:hover {
   color: red;
@@ -238,10 +242,6 @@ font-size: 18px;
   margin: 10px auto;
   display: block;
 }
-
-.passwordform {
-  margin-top: 20%;
-}
 .pswordfield {
   text-align: center;
   width: 50%;
@@ -254,6 +254,15 @@ font-size: 18px;
   text-align: center;
   font-size: 20px;
   color: #fff;
+}
+.devcodeslogo {
+  display: block;
+  margin: 3%;
+}
+.devcodeslogo >img {
+  display: block;
+  margin: 0px auto;
+  border: 1px solid #fff;
 }
 @media only screen and (max-width:600px){
   /* nav bar attributes */
