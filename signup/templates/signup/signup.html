@@ -22,7 +22,7 @@
 			</div>
 	<div class="bon">
 		<div class="bony">
-			<form action="{% url 'signup:signup' %}" method="post" enctype="multipart/form-data" onabort="cancel()">
+			<form action="{% url 'signup:signup' %}" method="post" enctype="multipart/form-data" id="mysub" onabort="cancel()">
 				<h2 class="title">Join DevCodes</h2>
 					{% for error in error_log %}
 					<label class="inputlabel">
@@ -34,6 +34,7 @@
 				<input type="text" placeholder="Username" name = "username" required autocomplete="true" class="input" onchange="userauthentication()" id="uname">
 				<label id="usernamevalid" class="validation"></label>
 				<input type="phone" name="pnumber" placeholder="phone" class="input" id="phone">
+				<label id="phonevalid" class="validation"></label>
 				<input type="email" name="email" placeholder="email" required autocomplete="true" class="input" onchange="emailauthentication()" id="ema">
 				<label id="emailvalid" class="validation"></label>
 				<!-- <input type="password" name = "pass1" placeholder="Password" id="pass1" required  class="input passfield" onchange="passwordmaster(pass1)"> <i class="fa fa-eye" id="stats" aria-hidden="true" onclick="showpass();"></i>
@@ -41,7 +42,7 @@
 
 				<input type="password" name = "pass1" placeholder="Password" id="pass1"
 		    required  class="input" onchange="passwordmaster()">
-		    <label id="shortPass" class="pass">* short password * </label>
+		    <label id="shortPass passwordvalid" class="pass">* short password * </label>
 
 				<!-- <input type="password" placeholder="confirm password" name="pass2" id="pass2" class="input passfield" onchange="passwordmaster(pass2)" required> -->
 				<input type="password" placeholder="confirm password" name="pass2" id="pass2"
@@ -49,10 +50,12 @@
 		    <label id ="mismatch" class="miss"> * password mismatch *</label>
 
 				<input type="text" placeholder="Fav programming Language" name = "hobby" required autocomplete="true" class="input" id="hobby">
-				<label id ="favlang" class="favlang"> * Programming language must be filled *</label>
+				<label id ="favlang hobbyvalid" class="favlang"> * Programming language must be filled *</label>
+				<input type="text" name="location" placeholder="location" required autocomplete="true" class="input" >
+				<label id="locationvalid" class="validation"></label>
 				<input type="file" name="profilepic" value="Profile picture" class="input" id="profile" required>
 				<!-- <input type="submit" name="submit" value="signup" id="submit" class="input" onclick="spinnermanager()"> -->
-				<button type="submit" name="submit" class="btn btn-info" id="submit" onclick="form_manager()" onabort="cancel()">
+				<button type="submit" name="submit" class="btn btn-info" id="submit" onclick="spinner_manager() " onabort="cancel()">
 					Signup
 					<!-- <i class="" id="submit"></i> -->
 					<i class="" id="spin"></i>
@@ -66,6 +69,10 @@
 				</p>
 	</div>
 </div>
+<div class="snap" id="snap">
+				<!-- <p class="spinnobject">Loading <i id="dot1">.</i> <i id="dot2">.</i> <i id="dot3">.</i>	</p> -->
+				<p class="spinner-man"></p>
+		</div>
 	<script src="{% static 'signup/devcodes.js' %}" charset="utf-8"></script>
 	<script type="text/javascript">
 
@@ -124,6 +131,43 @@
 			xhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
 			xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
 			xhttp.send("email="+email);
+		}
+
+		function spinner_manager() {
+			var myform = document.getElementById('mysub');
+			myform.addEventListener("click" , function(e){
+				e.preventDefault();
+			});
+		  document.getElementById('snap').setAttribute("style" ,"display:block;");
+		  try {
+		    var xmlobj  = new XMLHttpRequest();
+		  } catch (e) {
+		    var xmlobj = new ActiveXObject();
+		  } finally {
+		    xmlobj.onreadystatechange = function() {
+		      if (this.readyState == 4 && this.status == 200) {
+		        var servdata =JSON.parse(this.responseText);
+						if (servdata.errors){
+							document.getElementById('snap').setAttribute("style" ,"display:none;");
+							var fields_with_errors = JSON.parse(servdata.fields)
+							error_field_keys = Object.keys(fields_with_errors);
+							for (var i = 0; i < error_field_keys.length; i++) {
+									console.log(fields_with_errors[error_field_keys[i]])
+								document.getElementById(error_field_keys[i]).setAttribute("style" , "display:block;color:red;")
+								document.getElementById(error_field_keys[i]).innerHTML = fields_with_errors[error_field_keys[i]];
+							}
+						}
+						else {
+							window.location = servdata.redirect;
+						}
+		      }
+		    }
+				var userinfo = document.querySelector("form");
+		    var data = new FormData(userinfo);
+		    xmlobj.open("POST" , "{% url 'signup:signup' %}" , true);
+		    xmlobj.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+		    xmlobj.send(data);
+		  }
 		}
 	</script>
 </body>
