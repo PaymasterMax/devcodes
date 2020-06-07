@@ -5,9 +5,11 @@ document.getElementById("pass1").addEventListener("keypress" , function(e){
 	var target_element = document.querySelector(".pass");
 	if (password.length<8) {
 		target_element.setAttribute("style" , "color:#f00f00;display:block;");
+		document.getElementById("submit").disabled=true;
 	}
 	else {
 		target_element.setAttribute("style" , "color:#f00f00;display:none;");
+		document.getElementById("submit").disabled=false;
 	}
 });
 
@@ -17,12 +19,13 @@ document.getElementById("pass2").addEventListener("focusout" , function(e){
 	var target_element = document.querySelector(".miss");
 	if (password1 != password2) {
 		target_element.setAttribute("style" , "color:#f00f00;display:block;");
+		document.getElementById("submit").disabled=true;
 	}
 	else {
 		target_element.setAttribute("style" , "display:none;");
+		document.getElementById("submit").disabled=false;
 	}
 });
-
 
 function showMismatch(){
 mismatch.classList.add('showAlert');
