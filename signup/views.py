@@ -28,7 +28,12 @@ def signup(request):
         pass2 = request.POST['pass2']
         hobby = request.POST['hobby']
         location = request.POST["location"]
-        profilepic = request.FILES['profilepic']
+        try:
+            profilepic = request.FILES['profilepic']
+        except Exception as e:
+            bugs["profilevalid"] = "Missing profilepic"
+            data_logger["fields"] = json.dumps(bugs)
+
         passwordflag = password_master(pass1 , pass2)
 
         try:

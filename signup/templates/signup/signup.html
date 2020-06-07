@@ -37,23 +37,22 @@
 				<label id="phonevalid" class="validation"></label>
 				<input type="email" name="email" placeholder="email" required autocomplete="true" class="input" onchange="emailauthentication()" id="ema">
 				<label id="emailvalid" class="validation"></label>
-				<!-- <input type="password" name = "pass1" placeholder="Password" id="pass1" required  class="input passfield" onchange="passwordmaster(pass1)"> <i class="fa fa-eye" id="stats" aria-hidden="true" onclick="showpass();"></i>
-				<label id="passwordm" class="validation"></label> -->
 
 				<input type="password" name = "pass1" placeholder="Password" id="pass1"
-		    required  class="input" onchange="passwordmaster()">
+		    required  class="input">
 		    <label id="shortPass passwordvalid" class="pass">* short password * </label>
 
 				<!-- <input type="password" placeholder="confirm password" name="pass2" id="pass2" class="input passfield" onchange="passwordmaster(pass2)" required> -->
 				<input type="password" placeholder="confirm password" name="pass2" id="pass2"
-		    class="input" onchange="passwordmaster()" required>
-		    <label id ="mismatch" class="miss"> * password mismatch *</label>
+		    class="input" required>
+		    <label id ="mismatch" class="miss"> * password don't match *</label>
 
 				<input type="text" placeholder="Fav programming Language" name = "hobby" required autocomplete="true" class="input" id="hobby">
 				<label id ="favlang hobbyvalid" class="favlang"> * Programming language must be filled *</label>
 				<input type="text" name="location" placeholder="location" required autocomplete="true" class="input" >
 				<label id="locationvalid" class="validation"></label>
 				<input type="file" name="profilepic" value="Profile picture" class="input" id="profile" required>
+				<label id="profilevalid" class="validation"></label>
 				<!-- <input type="submit" name="submit" value="signup" id="submit" class="input" onclick="spinnermanager()"> -->
 				<button type="submit" name="submit" class="btn btn-info" id="submit" onclick="spinner_manager() " onabort="cancel()">
 					Signup
@@ -87,13 +86,13 @@
 					{
 						document.getElementById("usernamevalid").innerHTML = "username taken";
 						document.getElementById("usernamevalid").style.color = "#f00";
-						// document.getElementById("submit").disabled=true;
+						document.getElementById("submit").disabled=true;
 					}
 
 					else {
 						document.getElementById("usernamevalid").innerHTML = "username available";
 						document.getElementById("usernamevalid").style.color = "#7fa";
-						// document.getElementById("submit").enabled=true;
+						document.getElementById("submit").enabled=false;
 					}
 			}
 		}
@@ -113,13 +112,13 @@
 					{
 						document.getElementById("emailvalid").innerHTML = "Email in use by another account";
 						document.getElementById("emailvalid").style.color = "#f00";
-						// document.getElementById("submit").disabled=true;
+						document.getElementById("submit").disabled=true;
 					}
 
 					else if(this.responseText == "false"){
 						document.getElementById("emailvalid").innerHTML = "email available";
 						document.getElementById("emailvalid").style.color = "#7fa";
-						// document.getElementById("submit").enabled=true;
+						document.getElementById("submit").enabled=false;
 					}
 					else{
 						document.getElementById("emailvalid").innerHTML = this.responseText;

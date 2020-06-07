@@ -1,3 +1,4 @@
 .env
 .env
 media_root
+**/__pycache__
