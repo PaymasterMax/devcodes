@@ -14,6 +14,7 @@ def profileview(request):
             return redirect("/login/")
         else:
             return render(request , "uprofile/uprofile.html" , context = {"mydetails":mydetails , "newmessage":newmessage})
+
 def update_profile(request):
     if request.method == "POST":
         try:
@@ -24,20 +25,15 @@ def update_profile(request):
                 pass
             edit_user_details.email = request.POST["email"]
             edit_user_details.username = request.POST["username"]
-            # edit_user_details.pnumber = request.POST["phone"]
-            # edit_user_details.location = "Nairobi"
             edit_user_details.hobby = request.POST["language"].title()
             edit_user_details.save()
             request.session["username"] = request.POST["username"]
         except Exception as e:
             return redirect("/profile/")
-
         else:
             return redirect("/profile/")
-
     else:
         return redirect("/profile/")
-
 
 def changepassword(request):
     try:
