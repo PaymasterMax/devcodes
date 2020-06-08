@@ -15,20 +15,16 @@ def signup(request):
     data_logger["errors"] = True
     if request.method == "POST":
         username = request.POST['username']
-        # pnumber = request.POST['pnumber']
         email = request.POST['email']
         pass1 = request.POST['pass1']
         pass2 = request.POST['pass2']
         hobby = request.POST['hobby']
-        # location = request.POST["location"]
         try:
             profilepic = request.FILES['profilepic']
         except Exception as e:
             bugs["profilevalid"] = "Missing profilepic"
             data_logger["fields"] = json.dumps(bugs)
-
         passwordflag = password_master(pass1 , pass2)
-
         try:
             signmodel.objects.get(username = username)
         except Exception as e:

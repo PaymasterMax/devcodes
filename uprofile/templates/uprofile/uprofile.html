@@ -103,10 +103,6 @@
                   <input type="text" class="entry" name="username" value="{{mydetails.username}}" placeholder="Enter username"
                   id="username">
               </div>
-                    <!-- <div class="sect">
-                  <label class="labels">Phone</label>
-                  <input type="text" class="entry" name="phone" value="{{mydetails.pnumber}}" placeholder="Phone number" id="phone">
-               </div> -->
                <div class="sect">
                   <label class="labels">Email</label>
                   <input type="text" class="entry" name="email" value="{{mydetails.email}}" placeholder="Enter email" id="email">
@@ -130,7 +126,7 @@
       </div>
 
       <div class="changepassword" id="changepassword">
-      <form class="passwordform" action="{% url 'profile:changepassword' %}" method="post">
+      <form class="passwordform" method="post">
         <div class="devcodeslogo">
           <img src="{% static 'questions/images/devtitle.svg' %}" class="myimg" alt="logo" style="width: 100px;">
         </div>
@@ -223,5 +219,33 @@
         var popup = document.getElementById("changepassword");
         popup.setAttribute("style" , "display:none;");
       }
+
+      document.querySelector(".changepass").addEventListener("click" , function(e){
+        e.preventDefault();
+      try {
+            var xmlobj = new XMLHttpRequest();
+      } catch (e) {
+        var xmlobj = new ActiveXObject();
+      } finally {
+        xmlobj.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status==200) {
+                var response = JSON.parse(this.responseText);
+                if (response.logger) {
+                  document.querySelector(".changepassword").setAttribute("style" , "display:none;");
+                  alert("Password changed");
+                }
+                else {
+                  alert("password not changed");
+                }
+
+            }
+        }
+        var passwordform = document.querySelector(".passwordform");
+        var data = new FormData(passwordform);
+          xmlobj.open("POST" , "{% url 'profile:changepassword' %}" , true);
+          xmlobj.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+          xmlobj.send(data)
+      }
+    });
   </script>
 </html>

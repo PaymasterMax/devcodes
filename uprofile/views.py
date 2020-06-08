@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from chatroom.models import ChatModel as chtb
 from django.contrib.auth.hashers import make_password
 from signup.models import Signup as sp
-
+import json
 def profileview(request):
     if request.method == "GET":
         try:
@@ -36,8 +36,8 @@ def update_profile(request):
         return redirect("/profile/")
 
 def changepassword(request):
+    logger = False
     try:
-        print(request.session.keys())
         userinfo = sp.objects.get(username = request.session["username"])
     except Exception as e:
         return redirect("/login/")
@@ -47,6 +47,9 @@ def changepassword(request):
         if newpass ==confirm:
             userinfo.password = make_password(newpass)
             userinfo.save()
-            return HttpResponse("Password changed ..")
+            logger = True
         else:
-            return HttpResponse("Password not changed.")
+            logger = False
+
+        logger = json.dumps({"logger":True})
+        return HttpResponse(logger , content_type = "application/json")
