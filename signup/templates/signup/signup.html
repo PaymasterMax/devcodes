@@ -169,7 +169,7 @@
 								var fields_with_errors = JSON.parse(servdata.fields)
 								error_field_keys = Object.keys(fields_with_errors);
 								for (var i = 0; i < error_field_keys.length; i++) {
-										console.log(fields_with_errors[error_field_keys[i]])
+										// console.log(fields_with_errors[error_field_keys[i]])
 									document.getElementById(error_field_keys[i]).setAttribute("style" , "display:block;color:red;")
 									document.getElementById(error_field_keys[i]).innerHTML = fields_with_errors[error_field_keys[i]];
 								}

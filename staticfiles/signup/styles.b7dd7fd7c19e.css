@@ -16,7 +16,7 @@ img {
 }
 body{
 	background-color: #fff;
-	background-image: url("images/city.jpg");
+	background-image: url("images/city.d273807b3587.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	display:flex;
@@ -311,12 +311,12 @@ nav{
 .spinner-man {
 	position: absolute;
 	top: 30%;
-	left: 41%;
+	left: 45%;
 	right: 45%;
 	font-size: 60px;
 	display: block;
-	width: 16vw;
-	height: 16vw;
+	width: 20vw;
+	height: 20vw;
 	border-radius: 50%;
 	border:15px solid grey;
 	border-top: 15px solid #add8e6;
@@ -344,12 +344,10 @@ nav{
 			width: 70vw;
 		}
 		.spinner-man {
-			width: 25vw;
-			height: 25vw;
+			width: 40vw;
+			height: 40vw;
 			border:15px solid grey;
 			border-top: 15px solid #add8e6;
-			left: 35%;
-			/* right: 45%; */
 		}
 }
 #photo{
