@@ -318,8 +318,8 @@ nav{
 	width: 16vw;
 	height: 16vw;
 	border-radius: 50%;
-	border:15px solid grey;
-	border-top: 15px solid #add8e6;
+	border:7px solid grey;
+	border-top: 7px solid #add8e6;
 	animation: spinneranim 3s  infinite;
 }
 
@@ -346,8 +346,8 @@ nav{
 		.spinner-man {
 			width: 25vw;
 			height: 25vw;
-			border:15px solid grey;
-			border-top: 15px solid #add8e6;
+			border:7px solid grey;
+			border-top: 7px solid #add8e6;
 			left: 35%;
 			/* right: 45%; */
 		}
