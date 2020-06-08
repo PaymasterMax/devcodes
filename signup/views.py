@@ -4,30 +4,23 @@ from django.http import HttpResponse
 from .models import Signup as signmodel
 from django.contrib.auth.hashers import make_password
 import validate_email as v,json
-
-
-
 def password_master(pass1,pass2):
-
     if pass1==pass2:
         return True
-
     else:
         return False
-
-
 def signup(request):
     data_logger = dict()
     bugs = dict()
     data_logger["errors"] = True
     if request.method == "POST":
         username = request.POST['username']
-        pnumber = request.POST['pnumber']
+        # pnumber = request.POST['pnumber']
         email = request.POST['email']
         pass1 = request.POST['pass1']
         pass2 = request.POST['pass2']
         hobby = request.POST['hobby']
-        location = request.POST["location"]
+        # location = request.POST["location"]
         try:
             profilepic = request.FILES['profilepic']
         except Exception as e:
@@ -45,8 +38,8 @@ def signup(request):
                 if v.validate_email(email):
                     if passwordflag:
                         password = make_password(request.POST['pass1'])
-                        signmodel.objects.create(username = username , pnumber = pnumber , email = email , password = password ,
-                        hobby = hobby, location = location , profilepic = profilepic)
+                        signmodel.objects.create(username = username , email = email , password = password ,
+                        hobby = hobby, profilepic = profilepic)
                         data_logger["redirect"] = "/login/"
                         data_logger["errors"] = False
                         data_logger = json.dumps(data_logger)
@@ -78,26 +71,19 @@ def userauthentication(request):
 
     except Exception as e:
         pass
-
     else:
         try:
             signmodel.objects.get(username = uname)
-
         except Exception as e:
             return HttpResponse("false")
-
         else:
             return HttpResponse("true")
-
-
-
 # email is in use?
 def emailauthentication(request):
     try:
         email = request.POST['email']
     except Exception as e:
         pass
-
     else:
         try:
             signmodel.objects.get(email = email)
@@ -106,6 +92,5 @@ def emailauthentication(request):
                 return HttpResponse("false")
             else:
                 return HttpResponse("Email not found")
-
         else:
             return HttpResponse("true")
