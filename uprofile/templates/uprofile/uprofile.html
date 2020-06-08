@@ -232,10 +232,10 @@
                 var response = JSON.parse(this.responseText);
                 if (response.logger) {
                   document.querySelector(".changepassword").setAttribute("style" , "display:none;");
-                  alert("Password changed");
+                  alert(response.password_status);
                 }
                 else {
-                  alert("password not changed");
+                  alert(response.password_status);
                 }
 
             }

@@ -47,9 +47,11 @@ def changepassword(request):
         if newpass ==confirm:
             userinfo.password = make_password(newpass)
             userinfo.save()
+            password_status = "Password changed sucessfully."
             logger = True
         else:
+            password_status = "Pasword not changed. Please try again"
             logger = False
 
-        logger = json.dumps({"logger":True})
+        logger = json.dumps({"logger":True,"password_status":password_status})
         return HttpResponse(logger , content_type = "application/json")
