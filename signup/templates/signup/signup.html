@@ -10,6 +10,20 @@
 	<link rel="stylesheet" href="{% static 'signup/styles.css' %}"/>
 	<link rel="stylesheet" href="{% static 'home/spinner.css' %}">
 	<title>DevCodes | signup </title>
+	<style>
+			.image-holder{
+					position: relative;
+			}
+			.choose{
+				 cursor: pointer;
+			}
+			#enterImage{
+					opacity: 0;
+ position: absolute;
+ z-index: 11;
+
+			}
+	</style>
 </head>
 <body>
 	<!-- Begining of spinner -->
@@ -44,7 +58,14 @@
 
 				<input type="text" placeholder="Fav programming Language" name = "hobby" required autocomplete="true" class="input" id="hobby">
 				<label id ="favlang hobbyvalid" class="favlang"> * Programming language must be filled *</label>
-				<input type="file" name="profilepic" value="Profile picture" class="input" id="profile" required>
+				<!-- <input type="file" name="profilepic" value="Profile picture" class="input" id="profile" required> -->
+				<!-- paminus -->
+				<label class="btn btn-info input">
+		        Choose your profile <i class="fa fa-picture-o" aria-hidden="true"></i>
+		        <input type="file" name="profilepic" style="display: none;" id="profile" required>
+		    </label>
+
+				<!-- paminus -->
 				<label id="profilevalid" class="validation"></label>
 				<!-- <input type="submit" name="submit" value="signup" id="submit" class="input" onclick="spinnermanager()"> -->
 				<button type="submit" name="submit" class="btn btn-info" id="submit" onclick="spinner_manager() " onabort="cancel()">

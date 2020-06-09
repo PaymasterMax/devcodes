@@ -22,7 +22,7 @@ def update_profile(request):
             try:
                 edit_user_details.profilepic=request.FILES["profile"]
             except Exception as e:
-                pass
+                print(f"{e}\n\n\n\n\n")
             edit_user_details.email = request.POST["email"]
             edit_user_details.username = request.POST["username"]
             edit_user_details.hobby = request.POST["language"].title()

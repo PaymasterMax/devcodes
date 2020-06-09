@@ -210,9 +210,7 @@ input[type="submit"]:hover{
 	display:inline;
 	border-bottom: 2px solid #3399ff;
 	min-width: 90px;
-
 }
-
 .dropdown:hover .dropbtn{
 	background-color: #c0c0c0;
 	color: black;
@@ -230,12 +228,9 @@ nav{
   display: inline-block;
   text-align: left;
 }
-
-
 .row{
 	font-family: Arial, Helvetica, sans-serif;
 }
-
 .column{
 	float:left;
 	width: 25%;
@@ -245,15 +240,12 @@ nav{
 .row {
 	margin : 0- 5px;
 }
-
 .row:after{
 	content: "";
 	display: table;
 	clear: both;
 	margin-top: 20px;
-
 }
-
 .card{
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.26);
 	padding: 16px;
@@ -362,8 +354,6 @@ nav{
 	border: 1px solid rgba(51, 153, 255, 0.884);
 }
 #profile{
-	width: 200px;
-	height: 100px;
 }
 
 .welcome{
