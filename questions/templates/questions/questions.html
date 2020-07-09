@@ -201,6 +201,64 @@
   <a href="#upPart"><img src="{% static 'questions/images/up.svg' %}" alt="up_key" class="up-icon"  id="up">
     </a>
 <script>
+//   added things
+  
+  // getting the constants 
+const bdy = document.querySelector("body");
+const hamIcon = document.querySelector(".menu-icon");
+const hamHolder = document.querySelector(".menu-holder");
+
+const menu = document.querySelector(".menu-lists");
+const editBtn = document.querySelector(".edit-option");
+const editPop = document.querySelector(".edit-pop");
+
+const deleteBtn = document.querySelector(".delete-option");
+const deletePop = document.querySelector(".confirmation");
+
+const cancel = document.querySelectorAll(".cancel-Btn");
+const editCancel = document.querySelector("#editCancel");
+const delCancel = document.querySelector("#delCancel");
+
+editCancel.addEventListener('click',function(){
+    console.log("hi");
+    // i am having problems here
+    editPop.classList.remove('grid');
+    // menu.classList.toggle('grid');
+   
+
+});
+
+delCancel.addEventListener('click',function(){
+    // i am having problems here
+   
+    deletePop.classList.remove('grid');
+
+
+});
+
+// console.log(cancel);
+hamIcon.addEventListener('click',function(){
+menu.classList.toggle("grid");
+
+
+});
+
+
+editBtn.addEventListener('click',function(){
+
+
+editPop.classList.add('grid');
+});
+
+
+deleteBtn.addEventListener('click',function(){
+    // menu.classList.toggle('grid');
+ deletePop.classList.add('grid');
+
+});
+
+
+  
   var up=document.getElementById('up');
   window.onscroll=function(){
   var scrollPos=window.pageYOffset;
