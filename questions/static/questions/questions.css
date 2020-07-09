@@ -362,3 +362,126 @@ box-shadow: 3px 3px 9px 0px black;
       display: block;
     }
 }
+
+/* added things */
+.menu-lists {
+    display: none;
+    background: rgba(10, 29, 47, 0.74);
+    padding: 5px;
+    width: max-content;
+    height: max-content;
+    position: absolute;
+    bottom: -3.5rem;
+}
+.menu-icon{
+    width: 20px;
+    height: 40px;
+    transform: rotate(90deg);
+    cursor: pointer;
+}
+
+.edit-pop{
+
+    background: rgba(25, 43, 78, 0.87);
+    padding: 7px;
+    border-radius: 5px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: none;
+
+}
+.confirmation{
+    
+        display: none;
+        align-content: center;
+        justify-items: center;
+        gap: 7px;
+        /* border: 2px solid white; */
+        /* padding: 5px; */
+        background: rgba(25, 43, 78);
+        padding: 7px;
+        border-radius: 5px;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        /* border-radius: 5px; */
+    }
+.quiz-answers{
+    display: flex;
+    /* gap: 9px; */
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 15px;
+}
+.quiz-answers button {
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    /* color: white; */
+    cursor: pointer;
+    /* background-color: aquamarine; */
+}
+.submit-Btn{
+    text-align: center;
+    background: rgb(110, 184, 110);
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.del-Btn{
+    background-color: rgb(212, 65, 65);
+    color: #fff;
+    border-radius: 6px;
+
+}
+.cancel-Btn{
+    background-color: rgba(148, 151, 148, 0.633);
+    color: #fff;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.edit-Btn, .delete-Btn{
+    display: flex;
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+.edit-Btn:hover, .delete-Btn:hover {
+    color: rgb(23, 162, 184);
+}
+.sub-answers{
+    margin-top: 15px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.menu-holder{
+    display: grid;
+    justify-items: flex-end;
+    position: relative;
+}
+.btn-icons{
+    width: 20px;
+    height: 24px;
+    margin: 0 5px;
+}
+.hide{
+    display: none;
+}
+
+.grid{
+    display: grid;
+}
+
