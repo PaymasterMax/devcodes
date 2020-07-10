@@ -367,11 +367,11 @@ box-shadow: 3px 3px 9px 0px black;
 .menu-lists {
     display: none;
     background: rgba(10, 29, 47, 0.74);
-    padding: 5px;
+    /* padding: 5px; */
     width: max-content;
     height: max-content;
     position: absolute;
-    bottom: -3.5rem;
+    bottom: -3rem;
 }
 .menu-icon{
     width: 20px;
@@ -379,6 +379,25 @@ box-shadow: 3px 3px 9px 0px black;
     transform: rotate(90deg);
     cursor: pointer;
 }
+.menu-close{
+    display: none;
+    width: 20px;
+    height: 40px;
+    cursor: pointer;
+    animation: closer .5s 0s ease-in-out forwards;
+}
+
+/* animation for close icon  */
+@keyframes closer{
+    0%{
+transform: rotate(100deg);
+    }
+    100%{
+transform: none;
+    }
+}
+
+
 
 .edit-pop{
 
@@ -485,3 +504,4 @@ box-shadow: 3px 3px 9px 0px black;
     display: grid;
 }
 
+/* end of addition */
