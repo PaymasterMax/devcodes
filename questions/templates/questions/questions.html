@@ -76,49 +76,48 @@
 
 <!--               added code -->
 
-<div class="menu-holder">
-    <img src="{% static 'questions/images/menu.svg' %}" alt="menu icon" class="menu-icon">
-    <img src="{% static 'questions/images/xnew.svg' %}" alt="x icn" class="menu-close" id="close">
-    <!-- this list will appear on clicking the icon  -->
-    <div class="menu-lists">
+                <div class="menu-holder">
+                    <img src="{% static 'questions/images/menu.svg' %}" alt="menu icon" class="menu-icon">
+                    <img src="{% static 'questions/images/xnew.svg' %}" alt="x icn" class="menu-close" id="close">
+                    <!-- this list will appear on clicking the icon  -->
+                    <div class="menu-lists">
+                        <div class="edit-option">
+                           <button class="edit-Btn">
+                               <img src="{% static 'questions/images/edit.svg' %}" alt="edit icon" class="btn-icons"> Edit </button>
+                            <div class="edit-pop">
 
-        <div class="edit-option">
-           <button class="edit-Btn">
-               <img src="{% static 'questions/images/edit.svg' %}" alt="edit icon" class="btn-icons"> Edit </button>
-            <div class="edit-pop">
+                                <!-- this will appear only on clicking the edit option  -->
 
-                <!-- this will appear only on clicking the edit option  -->
+                                <div class="edit-content">
+                                <!-- Paste content of the message here  -->
+                                <textarea name="message" id="" cols="55" rows="5" placeholder="Message to be edited"></textarea>
 
-                <div class="edit-content">
-                <!-- Paste content of the message here  -->
-                <textarea name="message" id="" cols="55" rows="5" placeholder="Message to be edited"></textarea>
-
-                    </div>
-                    <div class="sub-answers">
-                    <button type="submit" class="submit-Btn">Submit</button>
-                    <button class="cancel-Btn" id="editCancel"> Cancel</button>
+                                    </div>
+                                    <div class="sub-answers">
+                                    <button type="submit" class="submit-Btn">Submit</button>
+                                    <button class="cancel-Btn" id="editCancel"> Cancel</button>
+                                        </div>
+                            </div>
                         </div>
-            </div>
-        </div>
 
-        <div class="delete-option">
-           <button class="delete-Btn"><img src="{% static 'questions/images/delete.svg' %}" alt="delete icon" class="btn-icons"> Delete </button>
+                        <div class="delete-option">
+                           <button class="delete-Btn"><img src="{% static 'questions/images/delete.svg' %}" alt="delete icon" class="btn-icons"> Delete </button>
 
-            <!-- this will appear only on clicking the delete option  -->
-            <div class="confirmation">
-                <div class="quiz">
-                    Are you sure you want to delete?
+                            <!-- this will appear only on clicking the delete option  -->
+                            <div class="confirmation">
+                                <div class="quiz">
+                                    Are you sure you want to delete?
+                                </div>
+                                <div class="quiz-answers">
+                                    <button class="del-Btn">Delete</button>
+                                    <button class="cancel-Btn" id="delCancel"> Cancel</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
                 </div>
-                <div class="quiz-answers">
-                    <button class="del-Btn">Delete</button>
-                    <button class="cancel-Btn" id="delCancel"> Cancel</button>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-</div>
 
 <!--               end of addition -->
 
@@ -225,61 +224,41 @@ const editCancel = document.querySelector("#editCancel");
 const delCancel = document.querySelector("#delCancel");
 
 editCancel.addEventListener('click',function(){
-
-editPop.classList.remove('grid');
-closeIcon.classList.remove("grid");
-hamIcon.classList.remove("hide");
-
+    editPop.classList.remove('grid');
+    closeIcon.classList.remove("grid");
+    hamIcon.classList.remove("hide");
 });
-
-
-
 delCancel.addEventListener('click',function(){
-
-deletePop.classList.remove('grid');
-closeIcon.classList.remove("grid");
-hamIcon.classList.remove("hide");
-
+    deletePop.classList.remove('grid');
+    closeIcon.classList.remove("grid");
+    hamIcon.classList.remove("hide");
 });
-
 hamIcon.addEventListener('click',function(){
-
-menu.classList.add("grid");
-hamIcon.classList.add("hide");
-closeIcon.classList.add("grid");
-editBtn.classList.remove('hide');
-deleteBtn.classList.remove('hide');
-
+    menu.classList.add("grid");
+    hamIcon.classList.add("hide");
+    closeIcon.classList.add("grid");
+    editBtn.classList.remove('hide');
+    deleteBtn.classList.remove('hide');
 });
-
-
 closeIcon.addEventListener('click',function(){
-
     menu.classList.remove("grid");
     hamIcon.classList.remove("hide");
     closeIcon.classList.remove("grid");
     // editBtn.classList.add('hide');
     // deleteBtn.classList.add('hide');
-
     });
 
 editBtn.addEventListener('click',function(){
-editPop.classList.add('grid');
-editBtn.classList.add('hide');
-deleteBtn.classList.add('hide');
-
+    editPop.classList.add('grid');
+    editBtn.classList.add('hide');
+    deleteBtn.classList.add('hide');
 });
-
-
 deleteBtn.addEventListener('click',function(){
- deletePop.classList.add('grid');
- deleteBtn.classList.add('hide');
-editBtn.classList.add('hide');
+   deletePop.classList.add('grid');
+   deleteBtn.classList.add('hide');
+  editBtn.classList.add('hide');
 
 });
-
-
-
 // end of addition
 
   var up=document.getElementById('up');
