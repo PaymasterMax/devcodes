@@ -44,53 +44,42 @@
              <a href="{% url 'login:logout' %}">
                Log out
              </a>
-
            </div>
-
     </div>
       {% else %}
       <div class="user-profile">
           <img src="{% static 'home/images/icon.jpg' %}" alt="profile"
           style="width:40px; height:40px; border-radius:50%;">
-
     </div>
       {% endif %}
 </div>
-
   <div class="page-title"  id="upPart">Questions page</div>
   <div class="main-window">
   <div class="person-holder">
     {% for question in Questions %}
-
     <div class="oneQuestion">
           <div class="profile-pic">
           <!-- <img src = "/media/{{question.quid.profilepic}}" alt="profile"> -->
           {% cloudinary question.quid.profilepic.url className="myimg" alt=question.quid.username title=question.quid.username height=200 width=100 %}
           </div>
-
           <div class="question-container">
             <div class="user-details-first-row">
-
               {{question.quid.username}}   @
               {{question.time_posted | timemodifier}}
-
 <!--               added code -->
-
                 <div class="menu-holder">
-                    <img src="{% static 'questions/images/menu.svg' %}" alt="menu icon" class="menu-icon">
+                    <img src="{% static 'questions/images/menu.svg' %}" alt="menu icon" class="menu-icon" id="menu{{question.qid}}" onclick="openMenu('menu'+{{question.qid}});">
                     <img src="{% static 'questions/images/xnew.svg' %}" alt="x icn" class="menu-close" id="close">
                     <!-- this list will appear on clicking the icon  -->
-                    <div class="menu-lists">
+                    <div class="menu-lists menu{{question.qid}}">
                         <div class="edit-option">
-                           <button class="edit-Btn">
+                           <button class="edit-Btn" onclick="openeditpop('editBtn'+{{question.qid}});">
                                <img src="{% static 'questions/images/edit.svg' %}" alt="edit icon" class="btn-icons"> Edit </button>
                             <div class="edit-pop">
-
                                 <!-- this will appear only on clicking the edit option  -->
-
                                 <div class="edit-content">
                                 <!-- Paste content of the message here  -->
-                                <textarea name="message" id="" cols="55" rows="5" placeholder="Message to be edited"></textarea>
+                                <textarea name="message" id="editor" cols="55" rows="5" placeholder="Message to be edited"></textarea>
 
                                     </div>
                                     <div class="sub-answers">
@@ -113,17 +102,13 @@
                                     <button class="cancel-Btn" id="delCancel"> Cancel</button>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
-
 <!--               end of addition -->
-
             </div>
             <div class="question-content">
-              <div class="question-text">{{question.question}}</div>
+              <div class="question-text editBtn{{question.qid}}">{{question.question}}</div>
             <div class="languages-tagged">
               {{question.language}}
               </div>
@@ -230,13 +215,23 @@ delCancel.addEventListener('click',function(){
     closeIcon.classList.remove("grid");
     hamIcon.classList.remove("hide");
 });
-hamIcon.addEventListener('click',function(){
-    menu.classList.add("grid");
-    hamIcon.classList.add("hide");
-    closeIcon.classList.add("grid");
-    editBtn.classList.remove('hide');
-    deleteBtn.classList.remove('hide');
-});
+function openMenu(cname) {
+  var data = document.querySelector("."+cname);
+  data.setAttribute("style" , "display:block;");
+  // menu.classList.add("grid");
+  hamIcon.classList.add("hide");
+  closeIcon.classList.add("grid");
+  editBtn.classList.remove('hide');
+  deleteBtn.classList.remove('hide');
+}
+      // PAMINUS :)
+// hamIcon.addEventListener('click',function(){
+//     menu.classList.add("grid");
+//     hamIcon.classList.add("hide");
+//     closeIcon.classList.add("grid");
+//     editBtn.classList.remove('hide');
+//     deleteBtn.classList.remove('hide');
+// });
 closeIcon.addEventListener('click',function(){
     menu.classList.remove("grid");
     hamIcon.classList.remove("hide");
@@ -245,11 +240,19 @@ closeIcon.addEventListener('click',function(){
     // deleteBtn.classList.add('hide');
     });
 
-editBtn.addEventListener('click',function(){
-    editPop.classList.add('grid');
-    editBtn.classList.add('hide');
-    deleteBtn.classList.add('hide');
-});
+// PAMINUS code commented
+// editBtn.addEventListener('click',function(){
+//   editPop.classList.add('grid');
+//   editBtn.classList.add('hide');
+//   deleteBtn.classList.add('hide');
+// });
+
+function openeditpop(target){
+  editPop.classList.add('grid');
+  document.querySelector("#editor").value = document.querySelector("."+target).innerHTML;
+  editBtn.classList.add('hide');
+  deleteBtn.classList.add('hide');
+}
 deleteBtn.addEventListener('click',function(){
    deletePop.classList.add('grid');
    deleteBtn.classList.add('hide');
