@@ -7,6 +7,7 @@ from chatroom.models import ChatModel as chtb
 from chatroom.models import FeedBack as fd
 from django.http import JsonResponse , HttpResponse
 from itertools import chain
+import json
 
 def custom_userquestions(userinfo):
     try:
@@ -141,3 +142,19 @@ def feed(request):
     feed = request.POST["feedback"]
     fd.objects.create(feedback_sender = user_mail, feedback = feed)
     return JsonResponse({"feedback":True})
+
+def deleteQuestion(request):
+    try:
+        target_id = request.POST["Qid"]
+        print(target_id)
+        target_data = Questions.objects.get(qid = target_id)
+        assoc_ans = Answers.objects.filter(question_to_answer_id = target_id)
+        target_like = qlike.objects.filter(Qid_id = target_id)
+        target_data.delete()
+        assoc_ans.delete()
+        target_like.delete()
+    except Exception as e:
+        data = {"pass":False}
+    else:
+        data = {"pass":True}
+    return HttpResponse(json.dumps(data) , content_type = "application/json")
