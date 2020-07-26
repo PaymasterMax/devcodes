@@ -90,7 +90,7 @@
                         </div>
 
                         <div class="delete-option">
-                           <button class="delete-Btn"><img src="{% static 'questions/images/delete.svg' %}" alt="delete icon" class="btn-icons" onclick="deleteQuestion('AllDiv'+{{question.qid}}, {{question.qid}});"> Delete </button>
+                           <button class="delete-Btn"><img src="{% static 'questions/images/delete.svg' %}" alt="delete icon" class="btn-icons"> Delete </button>
 
                             <!-- this will appear only on clicking the delete option  -->
                             <div class="confirmation">
@@ -98,7 +98,7 @@
                                     Are you sure you want to delete?
                                 </div>
                                 <div class="quiz-answers">
-                                    <button class="del-Btn">Delete</button>
+                                    <button class="del-Btn" onclick="deleteQuestion('AllDiv'+{{question.qid}}, {{question.qid}});">Delete</button>
                                     <button class="cancel-Btn" id="delCancel"> Cancel</button>
                                 </div>
                             </div>
@@ -201,23 +201,6 @@
         }
       }
       xmlhttp.send("qid="  + qid);
-    }
-    function deleteQuestion(target , id) {
-      var target = document.querySelector("."+target);
-      try {
-        var xmlhttp = new XMLHttpRequest();
-      } catch (e) {
-        var xmlhttp = new ActiveXObject();
-      } finally {
-          xmlhttp.onreadystatechange = function(){
-            if (this.readyState == 4 && this.status == 200) {
-                target.remove();
-            }
-          }
-          xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}")
-          xmlhttp.open("POST"  , "{% url 'questions:deleteQuestion' %}", true );
-          xmlhttp.send("Qid="id);
-      }
     }
   }
 </script>
