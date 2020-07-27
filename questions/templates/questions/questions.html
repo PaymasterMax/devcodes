@@ -122,7 +122,7 @@
                     </div>
               {% else %}
                   <div class="like like{{question.qid}}">
-                  <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;" onclick="updatemonster({{question.qid}} , l'ike'+{{question.qid}});">
+                  <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;" onclick="updatemonster({{question.qid}} , 'like'+{{question.qid}});">
                        {{question.question_liked.count}}
                   </div>
               {% endif %}
