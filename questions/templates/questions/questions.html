@@ -32,7 +32,6 @@
       {% if userlog %}
       <div class="user-profile">
         <a> <i class="fa fa-bell">{{notifs}}</i> </a>
-
           <!-- <img src="/media/{{mydetails.profilepic}}" alt="profile"
            style="width:40px; height:40px; border-radius:50%;"> -->
            {% cloudinary mydetails.profilepic.url className="myimg" alt=mydetails.username title=mydetails.username height=200 width=100 %}
@@ -66,46 +65,48 @@
             <div class="user-details-first-row">
               {{question.quid.username}}   @
               {{question.time_posted | timemodifier}}
-<!--               added code -->
-                <div class="menu-holder">
-                    <img src="{% static 'questions/images/menu.svg' %}" alt="menu icon" class="menu-icon" id="menu{{question.qid}}" onclick="popM('menu'+{{question.qid}});">
-                    <img src="{% static 'questions/images/xnew.svg' %}" alt="x icn" class="menu-close" id="close">
-                    <!-- this list will appear on clicking the icon  -->
-                    <div class="menu-lists menu{{question.qid}}">
-                        <div class="edit-option">
-                           <button class="edit-Btn" onclick="openeditpop('editBtn'+{{question.qid}});">
-                               <img src="{% static 'questions/images/edit.svg' %}" alt="edit icon" class="btn-icons"> Edit </button>
-                            <div class="edit-pop">
-                                <!-- this will appear only on clicking the edit option  -->
-                                <div class="edit-content">
-                                <!-- Paste content of the message here  -->
-                                <textarea name="message" id="editor" cols="55" rows="5" placeholder="Message to be edited"></textarea>
-                                    </div>
-                                    <div class="sub-answers">
-                                    <button type="submit" class="submit-Btn" onclick="adjustAnswer({{question.qid}} , 'editBtn'+{{question.qid}})">Submit</button>
-                                    <button class="cancel-Btn" id="editCancel"> Cancel</button>
-                                    </div>
-                            </div>
-                        </div>
+              {% if question.quid_id !=mydetails.uid %}
+              <!--               added code -->
+                              <div class="menu-holder">
+                                  <img src="{% static 'questions/images/menu.svg' %}" alt="menu icon" class="menu-icon" id="menu{{question.qid}}" onclick="popM('menu'+{{question.qid}});">
+                                  <img src="{% static 'questions/images/xnew.svg' %}" alt="x icn" class="menu-close" id="close">
+                                  <!-- this list will appear on clicking the icon  -->
+                                  <div class="menu-lists menu{{question.qid}}">
+                                      <div class="edit-option">
+                                         <button class="edit-Btn" onclick="openeditpop('editBtn'+{{question.qid}});">
+                                             <img src="{% static 'questions/images/edit.svg' %}" alt="edit icon" class="btn-icons"> Edit </button>
+                                          <div class="edit-pop">
+                                              <!-- this will appear only on clicking the edit option  -->
+                                              <div class="edit-content">
+                                              <!-- Paste content of the message here  -->
+                                              <textarea name="message" id="editor" cols="55" rows="5" placeholder="Message to be edited"></textarea>
+                                                  </div>
+                                                  <div class="sub-answers">
+                                                  <button type="submit" class="submit-Btn" onclick="adjustAnswer({{question.qid}} , 'editBtn'+{{question.qid}})">Submit</button>
+                                                  <button class="cancel-Btn" id="editCancel"> Cancel</button>
+                                                  </div>
+                                          </div>
+                                      </div>
 
-                        <div class="delete-option">
-                          <input type="hidden" class="tken" value="{{ csrf_token }}">
-                           <button class="delete-Btn"><img src="{% static 'questions/images/delete.svg' %}" alt="delete icon" class="btn-icons"> Delete </button>
+                                      <div class="delete-option">
+                                        <input type="hidden" class="tken" value="{{ csrf_token }}">
+                                         <button class="delete-Btn"><img src="{% static 'questions/images/delete.svg' %}" alt="delete icon" class="btn-icons"> Delete </button>
 
-                            <!-- this will appear only on clicking the delete option  -->
-                            <div class="confirmation">
-                                <div class="quiz">
-                                    Are you sure you want to delete?
-                                </div>
-                                <div class="quiz-answers">
-                                    <button class="del-Btn" onclick="deleteQuestions('AllDiv'+{{question.qid}}, {{question.qid}});">Delete</button>
-                                    <button class="cancel-Btn" id="delCancel"> Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-<!--               end of addition -->
+                                          <!-- this will appear only on clicking the delete option  -->
+                                          <div class="confirmation">
+                                              <div class="quiz">
+                                                  Are you sure you want to delete?
+                                              </div>
+                                              <div class="quiz-answers">
+                                                  <button class="del-Btn" onclick="deleteQuestions('AllDiv'+{{question.qid}}, {{question.qid}});">Delete</button>
+                                                  <button class="cancel-Btn" id="delCancel"> Cancel</button>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+              <!--               end of addition -->
+              {% endif %}
             </div>
             <div class="question-content">
               <div class="question-text editBtn{{question.qid}}">{{question.question}}</div>
