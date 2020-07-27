@@ -166,4 +166,5 @@ def editQuestion(request):
             data = {
                     "Status":True
                     }
+            print("\n\n\n\n\n\n{}".format(e))
     return HttpResponse(json.dumps(data) , content_type="application/json")
