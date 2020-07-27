@@ -157,8 +157,8 @@ def editQuestion(request):
 
         }
         try:
+            target_model = Questions.objects.get(qid = id)
             if (content !="") & (target_model.question != content):
-                target_model = Questions.objects.get(qid = id)
                 target_model.question = content
                 target_model.time_posted = datetime.datetime.now()
                 target_model.save()
@@ -166,5 +166,4 @@ def editQuestion(request):
             data = {
                     "Status":True
                     }
-            print("\n\n\n\n\n\n{}".format(e))
     return HttpResponse(json.dumps(data) , content_type="application/json")
