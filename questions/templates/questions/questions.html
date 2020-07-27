@@ -65,7 +65,7 @@
             <div class="user-details-first-row">
               {{question.quid.username}}   @
               {{question.time_posted | timemodifier}}
-              {% if question.quid_id !=mydetails.uid %}
+              {% if question.quid_id ==mydetails.uid %}
               <!--               added code -->
                               <div class="menu-holder">
                                   <img src="{% static 'questions/images/menu.svg' %}" alt="menu icon" class="menu-icon" id="menu{{question.qid}}" onclick="popM('menu'+{{question.qid}});">
