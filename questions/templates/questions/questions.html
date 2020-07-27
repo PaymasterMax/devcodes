@@ -11,6 +11,7 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <title>DevCodes | Questions</title>
     <link rel="stylesheet" href="{% static 'questions/questions.css' %}">
+    <script src="{% static 'questions/questions.js' %}" charset="utf-8"></script>
   </head>
   <body>
 <!-- uniform nav-bar -->
@@ -59,7 +60,6 @@
     {% for question in Questions %}
     <div class="oneQuestion AllDiv{{question.qid}}">
           <div class="profile-pic">
-          <!-- <img src = "/media/{{question.quid.profilepic}}" alt="profile"> -->
           {% cloudinary question.quid.profilepic.url className="myimg" alt=question.quid.username title=question.quid.username height=200 width=100 %}
           </div>
           <div class="question-container">
@@ -68,7 +68,7 @@
               {{question.time_posted | timemodifier}}
 <!--               added code -->
                 <div class="menu-holder">
-                    <img src="{% static 'questions/images/menu.svg' %}" alt="menu icon" class="menu-icon" id="menu{{question.qid}}" onclick="openMenu('menu'+{{question.qid}});">
+                    <img src="{% static 'questions/images/menu.svg' %}" alt="menu icon" class="menu-icon" id="menu{{question.qid}}" onclick="popM('menu'+{{question.qid}});">
                     <img src="{% static 'questions/images/xnew.svg' %}" alt="x icn" class="menu-close" id="close">
                     <!-- this list will appear on clicking the icon  -->
                     <div class="menu-lists menu{{question.qid}}">
@@ -80,16 +80,16 @@
                                 <div class="edit-content">
                                 <!-- Paste content of the message here  -->
                                 <textarea name="message" id="editor" cols="55" rows="5" placeholder="Message to be edited"></textarea>
-
                                     </div>
                                     <div class="sub-answers">
-                                    <button type="submit" class="submit-Btn">Submit</button>
+                                    <button type="submit" class="submit-Btn" onclick="adjustAnswer({{question.qid}} , 'editBtn'+{{question.qid}})">Submit</button>
                                     <button class="cancel-Btn" id="editCancel"> Cancel</button>
-                                        </div>
+                                    </div>
                             </div>
                         </div>
 
                         <div class="delete-option">
+                          <input type="hidden" class="tken" value="{{ csrf_token }}">
                            <button class="delete-Btn"><img src="{% static 'questions/images/delete.svg' %}" alt="delete icon" class="btn-icons"> Delete </button>
 
                             <!-- this will appear only on clicking the delete option  -->
@@ -98,7 +98,7 @@
                                     Are you sure you want to delete?
                                 </div>
                                 <div class="quiz-answers">
-                                    <button class="del-Btn" onclick="deleteQuestion('AllDiv'+{{question.qid}}, {{question.qid}});">Delete</button>
+                                    <button class="del-Btn" onclick="deleteQuestions('AllDiv'+{{question.qid}}, {{question.qid}});">Delete</button>
                                     <button class="cancel-Btn" id="delCancel"> Cancel</button>
                                 </div>
                             </div>
@@ -120,8 +120,8 @@
                      {{question.question_liked.count}}
                     </div>
               {% else %}
-                  <div class="like">
-                  <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;" onclick="updatemonster({{question.qid}});">
+                  <div class="like like{{question.qid}}">
+                  <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;" onclick="updatemonster({{question.qid}} , l'ike'+{{question.qid}});">
                        {{question.question_liked.count}}
                   </div>
               {% endif %}
@@ -135,13 +135,9 @@
             </div>
           </div>
     </div>
-
-
     {% endfor %}
   </div>
-
   <div class = "main-question" class="modal"  id="modal">
-
     <div class="pose">
       Ask a Question
       <a href="{% url 'questions:questions' %}"><img src="../../static/questions/images/x.svg" alt="&times;"></a>
@@ -157,8 +153,7 @@
                border-style: none;
                resize:none;
                width:100%;
-               ">
-          </textarea>
+               "></textarea>
     </div>
     <div class="languages">
         <input type="text" maxlength="15" name="language" required placeholder="Mention programming language(s).." id="question" size="33"
@@ -184,6 +179,121 @@
   <a href="#upPart"><img src="{% static 'questions/images/up.svg' %}" alt="up_key" class="up-icon"  id="up">
     </a>
 <script>
+//   added things
+
+// getting the constants
+const bdy = document.querySelector("body");
+const hamIcon = document.querySelector(".menu-icon");
+const hamHolder = document.querySelector(".menu-holder");
+const closeIcon = document.querySelector("#close");
+
+const menu = document.querySelector(".menu-lists");
+const editBtn = document.querySelector(".edit-Btn");
+const editPop = document.querySelector(".edit-pop");
+
+const deleteBtn = document.querySelector(".delete-Btn");
+const deletePop = document.querySelector(".confirmation");
+
+const cancel = document.querySelectorAll(".cancel-Btn");
+const editCancel = document.querySelector("#editCancel");
+const delCancel = document.querySelector("#delCancel");
+
+
+editCancel.addEventListener('click',function(){
+    editPop.classList.remove('grid');
+    closeIcon.classList.remove("grid");
+    hamIcon.classList.remove("hide");
+});
+
+delCancel.addEventListener('click',function(){
+    deletePop.classList.remove('grid');
+    closeIcon.classList.remove("grid");
+    hamIcon.classList.remove("hide");
+});
+      // PAMINUS :)
+// hamIcon.addEventListener('click',function(){
+//     menu.classList.add("grid");
+//     hamIcon.classList.add("hide");
+//     closeIcon.classList.add("grid");
+//     editBtn.classList.remove('hide');
+//     deleteBtn.classList.remove('hide');
+// });
+closeIcon.addEventListener('click',function(){
+    menu.classList.remove("grid");
+    hamIcon.classList.remove("hide");
+    closeIcon.classList.remove("grid");
+    // editBtn.classList.add('hide');
+    // deleteBtn.classList.add('hide');
+    });
+
+// PAMINUS code commented
+// editBtn.addEventListener('click',function(){
+//   editPop.classList.add('grid');
+//   editBtn.classList.add('hide');
+//   deleteBtn.classList.add('hide');
+// });
+
+function openeditpop(target){
+  editPop.classList.add('grid');
+  document.querySelector("#editor").value = document.querySelector("."+target).innerHTML;
+  editBtn.classList.add('hide');
+  deleteBtn.classList.add('hide');
+}
+deleteBtn.addEventListener('click',function(){
+   deletePop.classList.add('grid');
+   deleteBtn.classList.add('hide');
+  editBtn.classList.add('hide');
+
+});
+// end of addition
+
+  var up=document.getElementById('up');
+  window.onscroll=function(){
+  var scrollPos=window.pageYOffset;
+  if(scrollPos<100){
+      up.classList.add('hide');
+  }
+  else{
+      up.classList.remove('hide');
+  }
+  }
+  const openModalButtons = document.querySelectorAll('[data-modal-target]')
+  const closeModalButtons = document.querySelectorAll('[data-close-button]')
+  const overlay = document.getElementById('overlay')
+
+  openModalButtons.forEach(button =>{
+    button.addEventListener('click', () => {
+      const modal = document.querySelector(button.dataset.modalTarget)
+      openModal(modal)
+    })
+  })
+  overlay.addEventListener('click', () => {
+    const modals = document.querySelectorAll('.modal.active')
+    modals.forEach(modal =>{
+      closeModal(modal)
+    })
+
+  })
+  closeModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const modal = button.closest('.modal')
+      closeModal(modal)
+    })
+  })
+  function openModal(modal){
+    if(modal == null) {return}
+    else{
+    modal.classList.add('active')
+    overlay.classList.add('active')
+    }
+  }
+  function closeModal(modal){
+    if(modal == null) {return}
+    else{
+    modal.classList.remove('active')
+    overlay.classList.remove('active')
+    }
+  }
   function updatemonster(qid) {
     try {
         var xmlhttp = new XMLHttpRequest();
@@ -197,13 +307,17 @@
 
       xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-          alert(this.responseText);
+          var responseD = JSON.parse(this.responseText);
+          if (responseD.status) {
+              alert(responseD.liked);
+          }else {
+                  alert(responseD.liked);
+          }
         }
       }
       xmlhttp.send("qid="  + qid);
     }
   }
 </script>
-  <script src="{% static 'questions/questions.js' %}" charset="utf-8"></script>
   </body>
 </html>

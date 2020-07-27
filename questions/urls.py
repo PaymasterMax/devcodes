@@ -11,4 +11,5 @@ urlpatterns = [
     url("^answers/(?P<Qid>[\d]+)/$" , views.answersview , name = "answers"),
     url("^updatequestions/$" , views.askquestionsview , name = "askquestions"),
     url("^deleteQuestion/$" , views.deleteQuestion , name = "deleteQuestion"),
+    url("^editQuestion/" , views.editQuestion , name="editQuestion"),
 ]
