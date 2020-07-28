@@ -16,3 +16,10 @@ def liked(curuid , qidobj):
             break
 
     return controller
+
+@register.filter("compare")
+def comp(x , y):
+    if x==y:
+        return True
+    else:
+        return False
