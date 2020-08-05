@@ -15,7 +15,7 @@ urlpatterns = [
     url("questions/" , include("questions.urls")),
     url("peers/" , include("peer.urls")),
     url("chatroom/" , include("chatroom.urls")),
-        # url(r'^oauth/', include('social_django.urls', namespace='social')),
+    url(r'^oauth/', include('social_django.urls', namespace='social')),
 ]+static(settings.MEDIA_URL , document_root = settings.MEDIA_ROOT)
 
 
