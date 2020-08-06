@@ -16,7 +16,8 @@ urlpatterns = [
     url("peers/" , include("peer.urls")),
     url("chatroom/" , include("chatroom.urls")),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
-    url(r'logout/', logout, {'next_page': settings.LOGOUT_REDIRECT_URL},
+    url('logout/', logout, {'next_page': settings.LOGOUT_REDIRECT_URL},
+    name='logout'),
 ]+static(settings.MEDIA_URL , document_root = settings.MEDIA_ROOT)
 
 
