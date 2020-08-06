@@ -120,6 +120,7 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.linkedin.LinkedinOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
 
     'django.contrib.auth.backends.ModelBackend',
 )
@@ -207,6 +208,11 @@ SOCIAL_AUTH_FACEBOOK_SECRET = "ea51c6d0b68c888851a2b9f958042db6"  # App Secret
 
 SOCIAL_AUTH_LINKEDIN_KEY = '78mzuv48xtznlx'  # App ID
 SOCIAL_AUTH_LINKEDIN_SECRET = "6rIEsN16ZlZsePAh"  # App Secret
+
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '347604565287-bcp80j2mb4ph17jcpn4crbgh45cieapp.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'KbkZOyzNEZgNaZafhED4Vv4d'
+
 
 django_heroku.settings(locals())
 PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
