@@ -7,6 +7,8 @@
 	<link rel="stylesheet" href="{% static 'home/spinner.css' %}">
 	<link rel="icon" href="{% static 'questions/images/devcodes.svg' %}" name="favicon">
 	<link rel="stylesheet" href="{% static 'login/styles.css' %}"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 	<script>
@@ -76,13 +78,14 @@
 			<a class="link" href="{% url 'signup:signup' %}">
 				Signup
 			</a>
-
 		</p>
 	</form>
-				<p>Login with </p>
-		  <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
-		<a href="{% url 'social:begin' 'twitter' %}">twitter</a>
-		<a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
+				<p class="header-login-with">Login with </p>
+				<div class="login-with">
+				<a href="{% url 'social:begin' 'github' %}" class="auth-ln"><i class="fa fa-github auth-links"></i></a><br>
+				<a href="{% url 'social:begin' 'twitter' %}"  class="auth-ln"><i class="fa fa-twitter auth-links"></i></a>
+				<a href="{% url 'social:begin' 'facebook' %}" class="auth-ln"><i class="fa fa-facebook auth-links"></i></a>
+				</div>
 	</div>
 
 		<fb:login-button

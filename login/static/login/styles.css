@@ -26,7 +26,23 @@ height:100vh;
 justify-content:center;
 align-items:center;
 }
-
+.auth-links {
+	padding: 5px;
+	font-size: 1.5em;
+	color: #fff;
+}
+.auth-ln{
+	padding: 1px;
+	flex: 1;
+	color: #fff;
+}
+.login-with {
+	display: flex;
+}
+.header-login-with{
+	text-align: center;
+	color: #fff;
+}
 a{
 	color: #456;
 	text-decoration:none;

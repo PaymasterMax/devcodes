@@ -1,6 +1,8 @@
 .env
-.env
 media_root
 **/__pycache__
 *.pyc
 **/*.pdf
+#devvenv/
+cloudinary_python.txt
+ENV_DIR/
