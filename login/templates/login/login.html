@@ -9,6 +9,29 @@
 	<link rel="stylesheet" href="{% static 'login/styles.css' %}"/>
 </head>
 <body>
+	<script>
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '{your-app-id}',
+	      cookie     : true,
+	      xfbml      : true,
+	      version    : '{api-version}'
+	    });
+	    FB.AppEvents.logPageView();
+	  };
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "https://connect.facebook.net/en_US/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+
+		 // part2
+	FB.getLoginStatus(function(response) {
+	    statusChangeCallback(response);
+});
+	</script>
 <!-- Begining of spinner -->
 <div class="loader-wrapper" id="ld">
 	<span class="loader"><span class="loader-inner"></span></span>
@@ -57,9 +80,20 @@
 		</p>
 	</form>
 				<p>Login with </p>
-		<a href="{% url 'social:begin' 'github' %}">github</a>
+		  <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
 		<a href="{% url 'social:begin' 'twitter' %}">twitter</a>
+		<a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
 	</div>
+
+		<fb:login-button
+		  scope="public_profile,email"
+		  onlogin="checkLoginState();">
+		</fb:login-button>
+
+<fb:login-button
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+</fb:login-button>
 </div>
 <script>
 	 // Listen for when everything has loaded
