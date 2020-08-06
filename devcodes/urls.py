@@ -5,7 +5,6 @@ from django.conf.urls import url , include
 from django.conf.urls.static import static
 from django.conf import settings
 from . import views
-from django.contrib.auth.views import logout
 
 urlpatterns = [
     url('master/', admin.site.urls),
@@ -17,8 +16,6 @@ urlpatterns = [
     url("peers/" , include("peer.urls")),
     url("chatroom/" , include("chatroom.urls")),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
-    url('logout/', logout, {'next_page': settings.LOGOUT_REDIRECT_URL},
-    name='logout'),
 ]+static(settings.MEDIA_URL , document_root = settings.MEDIA_ROOT)
 
 
