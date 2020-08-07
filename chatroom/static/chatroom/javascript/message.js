@@ -16,30 +16,26 @@ const full = document.getElementById('full');
         ex.style.display = 'none';
         iLinks.style.display = 'none';
     });
-    // end of home icon
-    // 
-    // function updatermonster() {
-    //   try {
-    //     var xmlobj_messanger = new XMLHttpRequest();
-    //   } catch (e) {
-    //     var xmlobj_messanger = new ActiveXObject();
-    //   } finally {
-    //     xmlobj_messanger.onreadystatechange = function() {
-    //       if (this.readyState == 4 && this.status==200) {
-    //         var data = JSON.parse(this.responseText);
-    //         for (var i = 0; i < data.all_messages.length; i++) {
-    //           alert(data[i]);
-    //         }
-    //       }
-    //     }
-    //     xmlobj_messanger.open("POST" , "{% url 'chatroom:updatemessage' %}" , true);
-    //     xmlobj_messanger.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
-    //     xmlobj_messanger.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
-    //     xmlobj_messanger.send();
-    //   }
-    // }
-    //
-    // // Check message
-    // setInterval(function(){
-    //   updatermonster();
-    // } , 1000);
+// var wsS = "ws://";
+// var loc = window.location;
+// if (loc.protocol == "https:") {
+//   wsS = "wss://"
+// }
+// var endpoint = wsS + loc.host //+ loc.pathname;
+// var webS = new WebSocket(endpoint);
+//
+// webS.onopen = function(e){
+//   console.log("Open", e);
+// }
+//
+// webS.onclose = function(e){
+//   console.log("Disconnecting ", e);
+// }
+//
+// webS.onerror = function(e){
+//   console.log("Error ", e);
+// }
+//
+// webS.onmessage = function(e){
+//   console.log("Message ", e);
+// }

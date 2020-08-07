@@ -16,7 +16,7 @@ SECRET_KEY = 'ghr%=q!3afx83t+1dojl%j15mta%6!v@bpx2l5p+ki2i!)zqs3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-DEBUG = True
+# DEBUG = True
 ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com' , "devcodes.herokuapp.com"]
 
 # Application definition
@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'channels',
     'home.apps.HomeConfig',
     'login.apps.LoginConfig',
     'signup.apps.SignupConfig',
@@ -70,6 +71,7 @@ MIDDLEWARE_CLASSES = [
 ]
 
 ROOT_URLCONF = 'devcodes.urls'
+# ASGI_APPLICATION = 'devcodes.routing.application'
 
 TEMPLATES = [
     {
@@ -114,9 +116,8 @@ if os.path.isfile(dotenv_file):
     dotenv.load_dotenv(dotenv_file)
 
 WSGI_APPLICATION = 'devcodes.wsgi.application'
+# ASGI_APPLICATION = 'devcodes.routing.application'
 
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {}
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
@@ -164,9 +165,14 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
+# CHANNEL_LAYERS = {
+#     'default': {
+#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
+#         'CONFIG': {
+#             "hosts": [('127.0.0.1', 6379)],
+#         },
+#     },
+# }
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR , "static_root")
@@ -194,7 +200,6 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.linkedin.LinkedinOAuth2',
     'social_core.backends.google.GoogleOAuth2',
-
     'django.contrib.auth.backends.ModelBackend',
 )
 
