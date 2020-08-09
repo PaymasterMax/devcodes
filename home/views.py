@@ -6,7 +6,9 @@ from questions.models import Questions as qa
 
 def homeview(request):
     print(dir(request.user))
-    print("\n\n\n\n\n{}".format(request.user.email))
+    request.session["username"] = request.user.username
+    request.session["loginstatus"] = True
+    request.session.set_expiry(0)
     all_questions = qa.objects.all().order_by("-time_posted")
     try:
         userlog = request.session["username"]
