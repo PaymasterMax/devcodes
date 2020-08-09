@@ -5,10 +5,13 @@ from chatroom.models import ChatModel as chbt
 from questions.models import Questions as qa
 
 def homeview(request):
-    print("\n\n\n\n\n".format(request.user))
-    request.session["username"] = request.user
-    request.session["loginstatus"] = True
-    request.session.set_expiry(0)
+    try:
+        print("\n\n\n\n\n".format(request.user))
+        request.session["username"] = request.user
+        request.session["loginstatus"] = True
+        request.session.set_expiry(0)
+    except Exception as e:
+        pass
     all_questions = qa.objects.all().order_by("-time_posted")
     try:
         userlog = request.session["username"]
