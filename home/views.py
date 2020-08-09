@@ -6,7 +6,7 @@ from questions.models import Questions as qa
 
 def homeview(request):
     print(dir(request.user))
-    request.session["username"] = request.user.username
+    request.session["username"] = request.user
     request.session["loginstatus"] = True
     request.session.set_expiry(0)
     all_questions = qa.objects.all().order_by("-time_posted")
