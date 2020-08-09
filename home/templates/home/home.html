@@ -22,8 +22,17 @@
  <!-- Begining of spinner -->
  <div class="loader-wrapper" id="ld">
   <span class="loader"><span class="loader-inner"></span></span>
-      </div>
+  </div>
       <!-- End of spinner -->
+      <div class="buy-me-coffee">
+          <span class="fa fa-coffee"></span>
+      </div>
+      <div class="coffee-options">
+        <p class="yt">&times;</p>
+          <p class="fa fa-mpesa"></p>
+          <p class="fa fa-paypal"></p>
+          <p class="fa fa-google-plus"></p>
+      </div>
     <div class="nav-bar">
           <!-- Home icon Beginning -->
     <div class="full-icon" id="full">
@@ -280,7 +289,7 @@
             border: 1px solid #525151;
             margin: 10px 0px;
                        " autofocus></textarea>
-                        </div>
+        </div>
         <div class="submit">
             <button class="send-btn" onclick="feedbacks();">
                 Send
@@ -374,10 +383,8 @@
             xmlhttp.send();
           }
         }
-        setInterval(function(){
-          checknewmessage();
-        } , 3000);
       });
         </script>
+          <script src="{% static 'home/home.js' %}" charset="utf-8"></script>
     </body>
     </html>

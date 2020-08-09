@@ -5,8 +5,9 @@ from chatroom.models import ChatModel as chbt
 from questions.models import Questions as qa
 
 def homeview(request):
+    print(dir(request.user))
+    print("\n\n\n\n\n{}".format(request.user.email))
     all_questions = qa.objects.all().order_by("-time_posted")
-    print(request.user)
     try:
         userlog = request.session["username"]
         userinfo = Signup.objects.get(username = userlog)

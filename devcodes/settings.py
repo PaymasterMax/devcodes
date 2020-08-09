@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'channels',
+    'channels',
     'home.apps.HomeConfig',
     'login.apps.LoginConfig',
     'signup.apps.SignupConfig',
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'chatroom.apps.ChatroomConfig',
     'social_django',
     "cloudinary",
+    'django_daraja',
 ]
 cloudinary.config(
     cloud_name = "hti2kicdw",
@@ -116,7 +117,7 @@ if os.path.isfile(dotenv_file):
     dotenv.load_dotenv(dotenv_file)
 
 WSGI_APPLICATION = 'devcodes.wsgi.application'
-# ASGI_APPLICATION = 'devcodes.routing.application'
+ASGI_APPLICATION = 'devcodes.routing.application'
 
 
 DATABASES = {}
@@ -165,14 +166,14 @@ USE_L10N = True
 
 USE_TZ = True
 
-# CHANNEL_LAYERS = {
-#     'default': {
-#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
-#         'CONFIG': {
-#             "hosts": [('127.0.0.1', 6379)],
-#         },
-#     },
-# }
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR , "static_root")
@@ -208,8 +209,13 @@ LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 LOGIN_REDIRECT_URL = '/'
 
-SOCIAL_AUTH_GITHUB_KEY = '2cfb028f2d5e0c6f70d1'
-SOCIAL_AUTH_GITHUB_SECRET = 'd9e6170c11b6b42a2a541344c57b6b604136fc05'
+# local
+SOCIAL_AUTH_GITHUB_KEY = '6e61c58ed550083463ad'
+SOCIAL_AUTH_GITHUB_SECRET = '89f6a275267ca53c48364efd7a3353d364780b54'
+
+# remote
+# SOCIAL_AUTH_GITHUB_KEY = '2cfb028f2d5e0c6f70d1'
+# SOCIAL_AUTH_GITHUB_SECRET = 'd9e6170c11b6b42a2a541344c57b6b604136fc05'
 
 SOCIAL_AUTH_FACEBOOK_KEY = '579932866026329'  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = "ea51c6d0b68c888851a2b9f958042db6"  # App Secret
@@ -228,3 +234,50 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR , "media_root")
+
+
+
+
+
+
+
+
+
+
+
+
+
+# mpesa
+
+# The Mpesa environment to use
+# Possible values: sandbox, production
+
+MPESA_ENVIRONMENT = 'sandbox'
+
+# Credentials for the daraja app
+
+MPESA_CONSUMER_KEY = 'LbloZVLJsHlLFQfbmVUUZ7iK1H67QGJA'
+MPESA_CONSUMER_SECRET = 'FI88utVhKMPIMNum'
+
+#Shortcode to use for transactions. For sandbox  use the Shortcode 1 provided on test credentials page
+
+MPESA_SHORTCODE = '1'
+
+# Shortcode to use for Lipa na MPESA Online (MPESA Express) transactions
+# This only has a different value on sandbox, you do not need to set it on production
+# For sandbox use the Lipa na MPESA Online Shorcode provided on test credentials page
+
+MPESA_EXPRESS_SHORTCODE = '103567'
+
+# Type of shortcode
+# Possible values:
+# - paybill (For Paybill)
+# - till_number (For Buy Goods Till Number)
+
+MPESA_SHORTCODE_TYPE = 'paybill'
+
+# Lipa na MPESA Online passkey
+# Sandbox passkey is available on test credentials page
+# Production passkey is sent via email once you go live
+
+MPESA_PASSKEY = 'mpesa_passkey'

@@ -22,6 +22,36 @@
   z-index:4;
   top:0;
 }
+.buy-me-coffee {
+  background-color: #fff;
+  border-radius: 50%;
+  min-width: 40px;
+  min-height: 40px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  /* padding: 10px; */
+  cursor: pointer;
+}
+.buy-me-coffee >span {
+  position: absolute;
+  text-align: center;
+  top: 10px;
+  left: 10px;
+}
+.coffee-options {
+  background-color: #fff;
+  position: fixed;
+  top: 50vh;
+  left: 45vw;
+  opacity: 1;
+  display: none;
+}
+.coffee-options > p {
+  flex: 1;
+  padding: 10px;
+  cursor: pointer;
+}
 .myimg {
   font-size: 25px;
 }
