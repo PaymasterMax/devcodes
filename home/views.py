@@ -5,6 +5,7 @@ from chatroom.models import ChatModel as chbt
 from questions.models import Questions as qa
 
 def homeview(request):
+    print("\n\n\n\n\n".format(request.user))
     request.session["username"] = request.user
     request.session["loginstatus"] = True
     request.session.set_expiry(0)
