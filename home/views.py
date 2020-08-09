@@ -5,7 +5,6 @@ from chatroom.models import ChatModel as chbt
 from questions.models import Questions as qa
 
 def homeview(request):
-    print(dir(request.user))
     request.session["username"] = request.user
     request.session["loginstatus"] = True
     request.session.set_expiry(0)
@@ -15,7 +14,7 @@ def homeview(request):
         userinfo = Signup.objects.get(username = userlog)
         notifs = chbt.objects.filter(r2uid_id = userinfo.uid , bell_seen = False).count()
     except Exception as e:
-        userlog = False
+        # userlog = False
         return render(request , "home/home.html" , context = {"allq": all_questions , "userlog":userlog})
 
     else:
