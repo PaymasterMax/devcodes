@@ -16,26 +16,26 @@ const full = document.getElementById('full');
         ex.style.display = 'none';
         iLinks.style.display = 'none';
     });
-// var wsS = "ws://";
-// var loc = window.location;
-// if (loc.protocol == "https:") {
-//   wsS = "wss://"
-// }
-// var endpoint = wsS + loc.host //+ loc.pathname;
-// var webS = new WebSocket(endpoint);
-//
-// webS.onopen = function(e){
-//   console.log("Open", e);
-// }
-//
-// webS.onclose = function(e){
-//   console.log("Disconnecting ", e);
-// }
-//
-// webS.onerror = function(e){
-//   console.log("Error ", e);
-// }
-//
-// webS.onmessage = function(e){
-//   console.log("Message ", e);
-// }
+var wsS = "ws://";
+var loc = window.location;
+if (loc.protocol == "https:") {
+  wsS = "wss://"
+}
+var endpoint = wsS + loc.host //+ loc.pathname;
+var webS = new WebSocket(endpoint);
+
+webS.onopen = function(e){
+  console.log("Open", e);
+}
+
+webS.onclose = function(e){
+  console.log("Disconnecting ", e);
+}
+
+webS.onerror = function(e){
+  console.log("Error ", e);
+}
+
+webS.onmessage = function(e){
+  console.log("Message ", e);
+}

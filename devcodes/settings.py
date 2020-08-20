@@ -17,7 +17,7 @@ SECRET_KEY = 'ghr%=q!3afx83t+1dojl%j15mta%6!v@bpx2l5p+ki2i!)zqs3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 DEBUG = True
-ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com' , "devcodes.herokuapp.com"]
+ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com' , "devcodes.herokuapp.com" , "127.0.0.1" , "localhost"]
 
 # Application definition
 
@@ -28,7 +28,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'channels',
     'home.apps.HomeConfig',
     'login.apps.LoginConfig',
     'signup.apps.SignupConfig',
@@ -36,9 +35,10 @@ INSTALLED_APPS = [
     'questions.apps.QuestionsConfig',
     "peer.apps.PeerConfig",
     'chatroom.apps.ChatroomConfig',
+    'django_daraja',
     'social_django',
     "cloudinary",
-    'django_daraja',
+    'channels',
 ]
 cloudinary.config(
     cloud_name = "hti2kicdw",
@@ -72,7 +72,6 @@ MIDDLEWARE_CLASSES = [
 ]
 
 ROOT_URLCONF = 'devcodes.urls'
-# ASGI_APPLICATION = 'devcodes.routing.application'
 
 TEMPLATES = [
     {

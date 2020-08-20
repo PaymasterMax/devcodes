@@ -21,7 +21,7 @@ var loc = window.location;
 if (loc.protocol == "https:") {
   wsS = "wss://"
 }
-var endpoint = wsS + loc.host //+ loc.pathname;
+var endpoint = wsS + loc.host + loc.pathname;
 var webS = new WebSocket(endpoint);
 
 webS.onopen = function(e){
