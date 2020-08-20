@@ -206,7 +206,7 @@ AUTHENTICATION_BACKENDS = (
 
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
-LOGIN_REDIRECT_URL = 'http://devcodes.herokuapp.com/'
+LOGIN_REDIRECT_URL = '/'
 
 # local
 # SOCIAL_AUTH_GITHUB_KEY = '6e61c58ed550083463ad'
