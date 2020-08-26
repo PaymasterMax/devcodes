@@ -4,6 +4,24 @@ body {
 html {
     scroll-behavior: smooth;
 }
+.head-to-top {
+    position: fixed;
+    cursor: pointer;
+    bottom: 60px;
+    display: none;
+    right: 20px;
+    z-index: 3;
+    opacity: 1;
+}
+.head-to-top::selection {
+    background-color: inherit;
+}
+.head-to-top i {
+    font-size: 2.3em;
+}
+.head-to-top i::selection {
+    background-color: inherit;
+}
 .myimg {
   font-size: 25px;
 }
