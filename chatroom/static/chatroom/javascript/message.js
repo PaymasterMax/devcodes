@@ -39,3 +39,7 @@ webS.onerror = function(e){
 webS.onmessage = function(e){
   console.log("Message ", e);
 }
+
+document.querySelector(".headTop").addEventListener("click" , function (e) {
+    scrollTo(0,0)
+})
