@@ -93,18 +93,18 @@
                 {{data.text_message}}
                 <p><span class="time">{{data.text_time|timemodifier }}</span></p>
               </div>
-              <p class="profile">
+              <!-- <p class="profile">
                 {% cloudinary data.r1uid.profilepic.url className="myimg" alt=data.r1uid.username title=data.r1uid.username height=200 width=100 %}
-              </p>
+              </p> -->
             </div>
       <!-- end of single message -->
         {% else %}
               <hr>
               <!-- other message -->
               <div class="one-message first">
-                <p class="profile">
+                <!-- <p class="profile">
                   {% cloudinary data.r1uid.profilepic.url className="myimg" alt=data.r1uid.username title=data.r1uid.username height=200 width=100 %}
-                </p>
+                </p> -->
                 <div class="message-content">
                   {{data.text_message}}
                   <p><span class="second-time">{{data.text_time|timemodifier }}</span></p>
