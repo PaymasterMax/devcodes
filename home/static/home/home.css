@@ -225,12 +225,18 @@
   color: #fff;
   overflow: hidden;
   box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }.start-carol {
   width: 60%;
   margin: 0vh auto;
   min-height: 30vh;
   max-height: 50vh;
   box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .inner-class {
   display: flex;
