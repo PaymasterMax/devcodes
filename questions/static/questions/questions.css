@@ -129,6 +129,7 @@ html {
 .oneQuestion{
 display:flex;
 overflow-wrap: break-word;
+max-height: 200px;
 }
 .user-profile img{
 height: 40px;
