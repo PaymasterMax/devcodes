@@ -27,6 +27,7 @@ def inbox(request):
             newmessage = chatmod.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False).count()
             userlog = True
         except Exception as e:
+            print("\n\n\nfirst{}".format(e))
             userlog = False
             request.session["redirect"] = "/chatroom/"
             return redirect("/login/")
