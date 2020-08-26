@@ -38,7 +38,7 @@ def inbox(request):
             all_messages = db_unique(all_messages , userdetails.uid)
             return render(request , "chatroom/inbox.html/" , context = {"all_messages":all_messages , "userdetails":userdetails , "newmessage":newmessage , "userlog":userlog})
     except Exception as e:
-        print("\n\n\n\n\n{}".format(3))
+        print("\n\n\n\n\nHello{}".format(3))
     else:
         pass
 
