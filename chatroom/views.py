@@ -27,14 +27,14 @@ def inbox(request):
             newmessage = chatmod.objects.filter(r2uid_id =  userdetails.uid, bell_seen = False).count()
             userlog = True
         except Exception as e:
-            print("\n\n\nfirst{}".format(e))
+            print("\n\n\ntop{}".format(userdetails))
             userlog = False
             request.session["redirect"] = "/chatroom/"
             return redirect("/login/")
 
         else:
-            all_messages = chatmod.objects.filter(Q(r2uid_id = userdetails.uid) | Q(r1uid_id = userdetails.uid)).order_by("-text_time")
             print("\n\n\nfirst{}".format(e))
+            all_messages = chatmod.objects.filter(Q(r2uid_id = userdetails.uid) | Q(r1uid_id = userdetails.uid)).order_by("-text_time")
             all_messages = db_unique(all_messages , userdetails.uid)
             return render(request , "chatroom/inbox.html/" , context = {"all_messages":all_messages , "userdetails":userdetails , "newmessage":newmessage , "userlog":userlog})
     except Exception as e:
