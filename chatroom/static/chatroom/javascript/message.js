@@ -1,5 +1,5 @@
 $(document).ready(function (e) {
-        scrollTo(-1,-1)
+        scrollTo(window.outerWidth,window.outerHeight)
 })
 // home icon
 const full = document.getElementById('full');
