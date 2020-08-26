@@ -3,16 +3,12 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-
 .main-div {
   width: 80%;
   margin: 0px auto;
   opacity: .5;
   min-height: 90%;
 }
-
-
 .Message {
   margin: 0px auto;
   color: #000;
@@ -21,7 +17,6 @@ html {
   margin-bottom: auto;
   text-align: center;
 }
-
 .myimg {
   font-size: 25px;
 }
@@ -54,14 +49,11 @@ html {
     margin-bottom: auto;
     text-align: center;
   }
-
-
   .links {
     color: #fff;
     background-color: #456;
     display: flex;
   }
-
   .links > a{
     text-decoration: none;
     font-size: 1.3em;
