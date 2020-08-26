@@ -1,5 +1,10 @@
 $(document).ready(function (e) {
-        scrollTo(window.outerWidth,window.outerHeight)
+    var body = document.body,
+    html = document.documentElement;
+var height = Math.max( body.scrollHeight, body.offsetHeight,
+               html.clientHeight, html.scrollHeight, html.offsetHeight );
+
+        scrollTo(0 , height)
 })
 // home icon
 const full = document.getElementById('full');
