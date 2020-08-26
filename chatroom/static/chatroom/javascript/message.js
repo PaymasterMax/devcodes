@@ -1,3 +1,6 @@
+$(document).ready(function (e) {
+        scrollTo(-1,-1)
+})
 // home icon
 const full = document.getElementById('full');
     const ex = document.getElementById('ex');

@@ -15,12 +15,13 @@ $(function ()  {
             }
         })
     }
-    document.querySelector(".head-to-top") != null ? showArrow():""
+    $(".headTop") != null ? showArrow():""
 
 })
 
-document.querySelector(".headTop").addEventListener("click" , function (e) {
+$(".headTop").click(function (e) {
     scrollTo(0,0)
+    console.log("Hello");
 })
 
 function deleteQuestions(target , id) {
