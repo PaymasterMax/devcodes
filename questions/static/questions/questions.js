@@ -1,4 +1,7 @@
-
+$(".headTop").click(function (e) {
+    console.log("upper");
+    scrollTo(0,0)
+})
 $(function ()  {
     function showArrow() {
         if ( window.pageYOffset > window.screen.availHeight) {
@@ -20,8 +23,8 @@ $(function ()  {
 })
 
 $(".headTop").click(function (e) {
-    scrollTo(0,0)
     console.log("Hello");
+    scrollTo(0,0)
 })
 
 function deleteQuestions(target , id) {
