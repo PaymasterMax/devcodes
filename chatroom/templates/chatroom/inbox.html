@@ -158,6 +158,9 @@
         {% endfor %}
 
 </div>
+<div class="headTop">
+        <i class="fa fa-toggle-up"></i>
+</div>
 <script>
    // home icon
    const full = document.getElementById('full');
@@ -180,6 +183,30 @@
         });
 
         // end of home icon
+
+        $(function ()  {
+            function showArrow() {
+                if ( window.pageYOffset > window.screen.availHeight) {
+                    document.querySelector(".head-to-top").setAttribute("style" , "display:block;")
+                }else {
+                    document.querySelector(".head-to-top").setAttribute("style" , "display:none;")
+                }
+
+                window.addEventListener("scroll" , function (e) {
+                    if ( window.pageYOffset > window.screen.availHeight) {
+                        document.querySelector(".head-to-top").setAttribute("style" , "display:block;")
+                    }else {
+                        document.querySelector(".head-to-top").setAttribute("style" , "display:none;")
+                    }
+                })
+            }
+            document.querySelector(".head-to-top") != null ? showArrow():""
+
+        })
+
+        $(".headTop").click(function (e) {
+                scrollTo(0,0)
+        })
 </script>
   </body>
 </html>

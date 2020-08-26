@@ -5,6 +5,9 @@ body{
     background:#0a1d2f;
     margin:0;
 }
+html {
+    scroll-behavior: smooth;
+}
 .nav-bar{
     display: flex;
     justify-content: space-between;

@@ -1,7 +1,9 @@
 body {
   background-color: #0a1d2f;
 }
-
+html {
+    scroll-behavior: smooth;
+}
 .myimg {
   font-size: 25px;
 }
