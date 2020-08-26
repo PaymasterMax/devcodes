@@ -218,29 +218,11 @@ delCancel.addEventListener('click',function(){
     closeIcon.classList.remove("grid");
     hamIcon.classList.remove("hide");
 });
-      // PAMINUS :)
-// hamIcon.addEventListener('click',function(){
-//     menu.classList.add("grid");
-//     hamIcon.classList.add("hide");
-//     closeIcon.classList.add("grid");
-//     editBtn.classList.remove('hide');
-//     deleteBtn.classList.remove('hide');
-// });
 closeIcon.addEventListener('click',function(){
     menu.classList.remove("grid");
     hamIcon.classList.remove("hide");
     closeIcon.classList.remove("grid");
-    // editBtn.classList.add('hide');
-    // deleteBtn.classList.add('hide');
     });
-
-// PAMINUS code commented
-// editBtn.addEventListener('click',function(){
-//   editPop.classList.add('grid');
-//   editBtn.classList.add('hide');
-//   deleteBtn.classList.add('hide');
-// });
-
 function openeditpop(target){
   editPop.classList.add('grid');
   document.querySelector("#editor").value = document.querySelector("."+target).innerHTML;
@@ -256,15 +238,6 @@ deleteBtn.addEventListener('click',function(){
 // end of addition
 
   var up=document.getElementById('up');
-  window.onscroll=function(){
-  var scrollPos=window.pageYOffset;
-  if(scrollPos<100){
-      up.classList.add('hide');
-  }
-  else{
-      up.classList.remove('hide');
-  }
-  }
   const openModalButtons = document.querySelectorAll('[data-modal-target]')
   const closeModalButtons = document.querySelectorAll('[data-close-button]')
   const overlay = document.getElementById('overlay')
