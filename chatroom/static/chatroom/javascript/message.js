@@ -40,6 +40,30 @@ webS.onmessage = function(e){
   console.log("Message ", e);
 }
 
+$(function ()  {
+    function showArrow() {
+        if ( window.pageYOffset > window.screen.availHeight) {
+            document.querySelector(".head-to-top").setAttribute("style" , "display:block;")
+        }else {
+            document.querySelector(".head-to-top").setAttribute("style" , "display:none;")
+        }
+
+        window.addEventListener("scroll" , function (e) {
+            if ( window.pageYOffset > window.screen.availHeight) {
+                document.querySelector(".head-to-top").setAttribute("style" , "display:block;")
+            }else {
+                document.querySelector(".head-to-top").setAttribute("style" , "display:none;")
+            }
+        })
+    }
+    document.querySelector(".head-to-top") != null ? showArrow():""
+
+})
+
+document.querySelector(".headTop").addEventListener("click" , function (e) {
+    scrollTo(0,0)
+})
+
 document.querySelector(".headTop").addEventListener("click" , function (e) {
     scrollTo(0,0)
 })

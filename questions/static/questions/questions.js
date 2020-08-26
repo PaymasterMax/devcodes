@@ -1,3 +1,28 @@
+
+$(function ()  {
+    function showArrow() {
+        if ( window.pageYOffset > window.screen.availHeight) {
+            document.querySelector(".head-to-top").setAttribute("style" , "display:block;")
+        }else {
+            document.querySelector(".head-to-top").setAttribute("style" , "display:none;")
+        }
+
+        window.addEventListener("scroll" , function (e) {
+            if ( window.pageYOffset > window.screen.availHeight) {
+                document.querySelector(".head-to-top").setAttribute("style" , "display:block;")
+            }else {
+                document.querySelector(".head-to-top").setAttribute("style" , "display:none;")
+            }
+        })
+    }
+    document.querySelector(".head-to-top") != null ? showArrow():""
+
+})
+
+document.querySelector(".headTop").addEventListener("click" , function (e) {
+    scrollTo(0,0)
+})
+
 function deleteQuestions(target , id) {
     var target = document.querySelector("."+target);
     var csrfT = document.querySelector(".tken").value;
@@ -56,26 +81,3 @@ try {
 function dropdownbtn(target_element_class){
 
 }
-$(function ()  {
-    function showArrow() {
-        if ( window.pageYOffset > window.screen.availHeight) {
-            document.querySelector(".head-to-top").setAttribute("style" , "display:block;")
-        }else {
-            document.querySelector(".head-to-top").setAttribute("style" , "display:none;")
-        }
-
-        window.addEventListener("scroll" , function (e) {
-            if ( window.pageYOffset > window.screen.availHeight) {
-                document.querySelector(".head-to-top").setAttribute("style" , "display:block;")
-            }else {
-                document.querySelector(".head-to-top").setAttribute("style" , "display:none;")
-            }
-        })
-    }
-    document.querySelector(".head-to-top") != null ? showArrow():""
-
-})
-
-document.querySelector(".headTop").addEventListener("click" , function (e) {
-    scrollTo(0,0)
-})
