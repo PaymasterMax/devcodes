@@ -24,7 +24,7 @@ decorator==4.4.2
 defusedxml==0.7.0rc1
 dj-database-url==0.5.0
 dj-stripe==2.3.0
-Django==3.0.6
+Django==3.0.14
 django-channels==0.7.0
 django-crispy-forms==1.9.1
 django-daraja==1.1.1
