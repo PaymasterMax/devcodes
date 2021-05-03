@@ -1,0 +1,235 @@
+{% load timemod %}
+{% load static %}
+{% load like %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <title>DevCodes | Questions </title>
+    <link rel="stylesheet" href="{% static 'questions/questions.css' %}">
+
+    <link rel="stylesheet" href="{% static 'home/icon.css' %}">
+    <link rel="stylesheet" href="{% static 'questions/personal.css' %}">
+    <link rel="icon" href="{% static 'questions/images/devcodes.svg' %}" name="favicon">
+
+  </head>
+  <body>
+  <div class="nav-bar">
+
+  <!-- Home icon Beginning -->
+
+  <div class="full-icon" id="full">
+    <div class="row">
+        <div class="dot"></div>   <div class="line"></div>
+    </div>
+    <div class="row">
+        <div class="dot"></div>   <div class="line"></div>
+    </div>
+    <div class="row">
+        <div class="dot"></div>   <div class="line"></div>
+    </div>
+</div>
+
+<div class="no-padding" id="ex">
+    <div class="forward-slash"></div>
+    <div class="backward-slash"></div>
+</div>
+
+<div class="icon-links" id="iLinks">
+  <a href="{% url 'home:home' %}" class="Plinks">Home</a>
+<a href="{% url 'peers:peers' %}" class="Plinks">Peers</a>
+<a href="{% url 'questions:questions' %}" class="Plinks">Questions
+ <i class="fa fa-caret-down"></i></a>
+<a href="{% url 'questions:myquestions' %}" class="Plinks-in">My Questions</a>
+<a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope newmessage"> {{newmessage}}</i>
+     </a>
+<a href="{% url 'account:profile' %}" class="Plinks"> Edit profile </a>
+<a href="{% url 'account:logout' %}" class="Plinks">  Log out </a>
+</div>
+
+<!-- Ending of icon -->
+
+    <div class="links">
+      <a href="{% url 'home:home' %}">Home</a> |
+      <a href="{% url 'peers:peers' %}">Peers</a> |
+      <a href="{% url 'questions:questions' %}">Questions</a> |
+      <a href="{% url 'chatroom:inbox' %}">Inbox</a>
+      <a href="{% url 'chatroom:inbox' %}">
+        <i class="fa fa-envelope newmessage"> {{newmessage}}</i>
+      </a>
+      </div>
+      <div class="logoN">
+        <img src="{% static 'questions/images/devtitle.svg' %}" class="myimg" alt="logo" style="width:100px; height:50px;">
+      </div>
+      <div class="user-profile">
+        <a> <i class="fa fa-bell">{{notifs}}</i> </a>
+            <img src="{{mydetails.profilepic.url}}" class="myimg" alt={{mydetails.username}} title={{mydetails.username}}>
+    </div>
+</div>
+
+  <div class="page-title" id="upPart">My Questions page</div>
+  <div class="main-window column">
+        <div class="person-holder">
+    {% for question in Questions %}
+
+    <div class="oneQuestion">
+          <div class="question-container">
+            <div class="user-details-first-row">
+
+              {{mydetails.username}}  @
+              {{question.time_posted | timemodifier}}
+            </div>
+            <div class="question-content">
+              <div class="question-text personal">{{question.question}}</div>
+            <div class="languages-tagged">
+              {{question.language}}
+              </div>
+            </div>
+            <div class="reply-section">
+             <div class="like">
+
+               {% if mydetails.uid|likey:question %}
+                 <div class="like">
+                   <img src="{% static 'home/images/svgimages/coloredlove.svg' %}" alt="like" id="Love" style="width: 20px;
+                   margin: 5px;
+                   height: 20px; cursor: pointer;
+                   animation: bigUp .9s 0s ease-out forwards;">
+                   <span id="question{{question.qid}}" style="margin-right:20px;">{{question.question_liked.count}}</span>
+                 </div>
+               {% else %}
+                   <div class="like">
+                     <img src="{% static 'home/images/svgimages/emptylove.svg' %}" alt="like" id="emptyLove" onclick="updatemonster({{question.qid}});"
+                     style="width:20px;height: 20px;margin: 5px;cursor: pointer;">
+                     <img src="{% static 'home/images/svgimages/coloredlove.svg' %}" class="colored" alt="like" id="Love" style="width: 20px;margin: 5px;height: 20px;cursor: pointer;animation: bigUp .9s 0s ease-out forwards;">
+                     <span id="question{{question.qid}}" style="margin-right:20px;">{{question.question_liked.count}}</span>
+                   </div>
+               {% endif %}
+<!--{{question.no_of_answers}} -->
+             </div>
+             <div class="message">
+             <img src="{% static 'questions/images/message.svg' %}" alt="message icon">
+             {{question.no_of_answers}}
+             </div>
+             <div class="Click">
+            <a href="{% url 'questions:answers' question.qid %}"> Click to view replies</a>
+             </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+    {% endfor %}
+  </div>
+
+  <a href="#upPart"><img src="{% static 'questions/images/up.svg' %}" alt="up_key" class="up-icon"  id="up">
+  </a>
+<script type="text/javascript">
+ // home icon
+ const full = document.getElementById('full');
+        const ex = document.getElementById('ex');
+        const iLinks = document.getElementById('iLinks');
+
+        full.addEventListener('click',function(){
+            // full.classList.add('removeIcon');
+            full.style.display = 'none';
+            // ex.classList.add('showIcon');
+            ex.style.display = 'flex';
+            iLinks.style.display = 'flex';
+        });
+        ex.addEventListener('click',function(){
+            // full.classList.remove('removeIcon');
+            full.style.display = 'flex';
+            // ex.classList.remove('showIcon');
+            ex.style.display = 'none';
+            iLinks.style.display = 'none';
+        });
+        // end of home icon
+  var up=document.getElementById('up');
+  window.onscroll=function(){
+  var scrollPos=window.pageYOffset;
+  if(scrollPos<100){
+      up.classList.add('hide');
+  }
+  else{
+      up.classList.remove('hide');
+  }
+  }
+
+  $(".likebtn").click(function(){
+    this.attr("disabled" , true);
+    try {
+      var xml = new XMLHttpRequest();
+    } catch (e) {
+      var xml = new XActiveObject();
+    } finally {
+      xml.onreadystatechange = function() {
+        if (this.readyState==4 && this.status==200) {
+          alert("Question liked");
+        }
+      }
+      var csid = $("input[type='hidden']").text();
+      xml.open("POST" , "{% url 'questions:updatelikes' %}" , true);
+      xml.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+      xml.setRequestHeader("X-CSRFToken" , csid);
+      xml.send("qid="+qid);
+    }
+  });
+  function updatemonster(qid) {
+    document.getElementById("question"+qid.toString()).disabled = true;
+    $("#question"+qid.toString()).attr("disabled" , true);
+    try {
+        var xmlhttp = new XMLHttpRequest();
+    } catch (e) {
+      var xmlhttp = new ActiveXObject();
+    }
+    finally {
+      xmlhttp.open("POST" , "{% url 'questions:updatelikes' %}" , true);
+      xmlhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+      xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+      xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          var data = JSON.parse(this.responseText)
+          if (data.is_logged) {
+            document.getElementById("question"+qid.toString()).innerHTML = data.counter;
+          } else {
+            $(location).attr("href" , "{% url 'account:login' %}")
+          }
+        }
+      }
+      xmlhttp.send("qid=" + qid);
+    }
+  }
+  $(document).ready(function(){
+    function checknewmessage(){
+      try {
+        var xmlhttp = new XMLHttpRequest();
+      } catch (e) {
+        var xmlhttp = new ActiveXObject();
+      } finally {
+        xmlhttp.onreadystatechange = function(){
+          if (this.readyState ==4 && this.static==200) {
+            var elemenets = document.getElementsByClassName('newmessage');
+            for (var i = 0; i < elemenets.length; i++) {
+              elemenets[i].innerHTML = this.responseText
+            }
+          }
+        }
+        xmlhttp.open("POST" , "{% url 'chatroom:newmessage' %}" , true);
+        xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+        xmlhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+        xmlhttp.send();
+      }
+    }
+  });
+</script>
+</body>
+</html>

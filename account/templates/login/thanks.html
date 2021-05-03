@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html >
+<head>
+	<meta lang="en" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<title>DevCodes | account recovery</title>
+	<link rel="icon" href="{% static 'questions/images/devcodes.svg' %}" name"favicon">
+	<link rel="stylesheet" href="{% static 'login/styles.css' %}"/>
+</head>
+
+<body>
+	<p>
+		<img src="{% static 'questions/images/devtitle.svg' %}" class="myimg" alt="logo">
+
+	</p>
+	<div class="bon">
+		<div class="bony">
+			<label class="inputlabel inputlabelmod">
+				Thank you for taking your time. We've sent reset password to your account as you provided.
+				Reset your password As soon as you get there. Check your spam folder if incase it's not in your inbox
+			</label>
+
+
+		<p style="text-align:center">
+			<a href="{% url 'login:login' %}">
+					<b>Login instead?</b>
+			</a>
+
+		</p>
+	</div>
+</div>
+
+</body>
+</html>

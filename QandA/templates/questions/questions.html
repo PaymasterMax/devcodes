@@ -1,0 +1,303 @@
+{% load timemod %} {% load like %} {% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <title>DevCodes | Questions</title>
+    <link rel="stylesheet" href="{% static 'questions/questions.css' %}">
+    <script src="{% static 'questions/questions.js' %}" charset="utf-8"></script>
+  </head>
+  <body>
+<!-- uniform nav-bar -->
+  <div class="nav-bar">
+    <div class="links">
+      <a href="/" >Home</a> |
+
+      <a href="">Peers</a>
+      <a href="{% url 'questions:myquestions' %}" class="personalize"> | My Questions</a>
+      <a href="" class="personalize">| Inbox |
+        <i class="fa fa-envelope"> {{newmessage}}</i>
+      </a>
+      </div>
+      <div class="logoN">
+      DevCodes/>
+      </div>
+
+      {% if userlog %}
+      <div class="user-profile">
+        <a> <i class="fa fa-bell">{{notifs}}</i> </a>
+          <img src="/media/{{mydetails.profilepic}}" alt="profile"
+           style="width:40px; height:40px; border-radius:50%;">
+           <div class="user-dropdown">
+             <a href="{% url 'account:profile' %}" style="border-bottom: 1px solid grey;">
+               Edit profile
+             </a>
+             <a href="{% url 'questions:myquestions' %}" class="small-personalize">My Questions</a>
+             <a href="" class="small-personalize">Inbox</a>
+             <a href="{% url 'account:logout' %}">
+               Log out
+             </a>
+           </div>
+    </div>
+      {% else %}
+      <div class="user-profile">
+          <img src="{% static 'home/images/icon.jpg' %}" alt="profile"
+          style="width:40px; height:40px; border-radius:50%;">
+    </div>
+      {% endif %}
+</div>
+  <div class="page-title"  id="upPart">Questions page</div>
+  <div class="main-window">
+  <div class="person-holder">
+    {% for question in Questions %}
+    <div class="oneQuestion AllDiv{{question.qid}}">
+          <div class="profile-pic">
+          <img src="/media/{{question.quid.profilepic.url}}" alt="question.quid.username" style="height=200px; width=100px">
+          </div>
+          <div class="question-container">
+            <div class="user-details-first-row">
+              {{question.quid.username}}   @
+              {{question.time_posted | timemodifier}}
+              {% if question.quid_id|compare:mydetails.uid %}
+              <!--               added code -->
+                              <div class="menu-holder">
+                                  <img src="{% static 'questions/images/menu.svg' %}" alt="menu icon" class="menu-icon" id="menu{{question.qid}}" onclick="popM('menu'+{{question.qid}});">
+                                  <img src="{% static 'questions/images/xnew.svg' %}" alt="x icn" class="menu-close" id="close">
+                                  <!-- this list will appear on clicking the icon  -->
+                                  <div class="menu-lists menu{{question.qid}}">
+                                      <div class="edit-option">
+                                         <button class="edit-Btn" onclick="openeditpop('editBtn'+{{question.qid}});">
+                                             <img src="{% static 'questions/images/edit.svg' %}" alt="edit icon" class="btn-icons"> Edit </button>
+                                          <div class="edit-pop">
+                                              <!-- this will appear only on clicking the edit option  -->
+                                              <div class="edit-content">
+                                              <!-- Paste content of the message here  -->
+                                              <textarea name="message" id="editor" cols="55" rows="5" placeholder="Message to be edited"></textarea>
+                                                  </div>
+                                                  <div class="sub-answers">
+                                                  <button type="submit" class="submit-Btn" onclick="adjustAnswer({{question.qid}} , 'editBtn'+{{question.qid}})">Submit</button>
+                                                  <button class="cancel-Btn" id="editCancel"> Cancel</button>
+                                                  </div>
+                                          </div>
+                                      </div>
+
+                                      <div class="delete-option">
+                                        <input type="hidden" class="tken" value="{{ csrf_token }}">
+                                         <button class="delete-Btn"><img src="{% static 'questions/images/delete.svg' %}" alt="delete icon" class="btn-icons"> Delete </button>
+
+                                          <!-- this will appear only on clicking the delete option  -->
+                                          <div class="confirmation">
+                                              <div class="quiz">
+                                                  Are you sure you want to delete?
+                                              </div>
+                                              <div class="quiz-answers">
+                                                  <button class="del-Btn" onclick="deleteQuestions('AllDiv'+{{question.qid}}, {{question.qid}});">Delete</button>
+                                                  <button class="cancel-Btn" id="delCancel"> Cancel</button>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+              <!--               end of addition -->
+              {% endif %}
+            </div>
+            <div class="question-content">
+              <div class="question-text editBtn{{question.qid}}">{{question.question}}</div>
+            <div class="languages-tagged">
+              {{question.language}}
+              </div>
+            </div>
+            <div class="reply-section">
+              {% if mydetails.uid|likey:question %}
+                    <div class="like">
+                    <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;">
+                     {{question.question_liked.count}}
+                    </div>
+              {% else %}
+                  <div class="like like{{question.qid}}">
+                  <img src="{% static 'questions/images/like.svg' %}" alt="like icon" style="width: 30px; height: 40px;" onclick="updatemonster({{question.qid}} , 'like'+{{question.qid}});">
+                       {{question.question_liked.count}}
+                  </div>
+              {% endif %}
+             <div class="message">
+             <img src="{% static 'questions/images/message.svg' %}" alt="message icon">
+             {{question.no_of_answers}}
+             </div>
+             <div class="Click">
+            <a href="{% url 'questions:answers' question.qid %}"> Click to view replies</a>
+             </div>
+            </div>
+          </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class = "main-question" class="modal"  id="modal">
+    <div class="pose">
+      Ask a Question
+      <a href="{% url 'questions:questions' %}"><img src="../../static/questions/images/x.svg" alt="&times;"></a>
+  </div>
+    <form class="" action="{% url 'questions:askquestions' %}" method="post">
+      {% csrf_token %}
+    <div class="question">
+          <textarea rows="7" cols="38"  placeholder="Type a question.." name="question"  id="question"
+            required style="
+          background:rgba(255, 255, 255, 0.912);
+               border-radius: 3px;
+               border-style: none;
+               resize:none;
+               width:100%;
+               "></textarea>
+    </div>
+    <div class="languages">
+        <input type="text" maxlength="15" name="language" required placeholder="Mention programming language(s).." id="question" size="33"
+        style="
+        border-radius: 3px;
+        background: white;
+        border-style: none;
+        border-color: #0b5858;">
+    </div>
+    <div class="question-btns">
+        <button type="submit" class="post">Post</button>
+        <button class="cancel">Cancel</button>
+      </div>
+      </form>
+    </div>
+</div>
+  <div id="overlay"></div>
+   <button data-modal-target="#modal" class="openButton">
+    Ask
+
+  </button>
+  <div class="headTop head-to-top" title="Scroll to top" style="display:none;">
+          <i class="fa fa-toggle-up" aria-hidden="true"></i>
+  </div>
+    </a>
+<script>
+$(".headTop").click(function (e) {
+    console.log("upper");
+    scrollTo(0,0)
+})
+//   added things
+
+// getting the constants
+const bdy = document.querySelector("body");
+const hamIcon = document.querySelector(".menu-icon");
+const hamHolder = document.querySelector(".menu-holder");
+const closeIcon = document.querySelector("#close");
+
+const menu = document.querySelector(".menu-lists");
+const editBtn = document.querySelector(".edit-Btn");
+const editPop = document.querySelector(".edit-pop");
+
+const deleteBtn = document.querySelector(".delete-Btn");
+const deletePop = document.querySelector(".confirmation");
+
+const cancel = document.querySelectorAll(".cancel-Btn");
+const editCancel = document.querySelector("#editCancel");
+const delCancel = document.querySelector("#delCancel");
+
+
+editCancel.addEventListener('click',function(){
+    editPop.classList.remove('grid');
+    closeIcon.classList.remove("grid");
+    hamIcon.classList.remove("hide");
+});
+
+delCancel.addEventListener('click',function(){
+    deletePop.classList.remove('grid');
+    closeIcon.classList.remove("grid");
+    hamIcon.classList.remove("hide");
+});
+closeIcon.addEventListener('click',function(){
+    menu.classList.remove("grid");
+    hamIcon.classList.remove("hide");
+    closeIcon.classList.remove("grid");
+    });
+function openeditpop(target){
+  editPop.classList.add('grid');
+  document.querySelector("#editor").value = document.querySelector("."+target).innerHTML;
+  editBtn.classList.add('hide');
+  deleteBtn.classList.add('hide');
+}
+deleteBtn.addEventListener('click',function(){
+   deletePop.classList.add('grid');
+   deleteBtn.classList.add('hide');
+  editBtn.classList.add('hide');
+
+});
+// end of addition
+
+  var up=document.getElementById('up');
+  const openModalButtons = document.querySelectorAll('[data-modal-target]')
+  const closeModalButtons = document.querySelectorAll('[data-close-button]')
+  const overlay = document.getElementById('overlay')
+
+  openModalButtons.forEach(button =>{
+    button.addEventListener('click', () => {
+      const modal = document.querySelector(button.dataset.modalTarget)
+      openModal(modal)
+    })
+  })
+  overlay.addEventListener('click', () => {
+    const modals = document.querySelectorAll('.modal.active')
+    modals.forEach(modal =>{
+      closeModal(modal)
+    })
+
+  })
+  closeModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const modal = button.closest('.modal')
+      closeModal(modal)
+    })
+  })
+  function openModal(modal){
+    if(modal == null) {return}
+    else{
+    modal.classList.add('active')
+    overlay.classList.add('active')
+    }
+  }
+  function closeModal(modal){
+    if(modal == null) {return}
+    else{
+    modal.classList.remove('active')
+    overlay.classList.remove('active')
+    }
+  }
+  function updatemonster(qid) {
+    try {
+        var xmlhttp = new XMLHttpRequest();
+    } catch (e) {
+      var xmlhttp = new ActiveXObject();
+    }
+    finally {
+      xmlhttp.open("POST" , "{% url 'questions:updatelikes' %}" , true);
+      xmlhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+      xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+
+      xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          var responseD = JSON.parse(this.responseText);
+          if (responseD.status) {
+              alert(responseD.liked);
+          }else {
+                  alert(responseD.liked);
+          }
+        }
+      }
+      xmlhttp.send("qid="  + qid);
+    }
+  }
+</script>
+  </body>
+</html>

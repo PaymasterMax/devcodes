@@ -1,0 +1,387 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="google-site-verification" content="UajTFXnEIeRQ6OMEPl4b4-ZREiIePIosMAKjEl6WOPc" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <link rel="icon" href="{% static 'asserts/images/devcodes.svg' %}" name="favicon">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>DevCodes  | Home</title>
+    <link rel="stylesheet" href="{% static 'home/home.css' %}">
+    <link rel="stylesheet" href="{% static 'home/spinner.css' %}">
+    <link rel="stylesheet" href="{% static 'home/icon.css' %}">
+  </head>
+  <body>
+ <!-- Begining of spinner -->
+ <div class="loader-wrapper" id="ld">
+  <span class="loader"><span class="loader-inner"></span></span>
+  </div>
+      <!-- End of spinner -->
+      <div class="buy-me-coffee">
+          <span class="fa fa-coffee"></span>
+      </div>
+      <div class="coffee-options">
+        <p class="yt">&times;</p>
+          <p class="fa fa-mpesa"></p>
+          <p class="fa fa-paypal"></p>
+          <p class="fa fa-google-plus"></p>
+      </div>
+    <div class="nav-bar">
+          <!-- Home icon Beginning -->
+    <div class="full-icon" id="full">
+      <div class="row">
+          <div class="dot"></div>   <div class="line"></div>
+      </div>
+      <div class="row">
+          <div class="dot"></div>   <div class="line"></div>
+      </div>
+      <div class="row">
+          <div class="dot"></div>   <div class="line"></div>
+      </div>
+  </div>
+  <div class="no-padding" id="ex">
+      <div class="forward-slash"></div>
+      <div class="backward-slash"></div>
+  </div>
+ <div class="icon-links" id="iLinks">
+<a href="{% url 'peers:peers' %}" class="Plinks">Peers</a>
+ <a href="{% url 'questions:questions' %}" class="Plinks">Questions
+   <i class="fa fa-caret-down"></i></a>
+        {% if userlog %}
+        <a href="{% url 'questions:myquestions' %}" class="Plinks-in">My Questions</a>
+        <a href="{% url 'chatroom:inbox' %}" class="Plinks">Inbox <i class="fa fa-envelope newmessage"> {{newmessage}}</i>
+        </a>
+         <a href="{% url 'account:profile' %}" class="Plinks"> Edit profile </a>
+         <a href="{% url 'account:logout' %}" class="Plinks">  Log out </a>
+         {% else %}
+         <a href="{% url 'account:signup' %}" class="Plinks"> Signup </a>
+         <a href="{% url 'account:login' %}" class="Plinks">  Log in</a>
+       {% endif %}
+ </div>
+  <!-- Ending of icon -->
+  <div class="links">
+        <a href="{% url 'peers:peers' %}">Peers</a> |
+          <!-- dropdowm for questions -->
+        <div class="dropdown">
+       <div class="dropbtn">
+          <a href="{% url 'questions:questions' %}">Questions<i class="fa fa-caret-down"></i></a>
+         </div>
+        <div class="dropdown-content">
+            <a href="{% url 'questions:myquestions' %}">My Questions</a>
+           </div>
+     </div>
+        |
+        {% if userlog %}
+          <a href="{% url 'chatroom:inbox' %}">
+            Inbox <i class="fa fa-envelope newmessage"> {{newmessage}}</i>
+          </a>
+        {% endif %}
+        </div>
+        <div class="logoN" id="upPart">
+          <img src="{% static 'questions/images/devtitle.svg' %}" class="myimg" alt="logo" style="width:100px; height:50px;">
+        </div>
+
+        {% if userlog %}
+        <div class="user-profile">
+          <a> <i class="fa fa-bell">{{notifs}}</i> </a>
+             <img src="/media/{{userinfo.profilepic.url}}" alt={{userinfo.username}} height=200 width=100 class="myimg">
+             <div class="user-dropdown">
+               <a href="{% url 'account:profile' %}">
+                 Edit profile
+               </a>
+               <a href="{% url 'account:logout' %}">
+                 Log out
+               </a>
+             </div>
+          </div>
+
+      </div>
+        {% else %}
+        <div class="user-profile">
+            <a href="{% url 'account:signup' %}" class="val">Signup</a> |
+            <a href="{% url 'account:login' %}" class="val">Log in</a>
+      </div>
+        {% endif %}
+  </div>
+    <div class="main-window">
+      <!-- carosel -->
+      <div class="carol">
+        <div class="carousel slide start-carol" data-ride="carousel" id="mycarousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="d-block w-100 text-center p4">
+
+                  <div class="inner-class">
+                    <p class="peerprof">
+                      <img src="{% static 'questions/images/devcodes.svg' %}" class="myimg" alt="devcodes">
+                    </p>
+                    <div class="recentq">
+                      <p>
+                          Learn more about your interests by accessing questions asked and answered by your peers.
+                      </p>
+                      <a href="{% url 'questions:questions' %}" class="mainlinks">
+                        <button type="button" name="button" class="btn btn-info">View Questions</button>
+                      </a>
+                    </div>
+                  </div>
+                  </div>
+              </div>
+
+                {% for q in allq %}
+                <div class="carousel-item">
+                  <div class="d-block w-100 text-center p4">
+                    <div class="inner-class">
+                      <p class="peerprof">
+                        <img src="/media/{q.quid.profilepic.url}" class="myimg" alt={{q.quid.username}} title=q.quid.username height=200 width=100>
+                        <br>
+                      </p>
+                      <p class="recentq">
+                        {{q.question}}
+                        <br>
+                        <br>
+                        <a href="{% url 'questions:answers' q.qid %}" class="mainlinks view-answers">
+                          <button type="button" name="button" class="btn btn-info">{{q.question_to_answer.all.count}} answers</button>
+                        </a>
+                      </p>
+                    </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <a href="#mycarousel" class="carousel-control-prev" data-slide="prev" role="button">
+              <span class="carousel-control-prev-icon"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a href="#mycarousel" class="carousel-control-next"  data-slide="next"role="button">
+              <span class="carousel-control-next-icon"></span>
+              <span class="sr-only">Next</span>
+            </a>
+        </div>
+      </div>
+      <!-- end of carosel -->
+      <!-- Questions -->
+      <div class="flex-holder">
+        <img src="{% static 'home/images/svgimages/questions1.svg' %}" alt="Questions vector image" class="vector">
+        <div class="text">
+          <p>
+              Learn more about your interests by accessing questions asked and answered by your peers.
+          </p>
+          <a href="{% url 'questions:questions' %}" class="mainlinks">
+            <button type="button" name="button" class="btn btn-info">View Questions</button></a>
+      </div>
+      </div>
+     <!-- Meet peers  -->
+      <div class="flex-holder">
+        <img src="{% static 'home/images/svgimages/peers2.svg' %}" alt="Meet peers vector" class="vector-res">
+        <div class="text">
+        <p>
+          Meet peers learning the same programming language(s) as you are. Interract with them and nurture your skills.
+        </p>
+         <a href="{% url 'peers:peers' %}" class="mainlinks">
+           <button type="button" name="button" class="btn btn-info">Meet peers</button></a>
+           </div>
+           <img src="{% static 'home/images/svgimages/peers1.svg' %}" alt="Meet peers vector" class="vector-r">
+      </div>
+      <!--Inbox section-->
+      <div class="flex-holder">
+        <img src="{% static 'home/images/svgimages/inbox.svg' %}" alt="inbox" class="vector">
+        <div class="text">
+          <p>
+            Access your inbox and easily talk with your peers through our messaging feature.
+          </p>
+          <a href="{% url 'chatroom:inbox' %}" class="mainlinks"><button type="button" name="button" class="btn btn-info">Inbox</button></a>
+      </div>
+      </div>
+    </div>
+
+    <!-- bootstrap alert -->
+    <div class="alert alert-warning alert-dismissible fade show" id="alrt" role="alert">
+      Thanks for submitng feedback
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!-- end of bootstrap alert -->
+    <footer>
+        <!-- footer section -->
+        <div class="footer">
+          <!-- about site -->
+          <div class="aboutsite botttom-link">
+            <p class="footer-header">About us</p>
+            <p>
+               This is Q | A based, site. Some of its features include posting questions, getting answers, chatting on one on one basis with peers's, and also liking other peers questions.
+               Only as relevant questions. Don't forget to leave us a feedback, this helps us to improve your experience with us.
+               <br>
+                <span style="text-align:center;font-weight:bold;margin-top:4px;text-decoration:underline;">Developers</span> <br>
+               <span>Duncan</span> | <span>Paminus</span>
+            </p>
+          </div>
+          <!-- Social media links -->
+          <div class="social botttom-link">
+            <p class="footer-header">Social Links</p>
+            <p>
+              <a target="_blank" href="mailto:devcodesv1@gmail.com?subject=feedback">Support</a>
+            </p>
+            <p>
+              <i class="fa fa-youtube"></i>
+              <a target="_blank" href="https://youtube.com">Youtube</a>
+            </p>
+            <p>
+              <i class="fa fa-twitter"></i>
+              <a target="_blank" href="https://twitter.com/OriPaminus">twitter</a>
+            </p>
+          </div>
+          <!-- About developers -->
+          <div class="aboutdev botttom-link">
+            <p class="footer-header">About developers</p>
+            <p>
+              <p>
+                Tel: +254797494509
+              </p>
+              <p>
+                Follow devs<i class="fa fa-twitter"></i>
+                <br>
+                 <a target="_blank" href="https://twitter.com/OriPaminus">Paminus</a> |
+                 <a target="_blank" href="https://twitter.com/codemonste">Duncan</a>
+              </p>
+              <p>
+                Email:
+                <a target="_blank" href="mailto:devcodesv1@gmail.com?subject=feedback">Developer</a>
+              </p>
+            </p>
+            <button class="feed-btn" id="btn">
+              Give us feedback
+            </button>
+      </div>
+        <div class="feedback" class="modal"  id="feed-class">
+            <div class="feed-hld">
+                <span class="top">
+                Leave us a message <t> </t>
+                <button data-close-button="#modal" class="close-button" id="closer">&times;</button>
+                </span>
+                <div class="email-sect">
+                    <input type="email" class="detail" required autocomplete value="{{userinfo.email}}" id="email" name="email">
+                    <label class="lbl">
+                        <span class="placeValue">
+                            Email
+                        </span>
+                    </label>
+                </div>
+                <div class="message-sect">
+                    <!-- <input type="text" class="detail" required autocomplete="off" id="message" name="message"> -->
+                    <textarea rows="7" cols="38" placeholder="Type a feedback here.." name="feedback"  id="question"
+                    required style="
+                     background: rgba(255, 255, 255, 0.912);
+            border-radius: 3px;
+            border-style: none;
+            resize: none;
+            width: 100%;
+            border: 1px solid #525151;
+            margin: 10px 0px;
+                       " autofocus></textarea>
+        </div>
+        <div class="submit">
+            <button class="send-btn" onclick="feedbacks();">
+                Send
+            </button>
+            <p class="feedback-link">
+              Give us feedback
+            </p>
+            <div class="feedback" id="feed">
+            </div>
+          </div>
+        </div>
+            </div>
+        </div>
+      </div>
+    </footer>
+        <script>
+           // Listen for when everything has loaded
+        window.addEventListener("load", removePage, false);
+        const loader = document.getElementById('ld');
+        function removePage(){
+          loader.classList.add('shrink');
+        }
+  // home icon
+  const full = document.getElementById('full');
+        const ex = document.getElementById('ex');
+        const iLinks = document.getElementById('iLinks');
+        full.addEventListener('click',function(){
+            // full.classList.add('removeIcon');
+            full.style.display = 'none';
+            // ex.classList.add('showIcon');
+            ex.style.display = 'flex';
+            iLinks.style.display = 'flex';
+        });
+        ex.addEventListener('click',function(){
+            // full.classList.remove('removeIcon');
+            full.style.display = 'flex';
+            // ex.classList.remove('showIcon');
+            ex.style.display = 'none';
+            iLinks.style.display = 'none';
+        });
+        // end of home icon
+        const turn = document.getElementById("btn");
+        const content = document.getElementById('feed-class');
+        const closer = document.getElementById('closer');
+        turn.addEventListener('click',function(){
+            content.classList.add('addme');
+            });
+        closer.addEventListener('click',function(){
+            const content = document.getElementById('feed-class');
+            content.classList.remove('addme');
+        }
+        );
+        function feedbacks() {
+          try {
+            var xmlhttp = new XMLHttpRequest();
+          } catch (e) {
+            var xmlhttp = new ActiveXObject();
+          } finally {
+            var email = document.getElementById("email").value;
+            var feedback = document.getElementById("question").value;
+            document.getElementById("closer").click();
+            xmlhttp.open("POST" , "{% url 'questions:feedback' %}" , true);
+            xmlhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+            xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+            xmlhttp.onreadystatechange = function () {
+              if (this.readyState == 4 && this.status ==200) {
+                al = $("#alrt").css("display", "block");
+              }
+            }
+            xmlhttp.send("email="+email+"&feedback="+feedback);
+          }
+    }
+      $(document).ready(function(){
+        function checknewmessage(){
+          try {
+            var xmlhttp = new XMLHttpRequest();
+          } catch (e) {
+            var xmlhttp = new ActiveXObject();
+          } finally {
+            xmlhttp.onreadystatechange = function(){
+              if (this.readyState ==4 && this.static==200) {
+                var elemenets = document.getElementsByClassName('newmessage');
+                for (var i = 0; i < elemenets.length; i++) {
+                  elemenets[i].innerHTML = this.responseText;
+                }
+              }
+            }
+            xmlhttp.open("POST" , "{% url 'chatroom:newmessage' %}" , true);
+            xmlhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+            xmlhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+            xmlhttp.send();
+          }
+        }
+      });
+        </script>
+          <script src="{% static 'home/home.js' %}" charset="utf-8"></script>
+    </body>
+    </html>

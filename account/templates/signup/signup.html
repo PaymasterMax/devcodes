@@ -1,0 +1,195 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="icon" href="{% static 'questions/images/devcodes.svg' %}" name="favicon">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<meta lang="en" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="{% static 'signup/styles.css' %}"/>
+	<link rel="stylesheet" href="{% static 'home/spinner.css' %}">
+	<title>DevCodes | signup </title>
+	<style>
+			.image-holder{
+					position: relative;
+			}
+			.choose{
+				 cursor: pointer;
+			}
+			#enterImage{
+					opacity: 0;
+ position: absolute;
+ z-index: 11;
+
+			}
+	</style>
+</head>
+<body>
+	<!-- Begining of spinner -->
+	<div class="loader-wrapper" id="ld">
+		<span class="loader"><span class="loader-inner"></span></span>
+			</div>
+			<!-- End of spinner -->
+			<div class="logoN">
+				<img src="{% static 'questions/images/devtitle.svg' %}" class="myimg" alt="logo">
+			</div>
+	<div class="bon">
+		<div class="bony">
+			<form action="{% url 'account:signup' %}" method="post" enctype="multipart/form-data" id="mysub" onabort="cancel()">
+				<h2 class="title">Join DevCodes</h2>
+					{% for error in error_log %}
+					<label class="inputlabel">
+						{{error}}
+				</label>
+					{% endfor %}
+					{% csrf_token %}
+				<input type="text" placeholder="Username" name = "username" required autocomplete="true" class="input" onchange="userauthentication()" id="uname">
+				<label id="usernamevalid" class="validation"></label>
+				<input type="email" name="email" placeholder="email" required autocomplete="true" class="input" onchange="emailauthentication()" id="ema">
+				<label id="emailvalid" class="validation"></label>
+
+				<input type="password" name = "pass1" placeholder="Password" id="pass1" required  class="input">
+		    <label id="shortPass passwordvalid" class="pass">* short password * </label>
+
+				<input type="password" placeholder="confirm password" name="pass2" id="pass2"
+		    class="input" required>
+		    <label id ="mismatch" class="miss"> * password don't match *</label>
+
+				<input type="text" placeholder="Fav programming Language" name = "hobby" required autocomplete="true" class="input" id="hobby">
+				<label id ="favlang hobbyvalid" class="favlang"> * Programming language must be filled *</label>
+				<!-- paminus -->
+				<label class="btn btn-info input">
+		        <i class="informuser">Choose your profile</i> <i class="fa fa-picture-o" aria-hidden="true"></i>
+		        <input type="file" name="profilepic" style="display: none;" id="profile" required>
+		    </label>
+
+				<!-- paminus -->
+				<label id="profilevalid" class="validation"></label>
+				<!-- <input type="submit" name="submit" value="signup" id="submit" class="input" onclick="spinnermanager()"> -->
+				<button type="submit" name="submit" class="btn btn-info" id="submit" onclick="spinner_manager() " onabort="cancel()">
+					Signup
+					<!-- <i class="" id="submit"></i> -->
+					<i class="" id="spin"></i>
+				</button>
+			</form>
+				<p style="text-align:center">
+					<span class="title">Already have an account?</span>
+						<a class="link" href="{% url 'account:login' %}">
+						Sign in
+					</a>
+				</p>
+	</div>
+</div>
+<div class="snap" id="snap">
+				<!-- <p class="spinnobject">Loading <i id="dot1">.</i> <i id="dot2">.</i> <i id="dot3">.</i>	</p> -->
+				<p class="spinner-man"></p>
+		</div>
+	<script src="{% static 'signup/devcodes.js' %}" charset="utf-8"></script>
+	<script type="text/javascript">
+
+	function userauthentication(){
+		var xhttp = new XMLHttpRequest();
+		var user = document.getElementById("uname").value;
+		xhttp.onreadystatechange = function()
+		{
+			if(this.readyState == 4 && this.status == 200)
+			{
+				if(this.responseText == "true")
+					{
+						document.getElementById("usernamevalid").innerHTML = "username taken";
+						document.getElementById("usernamevalid").style.color = "#f00";
+						document.getElementById("submit").disabled=true;
+					}
+
+					else {
+						document.getElementById("usernamevalid").innerHTML = "username available";
+						document.getElementById("usernamevalid").style.color = "#7fa";
+						document.getElementById("submit").disabled=false;
+					}
+			}
+		}
+		xhttp.open("POST" , "{% url 'account:userauthentication' %}" , true);
+		xhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+		xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+		xhttp.send("username="+user);
+	}
+
+		function emailauthentication(){
+			var email = document.getElementById("ema").value;
+			try {
+				var xhttp = new XMLHttpRequest();
+			} catch (e) {
+				var xhttp = new ActiveXObject()
+			} finally {
+			xhttp.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200){
+					if(this.responseText == "true"){
+						document.getElementById("emailvalid").innerHTML = "Email in use by another account";
+						document.getElementById("emailvalid").style.color = "#f00";
+						document.getElementById("submit").disabled=true;
+					}
+					else if(this.responseText == "false"){
+						document.getElementById("emailvalid").innerHTML = "email available";
+						document.getElementById("emailvalid").style.color = "#7fa";
+						document.getElementById("submit").disabled=false;
+					}
+					else{
+						document.getElementById("emailvalid").innerHTML = this.responseText;
+						document.getElementById("emailvalid").style.color = "#f00f00";
+					}
+				}
+			}
+			xhttp.open("POST" , "{% url 'account:emailauthentication' %}" , true);
+			xhttp.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
+			xhttp.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+			xhttp.send("email="+email);
+		}
+	}
+		function spinner_manager() {
+			var myform = document.getElementById('mysub');
+		  try {
+		    var xmlobj  = new XMLHttpRequest();
+		  } catch (e) {
+		    var xmlobj = new ActiveXObject();
+		  } finally {
+		    if (document.getElementById("profile").value !="") {
+					myform.addEventListener("click" , function(e){
+						e.preventDefault();
+					});
+					document.getElementById('snap').setAttribute("style" ,"display:block;");
+					xmlobj.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+							var servdata =JSON.parse(this.responseText);
+							if (servdata.errors){
+								document.getElementById('snap').setAttribute("style" ,"display:none;");
+								var fields_with_errors = JSON.parse(servdata.fields)
+								error_field_keys = Object.keys(fields_with_errors);
+								for (var i = 0; i < error_field_keys.length; i++) {
+									document.getElementById(error_field_keys[i]).setAttribute("style" , "display:block;color:red;")
+									document.getElementById(error_field_keys[i]).innerHTML = fields_with_errors[error_field_keys[i]];
+								}
+							}
+							else {
+								window.location = servdata.redirect;
+							}
+						}
+					}
+					var userinfo = document.querySelector("form");
+					var data = new FormData(userinfo);
+					xmlobj.open("POST" , "{% url 'account:signup' %}" , true);
+					xmlobj.setRequestHeader("X-CSRFToken" , "{{csrf_token}}");
+					xmlobj.send(data);
+		    }
+				else {
+					document.getElementById("profilevalid").setAttribute("style" , "display:block;");
+					document.getElementById("profilevalid").setAttribute("style" , "display:block;");
+				}
+		  }
+		}
+		document.querySelector("#profile").addEventListener("change" , function(){
+			document.querySelector(".informuser").innerHTML = document.querySelector("#profile").value
+		});
+	</script>
+</body>
+</html>

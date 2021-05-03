@@ -1,0 +1,439 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+img {
+  width:60px;
+  height:60px;
+  border-radius:50%;
+}
+html {
+    scroll-behavior: smooth;
+}
+.head-to-top {
+    position: fixed;
+    cursor: pointer;
+    bottom: 60px;
+    display: none;
+    right: 20px;
+    z-index: 3;
+    opacity: 1;
+}
+.head-to-top::selection {
+    background-color: inherit;
+}
+.head-to-top i {
+    font-size: 2.3em;
+}
+.head-to-top i::selection {
+    background-color: inherit;
+}
+body {
+  background-color: #0a1d2f;
+}
+
+
+.myimg {
+    font-size: 25px;
+}
+.newmessagec {
+  /* float: right; */
+  position: absolute;
+  right: 30px;
+  border-radius: 50%;
+  padding: 5px;
+  width: 60px;
+  height: 60px;
+  margin: auto;
+}
+.mainbox {
+  color: inherit;
+}
+.mainbox:hover{
+  text-decoration: none;
+  color: inherit;
+  cursor: default;
+}
+
+a .answers{
+  text-decoration: none;
+}
+.newmessagec>a{
+  text-decoration: none;
+}
+/* nav-bar beginning */
+.small-personalize {
+  display: none;
+}
+.nav-bar{
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  height:max-content;
+  padding: 4px 10px;
+  background: #303d5c;
+  color: #17a2b8;
+  position:fixed;
+  width:100%;
+  z-index:4;
+  top:0;
+}
+.nav-bar a{
+  font-weight: 400;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-bar a:active{
+  color:darkblue;
+}
+.nav-bar a:hover{
+  text-decoration: none;
+  color: rgb(128, 181, 241);
+
+}
+.links{
+  display: inline-flex;
+}
+.links a{
+  padding-left: 6px;
+  padding-right: 6px;
+  color:#fff;
+}
+
+/* Start of dropdown */
+
+
+.dropdown .dropbtn {
+    background-color: inherit;
+   margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #303d5c;
+  z-index: 1;
+  width: max-content;
+}
+
+.dropdown-content a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  color: rgb(128, 181, 241);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+/* End of dropdown */
+.user-profile img{
+  height: 40px;
+  width:40px;
+  border-radius: 50%;
+  margin-right: 5px;
+  position: relative;
+  }
+  .user-profile{
+    color:rgb(255, 255, 255);
+    position: relative;
+  }
+  .user-dropdown{
+    position: absolute;
+    background-color: #303d5c;
+    z-index: 1;
+    padding: 3px;
+    padding-top: 5px;
+    width: max-content;
+    padding-right: 5px;
+    display: none;
+  }
+  .user-profile:hover .user-dropdown{
+    display: grid;
+  }
+  .user-profile:focus .user-dropdown{
+    display: grid;
+  }
+
+
+  .logoN{
+    font-size:22px;
+    font-family:cursive,-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.myprofile {
+  display: inline-block;
+  /* float: right; */
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.myprofile >a>img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+
+.main {
+  width: 70%;
+  background-color: #e8eaec;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 30px;
+  margin-bottom: 30px;
+  margin-top: 100px;
+}
+
+
+.question {
+  display: flex;
+}
+
+.profile >img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+
+.queryprofile {
+  margin: 30px 0px 0px 20px;
+  flex:1;
+  width: 10%;
+  margin-right: 30px;
+}
+
+
+.profile > p {
+  width: 100%;
+  font-size: 13px;
+  /* text-align: center; */
+  margin: 0px auto;
+}
+
+
+.question-content {
+  flex:8;
+  padding: 10px;
+  margin: 10px;
+  width: 80%;
+}
+
+
+.ft {
+  color: #4c626b;
+  display: inline;
+  /* float: right; */
+  padding: 0px 10px 0px 10px;
+}
+
+
+.answers {
+  display: flex;
+  border-bottom: 1px solid #555;
+  margin: 10px;
+  min-height: 50px;
+  position:relative;
+}
+
+
+.answers:last-child {
+  border-bottom: none;
+}
+
+h4 {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.answers-content {
+  flex:8;
+  padding: 10px;
+  margin: 10px;
+  width: 80%;
+}
+
+
+.answer-form {
+  display: block;
+  margin: 0px auto;
+  width: 50vw;
+}
+
+
+.answer-form>form {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.answer-form {
+  flex: 1;
+}
+
+
+textarea {
+  display: block;
+  margin: 0px auto;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid gray;
+}
+
+
+button[type = "submit"] {
+  display: block;
+  text-align: center;
+  margin: 0px auto;
+
+}
+
+#small {
+  display: none;
+}
+
+.seen {
+  color: green;
+  font-size: 1.3em;
+}
+
+
+.notif {
+  color: green;
+}
+
+
+.question-main-content {
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.queryprofile>p {
+  margin: 0px auto;
+}
+
+
+@media screen and (max-width:700px) {
+  .user-dropdown {
+    display: none;
+  }
+  .main {
+    width:96%;
+    margin-bottom: 2%;
+  }
+  .header {
+      min-height: 12vh;
+  }
+
+
+.small-personalize {
+  display: block;
+}
+
+.personalize {
+  display: none;
+}
+
+  .profile >a>img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+  }
+
+  .header>nav>a {
+    font-size: 12px;
+    text-decoration: none;
+    color: #fff;
+    margin: 0px 10px;
+  }
+
+  .question-main-content {
+    font-size: 16px;
+    margin-left: 30px;
+  }
+  .answers-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content:space-between;
+    margin: 10px 0px;
+    align-items:flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* margin-left: 15px; */
+    justify-content: space-between;
+    margin: 10px 6px;
+    overflow: hidden;
+    max-height: 200px;
+    /* margin-left: 35px;
+    font-size: 12px;
+    overflow-wrap: break-word;
+    padding: 4px;
+    margin: 4px; */
+  }
+
+  .ft {
+    font-size: 10px;
+  }
+
+  .answers-main-content {
+    margin: 0px;
+    max-width:90%
+  }
+
+  button[type = "submit"] {
+    margin-top: 20px;
+
+  }
+
+  .myprofile {
+    margin-right: 0px;
+    margin-top: 0px;
+  }
+
+  #small {
+    display: block;
+  }
+
+  #large {
+    display: none;
+  }
+  .queryprofile {
+    margin: 10px 0px 0px 10px;
+    flex:1;
+    width: 10%;
+    margin-right: 4px;
+    margin: 10px;
+  }
+.flexer {
+  display: flex;
+  width: 70%;
+  margin: 0px auto;
+  width: 100%;
+  margin: 0;
+}
+.flexer .ft {
+  flex: 1;
+  text-align: center;
+}
+.flexer .ft:first-child {
+  text-align: right;
+}
+.flexer .ft:last-child {
+  text-align: left;
+}
+.newmessage {
+  right: 5px;
+    top: 30%;
+}
+}
